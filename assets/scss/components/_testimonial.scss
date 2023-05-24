@@ -103,19 +103,6 @@
         padding-left: var(--gutter);
       }
     }
-    &__controls {
-      display: flex;
-      padding-right: 5px;
-      align-items: center;
-      margin-top: 4.7rem;
-      justify-content: space-between;
-    }
-    &__pagination {
-      padding-inline: 2.2rem 4.3rem;
-      font: 700 2.8rem/1 $f-text;
-      letter-spacing: 0.39em;
-      color: $clr-green;
-    }
   }
   &-next {
     &__slide {

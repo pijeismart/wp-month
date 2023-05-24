@@ -212,6 +212,7 @@ if ( have_rows( 'modules' ) ) :
 							)
 						);
 						?>
+<<<<<<< HEAD
 						<?php if ( $type == 'experience-testimonial' ) : ?>
 						<div class="content-image__experience">
 							<?php
@@ -241,6 +242,8 @@ if ( have_rows( 'modules' ) ) :
 							<?php endif; ?>
 						</div>
 						<?php endif; ?>
+=======
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 					</div>
 					<div class="content-image__content">
 						<?php
@@ -297,6 +300,7 @@ if ( have_rows( 'modules' ) ) :
 								?>
 							</div>
 						<?php endif; ?>
+<<<<<<< HEAD
 
 						<?php
 						get_template_part_args(
@@ -308,6 +312,8 @@ if ( have_rows( 'modules' ) ) :
 							)
 						);
 						?>
+=======
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 					</div>
 				</div>
 			</section>
@@ -578,7 +584,11 @@ if ( have_rows( 'modules' ) ) :
 							'template-parts/content-modules-text',
 							array(
 								'v'  => 'heading',
+<<<<<<< HEAD
 								't'  => 'h2',
+=======
+								't'  => 'h3',
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 								'tc' => 'posts-slider__heading a-up',
 							)
 						);
@@ -589,7 +599,11 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'content',
 								't'  => 'div',
+<<<<<<< HEAD
 								'tc' => 'posts-slider__content a-up a-delay-1',
+=======
+								'tc' => 'posts-slider__copy a-up a-delay-1',
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 							)
 						);
 						?>
@@ -604,6 +618,7 @@ if ( have_rows( 'modules' ) ) :
 						?>
 					</div>
 					<?php if ( $posts ) : ?>
+<<<<<<< HEAD
 						<div class="posts-slider__carousel">
 							<?php
 							foreach ( $posts as $post ) :
@@ -611,6 +626,21 @@ if ( have_rows( 'modules' ) ) :
 								get_template_part( 'template-parts/loop', 'post' );
 							endforeach;
 							?>
+=======
+						<div class="posts-slider__right">
+							<div class="posts-slider__carousel">
+								<?php
+								foreach ( $posts as $post ) :
+									setup_postdata( $post );
+									get_template_part( 'template-parts/loop', 'post' );
+								endforeach;
+								?>
+							</div>
+							<div class="slider-controls d-md-only">
+								<div class="slider-pagination">1 / 2</div>
+								<button class="link slider-next" tabindex="0">Next</button>
+							</div>
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 						</div>
 						<?php
 					endif;
@@ -674,6 +704,7 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
+<<<<<<< HEAD
 		<?php elseif ( 'contact_form' == get_row_layout() ) : ?>
 			<!-- Contact Form -->
 			<section class="contact-form">
@@ -1161,6 +1192,9 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
+=======
+		<?php else : ?>
+>>>>>>> c267a5242cc17b18abb12f14ccf0337551fa6715
 		<?php endif; ?>
 		<?php
 	endwhile;

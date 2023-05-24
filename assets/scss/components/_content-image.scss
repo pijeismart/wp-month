@@ -25,6 +25,12 @@
     }
   }
   &--contained-ctas {
+    @include mq(tablet) {
+      margin-block: 10rem;
+    }
+    @include mq(desktop-wide) {
+      margin-block: 15rem;
+    }
     .container {
       @include mq(tablet) {
         align-items: center;

@@ -146,6 +146,7 @@
           $(this).toggleClass('active');
           $(this).next().slideToggle('normal');
         })
+        helper.isElementExist('.posts-slider__carousel', theme.initPostCarousel);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -155,7 +156,6 @@
             .closest('.cards-slider__showmore')
             .hide();
         });
-        
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {
@@ -291,6 +291,37 @@
       // show next slide
       $('.testimonial-next').on('click', function() {
         $mainSlider.slick('slickNext');
+      });
+    },
+    /**
+     * init post carousel
+     */
+    initPostCarousel() {
+      $('.posts-slider__carousel').each(function() {
+        const $this = $(this),
+              $parent = $this.closest('.posts-slider');
+        $this.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+          // no dots -> no slides
+          if(!slick.$dots){
+            return;
+          }
+          
+          //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+          var i = (currentSlide ? currentSlide : 0) + 1;
+          // use dots to get some count information
+          $('.slider-pagination', $parent).text(i + '/' + (slick.$dots[0].children.length));
+        });
+        $this.slick({
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          speed: 1000,
+          variableWidth: true
+        });
+        $('.slider-next').on('click', function() {
+          $this.slick('slickNext');
+        });
       });
     }
   };
