@@ -1,0 +1,174 @@
+.content-image {
+  position: relative;
+  margin-block: 6rem;
+  &--full-ctas {
+    &::before {
+      @include mq(tablet) {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 50%;
+        width: vw(650px);
+        height: vw(520px);
+        max-width: 65rem;
+        max-height: 52rem;
+        background: url('../img/decor-m.svg') no-repeat center;
+        transform: translateX(-50%);
+        z-index: -1;
+      }
+    }
+    .container {
+      @include mq(tablet) {
+        padding-inline: 1rem;
+        max-width: 192rem;
+      }
+    }
+  }
+  &--contained-ctas {
+    @include mq(tablet) {
+      margin-block: 10rem;
+    }
+    @include mq(desktop-wide) {
+      margin-block: 15rem;
+    }
+    .container {
+      @include mq(tablet) {
+        align-items: center;
+      }
+    }
+  }
+  .container {
+    @include mq(tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__media {
+    margin-bottom: 2.4rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    @extend .object-cover;
+    @include mq(tablet) {
+      margin-bottom: 0;
+    }
+    @include when-inside('.content-image--cards') {
+      @include mq(tablet) {
+        flex: 0 0 50%;
+      }
+      @include mq(desktop) {
+        flex-basis: 53rem;
+        height: 56rem;
+      }
+    }
+    @include when-inside('.content-image--full-ctas') {
+      @include mq(tablet) {
+        flex: 0 0 50%;
+      }
+    }
+    @include when-inside('.content-image--contained-ctas') {
+      @include mq(tablet) {
+        flex: 0 0 vw(700px);
+        max-width: 70rem;
+      }
+    }
+  }
+  &__content {
+    @include when-inside('.content-image--cards') {
+      @include mq(tablet) {
+        margin-left: 5rem;
+        max-width: 64rem;
+      }
+      @include mq(desktop-wide) {
+        margin-left: 13rem;
+      }
+    }
+    @include when-inside('.content-image--full-ctas') {
+      @include mq(tablet) {
+        padding: 6rem 10rem 22.5rem 5rem;
+        flex: 0 0 50%;
+      }
+      @include mq(desktop-wide) {
+        padding: 6rem 15rem 22.5rem 13rem;
+        // margin-right: calc((100vw - 130rem) / 2);
+      }
+    }
+    @include when-inside('.content-image--contained-ctas') {
+      @include mq(tablet) {
+        margin-left: 6.5rem;
+      }
+    }
+  }
+  &__heading {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+      max-width: 57rem;
+    }
+    @include when-inside('.content-image--contained-ctas') {
+      @extend .h3;
+      @include mq(tablet) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+  &__copy {
+    margin-bottom: 2.4rem;
+    color: $clr-black;
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+      max-width: 56rem;
+      font-size: 2.2rem;
+      line-height: 1.6;
+    }
+    @include when-inside('.content-image--contained-ctas') {
+      @include mq(tablet) {
+        font-size: 1.6rem;
+        line-height: 1.7;
+      }
+    }
+  }
+  &__cards {
+    @include mq(tablet, max) {
+      display: flex;
+      margin-right: calc(var(--gutter) * -1);
+    }
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));      
+      grid-gap: 2rem;
+    }
+  }
+  &__card {
+    padding: 1.9rem;
+    align-items: center;
+    justify-content: center;
+    font: 600 1.6rem/1.3 $f-text;
+    letter-spacing: -0.01em;
+    border-radius: 1rem;
+    text-align: center;
+    overflow: hidden;
+    @include mq(tablet, max) {
+      display: inline-flex;
+      margin-right: 1.2rem;
+      background: linear-gradient(90deg, #78BE38 43.75%, #CBF279 100%);
+      color: $clr-white;
+      flex: 0 0 19rem;
+    }
+    @include mq(tablet) {
+      padding: 6rem 3rem;
+      border: 1px solid $clr-border;
+      color: $clr-navy;
+      font-size: 2.3rem;
+    }
+  }
+  &__ctas {
+    .btn {
+      @include mq(tablet, max) {
+        display: block;
+        &:not(:last-child) {
+          margin-bottom: 0.8rem;
+        }
+      }
+    }
+  }
+}

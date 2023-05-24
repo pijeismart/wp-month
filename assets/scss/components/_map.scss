@@ -1,0 +1,22 @@
+.map {
+  padding-block: 4rem 6rem;
+  background-color: $clr-navy;
+  color: $clr-white;
+  @include mq(tablet) {
+    padding-block: 12rem;
+    .container {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &-content {
+    @include mq(tablet) {
+      margin-right: 2rem;
+      flex: 0 0 42rem;
+    }
+  }
+  &-heading,
+  &-copy {
+    margin-bottom: 2.4rem;
+  }
+}

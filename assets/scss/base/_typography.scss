@@ -1,0 +1,49 @@
+/**
+ * Basic typography style for copy text
+ */
+
+h1,
+.h1 {
+  font: 400 5.5rem/4.4rem $f-heading;
+  letter-spacing: -0.03em;
+  @include mq(tablet) {
+    font-size: 9rem;
+    line-height: 0.9; 
+  }
+}
+
+h2,
+.h2 {
+  font: 400 4.5rem/1.05 $f-heading;
+  letter-spacing: -0.03em;
+  @include mq(tablet) {
+    font-size: 5.8rem;
+  }
+}
+
+h3,
+.h3 {
+  font: 400 4.5rem/1.05 $f-heading;
+  letter-spacing: -0.03em;
+  @include mq(tablet) {
+    font-size: 4.6rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+}
+h6,
+.h6 {
+  font: 700 1.6rem/1.5 $f-text;
+  @include mq(tablet) {
+    font-size: 2rem;
+  }
+}
+
+.text-normal {
+  font: 400 1.4rem/1.55 $f-text;
+  letter-spacing: 0.01em;
+  @include mq(tablet) {
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+}
