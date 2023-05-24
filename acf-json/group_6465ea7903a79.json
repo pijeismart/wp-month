@@ -2689,6 +2689,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page-templates\/practice-search.php"
             }
         ],
         [
@@ -2708,5 +2713,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684891956
+    "modified": 1684941121
 }
