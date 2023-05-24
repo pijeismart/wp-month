@@ -1,0 +1,118 @@
+.contact-form {
+    margin: 15rem 0 10rem;
+    @include mq(tablet, max) {
+        margin: 8rem 0;
+    }
+    .container {
+        display: flex;
+    }
+    &__main {
+        margin-right: 2rem;
+    }
+    &__cards {
+        display: flex;
+        align-items: stretch;
+        margin-bottom: 8rem;
+        flex-wrap: wrap;
+        gap: 20px;
+        @include mq(tablet, max) {
+            gap: 8px;
+        }
+        &__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3.7rem 2.5rem;
+            height: 300px;
+            width: calc((100% - 60px) / 4);
+            border-radius: 10px;
+            border: 1px solid $light-gray;
+            @include mq(desktop-small, max) {
+                width: calc((100% - 20px) / 2);
+            }
+            @include mq(tablet, max) {
+                padding: 2.4rem 0.8rem;
+            }
+            &.review {
+                .item-eyebrow {
+                    opacity: 0.6;
+                }
+                .item-sub_title {
+                    opacity: 0.6;
+                }
+            }
+            .item {
+                &-eyebrow {
+                    margin-bottom: auto;
+                    color: $clr-navy;
+                    font-size: 1.2rem;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+                &-award {
+                    max-width: 9.3rem;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                &-badge {
+                    margin-bottom: auto;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+                &-sub_title {
+                    font-size: 1.2rem;
+                    text-transform: uppercase;
+                }
+                &-content {
+                    margin-bottom: 1rem;
+                    line-height: 8rem;
+                    font-family: $f-heading;
+                    font-weight: 400;
+                    font-size: 7rem;
+                    @include mq(tablet, max) {
+                        font-size: 4.2rem;
+                        line-height: 5.2rem;
+                    }
+                }
+            }
+            &__cta {
+                margin-top: auto;
+            }
+        }
+    }
+    &__content {
+        &__sub_heading {
+            margin-bottom: 3rem;
+            @include mq(tablet, max) {
+                margin-bottom: 2.4rem;
+            }
+        }
+        &__heading {
+            margin-bottom: 3rem;
+            @include mq(tablet, max) {
+                margin-bottom: 2.4rem;
+            }
+        }
+        &__content {
+            * {
+                margin-bottom: 3rem;
+                @include mq(tablet, max) {
+                    margin-bottom: 2.4rem;
+                }
+            }
+            h5 {
+                font-weight: 400;
+                font-family: $f-text;
+                font-size: 2.2rem;
+                line-height: 3.5rem;
+                @include mq(tablet, max) {
+                    font-size: 1.6rem;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}

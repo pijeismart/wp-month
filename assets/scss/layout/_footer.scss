@@ -1,0 +1,176 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.footer {
+  padding-block: 4.4rem;
+  background-color: $clr-navy;
+  color: $clr-white;
+  text-align: center;
+  @include mq(tablet) {
+    padding-block: 10.2rem 9rem;
+    text-align: left;
+    border-top: 3px solid $clr-green;
+  }
+  &-logo {
+    display: inline-block;
+    max-width: 19.5rem;
+    margin-bottom: 5rem;
+    @include mq(tablet) {
+      max-width: 35.3rem;
+    }
+  }
+  &-info {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+    }
+    h6 {
+      margin-bottom: 1.2rem;
+    }
+    p {
+      font-size: 1.3rem;
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  &-cta {
+    display: block;
+    margin-bottom: 1.7rem;
+    padding: 2.2rem;
+    background: #17233D;
+    border: 1px solid #050D1F;
+    border-radius: 11.7526px;
+    color: $clr-green;
+    font: 700 2rem/1 $f-text;
+    text-align: center;
+    @include mq(tablet) {
+      display: inline-block;
+      padding: 2.2rem 3rem;
+      font-size: 2.6rem;
+    }
+    small {
+      display: inline-block;
+      font: 700 1.1rem/1.5 $f-text;
+      color: $clr-white;
+      @include mq(tablet, max) {
+        &:first-child {
+          margin-bottom: 0.5rem;
+        }
+        &:last-child {
+          margin-top: 1.5rem;
+        }
+      }
+    }
+  }
+  ul {
+    list-style: none;
+  }
+  &-menu {
+    text-align: left;
+    @include mq(tablet, max) {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+    @include mq(tablet) {
+      // display: flex;
+      // flex-wrap: wrap;
+      column-count: 3;
+      column-gap: 2.4rem;
+    }
+    > .menu-item {
+      break-inside: avoid;
+      @include mq(tablet) {
+        // width: calc((100% - 4.8rem) / 3);
+      }
+      > a {
+        display: inline-block;
+        margin-bottom: 1rem;
+        font: 700 1.3rem/1.5 $f-text;
+        color: $clr-green;
+        pointer-events: none;
+        @include mq(tablet) {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    .sub-menu {
+      margin-bottom: 6rem;
+      @include mq(tablet) {
+        margin-bottom: 4rem;
+      }
+      a {
+        font: 700 1.2rem/1.8rem $f-text;
+        color: $clr-white;
+        @include mq(tablet) {
+          font-size: 1.3rem;
+          line-height: 1.5;
+        }
+      }
+    }
+    .full-menu {
+      @include mq(tablet) {
+        column-span: all;
+      }
+      .sub-menu {
+        @include mq(tablet) {
+          display: flex;
+          margin-inline: -1rem;
+          align-items: center;
+        }
+        li:not(:last-child) {
+          @include mq(tablet, max) {
+            margin-bottom: 1.2rem;
+          }
+        }
+        a {
+          font-size: 1.6rem;
+          line-height: 1.5;
+          @include mq(tablet) {
+            margin-inline: 1rem;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
+  &-left {
+    @include mq(tablet) {
+      display: flex;
+      margin-right: 5rem;
+      flex: 0 0 35.3rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @include mq(desktop) {
+      margin-right: 8.7rem;
+    }
+    &__bottom {
+      margin-top: auto;
+      font: 400 1rem/1.5 $f-text;
+    }
+  }
+  &-right {
+    @include mq(tablet) {
+      flex-grow: 1;
+    }
+    &__bottom {
+      margin-top: 4rem;
+      text-align: left;
+      font: 400 1rem/1.5 $f-text;
+    }
+  }
+  &-content {
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: $clr-green;
+      }
+    }
+  }
+}

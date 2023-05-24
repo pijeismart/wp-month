@@ -1,0 +1,108 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 1.7rem 7rem 1.7rem 3rem;
+  font: 700 1.4rem/1.3 $f-text;
+  letter-spacing: 0.01em;
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  @include mq(tablet) {
+    padding: 3rem 7rem 3rem 3rem;
+    border-radius: 10px;
+  }
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    transform: translateY(-50%);
+    transition: all .3s ease-in-out;
+  }
+  &:hover::after {
+    transform: translate(5px, -50%);
+  }
+}
+.btn-primary {
+  background-color: $clr-green-light;
+  color: $clr-navy;
+  &::after {
+    @include svg-background('<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.8089 8.44618L11.7609 15.7913C11.6335 15.9583 11.4212 16 11.2514 16C11.0816 16 10.9117 15.9583 10.7844 15.8331C10.4872 15.5827 10.4872 15.1653 10.7419 14.9149L16.686 8.65485H0.67933C0.297207 8.65485 0 8.36271 0 8.02884C0 7.69497 0.297207 7.31937 0.67933 7.31937H16.686L10.7419 1.10103C10.4872 0.850628 10.4872 0.433289 10.7844 0.182887C11.0816 -0.0675162 11.5061 -0.0675162 11.7609 0.22462L18.8089 7.56977C19.0637 7.82017 19.0637 8.19578 18.8089 8.44618Z" fill="%230A1631"/></svg>');
+  }
+}
+.btn-secondary {
+  background-color: transparent;
+  color: $clr-navy;
+  &::after {
+    @include svg-background('<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.8089 8.44618L11.7609 15.7913C11.6335 15.9583 11.4212 16 11.2514 16C11.0816 16 10.9117 15.9583 10.7844 15.8331C10.4872 15.5827 10.4872 15.1653 10.7419 14.9149L16.686 8.65485H0.67933C0.297207 8.65485 0 8.36271 0 8.02884C0 7.69497 0.297207 7.31937 0.67933 7.31937H16.686L10.7419 1.10103C10.4872 0.850628 10.4872 0.433289 10.7844 0.182887C11.0816 -0.0675162 11.5061 -0.0675162 11.7609 0.22462L18.8089 7.56977C19.0637 7.82017 19.0637 8.19578 18.8089 8.44618Z" fill="%2378BE38"/></svg>');
+  }
+}
+
+.link {
+  display: inline-block;
+  appearance: none;
+  position: relative;
+  padding-right: 3rem;
+  font: 700 1.4rem/1.3 $f-text;
+  letter-spacing: 0.01em;
+  background-color: transparent;
+  border: none;
+  color: $clr-navy;
+  outline: none;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1.9rem;
+    height: 1.6rem;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    transition: all .3s ease-in-out;
+    @include svg-background('<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.8089 8.44618L11.7609 15.7913C11.6335 15.9583 11.4212 16 11.2514 16C11.0816 16 10.9117 15.9583 10.7844 15.8331C10.4872 15.5827 10.4872 15.1653 10.7419 14.9149L16.686 8.65485H0.67933C0.297207 8.65485 0 8.36271 0 8.02884C0 7.69497 0.297207 7.31937 0.67933 7.31937H16.686L10.7419 1.10103C10.4872 0.850628 10.4872 0.433289 10.7844 0.182887C11.0816 -0.0675162 11.5061 -0.0675162 11.7609 0.22462L18.8089 7.56977C19.0637 7.82017 19.0637 8.19578 18.8089 8.44618Z" fill="%2378BE38"/></svg>');
+  }
+  &:hover {
+    &::after {
+      transform: translate(5px, -50%);
+    }
+  }
+  &-white {
+    color: $clr-white;
+  }
+}
+
+.btn-download {
+  background-color: $clr-white-off;
+  @include mq(tablet) {
+    padding: 2.4rem 12rem 2.4rem 2.4rem;
+  }
+  &::after {
+    @include svg-background('<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.05382 19.3089L0.708669 12.2609C0.541733 12.1335 0.5 11.9212 0.5 11.7514C0.5 11.5816 0.541733 11.4117 0.666935 11.2844C0.917338 10.9872 1.33468 10.9872 1.58508 11.2419L7.84515 17.186L7.84515 1.17933C7.84515 0.797206 8.13729 0.5 8.47116 0.5C8.80503 0.5 9.18063 0.797206 9.18063 1.17933L9.18063 17.186L15.399 11.2419C15.6494 10.9872 16.0667 10.9872 16.3171 11.2844C16.5675 11.5816 16.5675 12.0061 16.2754 12.2609L8.93023 19.3089C8.67983 19.5637 8.30422 19.5637 8.05382 19.3089Z" fill="%230A1631"/></svg>');
+    @include mq(tablet) {
+      right: 2.4rem;
+    }
+  }
+  &::before {
+    @include mq(tablet) {
+      position: absolute;
+      content: '';
+      top: 50%;
+      right: 7rem;
+      width: 0;
+      height: calc(100% - 2rem);
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+  }
+  &:hover::after {
+    top: 55%;
+    transform: translateY(-50%);
+  }
+}

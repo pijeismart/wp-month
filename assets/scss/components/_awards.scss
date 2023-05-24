@@ -1,0 +1,35 @@
+.awards {
+  .container {
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &-gallery {
+    @include mq(tablet, max) {
+      text-align: center;
+    }
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      @include mq(tablet, max) {
+        margin: 1rem;
+        display: inline-block;
+      }
+      @include mq(tablet) {
+        margin: 2rem 2rem 2rem 0;
+      }
+      @include mq(desktop-wide) {
+        margin-right: 4rem;
+      }
+    }
+  }
+  &-cta {
+    @include mq(tablet, max) {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+  }
+}

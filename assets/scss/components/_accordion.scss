@@ -1,0 +1,90 @@
+.accordion {
+    margin: 8rem 0;
+    @include mq(tablet) {
+        margin: 12rem 0 25rem;
+    }
+    .container {
+        @include mq(tablet) {
+            display: flex;
+        }
+    }
+    &-info {
+        margin-bottom: 2rem;
+        @include mq(tablet) {
+            margin-right: 2rem;
+            margin-bottom: 2.4rem;
+            width: 50%;
+            min-width: 30rem;
+        }
+    }
+    &-sub_heading {
+        margin-bottom: 2.4rem;
+        @include mq(tablet) {
+            margin-bottom: 2rem;
+        }
+    }
+    &-items {}
+    &-item {
+        margin-bottom: 1rem;
+        padding: 2.4rem;
+        padding-left: 6.4rem;
+        padding-bottom: 0.4rem;
+        border: 1px solid $light-gray;
+        border-radius: 1rem;
+        width: 100%;
+        @include mq(tablet) {
+            padding: 4rem 3rem 2rem 14rem;
+        }
+        &__heading {
+            position: relative;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            line-height: 1.7rem;
+            letter-spacing: 0;
+            cursor: pointer;
+            @include mq(tablet) {
+                font-size: 2.2rem;
+                line-height: 2.6rem;
+            }
+            &:before, &:after {
+                position: absolute;
+                content: '';
+                top: 50%;
+                transform: translateY(-50%);
+                border: 1px solid $clr-green;
+            }
+            &::before {
+                left: -8rem;
+                width: 2.8rem;
+                @include mq(tablet, max) {
+                    left: -3.4rem;
+                    width: 1rem;
+                }
+            }
+            &::after {
+                left: -6.6rem;
+                height: 2.8rem;
+                transition: 0.3s;
+                @include mq(tablet, max) {
+                    left: -3rem;
+                    height: 1rem;
+                }
+            }
+            &.active {
+                &::after {
+                    transform: translateY(-50%) rotate(90deg);
+                }
+            }
+        }
+        &__main {
+            display: none;
+            width: 100%;
+        }
+        &__content {
+            margin-bottom: 2rem;
+        }
+        &__cta {
+            margin-bottom: 2rem;
+        }
+    }
+}

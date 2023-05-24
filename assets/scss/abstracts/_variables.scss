@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$f-heading: 'EB Garamond', serif;
+$f-text: 'Open Sans', sans-serif;
+
+/// Copy text color
+/// @type Color
+$text-color: #0A1631 !default;
+
+$clr-navy: #0A1631 !default;
+$clr-green: #78BE38 !default;
+$clr-green-light: #AEDF82 !default;
+$clr-border: #D8DCE2 !default;
+$clr-white-off: #EFF2F6 !default;
+$clr-white: #fff !default;
+$clr-black: #2E2E2E !default;
+$light-gray: #D8DCE2 !default;
+
+/// Main brand color
+/// @type Color
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1300px !default;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  "phone-xsmall": 320px,
+  "phone-s21": 360px,
+  "phone-small": 375px,
+  "phone": 425px,
+  "phone-wide": 480px,
+  "phablet": 560px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-wide": 992px,
+  "desktop-small": 1024px,
+  "desktop": 1200px,
+  "desktop-wide": 1439px,
+  "desktop-ultra": 1599px,
+) !default;
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
