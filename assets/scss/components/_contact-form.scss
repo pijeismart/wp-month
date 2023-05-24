@@ -5,16 +5,22 @@
     }
     .container {
         display: flex;
+        @include mq(tablet, max) {
+            flex-direction: column;
+        }
     }
     &__main {
         margin-right: 2rem;
+        @include mq(tablet, max) {
+            margin-right: 0;
+        }
     }
     &__cards {
         display: flex;
         align-items: stretch;
         margin-bottom: 8rem;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 2rem;
         @include mq(tablet, max) {
             gap: 8px;
         }
@@ -23,15 +29,16 @@
             flex-direction: column;
             align-items: center;
             padding: 3.7rem 2.5rem;
-            height: 300px;
+            height: 30rem;
             width: calc((100% - 60px) / 4);
-            border-radius: 10px;
+            border-radius: 1rem;
             border: 1px solid $clr-light-gray;
-            @include mq(desktop-small, max) {
-                width: calc((100% - 20px) / 2);
+            @include mq(desktop, max) {
+                width: calc((100% - 2rem) / 2);
             }
             @include mq(tablet, max) {
                 padding: 2.4rem 0.8rem;
+                height: 24rem;
             }
             &.review {
                 .item-eyebrow {
@@ -71,7 +78,7 @@
                     line-height: 8rem;
                     font-family: $f-heading;
                     font-weight: 400;
-                    font-size: 7rem;
+                    font-size: 6rem;
                     @include mq(tablet, max) {
                         font-size: 4.2rem;
                         line-height: 5.2rem;
@@ -102,17 +109,66 @@
                 @include mq(tablet, max) {
                     margin-bottom: 2.4rem;
                 }
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
             h5 {
                 font-weight: 400;
                 font-family: $f-text;
                 font-size: 2.2rem;
                 line-height: 3.5rem;
+                color: $clr-black;
+                letter-spacing: 0;
                 @include mq(tablet, max) {
                     font-size: 1.6rem;
                     line-height: 2.5rem;
                 }
             }
+        }
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        padding: 3.2rem;
+        background-color: $clr-navy;
+        border-radius: 1rem;
+        @include mq(tablet) {
+            padding: 6rem 3.2rem;
+            max-width: 38rem;
+            min-width: 30rem;
+        }
+        @include mq(tablet, max) {
+            margin-top: 8rem;
+        }
+        &__sub_heading {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            text-transform: uppercase;
+            color: $clr-green;
+        }
+        &__heading {
+            margin-bottom: 1rem;
+            color: $clr-white-off;
+            font-family: $f-text;
+            font-weight: 700;
+            font-size: 1.8rem;
+            line-height: 2.3rem;
+            @include mq(tablet) {
+                font-size: 2.8rem;
+                line-height: 3.6rem;
+            }
+        }
+        &__content {
+            margin-bottom: 2rem;
+            color: $clr-white-off;
+            text-align: center;
+        }
+        &__logo {
+            margin-top: auto;
         }
     }
 }

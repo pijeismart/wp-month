@@ -11,9 +11,10 @@
     &-info {
         margin-bottom: 2rem;
         @include mq(tablet) {
+            flex-shrink: 0;
             margin-right: 2rem;
             margin-bottom: 2.4rem;
-            width: 50%;
+            width: 35%;
             min-width: 30rem;
         }
     }

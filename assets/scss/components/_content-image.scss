@@ -20,7 +20,7 @@
     .container {
       @include mq(tablet) {
         padding-inline: 1rem;
-        max-width: 192rem;
+        max-width: 190rem;
       }
     }
   }
@@ -34,6 +34,17 @@
     .container {
       @include mq(tablet) {
         align-items: center;
+      }
+    }
+  }
+  &--experience-testimonial {
+    .container {
+      @include mq(tablet) {
+        padding-inline: 1rem;
+        max-width: 192rem;
+      }
+      @include mq(tablet-wide, max) {
+        flex-direction: column;
       }
     }
   }
@@ -59,6 +70,11 @@
         height: 56rem;
       }
     }
+    @include when-inside('.content-image--experience-testimonial') {
+      @include mq(tablet) {
+        flex-basis: 38rem;
+      }
+    }
     @include when-inside('.content-image--full-ctas') {
       @include mq(tablet) {
         flex: 0 0 50%;
@@ -73,6 +89,9 @@
     picture {
       img {
         border-radius: 1rem;
+        @include mq(tablet-wide,  max) {
+          height: 40rem;
+        }
       }
       overflow: hidden;
     }
@@ -86,8 +105,18 @@
     background-color: $clr-white-off;
     border-radius: 1rem;
     transform: translateY(-50%);
+    @include mq(tablet-wide, max) {
+      position: static;
+      margin: auto;
+      width: fit-content;
+      margin-top: -38rem;
+      transform: translateY(0);
+    }
     &__heading {
       margin-bottom: 3rem;
+      @include mq(tablet-wide, max) {
+        text-align: center;
+      }
     }
     &__cities__item {
       margin-bottom: 1rem;
@@ -95,6 +124,9 @@
       line-height: 2rem;
       white-space: nowrap;
       letter-spacing: 0;
+      @include mq(tablet-wide, max) {
+        text-align: center;
+      }
     }
   }
   &__content {
@@ -122,6 +154,23 @@
         margin-left: 6.5rem;
       }
     }
+    @include when-inside('.content-image--experience-testimonial') {
+      @include mq(tablet) {
+        width: 45%;
+      }
+      @include mq(desktop-small) {
+        width: 50%;
+      }
+      @include mq(desktop) {
+        width: 55%;
+      }
+    }
+  }
+  &__sub_heading {
+    margin-bottom: 3rem;
+    @include mq(tablet, max) {
+      margin-bottom: 2.4rem;
+    }
   }
   &__heading {
     margin-bottom: 2.4rem;
@@ -139,6 +188,7 @@
       @extend .h3;
       @include mq(tablet) {
         margin-bottom: 1.5rem;
+        max-width: 65rem;
       }
     }
   }
@@ -160,6 +210,7 @@
     @include when-inside('.content-image--experience-testimonial') {
       @include mq(tablet) {
         font-size: 1.6rem;
+        max-width: 65rem;
         line-height: 1.7;
       }
     }
@@ -214,7 +265,7 @@
     border-radius: 1rem;
     @include mq(tablet) {
       margin-bottom: 4rem;
-      max-width: 57rem;
+      max-width: 65rem;
     }
     * {
       font-family: $f-heading;

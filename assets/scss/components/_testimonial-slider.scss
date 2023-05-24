@@ -18,12 +18,17 @@
                 @include svg-background('<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.8089 8.44618L11.7609 15.7913C11.6335 15.9583 11.4212 16 11.2514 16C11.0816 16 10.9117 15.9583 10.7844 15.8331C10.4872 15.5827 10.4872 15.1653 10.7419 14.9149L16.686 8.65485H0.67933C0.297207 8.65485 0 8.36271 0 8.02884C0 7.69497 0.297207 7.31937 0.67933 7.31937H16.686L10.7419 1.10103C10.4872 0.850628 10.4872 0.433289 10.7844 0.182887C11.0816 -0.0675162 11.5061 -0.0675162 11.7609 0.22462L18.8089 7.56977C19.0637 7.82017 19.0637 8.19578 18.8089 8.44618Z" fill="%2378BE38"/></svg>');
             }
             &.slick-next {
-                transform: scale(1.7);
                 left: calc(50% + 3rem);
+                @include mq(tablet) {
+                    transform: scale(1.7);
+                }
             }
             &.slick-prev {
                 left: calc(50% - 3rem);
-                transform: scale(-1.7);
+                transform: scale(-1) translateY( 50%);
+                @include mq(tablet) {
+                    transform: scale(-1.7);
+                }
             }
         }
     }

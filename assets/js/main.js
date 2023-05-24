@@ -137,8 +137,10 @@
         helper.isElementExist('.testimonials', theme.initTestimonials);
         helper.isElementExist('.testimonial-slider', theme.initTestimonialSlider);
         helper.isElementExist('.podcasts-items', theme.initPodcasts);
+        helper.isElementExist('.practice-areas__items', theme.initPracticeareas);
         $(window).on('resize', function() {
           helper.isElementExist('.podcasts-items', theme.initPodcasts);
+          helper.isElementExist('.practice-areas__items', theme.initPracticeareas);
         });
 
         //accordion
@@ -214,8 +216,20 @@
     /**
      * init Podcasts
      */
+    initPracticeareas() {
+      helper.mobileSlider($('.practice-areas__items'), {
+        slideToScroll: 1,
+        slideToShow: 1,
+        centerMode: true,
+        centerPadding: '10%',
+      })
+    },
+    /**
+     * init Podcasts
+     */
 
     initPodcasts() {
+      console.log(1);
         helper.mobileSlider($('.podcasts-items'), {
           slideToScroll: 1,
           slideToShow: 1,
@@ -223,12 +237,10 @@
           centerPadding: '5%',
         })
     },
+
     /**
      * init testimonials
      */
-
-
-
     initTestimonialSlider() {
       $('.testimonial-slider__items').slick({
         slideToShow: 1,
