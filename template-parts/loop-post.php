@@ -19,7 +19,7 @@ $categories = get_the_category();
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post__title">
 			<?php the_title(); ?>
 		</a>
-		<?php if ( has_excerpt( ) ) : ?>
+		<?php if ( has_excerpt() ) : ?>
 			<p class="loop-post__excerpt">
 				<?php the_excerpt(); ?>
 			</p>

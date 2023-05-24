@@ -13,7 +13,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 50;
-  @include mq(tablet) {
+  @include mq(desktop) {
     display: none;
   }
 
@@ -47,7 +47,7 @@
     }
   }
 
-  @include when-inside('.page-header.is-opened') {
+  @include when-inside('.header.is-opened') {
     span {
       background-color: transparent;
 
