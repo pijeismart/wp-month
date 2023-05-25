@@ -212,11 +212,7 @@ if ( have_rows( 'modules' ) ) :
 							)
 						);
 						?>
-<<<<<<< HEAD
 						<?php if ( $type == 'experience-testimonial' ) : ?>
-=======
-						<?php if ( 'experience-testimonial' == $type ) : ?>
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						<div class="content-image__experience">
 							<?php
 							get_template_part_args(
@@ -224,11 +220,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'experience_heading',
 									't'  => 'h5',
-<<<<<<< HEAD
-									'tc' => 'content-image__experience__heading a-up'
-=======
 									'tc' => 'content-image__experience__heading',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 								)
 							);
 							?>
@@ -242,11 +234,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'city',
 											't'  => 'h5',
-<<<<<<< HEAD
 											'tc' => 'content-image__experience__cities__item a-up a-delay-1'
-=======
-											'tc' => 'content-image__experience__cities__item',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 										)
 									);
 								endwhile;
@@ -704,13 +692,9 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
-<<<<<<< HEAD
 		<?php elseif ( 'contact_form' == get_row_layout() ) : 
 			$form = get_sub_field( 'form' );
 			?>
-=======
-		<?php elseif ( 'contact_form' == get_row_layout() ) : ?>
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 			<!-- Contact Form -->
 			<section class="contact-form">
 				<div class="container">
@@ -821,11 +805,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'content',
 									'w'  => 'div',
-<<<<<<< HEAD
 									'wc' => 'contact-form__content__content a-up a-delay-1'
-=======
-									'wc' => 'contact-form__content__content',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 								)
 							);
 							?>
@@ -891,15 +871,9 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'cards_heading',
 								't'  => 'h5',
-<<<<<<< HEAD
 								'tc' => 'cards-content__cards__heading a-up'
 								)
 							);
-=======
-								'tc' => 'cards-content__cards__heading',
-							)
-						);
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						?>
 						<?php if ( have_rows( 'cards' ) ) : ?>
 							<div class="cards-content__cards__items">
@@ -908,7 +882,6 @@ if ( have_rows( 'modules' ) ) :
 									the_row();
 									$color = get_sub_field( 'background_color' );
 									?>
-<<<<<<< HEAD
 									<div class="cards-content__cards__item a-up a-delay-1" style="background-color: <?php echo esc_attr( $color ); ?>">
 										<?php
 										get_template_part_args(
@@ -931,30 +904,6 @@ if ( have_rows( 'modules' ) ) :
 										);
 										?>
 									</div>
-=======
-								<div class="cards-content__cards__item" style="background-color: <?php echo esc_attr( $color ); ?>">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'heading',
-											't'  => 'h5',
-											'tc' => 'cards-content__cards__item__heading',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											'w'  => 'div',
-											'wc' => 'cards-content__cards__item__content',
-										)
-									);
-									?>
-								</div>
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 								<?php endwhile; ?>
 							</div>
 						<?php endif; ?>
@@ -966,15 +915,9 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'content_heading',
 								't'  => 'h5',
-<<<<<<< HEAD
 								'tc' => 'cards-content__content__heading a-up a-delay-1'
 								)
 							);
-=======
-								'tc' => 'cards-content__content__heading',
-							)
-						);
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						?>
 						<?php
 						get_template_part_args(
@@ -982,11 +925,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'content',
 								'w'  => 'div',
-<<<<<<< HEAD
 								'wc' => 'cards-content__content__content a-up a-delay-1'
-=======
-								'wc' => 'cards-content__content__content',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 							)
 						);
 						?>
@@ -1040,11 +979,7 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'heading',
 							't'  => 'h3',
-<<<<<<< HEAD
 							'tc' => 'milestone-cards__heading a-up'
-=======
-							'tc' => 'milestone-cards__heading',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						)
 					);
 					?>
@@ -1102,15 +1037,9 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'sub_heading',
 							't'  => 'h5',
-<<<<<<< HEAD
 							'tc' => 'podcasts-sub_heading a-up'
 							)
 						);
-=======
-							'tc' => 'podcasts-sub_heading',
-						)
-					);
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 					?>
 					<div class="podcasts-info">
 						<?php
@@ -1119,11 +1048,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h3',
-<<<<<<< HEAD
 								'tc' => 'podcasts-heading a-up a-delay-1'
-=======
-								'tc' => 'podcasts-heading',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 							)
 						);
 						?>
@@ -1131,13 +1056,8 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-<<<<<<< HEAD
 								'v'  => 'cta',
 								'c'  => 'podcasts-cta link a-up a-delay-1'
-=======
-								'v' => 'cta',
-								'c' => 'podcasts-cta link',
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 							)
 						);
 						?>
@@ -1204,17 +1124,10 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h5',
-<<<<<<< HEAD
 								'tc' => 'video-content__heading a-up'
 								)
 							);
 							?>
-=======
-								'tc' => 'video-content__heading',
-							)
-						);
-						?>
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						<div class="video-content__main">
 							<div class="video-content__video a-up a-delay-1">
 								<?php
@@ -1280,17 +1193,9 @@ if ( have_rows( 'modules' ) ) :
 						?>
 					</div>
 					<?php if ( have_rows( 'accordions' ) ) : ?>
-<<<<<<< HEAD
 					<div class="accordion-items a-up a-delay-1">
 						<?php while ( have_rows( 'accordions' ) ) : 
 							the_row(); ?>
-=======
-					<div class="accordion-items">
-						<?php
-						while ( have_rows( 'accordions' ) ) :
-							the_row();
-							?>
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 						<div class="accordion-item">
 							<?php
 							get_template_part_args(
@@ -1329,7 +1234,6 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
-<<<<<<< HEAD
 		<?php elseif ( 'case_results' == get_row_layout() ) : ?>
 			<!-- Case Results -->
 			<section class="case-results">
@@ -1609,8 +1513,6 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
-=======
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 		<?php endif; ?>
 		<?php
 	endwhile;
