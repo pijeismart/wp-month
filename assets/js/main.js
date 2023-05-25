@@ -111,6 +111,7 @@
      */
     init() {
       this.plugins(); // Init all plugins
+      this.initHeight(); // Init Height
       this.bindEvents(); // Bind all events
       this.initAnimations(); // Init all animations
     },
@@ -119,6 +120,34 @@
      * Init External Plugins
      */
     plugins() {},
+
+    /**
+     * init height
+     */
+    initHeight() {
+      // Toggle header
+      $('.hamburger').on('click', function() {
+        $('.header').toggleClass('is-opened');
+      });
+      $('.menu-item-has-children > a').on('touchstart click', function() {
+          if (window.matchMedia('(max-width: 1023px)').matches) {
+            $(this).toggleClass('is-opened')
+            $(this)
+              .next()
+              .toggleClass('is-active');
+          }
+          return false;
+      });
+      // add header height value
+      $(window).on('load resize', function() {
+        const headerHeight =
+          $('header').outerHeight();
+        document.documentElement.style.setProperty(
+          '--header-height',
+          `${headerHeight}px`
+        );
+      });
+    },
 
     /**
      * Bind all events here
@@ -135,7 +164,10 @@
           theme.initCardsCarousel
         );
         helper.isElementExist('.testimonials', theme.initTestimonials);
-        helper.isElementExist('.testimonial-slider', theme.initTestimonialSlider);
+        helper.isElementExist(
+          '.testimonial-slider',
+          theme.initTestimonialSlider
+        );
         helper.isElementExist('.podcasts-items', theme.initPodcasts);
         helper.isElementExist('.practice-areas__items', theme.initPracticeareas);
         $(window).on('resize', function() {
@@ -143,12 +175,17 @@
           helper.isElementExist('.practice-areas__items', theme.initPracticeareas);
         });
 
-        //accordion
+        // accordion
         $('.accordion-item__heading').on('click', function() {
           $(this).toggleClass('active');
-          $(this).next().slideToggle('normal');
-        })
-        helper.isElementExist('.posts-slider__carousel', theme.initPostCarousel);
+          $(this)
+            .next()
+            .slideToggle('normal');
+        });
+        helper.isElementExist(
+          '.posts-slider__carousel',
+          theme.initPostCarousel
+        );
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -229,6 +266,7 @@
      */
 
     initPodcasts() {
+<<<<<<< HEAD
       console.log(1);
         helper.mobileSlider($('.podcasts-items'), {
           slideToScroll: 1,
@@ -236,11 +274,23 @@
           centerMode: true,
           centerPadding: '5%',
         })
+=======
+      helper.mobileSlider($('.podcasts-items'), {
+        slideToScroll: 1,
+        slideToShow: 1,
+        centerMode: true,
+        centerPadding: '5%'
+      });
+>>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
     },
 
     /**
      * init testimonials
      */
+<<<<<<< HEAD
+=======
+
+>>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
     initTestimonialSlider() {
       $('.testimonial-slider__items').slick({
         slideToShow: 1,
@@ -254,7 +304,7 @@
               slideToScroll: 1,
               slideToShow: 1,
               centerMode: true,
-              centerPadding: '5%',
+              centerPadding: '5%'
             }
           },
           {
@@ -263,13 +313,13 @@
               slideToScroll: 1,
               slideToShow: 1,
               centerMode: true,
-              centerPadding: '15%',
+              centerPadding: '15%'
             }
           }
         ]
-      })
+      });
     },
-    
+
     initTestimonials() {
       // init mobile slider
       $('.testimonials-mobile').slick({
@@ -281,7 +331,7 @@
         speed: 1000
       });
       // init desktop main slider
-      let $mainSlider = $('.testimonials-main-slider').slick({
+      const $mainSlider = $('.testimonials-main-slider').slick({
         arrows: false,
         dots: false,
         autoplay: true,
@@ -310,18 +360,25 @@
      */
     initPostCarousel() {
       $('.posts-slider__carousel').each(function() {
-        const $this = $(this),
-              $parent = $this.closest('.posts-slider');
-        $this.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        const $this = $(this);
+        const $parent = $this.closest('.posts-slider');
+        $this.on('init reInit afterChange', function(
+          event,
+          slick,
+          currentSlide,
+          nextSlide
+        ) {
           // no dots -> no slides
-          if(!slick.$dots){
+          if (!slick.$dots) {
             return;
           }
-          
-          //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-          var i = (currentSlide ? currentSlide : 0) + 1;
+
+          // currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+          const i = (currentSlide || 0) + 1;
           // use dots to get some count information
-          $('.slider-pagination', $parent).text(i + '/' + (slick.$dots[0].children.length));
+          $('.slider-pagination', $parent).text(
+            `${i}/${slick.$dots[0].children.length}`
+          );
         });
         $this.slick({
           arrows: false,

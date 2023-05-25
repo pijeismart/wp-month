@@ -3380,6 +3380,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page-templates\/practice-search.php"
             }
         ],
         [
@@ -3399,5 +3404,9 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+<<<<<<< HEAD
     "modified": 1684952724
+=======
+    "modified": 1684941121
+>>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
 }

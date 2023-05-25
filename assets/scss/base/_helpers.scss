@@ -53,9 +53,10 @@
 }
 
 html.disable-scrolling {
-  position: fixed;
-  width: 100%;
-  overflow-y: scroll;
+  // position: fixed;
+  // width: 100%;
+  // overflow-y: scroll;
+  overflow: hidden;
 }
 
 /**
