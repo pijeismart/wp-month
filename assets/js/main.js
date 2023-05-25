@@ -164,10 +164,7 @@
           theme.initCardsCarousel
         );
         helper.isElementExist('.testimonials', theme.initTestimonials);
-        helper.isElementExist(
-          '.testimonial-slider',
-          theme.initTestimonialSlider
-        );
+        helper.isElementExist('.testimonial-slider',theme.initTestimonialSlider);
         helper.isElementExist('.podcasts-items', theme.initPodcasts);
         helper.isElementExist('.practice-areas__items', theme.initPracticeareas);
         $(window).on('resize', function() {
@@ -266,7 +263,6 @@
      */
 
     initPodcasts() {
-<<<<<<< HEAD
       console.log(1);
         helper.mobileSlider($('.podcasts-items'), {
           slideToScroll: 1,
@@ -274,23 +270,11 @@
           centerMode: true,
           centerPadding: '5%',
         })
-=======
-      helper.mobileSlider($('.podcasts-items'), {
-        slideToScroll: 1,
-        slideToShow: 1,
-        centerMode: true,
-        centerPadding: '5%'
-      });
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
     },
 
     /**
      * init testimonials
      */
-<<<<<<< HEAD
-=======
-
->>>>>>> f5d7964f4289469d44108b3b13b49b936f6336cb
     initTestimonialSlider() {
       $('.testimonial-slider__items').slick({
         slideToShow: 1,

@@ -1,7 +1,17 @@
 .banner {
+  position: relative;
   padding-block: 2.5rem; 
   @include mq(tablet) {
     padding-block: 0;
+  }
+  &-background {
+    position: absolute;
+    right: -15rem;
+    bottom: -5rem;
+    z-index: -1;
+    @include mq(tablet, max) {
+      left: calc(100% - 22rem);
+    }
   }
   &-media {
     position: relative;
@@ -10,12 +20,17 @@
     height: 0;
     padding-top: hp(343, 273);
     border-radius: 1rem;
-    overflow: hidden;
     @include mq(tablet) {
       margin-right: -7.5rem;
       max-width: 74rem;
       padding-top: 0;
       height: vw(800px);
+      @include when-inside(".banner--practice") {
+        margin-right: 6rem;
+        max-width: 42rem;
+        min-height: 55rem;
+        height: vw(600px);
+      }
     }
     @include mq(tablet) {
       height: 80rem;
@@ -24,13 +39,30 @@
     video {
       position: absolute;
       inset: 0;
+      border-radius: 1rem;
       @include cover-image;
+    }
+    &__small {
+      position: absolute;
+      left: calc(100% + 2rem);
+      width: 20rem;
+      height: 23rem;
+      bottom: 0;
     }
   }
   &-content {
     @include mq(tablet) {
       margin-right: 5rem;
       max-width: 52rem;
+      @include when-inside(".banner--practice") {
+        margin-right: 5rem;
+        max-width: initial;
+      }
+    }
+    @include mq(tablet-wide) {
+      @include when-inside(".banner--practice") {
+        margin-right: 15rem;
+      }
     }
     @include mq(desktop) {
       margin-right: 13.5rem;
@@ -38,6 +70,14 @@
   }
   &-heading {
     margin-bottom: 3.5rem;
+    @include when-inside(".banner--practice") {
+      font-size: 7rem;
+      line-height: 7rem;
+      @include mq(tablet, max) {
+        font-size: 5.5rem;
+        line-height: 5.2rem;
+      }
+    }
     span {
       color: $clr-green;
     }
@@ -59,6 +99,9 @@
       margin-top: 2rem;
       font-size: 1.4rem;
       max-width: 31rem;
+      @include when-inside(".banner--practice") {
+        margin-left: 20rem;
+      }
     }
   }
   .container {
@@ -66,6 +109,28 @@
       display: flex;
       align-items: center;
       flex-direction: row-reverse;
+    }
+  }
+  &--practice {
+    .container {
+      flex-direction: row;
+    }
+    .banner-medai {
+      max-width: 42rem;
+    }
+  }
+  .btn {
+    @include when-inside(".banner-practice") {
+      @include mq(tablet) {
+        background-color: $clr-green;
+      }
+    }
+  }
+  &.banner--practice {
+    .btn {
+      @include mq(tablet) {
+        margin-left: 20rem;
+      }
     }
   }
 }

@@ -12,6 +12,20 @@ if ( have_rows( 'modules' ) ) :
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>">
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-image',
+					array(
+						'v'     => 'background_image',
+						'v2x'   => false,
+						'is'    => false,
+						'is_2x' => false,
+						'c'     => 'background-image',
+						'w'     => 'div',
+						'wc'    => 'banner-background'
+					)
+				);
+				?>
 				<div class="container">
 					<div class="banner-media a-op">
 						<?php
@@ -24,6 +38,20 @@ if ( have_rows( 'modules' ) ) :
 							)
 						);
 						?>
+						<div class="banner-media__small">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-image',
+								array(
+									'v'     => 'small_image',
+									'v2x'   => false,
+									'is'    => false,
+									'is_2x' => false,
+									'c'     => 'small-image',
+								)
+							);
+							?>
+						</div>
 					</div>
 					<div class="banner-content">
 						<?php
@@ -1511,6 +1539,63 @@ if ( have_rows( 'modules' ) ) :
 						<?php endwhile; ?>
 					</div>
 					<?php endif; ?>
+				</div>
+			</section>
+		<?php elseif ( 'navigation_bar' == get_row_layout() ) : 
+			$social = get_sub_field( 'social' );
+			?>
+			<!-- Navigation Bar -->
+			<section class="navigation-bar">
+				<div class="container">
+					<div class="navigation-bar__main">
+						<div class="navigation-bar__nav">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'section_heading',
+									't'  => 'h5',
+									'tc' => 'navigation-bar__nav__heading'
+								)
+							);
+							?>
+							<?php if ( have_rows( 'sections' ) ) : ?>
+							<div class="navigation-bar__nav__menu">
+								<?php while ( have_rows( 'sections' ) ) : 
+									the_row(); ?>
+								<div class="navigation-bar__nav__menu__item">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v'  => 'cta',
+											'c' => 'navigation-bar__nav__menu__item__cta'
+										)
+									);
+									?>
+								</div>
+								<?php endwhile; ?>
+							</div>
+							<?php endif; ?>
+						</div>
+						<div class="navigation-bar__social">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'feedback_heading',
+									't'  => 'h5',
+									'tc' => 'navigation-bar__social__heading'
+								)
+							);
+							?>
+							<ul class="navigation-bar__social__items">
+								<li class="navigation-bar__social__item facebook" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></li>
+								<li class="navigation-bar__social__item twitter" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+								<li class="navigation-bar__social__item share" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</section>
 		<?php endif; ?>

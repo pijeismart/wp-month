@@ -1,9 +1,8 @@
 <?php
 $image = $args['image'];
 $video = $args['video'];
-if ( isset( $args['size'] ) ) :
-	$size = $args['size'];
-endif;
+$size  = key_exists('size', $args) ? $args['size'] : null;
+
 ?>
 <?php if ( $video ) : ?>
 <video src="<?php echo esc_url( $video ); ?>" loop muted playsinline autoplay preload="metadata"
@@ -17,6 +16,7 @@ elseif ( $image ) :
 		$url_2x = $image['sizes'][ $size . '-2x' ];
 	else :
 		$url = $image['url'];
+		$url_2x = null;
 	endif;
 	?>
 	<picture>
