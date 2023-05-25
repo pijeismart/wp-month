@@ -147,6 +147,7 @@
           `${headerHeight}px`
         );
       });
+
     },
 
     /**
@@ -183,6 +184,12 @@
           '.posts-slider__carousel',
           theme.initPostCarousel
         );
+
+        $('.navigation-bar__social__item.twitter').on('click', function() {
+          console.log(1)
+          const url = $(this).attr('data-url')
+          window.open( 'https://twitter.com/share?url=' + url )
+        })
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {

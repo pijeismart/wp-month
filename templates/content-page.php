@@ -1590,9 +1590,9 @@ if ( have_rows( 'modules' ) ) :
 							);
 							?>
 							<ul class="navigation-bar__social__items">
-								<li class="navigation-bar__social__item facebook" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></li>
-								<li class="navigation-bar__social__item twitter" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
-								<li class="navigation-bar__social__item share" data-url="<?php echo the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+								<li class="navigation-bar__social__item facebook" data-url="<?php echo the_permalink(); ?>"><a href="http://facebook.com/sharer.php?u=<?php esc_url( the_permalink() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></a></li>
+								<li class="navigation-bar__social__item twitter" data-url="<?php the_permalink(); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+								<li class="navigation-bar__social__item share" data-url=""><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
 							</ul>
 						</div>
 					</div>
