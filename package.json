@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"eslint-plugin-jquery": "^1.5.0",
+		"gulp-install": "^1.1.0",
 		"gulp-sass": "^5.1.0",
 		"imagemin-mozjpeg": "^8.0.0",
 		"imagemin-pngquant": "^7.0.0",

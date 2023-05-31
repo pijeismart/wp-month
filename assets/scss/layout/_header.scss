@@ -121,14 +121,8 @@
       }
       &.menu-item-has-children {
         position: relative;
-        @include mq(desktop-wide) {
-          padding-right: 24px;
-        }
         @include mq(desktop-small) {
           &:hover {
-            &::after {
-              transform: translateY(-50%) rotate(180deg);
-            }
             .sub-menu {
               @include element-show;
             }
@@ -139,6 +133,9 @@
         }
         > a {
           position: relative;
+          @include mq(desktop-wide) {
+            padding-right: 24px;
+          }
           &::after {
             position: absolute;
             content: '';
@@ -153,6 +150,11 @@
           }
           &.is-opened::after {
             transform: translateY(-50%) rotate(180deg);
+          }
+          &:hover {
+            &::after {
+              transform: translateY(-50%) rotate(180deg);
+            }
           }
         }
       }

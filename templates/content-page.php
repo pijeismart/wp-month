@@ -401,8 +401,8 @@ if ( have_rows( 'modules' ) ) :
 												)
 											);
 											?>
-											<div class="testimonial-main__controls">
-												<div class="testimonial-main__pagination">
+											<div class="slider-controls testimonial-main__controls">
+												<div class="testimonial-main__pagination slider-pagination">
 													<?php echo esc_html( get_row_index() ); ?> / <?php echo count( $testimonials ); ?>
 												</div>
 												<button class="link testimonial-next"><?php echo esc_html__( 'Next' ); ?></button>
