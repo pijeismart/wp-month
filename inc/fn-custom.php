@@ -252,3 +252,41 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 		echo $menu_list;
 	}
 }
+
+
+/**
+ * Show Author role column in people list page in admin
+ */
+add_filter( 'manage_case_result_posts_columns', 'set_custom_edit_case_result_columns' );
+add_action( 'manage_case_result_posts_custom_column', 'custom_case_result_column', 10, 2 );
+
+function set_custom_edit_case_result_columns( $columns ) {
+	unset( $columns['type'] );
+	unset( $columns['category'] );
+	$columns['category'] = __( 'Category', 'am' );
+	$columns['type']     = __( 'Type', 'am' );
+	return $columns;
+}
+
+function custom_case_result_column( $column, $post_id ) {
+	switch ( $column ) {
+
+		case 'category':
+			$terms = get_the_term_list( $post_id, 'case_category', '', ',', '' );
+			if ( is_string( $terms ) ) {
+				echo $terms;
+			} else {
+				_e( 'Unable to get category', 'am' );
+			}
+			break;
+
+		case 'type':
+			$terms = get_the_term_list( $post_id, 'claim_type', '', ',', '' );
+			if ( is_string( $terms ) ) {
+				echo $terms;
+			} else {
+				_e( 'Unable to get type', 'am' );
+			}
+			break;
+	}
+}
