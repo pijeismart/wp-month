@@ -3,6 +3,23 @@
     "title": "[CPT] - Case Result",
     "fields": [
         {
+            "key": "field_6478a65f655a8",
+            "label": "URL",
+            "name": "url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_64788242a22cf",
             "label": "Price",
             "name": "price",
@@ -63,5 +80,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685619301
+    "modified": 1685628525
 }

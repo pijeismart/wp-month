@@ -98,12 +98,13 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'card_slider' == get_row_layout() ) :
-			$enable_top = get_sub_field( 'enable_top_section' );
-			$cards      = get_sub_field( 'cards' );
-			$limit_cnt  = $enable_top ? 4 : 6;
+			$enable_top   = get_sub_field( 'enable_top_section' );
+			$case_results = get_sub_field( 'case_results' );
+			$theme        = get_sub_field( 'theme' ) ? get_sub_field( 'theme' ) : 'compact'; 
+			$limit_cnt    = $enable_top ? 4 : 6;
 			?>
 			<!-- Cards Slider -->
-			<section class="cards-slider <?php echo $enable_top ? 'cards-slider--full' : 'cards-slider--compact'; ?>">
+			<section class="cards-slider cards-slider--<?php echo esc_attr( $theme ); ?>">
 				<?php if ( $enable_top ) : ?>
 				<div class="container">
 					<div class="cards-slider__left">
@@ -151,73 +152,30 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 				<?php endif; ?>
-				<?php if ( have_rows( 'cards' ) ) : ?>
+				<?php if ( $case_results ) : ?>
 					<div class="cards-slider__carousel">
 						<?php
-						while ( have_rows( 'cards' ) ) :
-							the_row();
-							?>
-							<div class="cards-slider__slide">
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-image',
-									array(
-										'v'     => 'icon',
-										'v2x'   => false,
-										'is'    => false,
-										'is_2x' => false,
-										'c'     => 'cards-slider__slide__icon',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'sub_heading',
-										't'  => 'p',
-										'tc' => 'cards-slider__slide__subheading',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'heading',
-										't'  => 'h3',
-										'tc' => 'cards-slider__slide__heading',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'content',
-										't'  => 'p',
-										'tc' => 'cards-slider__slide__content',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'link cards-slider__slide__cta',
-									)
-								);
-								?>
-							</div>
-						<?php endwhile; ?>
+						foreach ( $case_results as $post ) :
+							setup_postdata( $post );
+							get_template_part(
+								'template-parts/loop',
+								'case_result',
+								array(
+									'theme' => $theme,
+								)
+							);
+						endforeach;
+						?>
 					</div>
-					<?php if ( count( $cards ) > $limit_cnt ) : ?>
+					<?php if ( count( $case_results ) > $limit_cnt ) : ?>
 						<div class="cards-slider__showmore d-sm-only">
 							<button class="btn-show-more"><?php echo esc_html__( 'Show More' ); ?></button>
 						</div>
 					<?php endif; ?>
-				<?php endif; ?>
+					<?php
+					endif;
+				wp_reset_query();
+				?>
 			</section>
 			<?php
 		elseif ( 'content_image' == get_row_layout() ) :

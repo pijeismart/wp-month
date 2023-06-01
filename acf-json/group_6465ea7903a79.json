@@ -286,9 +286,89 @@
                 "layout_6465eaff90fc4": {
                     "key": "layout_6465eaff90fc4",
                     "name": "card_slider",
-                    "label": "Card Slider",
+                    "label": "Case Results",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_6465ee1b9301e",
+                            "label": "Settings",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_646ebdbbd7b09",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6465ee219301f",
+                            "label": "Enable Top Section",
+                            "name": "enable_top_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_6478a7f593e8e",
+                            "label": "Theme",
+                            "name": "theme",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "compact": "Compact",
+                                "full": "Full"
+                            },
+                            "default_value": "compact",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
                         {
                             "key": "field_6465ee149301d",
                             "label": "Content",
@@ -392,7 +472,7 @@
                         },
                         {
                             "key": "field_6465ee0e9301c",
-                            "label": "Cards",
+                            "label": "Case Results",
                             "name": "",
                             "aria-label": "",
                             "type": "tab",
@@ -408,11 +488,11 @@
                             "endpoint": 0
                         },
                         {
-                            "key": "field_6465eb0a90fc6",
-                            "label": "Cards",
-                            "name": "cards",
+                            "key": "field_6478a6ef5502c",
+                            "label": "Case Results",
+                            "name": "case_results",
                             "aria-label": "",
-                            "type": "repeater",
+                            "type": "relationship",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -421,177 +501,19 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "table",
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "",
-                            "button_label": "Add Row",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_6465eb1a90fc7",
-                                    "label": "Icon",
-                                    "name": "icon",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": "",
-                                    "preview_size": "medium",
-                                    "parent_repeater": "field_6465eb0a90fc6"
-                                },
-                                {
-                                    "key": "field_6465eb2490fc8",
-                                    "label": "Sub Heading",
-                                    "name": "sub_heading",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_6465eb0a90fc6"
-                                },
-                                {
-                                    "key": "field_6465eb2b90fc9",
-                                    "label": "Heading",
-                                    "name": "heading",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_6465eb0a90fc6"
-                                },
-                                {
-                                    "key": "field_6465eb4790fca",
-                                    "label": "Content",
-                                    "name": "content",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_6465eb0a90fc6"
-                                },
-                                {
-                                    "key": "field_6465ebc790fcd",
-                                    "label": "CTA",
-                                    "name": "cta",
-                                    "aria-label": "",
-                                    "type": "link",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "parent_repeater": "field_6465eb0a90fc6"
-                                }
-                            ]
-                        },
-                        {
-                            "key": "field_6465ee1b9301e",
-                            "label": "Settings",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_6465ee219301f",
-                            "label": "Enable Top Section",
-                            "name": "enable_top_section",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
-                            "ui": 1
-                        },
-                        {
-                            "key": "field_646ebdbbd7b09",
-                            "label": "Anchor ID",
-                            "name": "anchor_id",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "post_type": [
+                                "case_result"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "elements": ""
                         }
                     ],
                     "min": "",
@@ -3809,6 +3731,7 @@
                                     "collapsed": "",
                                     "button_label": "Add Row",
                                     "rows_per_page": 20,
+                                    "parent_repeater": "field_646e1c9d71bda",
                                     "sub_fields": [
                                         {
                                             "key": "field_646e51ba60e51",
@@ -3831,8 +3754,7 @@
                                             "append": "",
                                             "parent_repeater": "field_646e1cb371bdb"
                                         }
-                                    ],
-                                    "parent_repeater": "field_646e1c9d71bda"
+                                    ]
                                 }
                             ]
                         },
@@ -4320,5 +4242,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684981649
+    "modified": 1685628974
 }

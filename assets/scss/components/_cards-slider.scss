@@ -80,11 +80,13 @@
     }
   }
   &__slide {
+    display: block;
     padding: 2rem;
     background-color: $clr-white;
     border: 1px solid $clr-border;
     border-radius: 1rem;
     text-align: center;
+    transition: all .3s esae-in-out;
     @include mq(tablet, max) {
       @include when-inside('.cards-slider--compact:not(.is-show)') {
         &:nth-child(n+7) {
@@ -123,6 +125,13 @@
         }
       }
     }
+    &:hover {
+      background-color: $clr-navy;
+      color: $clr-white;
+      .cards-slider__slide__subheading {
+        color: $clr-white
+      }
+    }
     &__icon {
       margin: 0 auto 2.3rem;
       @include mq(tablet) {
@@ -137,6 +146,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: $clr-navy;
+      transition: color .3s ease-in-out;
       @include mq(tablet) {
         margin-bottom: 1rem;
       }
