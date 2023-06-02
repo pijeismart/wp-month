@@ -133,7 +133,7 @@
         }
         > a {
           position: relative;
-          @include mq(desktop-wide) {
+          @include mq(desktop-small) {
             padding-right: 24px;
           }
           &::after {
@@ -181,7 +181,8 @@
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background-color: $clr-navy;
+        background-color: $clr-white-off;
+        border: 1px solid $clr-border;
         border-radius: 8px;
         @include element-hidden;
         z-index: 1;
@@ -201,12 +202,8 @@
         text-transform: capitalize;
         color: $clr-navy;
         min-width: 32.5rem;
-        @include mq(desktop) {
-          color: $clr-white;
-        }
         &:hover {
-          background: rgba(255, 255, 255, 0.1);
-          color: $clr-green;
+          background: rgba(120, 190, 56, 0.2);
         }
       }
     }
