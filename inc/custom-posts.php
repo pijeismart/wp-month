@@ -56,9 +56,13 @@ function custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+		'rewrite'             => array(
+			'slug'       => 'practice',
+			'with_front' => false,
+		),
 	);
 	register_post_type( 'practice', $args_practice );
-	
+
 	// Register City Custom Post Type
 	$labels_city = array(
 		'name'                  => _x( 'Cities', 'cities', 'text_domain' ),
@@ -107,9 +111,13 @@ function custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+		'rewrite'             => array(
+			'slug'       => 'areas-we-serve',
+			'with_front' => false,
+		),
 	);
 	register_post_type( 'city', $args_city );
-	
+
 	// Register FAQs Custom Post Type
 	$labels_faq = array(
 		'name'                  => _x( 'FAQs', 'faqs', 'text_domain' ),
@@ -158,9 +166,13 @@ function custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+		'rewrite'             => array(
+			'slug'       => 'faqs',
+			'with_front' => false,
+		),
 	);
 	register_post_type( 'faq', $args_faq );
-	
+
 	// Register Case Result Custom Post Type
 	$labels_case = array(
 		'name'                  => _x( 'Case Results', 'case results', 'text_domain' ),
