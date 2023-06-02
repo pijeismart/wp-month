@@ -183,11 +183,16 @@
     &__content {
       margin-bottom: 1.5rem;
       font: 700 1.2rem/1.8rem $f-text;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.6;
+      @include when-inside('.cards-slider--compact') {
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
       @include when-inside('.cards-slider--full') {
         opacity: 1;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.6;
       }
       &:last-child {
         margin-bottom: 0;
