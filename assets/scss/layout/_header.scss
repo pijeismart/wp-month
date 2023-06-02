@@ -167,43 +167,55 @@
           border-bottom: 1px solid $clr-border;
         }
       }
-    }
-    .sub-menu {
-      @include mq(desktop-small, max) {
-        display: none;
-        &.is-active {
-          display: block;
+      > .sub-menu {
+        @include mq(desktop-small, max) {
+          display: none;
+          &.is-active {
+            display: block;
+          }
         }
-      }
-      @include mq(desktop-small) {
-        position: absolute;
-        padding-block: 2rem;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: $clr-white-off;
-        border: 1px solid $clr-border;
-        border-radius: 8px;
-        @include element-hidden;
-        z-index: 1;
-        &::before {
+        @include mq(desktop-small) {
           position: absolute;
-          content: '';
-          top: -1rem;
+          padding-block: 2rem;
+          top: 100%;
           left: 50%;
-          @include triangle(top, $clr-navy, 20px, 10px);
           transform: translateX(-50%);
+          background-color: $clr-white-off;
+          border: 1px solid $clr-border;
+          border-radius: 8px;
+          @include element-hidden;
+          z-index: 1;
+          &::before {
+            position: absolute;
+            content: '';
+            top: -1rem;
+            left: 50%;
+            @include triangle(top, $clr-navy, 20px, 10px);
+            transform: translateX(-50%);
+          }
         }
-      }
-      a {
-        display: block;
-        padding: 2rem;
-        font: 600 1.4rem/1 $f-text;
-        text-transform: capitalize;
-        color: $clr-navy;
-        min-width: 32.5rem;
-        &:hover {
-          background: rgba(120, 190, 56, 0.2);
+        a {
+          display: block;
+          padding: 2rem;
+          font: 600 1.4rem/1 $f-text;
+          text-transform: capitalize;
+          color: $clr-navy;
+          min-width: 32.5rem;
+          &:hover {
+            background: rgba(120, 190, 56, 0.2);
+          }
+        }
+        > .menu-item-has-children {
+          > a {
+            font: 700 1.2rem/1 $f-text;
+            letter-spacing: 0.3em;
+            color: $clr-navy;
+            opacity: 0.2;
+            text-transform: uppercase;
+          }
+        }
+        ul a {
+          padding-left: 4rem;
         }
       }
     }

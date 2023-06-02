@@ -248,6 +248,18 @@
       color: $clr-navy;
       font-size: 2.3rem;
     }
+    &:first-child {
+      background-color: $clr-white-off;
+      border-color: $clr-white-off;
+    }
+    &:nth-child(2) {
+      background-color: $clr-border;
+    }
+    &:nth-child(3) {
+      background-color: $clr-navy;
+      border-color: $clr-navy;
+      color: $clr-white;
+    }
   }
   &__ctas {
     .btn {
