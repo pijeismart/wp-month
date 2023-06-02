@@ -10,7 +10,7 @@
 @import 'base/base', 'base/fonts', 'base/typography', 'base/helpers', 'base/animation';
 
 // 4. Layout-related sections
-@import 'layout/header', 'layout/footer';
+@import 'layout/header', 'layout/footer', 'layout/breadcrumb';
 
 // 5. Components
 @import 'components/button',
@@ -30,13 +30,16 @@
         'components/navigation-bar',
         'components/podcasts',
         'components/practice-areas',
+        'components/results',
         'components/video-content',
         'components/accordion',
         'components/contact-form',
         'components/posts-slider',
         'components/testimonial',
         'components/masonry',
-        'components/map';
+        'components/map',
+        'components/subscribe-form';
 
 // 6. Pages
-@import 'pages/practice-search';
+@import 'pages/practice-search',
+        'pages/single-post';

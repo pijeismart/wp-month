@@ -1,0 +1,23 @@
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  li {
+    padding-inline: 1rem;
+    line-height: 1;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:not(:last-child) {
+      border-right: 1px solid $clr-navy;
+    }
+  }
+  a, span {
+    font: 400 1.2rem/1.6 $f-text;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  a {
+    color: $clr-green;
+  }
+}

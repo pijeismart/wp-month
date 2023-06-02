@@ -1,0 +1,37 @@
+.results {
+  padding-block: 8rem;
+  background-color: $clr-white-off;
+  @include mq(tablet) {
+    padding-block: 9rem;
+  }
+  .container {
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &-heading {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 2rem;
+    }
+  }
+  &-content {
+    @include mq(tablet) {
+      margin-right: 2rem;
+      flex: 0 0 31rem;
+    }
+  }
+  .contact-form__cards {
+    margin-bottom: 0;
+    @include mq(tablet, max) {
+      margin-top: 4rem;
+    }
+    @include mq(tablet) {
+      flex-grow: 1;
+    }
+    &__item {
+      background-color: $clr-white;
+    }
+  }
+}

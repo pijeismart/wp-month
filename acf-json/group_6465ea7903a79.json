@@ -4224,13 +4224,6 @@
                 "operator": "==",
                 "value": "practice"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
         ]
     ],
     "menu_order": 0,
@@ -4242,5 +4235,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685628974
+    "modified": 1685707642
 }

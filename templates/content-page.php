@@ -22,7 +22,7 @@ if ( have_rows( 'modules' ) ) :
 						'is_2x' => false,
 						'c'     => 'background-image',
 						'w'     => 'div',
-						'wc'    => 'banner-background'
+						'wc'    => 'banner-background',
 					)
 				);
 				?>

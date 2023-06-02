@@ -9,7 +9,11 @@
 			?>
 
 			<?php
-			get_template_part( 'templates/content', 'page' );
+			if ( 'post' == get_post_type() ) :
+				get_template_part( 'templates/content', 'post' );
+			else :
+				get_template_part( 'templates/content', 'page' );
+			endif;
 			?>
 
 	<?php endwhile; ?>

@@ -1,0 +1,49 @@
+.subscribe-form {
+  @include mq(tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include mq(tablet, max) {
+    padding: 6rem 1.6rem;
+  }
+  &__img {
+    img {
+      @include cover-image;
+    }
+  }
+  &__content {
+    padding: 3.2rem;
+    background-color: $clr-navy;
+    color: $clr-white;
+    @include mq(tablet, max) {
+      border-radius: 1rem;
+    }
+    @include mq(tablet) {
+      padding: 10.5rem 7rem;
+    }
+  }
+  &__inner {
+    text-align: center;
+  }
+  &__subheading {
+    margin-bottom: 1.6rem;
+    color: $clr-green;
+    @include mq(tablet) {
+      margin-bottom: 0.8rem;
+    }
+  }
+  &__heading {
+    margin-bottom: 1.6rem;
+    font: 700 1.8rem/1.3 $f-text;
+    letter-spacing: -0.01em;
+    @include mq(tablet) {
+      font-size: 3.2rem;
+    }
+  }
+  &__form {
+    margin-top: 3.2rem;
+    @include mq(tablet) {
+      margin-top: 3rem;
+    }
+  }
+}
