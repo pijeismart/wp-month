@@ -150,6 +150,8 @@
   }
 }
 .post-sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + 2rem);
   margin-left: 5rem;
   padding: 6rem;
   background-color: $clr-navy;
