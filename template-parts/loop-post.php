@@ -1,6 +1,6 @@
 <?php
 global $post;
-$categories = get_the_category();
+$categories = get_the_terms( $post, 'case_category' );
 ?>
 <div class="loop-post">
 	<?php if ( has_post_thumbnail() ) : ?>

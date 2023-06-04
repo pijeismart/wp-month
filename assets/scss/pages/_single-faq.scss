@@ -1,0 +1,234 @@
+.single-faq {
+  --header-bg: #EFF2F6;
+  .awards {
+    margin-block: 8rem;
+    @include mq(tablet) {
+      margin-block: 16rem;
+    }
+  }
+}
+.faq-detail {
+  position: relative;
+  padding-top: 2.4rem;
+  @include mq(tablet) {
+    padding-top: 12.8rem;
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30rem;
+    background-color: $clr-white-off;
+    @include mq(tablet) {
+      height: 42rem;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    @include mq(tablet) {
+      top: 10.5rem;
+      right: -8rem;
+      width: 39.2rem;
+      height: 31.5rem;
+      background: url('../img/decor-m-search.svg') no-repeat center;
+      background-size: contain;
+    }    
+  }
+  .container {
+    @include mq(tablet) {
+      display: grid;
+      max-width: 86.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 8px;
+    }
+  }
+  &__card {
+    position: relative;
+    background-color: $clr-white;
+    border: 1px solid #D8DCE2;
+    border-radius: 12px;  
+    z-index: 1;
+    padding: 2.4rem;
+    @include mq(tablet, max) {
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+    }
+    @include mq(tablet) {
+      padding: 2.4rem 3.2rem;
+    }
+    &--full {
+      @include mq(tablet) {
+        padding: 4rem;
+        grid-column: span 2;
+      }
+    }
+    &--half {
+      h6 {
+        margin-bottom: 1.6rem;
+        @include mq(tablet) {
+          margin-bottom: 2.4rem;
+        }
+      }
+      .links {
+        padding-left: 8px;
+        list-style: none;
+        li {
+          padding-block: 8px;
+        }
+      }
+      .link {
+        font-weight: 400;
+      }
+    }
+  }
+  &__top {
+    margin-bottom: 1.6rem;
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .social-share {
+      display: flex;
+      margin-inline: -4px;
+      align-items: center;
+      list-style: none;
+      @include mq(tablet, max) {
+        margin-top: 1.6rem;
+        justify-content: flex-end;
+      }
+      li {
+        margin: 4px;
+        list-style: none;
+        a {
+          display: inline-block;
+          appearance: none;
+          background-color: transparent;
+          border: none;
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          transition: all .3s ease-in-out;
+          @include mq(tablet) {
+            width: 4rem;
+            height: 4rem;
+          }
+          img {
+            @include cover-image;
+          }
+          &:hover {
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
+  }
+  &__notice {
+    display: block;
+    margin-bottom: 1.6rem;
+    padding: 8px;
+    width: 100%;
+    background: rgba(120, 190, 56, 0.12);
+    border-radius: 8px;
+    font: 600 1.3rem/1.55 $f-text;
+    letter-spacing: 0.01em;
+    color: $clr-green;
+    text-align: center;
+    @include mq(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__title {
+    margin-bottom: 1.6rem;
+    font-size: 3rem;
+    @include mq(tablet) {
+      margin-bottom: 2.4rem;
+      font-size: 4rem;
+    }
+  }
+  &__answer {
+    margin-bottom: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    font-weight: 700;
+    @include mq(tablet) {
+      margin-bottom: 2.4rem;
+      padding: 2.4rem;
+    }
+  }
+  &__content {
+    margin-bottom: 1.6rem;
+    @include mq(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__bottom {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    h6 {
+      margin-bottom: 1.6rem;
+      font: 600 1.2rem/1.55 $f-text;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+    &__right {
+      text-align: right;
+      .faq-link {
+        padding-block: 8px;
+        font: 700 1.6rem/1.3 $f-text;
+        letter-spacing: 0.01em;
+        border-bottom: 2px solid $clr-green;
+      }
+    }
+  }
+  .rating-buttons {
+    display: flex;
+    align-items: center;
+  }
+  .rating-btn {
+    margin-right: 1.6rem;
+    flex: 0 0 2.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('../img/icon-thumb.png');
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    &--dislike {
+      transform: rotate(180deg);
+    }
+    &:hover,
+    &:active {
+      background-image: url('../img/icon-thumb-active.png');
+    }
+    span {
+      display: none;
+    }
+  }
+  &__video__wrapper {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 2.4rem;
+    }
+    .embed-container {
+      order: -1;
+    }
+  }
+  &__video {
+    margin: 0 auto 2.4rem;
+    max-width: 50rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+}

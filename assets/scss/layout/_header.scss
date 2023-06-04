@@ -40,7 +40,7 @@
   &-main {
     position: relative;
     padding-block: 1.4rem;
-    background-color: $clr-white;
+    background-color: var(--header-bg);
     @include mq(desktop-small) {
       padding-block: 2.5rem 1.4rem;
     }

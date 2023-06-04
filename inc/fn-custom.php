@@ -257,14 +257,14 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 /**
  * Show Author role column in people list page in admin
  */
-add_filter( 'manage_case_result_posts_columns', 'set_custom_edit_case_result_columns' );
-add_action( 'manage_case_result_posts_custom_column', 'custom_case_result_column', 10, 2 );
+add_filter( 'manage_posts_columns', 'set_custom_edit_case_result_columns' );
+add_action( 'manage_posts_custom_column', 'custom_case_result_column', 10, 2 );
 
 function set_custom_edit_case_result_columns( $columns ) {
 	unset( $columns['type'] );
 	unset( $columns['category'] );
-	$columns['category'] = __( 'Category', 'am' );
-	$columns['type']     = __( 'Type', 'am' );
+	$columns['category'] = __( 'Case Category', 'am' );
+	$columns['type']     = __( 'Claim Type', 'am' );
 	return $columns;
 }
 

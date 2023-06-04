@@ -20,6 +20,10 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<?php wp_head(); ?>
+
+	<!-- Begin JSON-LD -->
+	<?php get_template_part( 'template-parts/content', 'json-ld' ); ?>
+	<!-- End JSON-LD -->
 </head>
 
 <body <?php body_class(); ?>>

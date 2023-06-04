@@ -98,60 +98,12 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'card_slider' == get_row_layout() ) :
-			$enable_top   = get_sub_field( 'enable_top_section' );
 			$case_results = get_sub_field( 'case_results' );
-			$theme        = get_sub_field( 'theme' ) ? get_sub_field( 'theme' ) : 'compact'; 
-			$limit_cnt    = $enable_top ? 4 : 6;
+			$theme        = get_sub_field( 'theme' ) ? get_sub_field( 'theme' ) : 'compact';
+			$limit_cnt    = ( 'full' == $theme ) ? 4 : 6;
 			?>
 			<!-- Cards Slider -->
 			<section class="cards-slider cards-slider--<?php echo esc_attr( $theme ); ?>">
-				<?php if ( $enable_top ) : ?>
-				<div class="container">
-					<div class="cards-slider__left">
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'heading',
-								't'  => 'h3',
-								'tc' => 'cards-slider__heading a-up',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'content',
-								't'  => 'div',
-								'tc' => 'cards-slider__content d-md-only a-up a-delay-1',
-							)
-						);
-						?>
-					</div>
-					<div class="cards-slider__right">
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'description',
-								't'  => 'div',
-								'tc' => 'cards-slider__desc a-up',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v' => 'cta',
-								'c' => 'btn btn-download a-up a-delay-1',
-							)
-						);
-						?>
-					</div>
-				</div>
-				<?php endif; ?>
 				<?php if ( $case_results ) : ?>
 					<div class="cards-slider__carousel">
 						<?php
@@ -485,31 +437,8 @@ if ( have_rows( 'modules' ) ) :
 			<?php endif; ?>
 			<?php
 		elseif ( 'awards' == get_row_layout() ) :
-			$awards = get_sub_field( 'awards' );
+			get_template_part( 'template-parts/section', 'award' );
 			?>
-			<!-- Awards -->
-			<section class="awards">
-				<div class="container">
-					<?php if ( $awards ) : ?>
-						<div class="awards-gallery">
-							<?php foreach ( $awards as $image ) : ?>
-								<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<?php
-					get_template_part_args(
-						'template-parts/content-modules-cta',
-						array(
-							'v'  => 'cta',
-							'c'  => 'link',
-							'w'  => 'div',
-							'wc' => 'awards-cta',
-						)
-					);
-					?>
-				</div>
-			</section>
 			<?php
 		elseif ( 'map' == get_row_layout() ) :
 			?>

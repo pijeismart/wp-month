@@ -9,10 +9,11 @@
 			?>
 
 			<?php
-			if ( 'post' == get_post_type() ) :
-				get_template_part( 'templates/content', 'post' );
-			else :
+			$type = get_post_type();
+			if ( 'practice' == $type ) :
 				get_template_part( 'templates/content', 'page' );
+			else :
+				get_template_part( 'templates/content', $type );
 			endif;
 			?>
 
