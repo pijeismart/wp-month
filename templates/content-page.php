@@ -1086,8 +1086,8 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'accordion' == get_row_layout() ) :
 			$content_type    = get_sub_field( 'content_type' );
-			$case_categories = get_field( 'case_category' );
-			$claim_types     = get_field( 'claim_type' );
+			$case_categories = get_sub_field( 'case_category' );
+			$claim_types     = get_sub_field( 'claim_type' );
 			?>
 			<!-- Practice FAQs -->
 			<section class="practice-faqs">
@@ -1222,8 +1222,8 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'case_results' == get_row_layout() ) :
 			$content_type    = get_sub_field( 'content_type' );
-			$case_categories = get_field( 'case_category' );
-			$claim_types     = get_field( 'claim_type' );
+			$case_categories = get_sub_field( 'case_category' );
+			$claim_types     = get_sub_field( 'claim_type' );
 			?>
 			<!-- Practice Case Results -->
 			<section class="case-results">
