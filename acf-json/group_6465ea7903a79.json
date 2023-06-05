@@ -3001,7 +3001,7 @@
                 "layout_646d2b05b6c7a": {
                     "key": "layout_646d2b05b6c7a",
                     "name": "accordion",
-                    "label": "Accordion",
+                    "label": "Practice Area FAQs",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -3062,14 +3062,39 @@
                             "append": ""
                         },
                         {
-                            "key": "field_646d2b17b6c7e",
+                            "key": "field_647dc7595fd25",
+                            "label": "FAQs",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_647dc65a5fd22",
                             "label": "Accordions",
                             "name": "accordions",
                             "aria-label": "",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dc7305fd23",
+                                        "operator": "==",
+                                        "value": "manual"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3083,7 +3108,7 @@
                             "rows_per_page": 20,
                             "sub_fields": [
                                 {
-                                    "key": "field_646d2b1eb6c7f",
+                                    "key": "field_647dc79c5fd28",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
@@ -3101,10 +3126,10 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_646d2b17b6c7e"
+                                    "parent_repeater": "field_647dc65a5fd22"
                                 },
                                 {
-                                    "key": "field_646d2b26b6c80",
+                                    "key": "field_647dc7a15fd29",
                                     "label": "Content",
                                     "name": "content",
                                     "aria-label": "",
@@ -3122,10 +3147,10 @@
                                     "toolbar": "full",
                                     "media_upload": 1,
                                     "delay": 0,
-                                    "parent_repeater": "field_646d2b17b6c7e"
+                                    "parent_repeater": "field_647dc65a5fd22"
                                 },
                                 {
-                                    "key": "field_646d2b2cb6c81",
+                                    "key": "field_647dc7a75fd2a",
                                     "label": "CTA",
                                     "name": "cta",
                                     "aria-label": "",
@@ -3139,9 +3164,71 @@
                                         "id": ""
                                     },
                                     "return_format": "array",
-                                    "parent_repeater": "field_646d2b17b6c7e"
+                                    "parent_repeater": "field_647dc65a5fd22"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_647dc7635fd26",
+                            "label": "Case Category",
+                            "name": "case_category",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dc7305fd23",
+                                        "operator": "==",
+                                        "value": "taxonomy"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "case_category",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_647dc7735fd27",
+                            "label": "Claim Type",
+                            "name": "claim_type",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dc7305fd23",
+                                        "operator": "==",
+                                        "value": "taxonomy"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "claim_type",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
                         },
                         {
                             "key": "field_646ebf56d7b2a",
@@ -3179,6 +3266,29 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_647dc7305fd23",
+                            "label": "Content Type",
+                            "name": "content_type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "manual": "Manual",
+                                "taxonomy": "Taxonomy"
+                            },
+                            "default_value": "taxonomy",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
                         }
                     ],
                     "min": "",
@@ -3187,7 +3297,7 @@
                 "layout_646e1afd71bcd": {
                     "key": "layout_646e1afd71bcd",
                     "name": "case_results",
-                    "label": "Case Results",
+                    "label": "Practice Area Case Results",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -3248,14 +3358,39 @@
                             "append": ""
                         },
                         {
-                            "key": "field_646e1b7e71bd1",
+                            "key": "field_647dc7c85fd2b",
+                            "label": "Case Results",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_647dc7d35fd2c",
                             "label": "Results",
                             "name": "results",
                             "aria-label": "",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dd2f95fd34",
+                                        "operator": "==",
+                                        "value": "manual"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -3269,7 +3404,7 @@
                             "rows_per_page": 20,
                             "sub_fields": [
                                 {
-                                    "key": "field_646e1b8671bd2",
+                                    "key": "field_647dc7e85fd2d",
                                     "label": "Icon",
                                     "name": "icon",
                                     "aria-label": "",
@@ -3292,10 +3427,10 @@
                                     "max_size": "",
                                     "mime_types": "",
                                     "preview_size": "medium",
-                                    "parent_repeater": "field_646e1b7e71bd1"
+                                    "parent_repeater": "field_647dc7d35fd2c"
                                 },
                                 {
-                                    "key": "field_646e1be471bd3",
+                                    "key": "field_647dc7f55fd2e",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
@@ -3313,10 +3448,10 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_646e1b7e71bd1"
+                                    "parent_repeater": "field_647dc7d35fd2c"
                                 },
                                 {
-                                    "key": "field_646e1bed71bd4",
+                                    "key": "field_647dc7f85fd2f",
                                     "label": "Content",
                                     "name": "content",
                                     "aria-label": "",
@@ -3334,10 +3469,10 @@
                                     "rows": "",
                                     "placeholder": "",
                                     "new_lines": "",
-                                    "parent_repeater": "field_646e1b7e71bd1"
+                                    "parent_repeater": "field_647dc7d35fd2c"
                                 },
                                 {
-                                    "key": "field_646e1bfa71bd5",
+                                    "key": "field_647dc7fe5fd30",
                                     "label": "Value",
                                     "name": "value",
                                     "aria-label": "",
@@ -3355,10 +3490,10 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_646e1b7e71bd1"
+                                    "parent_repeater": "field_647dc7d35fd2c"
                                 },
                                 {
-                                    "key": "field_646e1c0271bd6",
+                                    "key": "field_647dc8035fd31",
                                     "label": "Value Caption",
                                     "name": "value_caption",
                                     "aria-label": "",
@@ -3376,9 +3511,71 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_646e1b7e71bd1"
+                                    "parent_repeater": "field_647dc7d35fd2c"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_647dcc865fd32",
+                            "label": "Case Category",
+                            "name": "case_category",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dd2f95fd34",
+                                        "operator": "==",
+                                        "value": "taxonomy"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "case_category",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_647dd2e05fd33",
+                            "label": "Claim Type",
+                            "name": "claim_type",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_647dd2f95fd34",
+                                        "operator": "==",
+                                        "value": "taxonomy"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "claim_type",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
                         },
                         {
                             "key": "field_646ebf71d7b2d",
@@ -3416,6 +3613,29 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_647dd2f95fd34",
+                            "label": "Content Type",
+                            "name": "content_type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "manual": "Manual",
+                                "taxonomy": "Taxonomy"
+                            },
+                            "default_value": "taxonomy",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
                         }
                     ],
                     "min": "",
@@ -4054,5 +4274,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685928136
+    "modified": 1685968150
 }

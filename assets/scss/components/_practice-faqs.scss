@@ -35,18 +35,16 @@
     margin-bottom: 1rem;
     padding: 2.4rem;
     padding-left: 6.4rem;
-    padding-bottom: 0.4rem;
     border: 1px solid $clr-light-gray;
     border-radius: 1rem;
     width: 100%;
 
     @include mq(tablet) {
-      padding: 4rem 3rem 2rem 14rem;
+      padding: 4rem 3rem 4rem 14rem;
     }
 
     &__heading {
       position: relative;
-      margin-bottom: 2rem;
       font-size: 1.4rem;
       line-height: 1.7rem;
       letter-spacing: 0;
@@ -56,41 +54,47 @@
         font-size: 2.2rem;
         line-height: 2.6rem;
       }
-
-      &:before,
-      &:after {
+      .accordion-header__icon {
         position: absolute;
         content: '';
         top: 50%;
+        left: -4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background: $clr-white-off;
+        border-radius: 50%;
         transform: translateY(-50%);
-        border: 1px solid $clr-green;
-      }
-
-      &::before {
-        left: -8rem;
-        width: 2.8rem;
-
-        @include mq(tablet, max) {
-          left: -3.4rem;
+        @include mq(tablet) {
+          left: -11rem;
+          width: 6rem;
+          height: 6rem;
+        }
+        &:before,
+        &:after {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: 50%;
           width: 1rem;
+          height: 0;
+          border-bottom: 1px solid $clr-green;
+          transition: all .3s ease-in-out;
+          @include mq(tablet) {
+            width: 2.8rem;
+          }
         }
-      }
-
-      &::after {
-        left: -6.6rem;
-        height: 2.8rem;
-        transition: 0.3s;
-
-        @include mq(tablet, max) {
-          left: -3rem;
-          height: 1rem;
+  
+        &::before {
+          transform: translate(-50%, -50%);
         }
-      }
-
-      &.active {
+  
         &::after {
-          transform: translateY(-50%) rotate(90deg);
+          transform: translate(-50%, -50%) rotate(90deg);
         }
+      }
+
+      &.active .accordion-header__icon::after {
+        transform: translate(-50%, -50%);
       }
     }
 
@@ -99,7 +103,7 @@
     }
 
     &__content {
-      margin-bottom: 2rem;
+      margin-block: 2rem;
     }
 
     &__cta {

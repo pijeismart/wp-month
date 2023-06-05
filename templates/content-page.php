@@ -1,5 +1,6 @@
 <?php
 global $post;
+
 if ( have_rows( 'modules' ) ) :
 	while ( have_rows( 'modules' ) ) :
 		the_row();
@@ -1082,7 +1083,12 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
-		<?php elseif ( 'accordion' == get_row_layout() ) : ?>
+			<?php
+		elseif ( 'accordion' == get_row_layout() ) :
+			$content_type    = get_sub_field( 'content_type' );
+			$case_categories = get_field( 'case_category' );
+			$claim_types     = get_field( 'claim_type' );
+			?>
 			<!-- Practice FAQs -->
 			<section class="practice-faqs">
 				<div class="container">
@@ -1108,52 +1114,118 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
-					<?php if ( have_rows( 'accordions' ) ) : ?>
-					<div class="practice-faqs__items a-up a-delay-1">
-						<?php
-						while ( have_rows( 'accordions' ) ) :
-							the_row();
-							?>
-							<div class="accordion practice-faqs__item">
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'heading',
-										't'  => 'h5',
-										'tc' => 'accordion-header practice-faqs__item__heading',
-									)
-								);
+					<?php if ( 'manual' == $content_type ) : ?>
+						<?php if ( have_rows( 'accordions' ) ) : ?>
+						<div class="practice-faqs__items a-up a-delay-1">
+							<?php
+							while ( have_rows( 'accordions' ) ) :
+								the_row();
 								?>
-								<div class="accordion-body practice-faqs__item__main">
+								<div class="accordion practice-faqs__item">
 									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											'w'  => 'div',
-											'wc' => 'practice-faqs__item__content',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-cta',
-										array(
-											'v' => 'cta',
-											'c' => 'practice-faqs__item__cta link',
-										)
-									);
-									?>
+									$heading = get_sub_field( 'heading' );
+									if ( $heading ) :
+										?>
+										<h5 class="accordion-header practice-faqs__item__heading">
+											<span class="accordion-header__icon"></span>
+											<?php echo $heading; ?>
+										</h5>
+									<?php endif; ?>
+									<div class="accordion-body practice-faqs__item__main">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												'w'  => 'div',
+												'wc' => 'practice-faqs__item__content',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-cta',
+											array(
+												'v' => 'cta',
+												'c' => 'practice-faqs__item__cta link',
+											)
+										);
+										?>
+									</div>
 								</div>
+							<?php endwhile; ?>
+						</div>
+						<?php endif; ?>
+					<?php else : ?>
+						<?php
+						$tax_query = array();
+						if ( $case_categories ) {
+							$tax_query[] = array(
+								'taxonomy' => 'case_category',
+								'terms'    => $case_categories,
+							);
+						}
+						if ( $claim_types ) {
+							$tax_query[] = array(
+								'taxonomy' => 'claim_type',
+								'terms'    => $claim_types,
+							);
+						}
+						if ( $case_categories && $claim_types ) {
+							$tax_query['relation'] = 'AND';
+						}
+						$args  = array(
+							'post_type'      => 'faq',
+							'post_status'    => 'publish',
+							'posts_per_page' => -1,
+							'tax_query'      => $tax_query,
+						);
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ) :
+							?>
+							<div class="practice-faqs__items a-up a-delay-1">
+								<?php
+								while ( $query->have_posts() ) :
+									$query->the_post();
+									?>
+									<div class="accordion practice-faqs__item">
+										<h5 class="accordion-header practice-faqs__item__heading">
+											<span class="accordion-header__icon"></span>
+											<?php the_title(); ?>
+										</h5>
+										<div class="accordion-body practice-faqs__item__main">
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'direct_answer',
+													'w'  => 'div',
+													'wc' => 'practice-faqs__item__content',
+													'o'  => 'f',
+												)
+											);
+											?>
+											<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="practice-faqs__item__cta link">
+												<?php echo esc_html__( 'Read more' ); ?>
+											</a>
+										</div>
+									</div>
+								<?php endwhile; ?>
 							</div>
-						<?php endwhile; ?>
-					</div>
+							<?php
+						endif;
+						wp_reset_postdata();
+						?>
 					<?php endif; ?>
 				</div>
 			</section>
-		<?php elseif ( 'case_results' == get_row_layout() ) : ?>
-			<!-- Case Results -->
+			<?php
+		elseif ( 'case_results' == get_row_layout() ) :
+			$content_type    = get_sub_field( 'content_type' );
+			$case_categories = get_field( 'case_category' );
+			$claim_types     = get_field( 'claim_type' );
+			?>
+			<!-- Practice Case Results -->
 			<section class="case-results">
 				<div class="container">
 					<div class="case-results__info a-up">
@@ -1178,76 +1250,148 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
-					<?php if ( have_rows( 'results' ) ) : ?>
-					<div class="case-results__items a-up a-delay-1">
-						<?php
-						while ( have_rows( 'results' ) ) :
-							the_row();
-							?>
-						<div class="case-results__item">
+					<?php if ( 'manual' == $content_type ) : ?>
+						<?php if ( have_rows( 'results' ) ) : ?>
+						<div class="case-results__items a-up a-delay-1">
 							<?php
-							get_template_part_args(
-								'template-parts/content-modules-image',
-								array(
-									'v'     => 'icon',
-									'v2x'   => false,
-									'is'    => false,
-									'is_2x' => false,
-									'c'     => 'icon',
-									'w'     => 'div',
-									'wc'    => 'case-results__item__icon',
-								)
-							);
-							?>
-							<div class="case-results__item__info">
-								<div class="case-results__item__main">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'heading',
-											't'  => 'h5',
-											'tc' => 'case-results__item__heading',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											't'  => 'p',
-											'tc' => 'case-results__item__content',
-										)
-									);
-									?>
-								</div>
-								<div class="case-results__item__val">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'value',
-											't'  => 'h2',
-											'tc' => 'case-results__item__value',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'value_caption',
-											't'  => 'h5',
-											'tc' => 'case-results__item__value_caption',
-										)
-									);
-									?>
+							while ( have_rows( 'results' ) ) :
+								the_row();
+								?>
+							<div class="case-results__item">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-image',
+									array(
+										'v'     => 'icon',
+										'v2x'   => false,
+										'is'    => false,
+										'is_2x' => false,
+										'c'     => 'icon',
+										'w'     => 'div',
+										'wc'    => 'case-results__item__icon',
+									)
+								);
+								?>
+								<div class="case-results__item__info">
+									<div class="case-results__item__main">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'heading',
+												't'  => 'h5',
+												'tc' => 'case-results__item__heading',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'p',
+												'tc' => 'case-results__item__content',
+											)
+										);
+										?>
+									</div>
+									<div class="case-results__item__val">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'value',
+												't'  => 'h2',
+												'tc' => 'case-results__item__value',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'value_caption',
+												't'  => 'h5',
+												'tc' => 'case-results__item__value_caption',
+											)
+										);
+										?>
+									</div>
 								</div>
 							</div>
+							<?php endwhile; ?>
 						</div>
-						<?php endwhile; ?>
-					</div>
+						<?php endif; ?>
+					<?php else : ?>
+						<?php
+						$tax_query = array();
+						if ( $case_categories ) {
+							$tax_query[] = array(
+								'taxonomy' => 'case_category',
+								'terms'    => $case_categories,
+							);
+						}
+						if ( $claim_types ) {
+							$tax_query[] = array(
+								'taxonomy' => 'claim_type',
+								'terms'    => $claim_types,
+							);
+						}
+						if ( $case_categories && $claim_types ) {
+							$tax_query['relation'] = 'AND';
+						}
+						$args  = array(
+							'post_type'      => 'case_result',
+							'post_status'    => 'publish',
+							'posts_per_page' => -1,
+							'tax_query'      => $tax_query,
+						);
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ) :
+							?>
+							<div class="case-results__items a-up a-delay-1">
+								<?php
+								while ( $query->have_posts() ) :
+									$query->the_post();
+									$categories = get_the_terms( $post, 'case_category' );
+									$price      = get_field( 'price' );
+									$content    = get_field( 'content' );
+									?>
+									<div class="case-results__item">
+										<?php
+										if ( $categories ) :
+											$category = $categories[0];
+											$image    = get_field( 'icon', 'case_category' . '_' . $category->term_id );
+											if ( $image ) :
+												?>
+												<div class="case-results__item__icon">
+													<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $category->name ); ?>" class="icon">
+												</div>
+											<?php endif; ?>
+										<?php endif; ?>
+										<div class="case-results__item__info">
+											<div class="case-results__item__main">
+												<h5 class="case-results__item__heading">
+													<?php the_title(); ?>
+												</h5>
+												<?php if ( $content ) : ?>
+													<p class="case-results__item__content">
+														<?php echo wp_trim_words( $content, 20, '...' ); ?>
+													</p>
+												<?php endif; ?>
+											</div>
+											<div class="case-results__item__val">
+												<h2 class="case-results__item__value"><?php echo esc_html( '$' . floatval( $price ) / 1000000 ); ?></h3>
+												<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Million' ); ?></p>
+											</div>
+										</div>
+									</div>
+								<?php endwhile; ?>
+							</div>
+							<?php
+						endif;
+						wp_reset_postdata();
+						?>
 					<?php endif; ?>
 				</div>
 			</section>
@@ -1319,7 +1463,6 @@ if ( have_rows( 'modules' ) ) :
 									endif;
 									?>
 								</div>
-							
 							<?php endwhile; ?>
 						</div>
 						<?php endif; ?>
