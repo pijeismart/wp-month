@@ -1,7 +1,16 @@
 <?php
 global $post;
+// Get author information
 $get_author_id       = get_the_author_meta( 'ID' );
 $get_author_gravatar = get_avatar_url( $get_author_id, array( 'size' => 40 ) );
+
+// Get post fields
+$terms     = get_the_terms( get_the_ID(), 'case_category' );
+$term_list = wp_list_pluck( $terms, 'slug' );
+$post_img  = get_field( 'default_post_image', 'case_category_' . $terms[0]->term_id );
+if ( has_post_thumbnail() ) :
+	$post_img = get_the_post_thumbnail_url( $post, 'large' );
+endif;
 ?>
 <!-- Post banner -->
 <section class="post-banner">
@@ -53,11 +62,11 @@ $get_author_gravatar = get_avatar_url( $get_author_id, array( 'size' => 40 ) );
 	</div>
 </section>
 
-<?php if ( has_post_thumbnail() ) : ?>
+<?php if ( $post_img ) : ?>
 <!-- Post Image -->
 <section class="post-img">
 	<div class="container a-up">
-		<?php the_post_thumbnail(); ?>
+		<img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 	</div>
 </section>
 <?php endif; ?>
@@ -107,9 +116,7 @@ $get_author_gravatar = get_avatar_url( $get_author_id, array( 'size' => 40 ) );
 
 <!-- Related Posts -->
 <?php
-$terms     = get_the_terms( get_the_ID(), 'category' );
-$term_list = wp_list_pluck( $terms, 'slug' );
-$args      = array(
+$args  = array(
 	'post_type'      => 'post',
 	'post__not_in'   => array( get_the_ID() ),
 	'post_status'    => 'publish',
@@ -122,7 +129,7 @@ $args      = array(
 		),
 	),
 );
-$query     = new WP_Query( $args );
+$query = new WP_Query( $args );
 ?>
 <section class="posts-slider related-posts">
 	<div class="container">

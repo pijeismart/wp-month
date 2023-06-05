@@ -59,4 +59,9 @@
     text-transform: uppercase;
     color: rgba($clr-navy, 0.4);
   }
+  &__link {
+    @include mq(tablet, max) {
+      margin-top: 1rem;
+    }
+  }
 }

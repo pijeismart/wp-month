@@ -1,0 +1,9 @@
+.page-template-blog {
+  --header-background: #EFF2F6;
+  .archive-banner {
+    padding-bottom: 18rem;
+    @include mq(tablet) {
+      padding-block: 10rem 16rem;
+    }
+  }
+}

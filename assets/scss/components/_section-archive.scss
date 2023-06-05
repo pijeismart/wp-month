@@ -22,6 +22,11 @@
         font: 700 1.5rem/1.5 $f-text;
         letter-spacing: 0.2rem;
         text-transform: uppercase;
+        @include mq(tablet, max) {
+          &.active {
+            border-bottom: 1px solid $clr-border;
+          }
+        }
         @include mq(tablet) {
           padding: 2.4rem 5.4rem 2.4rem 3.2rem;
         }
@@ -42,10 +47,12 @@
         }
       }
       .accordion-body {
-        padding-left: 2.4rem;
-        padding-bottom: 2.4rem;
+        @include mq(tablet, max) {
+          padding: 2.4rem 1.6rem 2.4rem 3.2rem;
+        }
         @include mq(tablet) {
           padding-left: 3.2rem;
+          padding-bottom: 2.4rem;
         }
       }
     }
@@ -67,6 +74,10 @@
     &:hover {
       background: rgba(174, 223, 130, 0.4);
       border-right-color: $clr-green;
+    }
+    @include mq(tablet, max) {
+      padding-left: 2.2rem;
+      border-left: 1px solid $clr-green;
     }
   }
   &__content {
