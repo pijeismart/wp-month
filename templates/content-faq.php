@@ -10,6 +10,8 @@ $case_cat_ids = wp_list_pluck( $case_cat, 'term_id' );
 $faq_types = get_the_terms( $post, 'faq_type' );
 $faq_type  = $faq_types[0];
 
+$state     = get_the_terms( $post, 'practice_state' );
+
 // create queries
 $tax_query = array(
 	'relation' => 'OR',
@@ -49,9 +51,15 @@ $phone = get_field( 'header_cta_url', 'options' );
 	<div class="container">
 		<div class="faq-detail__card faq-detail__card--full faq-detail__card a-up">
 			<div class="faq-detail__top">
-				<a href="<?php echo esc_url( home_url( '/faq' ) ); ?>" class="link link-reverse">
-					<?php echo esc_html__( 'See All Frequently Asked Questions' ); ?>
-				</a>
+				<?php if ( 'state-law-montlick-explains' == $faq_type->slug ) : ?>
+					<a href="<?php echo esc_url( home_url( '/faq/?state=' ) . $state[0]->slug ); ?>" class="link link-reverse">
+						<?php echo esc_html__( 'See All Frequently Asked Questions' )  . ' | ' . $state[0]->name; ?>
+					</a>
+				<?php else: ?>
+					<a href="<?php echo esc_url( home_url( '/faq' ) ); ?>" class="link link-reverse">
+						<?php echo esc_html__( 'See All Frequently Asked Questions' ); ?>
+					</a>
+				<?php endif; ?>
 				<ul class="social-share">
 					<li>
 						<a href="#" class="share-url">
@@ -132,7 +140,7 @@ $phone = get_field( 'header_cta_url', 'options' );
 				<?php if ( $phone ) : ?>
 				<div class="faq-detail__bottom__right">
 					<h6><?php echo esc_html__( 'Would you like to speak with an attorney?' ); ?></h6>
-					<a href="tel:<?php echo esc_attr( $phone['url'] ); ?>" class="faq-link">
+					<a href="tel:<?php echo esc_attr( $phone['url'] ); ?>" class="underline-link faq-link">
 						<?php echo esc_html__( 'Call Now' ); ?>
 					</a>
 				</div>

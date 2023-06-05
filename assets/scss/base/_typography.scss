@@ -7,8 +7,11 @@ h1,
   font: 400 5.5rem/4.4rem $f-heading;
   letter-spacing: -0.03em;
   @include mq(tablet) {
-    font-size: 9rem;
+    font-size: 6.5rem;
     line-height: 0.9; 
+  }
+  @include mq(desktop-wide) {
+    font-size: 9rem;
   }
 }
 
@@ -17,6 +20,9 @@ h2,
   font: 400 4.5rem/1.05 $f-heading;
   letter-spacing: -0.03em;
   @include mq(tablet) {
+    font-size: 5rem;
+  }
+  @include mq(desktop-wide) {
     font-size: 5.8rem;
   }
 }
@@ -37,9 +43,12 @@ h4,
   font: 400 1.6rem/1.05 $f-heading;
   letter-spacing: -0.03em;
   @include mq(tablet) {
-    font-size: 2.6rem;
+    font-size: 2rem;
     line-height: 1.15;
     letter-spacing: -0.01em;
+  }
+  @include mq(desktop-wide) {
+    font-size: 2.6rem;
   }
 }
 

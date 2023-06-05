@@ -172,7 +172,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'city',
 											't'  => 'h5',
-											'tc' => 'content-image__experience__cities__item a-up a-delay-1'
+											'tc' => 'content-image__experience__cities__item a-up a-delay-1',
 										)
 									);
 								endwhile;
@@ -607,7 +607,8 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
-		<?php elseif ( 'contact_form' == get_row_layout() ) : 
+			<?php
+		elseif ( 'contact_form' == get_row_layout() ) :
 			$form = get_sub_field( 'form' );
 			?>
 			<!-- Contact Form -->
@@ -720,7 +721,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'content',
 									'w'  => 'div',
-									'wc' => 'contact-form__content__content a-up a-delay-1'
+									'wc' => 'contact-form__content__content a-up a-delay-1',
 								)
 							);
 							?>
@@ -733,7 +734,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'form_sub_heading',
 								't'  => 'h5',
-								'tc' => 'contact-form__form__sub_heading'
+								'tc' => 'contact-form__form__sub_heading',
 							)
 						);
 						?>
@@ -743,7 +744,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'form_heading',
 								't'  => 'h4',
-								'tc' => 'contact-form__form__heading'
+								'tc' => 'contact-form__form__heading',
 							)
 						);
 						?>
@@ -753,7 +754,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'form_content',
 								't'  => 'p',
-								'tc' => 'contact-form__form__content'
+								'tc' => 'contact-form__form__content',
 							)
 						);
 						?>
@@ -786,9 +787,9 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'cards_heading',
 								't'  => 'h5',
-								'tc' => 'cards-content__cards__heading a-up'
-								)
-							);
+								'tc' => 'cards-content__cards__heading a-up',
+							)
+						);
 						?>
 						<?php if ( have_rows( 'cards' ) ) : ?>
 							<div class="cards-content__cards__items">
@@ -804,7 +805,7 @@ if ( have_rows( 'modules' ) ) :
 											array(
 												'v'  => 'heading',
 												't'  => 'h5',
-												'tc' => 'cards-content__cards__item__heading'
+												'tc' => 'cards-content__cards__item__heading',
 											)
 										);
 										?>
@@ -814,7 +815,7 @@ if ( have_rows( 'modules' ) ) :
 											array(
 												'v'  => 'content',
 												'w'  => 'div',
-												'wc' => 'cards-content__cards__item__content'
+												'wc' => 'cards-content__cards__item__content',
 											)
 										);
 										?>
@@ -830,9 +831,9 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'content_heading',
 								't'  => 'h5',
-								'tc' => 'cards-content__content__heading a-up a-delay-1'
-								)
-							);
+								'tc' => 'cards-content__content__heading a-up a-delay-1',
+							)
+						);
 						?>
 						<?php
 						get_template_part_args(
@@ -840,7 +841,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'content',
 								'w'  => 'div',
-								'wc' => 'cards-content__content__content a-up a-delay-1'
+								'wc' => 'cards-content__content__content a-up a-delay-1',
 							)
 						);
 						?>
@@ -894,7 +895,7 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'heading',
 							't'  => 'h3',
-							'tc' => 'milestone-cards__heading a-up'
+							'tc' => 'milestone-cards__heading a-up',
 						)
 					);
 					?>
@@ -952,9 +953,9 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'sub_heading',
 							't'  => 'h5',
-							'tc' => 'podcasts-sub_heading a-up'
-							)
-						);
+							'tc' => 'podcasts-sub_heading a-up',
+						)
+					);
 					?>
 					<div class="podcasts-info">
 						<?php
@@ -963,7 +964,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h3',
-								'tc' => 'podcasts-heading a-up a-delay-1'
+								'tc' => 'podcasts-heading a-up a-delay-1',
 							)
 						);
 						?>
@@ -971,8 +972,8 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v'  => 'cta',
-								'c'  => 'podcasts-cta link a-up a-delay-1'
+								'v' => 'cta',
+								'c' => 'podcasts-cta link a-up a-delay-1',
 							)
 						);
 						?>
@@ -1039,10 +1040,10 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h5',
-								'tc' => 'video-content__heading a-up'
-								)
-							);
-							?>
+								'tc' => 'video-content__heading a-up',
+							)
+						);
+						?>
 						<div class="video-content__main">
 							<div class="video-content__video a-up a-delay-1">
 								<?php
@@ -1082,17 +1083,17 @@ if ( have_rows( 'modules' ) ) :
 				</div>
 			</section>
 		<?php elseif ( 'accordion' == get_row_layout() ) : ?>
-			<!-- Accordion -->
-			<section class="accordion">
+			<!-- Practice FAQs -->
+			<section class="practice-faqs">
 				<div class="container">
-					<div class="accordion-info a-up">
+					<div class="practice-faqs__info a-up">
 						<?php
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
 								'v'  => 'sub_heading',
 								't'  => 'h5',
-								'tc' => 'accordion-sub_heading',
+								'tc' => 'practice-faqs__sub_heading',
 							)
 						);
 						?>
@@ -1102,48 +1103,50 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h3',
-								'tc' => 'accordion-heading',
+								'tc' => 'practice-faqs__heading',
 							)
 						);
 						?>
 					</div>
 					<?php if ( have_rows( 'accordions' ) ) : ?>
-					<div class="accordion-items a-up a-delay-1">
-						<?php while ( have_rows( 'accordions' ) ) : 
-							the_row(); ?>
-						<div class="accordion-item">
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'heading',
-									't'  => 'h5',
-									'tc' => 'accordion-item__heading',
-								)
-							);
+					<div class="practice-faqs__items a-up a-delay-1">
+						<?php
+						while ( have_rows( 'accordions' ) ) :
+							the_row();
 							?>
-							<div class="accordion-item__main">
+							<div class="accordion practice-faqs__item">
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
 									array(
-										'v'  => 'content',
-										'w'  => 'div',
-										'wc' => 'accordion-item__content',
+										'v'  => 'heading',
+										't'  => 'h5',
+										'tc' => 'accordion-header practice-faqs__item__heading',
 									)
 								);
 								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'accordion-item__cta link',
-									)
-								);
-								?>
+								<div class="accordion-body practice-faqs__item__main">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											'w'  => 'div',
+											'wc' => 'practice-faqs__item__content',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v' => 'cta',
+											'c' => 'practice-faqs__item__cta link',
+										)
+									);
+									?>
+								</div>
 							</div>
-						</div>
 						<?php endwhile; ?>
 					</div>
 					<?php endif; ?>
@@ -1160,7 +1163,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'sub_heading',
 								't'  => 'h5',
-								'tc' => 'case-results__sub_heading'
+								'tc' => 'case-results__sub_heading',
 							)
 						);
 						?>
@@ -1170,15 +1173,17 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h3',
-								'tc' => 'case-results__heading'
+								'tc' => 'case-results__heading',
 							)
 						);
 						?>
 					</div>
 					<?php if ( have_rows( 'results' ) ) : ?>
 					<div class="case-results__items a-up a-delay-1">
-						<?php while ( have_rows( 'results' ) ) : 
-							the_row(); ?>
+						<?php
+						while ( have_rows( 'results' ) ) :
+							the_row();
+							?>
 						<div class="case-results__item">
 							<?php
 							get_template_part_args(
@@ -1202,7 +1207,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'heading',
 											't'  => 'h5',
-											'tc' => 'case-results__item__heading'
+											'tc' => 'case-results__item__heading',
 										)
 									);
 									?>
@@ -1212,7 +1217,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'content',
 											't'  => 'p',
-											'tc' => 'case-results__item__content'
+											'tc' => 'case-results__item__content',
 										)
 									);
 									?>
@@ -1224,7 +1229,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'value',
 											't'  => 'h2',
-											'tc' => 'case-results__item__value'
+											'tc' => 'case-results__item__value',
 										)
 									);
 									?>
@@ -1234,7 +1239,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'value_caption',
 											't'  => 'h5',
-											'tc' => 'case-results__item__value_caption'
+											'tc' => 'case-results__item__value_caption',
 										)
 									);
 									?>
@@ -1258,7 +1263,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'sub_heading',
 									't'  => 'h5',
-									'tc' => 'practice-areas__sub_heading'
+									'tc' => 'practice-areas__sub_heading',
 								)
 							);
 							?>
@@ -1268,7 +1273,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'heading',
 									't'  => 'h3',
-									'tc' => 'practice-areas__heading'
+									'tc' => 'practice-areas__heading',
 								)
 							);
 							?>
@@ -1289,23 +1294,29 @@ if ( have_rows( 'modules' ) ) :
 						</div>
 						<?php if ( have_rows( 'areas' ) ) : ?>
 						<div class="practice-areas__items a-up a-delay-1">
-							<?php while ( have_rows( 'areas' ) ) : 
-								the_row(); ?>
+							<?php
+							while ( have_rows( 'areas' ) ) :
+								the_row();
+								?>
 								<div class="practice-areas__item">
 									<?php if ( have_rows( 'items' ) ) : ?>
-										<?php while ( have_rows( 'items' ) ) : 
-											the_row(); ?>
 										<?php
+										while ( have_rows( 'items' ) ) :
+											the_row();
+											?>
+											<?php
 											get_template_part_args(
 												'template-parts/content-modules-text',
 												array(
 													'v'  => 'area',
 													't'  => 'h5',
-													'tc' => 'practice-areas__item__area'
+													'tc' => 'practice-areas__item__area',
 												)
-											);?>
-											<?php endwhile;
-									endif; 
+											);
+											?>
+											<?php
+											endwhile;
+									endif;
 									?>
 								</div>
 							
@@ -1316,8 +1327,8 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v'  => 'cta',
-								'c'  => 'practice-areas__cta link a-up a-delay-1',
+								'v' => 'cta',
+								'c' => 'practice-areas__cta link a-up a-delay-1',
 							)
 						);
 						?>
@@ -1348,7 +1359,7 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'sub_heading',
 							't'  => 'h5',
-							'tc' => 'block-content__sub_heading a-up a-delay-1'
+							'tc' => 'block-content__sub_heading a-up a-delay-1',
 						)
 					);
 					?>
@@ -1358,14 +1369,15 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'heading',
 							't'  => 'h3',
-							'tc' => 'block-content__heading a-up a-delay-1'
+							'tc' => 'block-content__heading a-up a-delay-1',
 						)
 					);
 					?>
 					<?php if ( have_rows( 'blocks' ) ) : ?>
 					<div class="block-content__items">
-						<?php while ( have_rows( 'blocks' ) ) :
-							the_row(); 
+						<?php
+						while ( have_rows( 'blocks' ) ) :
+							the_row();
 							$type = get_sub_field( 'type' );
 							?>
 						<div class="block-content__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
@@ -1375,7 +1387,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'heading',
 									't'  => 'p',
-									'tc' => 'block-content__item__heading'
+									'tc' => 'block-content__item__heading',
 								)
 							);
 							?>
@@ -1387,7 +1399,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'block_heading',
 											't'  => 'h4',
-											'tc' => 'block-content__item__block__heading'
+											'tc' => 'block-content__item__block__heading',
 										)
 									);
 									?>
@@ -1397,7 +1409,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'block_content',
 											'w'  => 'div',
-											'wc' => 'block-content__item__block__content'
+											'wc' => 'block-content__item__block__content',
 										)
 									);
 									?>
@@ -1405,8 +1417,8 @@ if ( have_rows( 'modules' ) ) :
 									get_template_part_args(
 										'template-parts/content-modules-cta',
 										array(
-											'v'  => 'block_cta',
-											'c'  => 'block-content__item__block__cta link',
+											'v' => 'block_cta',
+											'c' => 'block-content__item__block__cta link',
 										)
 									);
 									?>
@@ -1417,7 +1429,7 @@ if ( have_rows( 'modules' ) ) :
 									array(
 										'v'  => 'content',
 										'w'  => 'div',
-										'wc' => 'block-content__item__content'
+										'wc' => 'block-content__item__content',
 									)
 								);
 								?>
@@ -1428,7 +1440,8 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
-		<?php elseif ( 'navigation_bar' == get_row_layout() ) : 
+			<?php
+		elseif ( 'navigation_bar' == get_row_layout() ) :
 			$social = get_sub_field( 'social' );
 			?>
 			<!-- Navigation Bar -->
@@ -1442,21 +1455,23 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'section_heading',
 									't'  => 'h5',
-									'tc' => 'navigation-bar__nav__heading'
+									'tc' => 'navigation-bar__nav__heading',
 								)
 							);
 							?>
 							<?php if ( have_rows( 'sections' ) ) : ?>
 							<div class="navigation-bar__nav__menu">
-								<?php while ( have_rows( 'sections' ) ) : 
-									the_row(); ?>
+								<?php
+								while ( have_rows( 'sections' ) ) :
+									the_row();
+									?>
 								<div class="navigation-bar__nav__menu__item">
 									<?php
 									get_template_part_args(
 										'template-parts/content-modules-cta',
 										array(
-											'v'  => 'cta',
-											'c' => 'navigation-bar__nav__menu__item__cta'
+											'v' => 'cta',
+											'c' => 'navigation-bar__nav__menu__item__cta',
 										)
 									);
 									?>
@@ -1472,7 +1487,7 @@ if ( have_rows( 'modules' ) ) :
 								array(
 									'v'  => 'feedback_heading',
 									't'  => 'h5',
-									'tc' => 'navigation-bar__social__heading'
+									'tc' => 'navigation-bar__social__heading',
 								)
 							);
 							?>

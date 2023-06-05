@@ -35,7 +35,7 @@
 /// @param {String} $px-vw - pixel
 /// @param {String} $base-vw - default screensize
 @function vw($px-vw, $base-vw: 1600px) {
-  @return ($px-vw * 100vw) / $base-vw;
+  @return calc(($px-vw * 100vw) / $base-vw);
 }
 
 /// Returns svw from pixel
@@ -43,7 +43,7 @@
 /// @param {String} $px-vw - pixel
 /// @param {String} $base-vw - default screensize
 @function svw($px-vw, $base-vw: 375px) {
-  @return ($px-vw * 100vw) / $base-vw;
+  @return calc(($px-vw * 100vw) / $base-vw);
 }
 
 /// Returns responsive font size
@@ -73,5 +73,5 @@
 /// @param {String} $width - element width
 /// @param {String} $height - element height
 @function hp($width, $height) {
-  @return ($height / $width) * 100%;
+  @return calc(($height / $width) * 100%);
 }

@@ -227,19 +227,19 @@
   border-style: solid;
   border-color: transparent;
   @if $direction == bottom {
-    border-width: $height $width/2 0 $width/2;
+    border-width: $height calc($width / 2) 0 calc($width / 2);
     border-top-color: $color;
   }
   @else if $direction == top {
-    border-width: 0 $width/2 $height $width/2;
+    border-width: 0 calc($width / 2) $height calc($width / 2);
     border-bottom-color: $color;
   }
   @else if $direction == left {
-    border-width: $height/2 $width $height/2 0;
+    border-width: calc($height / 2 ) $width calc($height / 2 ) 0;
     border-right-color: $color;
   }
   @else {
-    border-width: $height/2 0 $height/2 $width;
+    border-width: calc($height / 2 ) 0 calc($height / 2 ) $width;
     border-left-color: $color;
   }
 }

@@ -57,7 +57,7 @@ function custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'rewrite'             => array(
-			'slug'       => 'practice-areas',
+			'slug'       => 'practice-area',
 			'with_front' => false,
 		),
 	);
@@ -167,7 +167,7 @@ function custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'rewrite'             => array(
-			'slug'       => 'faqs',
+			'slug'       => 'faq',
 			'with_front' => false,
 		),
 	);

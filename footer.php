@@ -1,4 +1,4 @@
-<?php if ( is_singular( 'post' ) ) : ?>
+<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php') ) : ?>
 			<section class="results">
 				<div class="container">
 					<div class="results-content">
@@ -211,7 +211,7 @@
 				);
 				?>
 				<?php if ( $cta_url && $cta_text ) : ?>
-					<a href="<?php echo esc_url( $cta_url['url'] ); ?>" class="footer-cta" target="<?php echo esc_attr( $cta_url['target'] ?: '_self' ); ?>">
+					<a href="<?php echo esc_url( $cta_url['url'] ); ?>" class="footer-cta" target="<?php echo esc_attr( $cta_url['target'] ? $cta_url['target'] : '_self' ); ?>">
 						<?php echo $cta_text; ?>
 					</a>
 				<?php endif; ?>

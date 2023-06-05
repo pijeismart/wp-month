@@ -54,11 +54,11 @@ function custom_taxonomies() {
 			'show_in_rest' => true,
 		)
 	);
-	
+
 	// Practice State - Only for Practice Areas post type
 	register_taxonomy(
 		'practice_state',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		'practice',             // post type name
+		array( 'practice', 'faq' ),             // post type name
 		array(
 			'hierarchical' => true,
 			'label'        => 'States', // display name

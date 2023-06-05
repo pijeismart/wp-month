@@ -290,3 +290,56 @@ function custom_case_result_column( $column, $post_id ) {
 			break;
 	}
 }
+
+
+/**
+ * load ajax cpt handler
+ */
+add_action( 'wp_ajax_ajax_cpt', 'ajax_cpt' );
+add_action( 'wp_ajax_nopriv_ajax_cpt', 'ajax_cpt' );
+function ajax_cpt() {
+	$paged          = $_POST['paged'] ? $_POST['paged'] : 1;
+	$type           = $_POST['post_type'] ? $_POST['post_type'] : 'post';
+	$posts_per_page = $_POST['posts_per_page'] ? $_POST['posts_per_page'] : 12;
+	$cat            = $_POST['cat'];
+	$state          = $_POST['state'];
+	$s              = $_POST['s'];
+	$args           = array(
+		'post_type'      => $type,
+		'posts_per_page' => $posts_per_page,
+		'paged'          => $paged,
+	);
+	if ( $s ) {
+		$args['s'] = $s;
+	}
+	$args['tax_query']['relation'] = 'AND';
+	if ( $cat ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => 'case_category',
+			'field'    => 'slug',
+			'terms'    => $cat,
+		);
+	}
+	if ( $state ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => 'state',
+			'field'    => 'slug',
+			'terms'    => $state,
+		);
+	}
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+		ob_start();
+		while ( $query->have_posts() ) :
+			$query->the_post();
+			get_template_part( 'template-parts/loop', $type );
+		endwhile;
+	else :
+		echo '<h2 class="no-results">No results.</h2>';
+	endif;
+	$res         = new \stdClass();
+	$res->output = ob_get_clean();
+	wp_reset_postdata();
+	echo wp_json_encode( $res );
+	wp_die();
+}

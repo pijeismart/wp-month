@@ -16,6 +16,7 @@
 @import 'components/button',
         'components/hamburger',
         'components/awards',
+        'components/archive-banner',
         'components/banner',
         'components/block-content',
         'components/cards-slider',
@@ -30,6 +31,7 @@
         'components/navigation-bar',
         'components/podcasts',
         'components/practice-areas',
+        'components/practice-faqs',
         'components/results',
         'components/video-content',
         'components/accordion',
@@ -38,9 +40,11 @@
         'components/testimonial',
         'components/masonry',
         'components/map',
+        'components/section-archive',
         'components/subscribe-form';
 
 // 6. Pages
 @import 'pages/practice-search',
         'pages/single-post',
-        'pages/single-faq';
+        'pages/single-faq',
+        'pages/faq';

@@ -326,3 +326,15 @@ html.disable-scrolling {
     @include cover-image;
   }
 }
+
+.has-decor {
+  background-color: $clr-white-off;
+  background-image: url('../img/decor-m-search.svg');
+  background-position: bottom right -27.4rem;
+  background-size: 51.4rem 41.2rem;
+  background-repeat: no-repeat;
+  @include mq(tablet) {
+    background-size: 39.2rem 31.5rem;
+    background-position: bottom right -8rem;
+  }
+}
