@@ -6,8 +6,10 @@ $get_author_gravatar = get_avatar_url( $get_author_id, array( 'size' => 40 ) );
 
 // Get post fields
 $terms     = get_the_terms( get_the_ID(), 'case_category' );
-$term_list = wp_list_pluck( $terms, 'slug' );
-$post_img  = get_field( 'default_post_image', 'case_category_' . $terms[0]->term_id );
+if ( $terms ) {
+	$term_list = wp_list_pluck( $terms, 'slug' );
+	$post_img  = get_field( 'default_post_image', 'case_category_' . $terms[0]->term_id );
+}
 if ( has_post_thumbnail() ) :
 	$post_img = get_the_post_thumbnail_url( $post, 'large' );
 endif;
@@ -142,7 +144,7 @@ $query = new WP_Query( $args );
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();
-						get_template_part( 'template-parts/loop', 'post' );
+						get_template_part( 'template-parts/loop', 'post-card' );
 					endwhile;
 					?>
 				</div>

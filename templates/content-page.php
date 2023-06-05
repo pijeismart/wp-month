@@ -536,7 +536,7 @@ if ( have_rows( 'modules' ) ) :
 								<?php
 								foreach ( $posts as $post ) :
 									setup_postdata( $post );
-									get_template_part( 'template-parts/loop', 'post' );
+									get_template_part( 'template-parts/loop', 'post-card' );
 								endforeach;
 								?>
 							</div>

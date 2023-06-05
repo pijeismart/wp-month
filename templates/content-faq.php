@@ -219,7 +219,7 @@ $query = new WP_Query( $args );
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();
-						get_template_part( 'template-parts/loop', 'post' );
+						get_template_part( 'template-parts/loop', 'post-card' );
 					endwhile;
 					?>
 				</div>

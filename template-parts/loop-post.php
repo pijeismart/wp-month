@@ -1,28 +1,18 @@
 <?php
 global $post;
-$categories = get_the_terms( $post, 'case_category' );
 ?>
-<div class="loop-post">
-	<?php if ( has_post_thumbnail() ) : ?>
-		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post__img">
-			<?php the_post_thumbnail( 'post-card' ); ?>
-		</a>
-	<?php endif; ?>
-	<div class="loop-post__content">
-		<?php if ( $categories ) : ?>
-			<div class="loop-post__categories">
-				<?php foreach ( $categories as $category ) : ?>
-					<?php echo esc_html( $category->name ); ?>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
-		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post__title">
-			<?php the_title(); ?>
-		</a>
-		<?php if ( has_excerpt() ) : ?>
-			<p class="loop-post__excerpt">
-				<?php the_excerpt(); ?>
-			</p>
-		<?php endif; ?>
-	</div>
-</div>
+<article class="loop-post">
+	<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post__link">
+		<div class="loop-post__img">
+			<?php if ( has_post_thumbnail() ) : ?>
+				<?php the_post_thumbnail(); ?>
+			<?php endif; ?>
+		</div>
+		<div class="loop-post__content">
+			<h3 class="loop-post__title"><?php echo esc_html( get_the_title() ); ?></h3>
+			<?php if ( has_excerpt() ) : ?>
+				<div class="loop-post__excerpt"><?php the_excerpt(); ?></div>
+			<?php endif; ?>
+		</div>
+	</a>
+</article>

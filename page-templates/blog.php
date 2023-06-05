@@ -70,9 +70,9 @@ get_header();
 <!-- Archive -->
 <?php
 $args = array(
-	'post_type'      => 'faq',
+	'post_type'      => 'post',
 	'post_status'    => 'publish',
-	'posts_per_page' => -1,
+	'posts_per_page' => 5,
 );
 if ( isset( $_GET['case-category'] ) ) {
 	$args['tax_query'][] = array(
@@ -81,20 +81,10 @@ if ( isset( $_GET['case-category'] ) ) {
 		'terms'    => $_GET['case-category'],
 	);
 }
-if ( isset( $_GET['state'] ) ) {
-	$args['tax_query'][] = array(
-		'taxonomy' => 'practice_state',
-		'field'    => 'slug',
-		'terms'    => $_GET['state'],
-	);
-}
-if ( isset( $_GET['case-category'] ) && isset( $GET['state'] ) ) {
-	$args['tax_query']['relation'] = 'AND';
-}
 $query = new WP_Query( $args );
 if ( $query->have_posts() ) :
 	?>
-<section class="section-archive">
+<section class="section-archive a-up">
 	<div class="container">
 		<div class="section-archive__sidebar">
 			<?php
@@ -103,7 +93,7 @@ if ( $query->have_posts() ) :
 				?>
 				<div class="accordion section-archive__sidebar__widget">
 					<div class="accordion-header">
-						<?php echo esc_html__( 'Jump to navigation' ); ?>
+						<?php echo esc_html__( 'By Case Type' ); ?>
 					</div>
 					<div class="accordion-body">
 						<?php foreach ( $case_categories as $category ) : ?>
@@ -116,40 +106,21 @@ if ( $query->have_posts() ) :
 					</div>
 				</div>
 			<?php endif; ?>
-			<?php
-			$states = get_terms( array( 'taxonomy' => 'practice_state' ) );
-			if ( $states ) :
-				?>
-				<div class="accordion section-archive__sidebar__widget">
-					<div class="accordion-header">
-						<?php echo esc_html( 'State Law Guides' ); ?>
-					</div>
-					<div class="accordion-body">
-						<?php foreach ( $states as $state ) : ?>
-							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['state'] ) && $_GET['state'] == $state->slug ) ? ' is-active' : ''; ?>" 
-								data-target="data-state"
-								data-state="<?php echo esc_attr( $state->slug ); ?>">
-								<?php echo esc_html( $state->name ); ?>
-							</button>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			<?php endif; ?>
 		</div>
 		<div class="section-archive__content">
 			<div class="section-archive__search-box">
-				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search for An FAQ' ); ?>">
+				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search The Blog' ); ?>">
 			</div>
 			<div class="section-archive__posts"
-				data-posts-per-page="-1" 
-				data-post-type="faq" 
+				data-posts-per-page="5" 
+				data-post-type="post" 
 				data-cat="" 
 				data-state="" 
 				data-s="">
 				<?php
 				while ( $query->have_posts() ) :
 					$query->the_post();
-					get_template_part( 'template-parts/loop', 'faq' );
+					get_template_part( 'template-parts/loop', 'post' );
 				endwhile;
 				?>
 			</div>

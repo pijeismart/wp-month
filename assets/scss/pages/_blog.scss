@@ -6,4 +6,90 @@
       padding-block: 10rem 16rem;
     }
   }
+  .section-archive {
+    margin-top: -15.6rem;
+    margin-bottom: 8rem;
+    @include mq(tablet) {
+      margin-top: -4.2rem;
+      margin-bottom: 10rem;
+    }
+    &__search {
+      @include mq(tablet) {
+        margin-bottom: 6rem;
+      }
+    }
+  }
+}
+
+.loop-post {
+  @include mq(tablet) {
+    margin-bottom: 5.2rem;
+  }
+  &:hover {
+    .loop-post__title {
+      color: $clr-green;
+    }
+    .loop-post__img img {
+      transform: scale(1.1);
+    }
+  }
+  &__link {
+    display: flex;
+    @include mq(tablet, max) {
+      align-items: center;
+    }
+    @include mq(tablet) {
+      flex-direction: row-reverse;
+    }
+  }
+  &__img {
+    flex: 0 0 8rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 8px;
+    overflow: hidden;
+    @include mq(tablet) {
+      flex: 0 0 26.5rem;
+      width: 18.5rem;
+      height: 18.5rem;
+    }
+    img {
+      @include cover-image;
+      transition: transform .3s ease-in-out;
+      will-change: transform;
+    }
+  }
+  &__content {
+    flex-grow: 1;
+    @include mq(tablet, max) {
+      margin-left: 1.6rem;
+      padding-block: 2.4rem;
+      border-bottom: 0.5px solid $clr-border;
+    }
+    @include mq(tablet) {
+      margin-right: 3.6rem;
+    }
+  }
+  &__title {
+    margin-bottom: 0.8rem;
+    font: 400 1.8rem/2.16rem $f-heading;
+    letter-spacing: -0.03em;
+    transition: color .3s ease-in-out;
+    @include mq(tablet) {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      line-height: 2.8rem;
+    }
+    @include mq(desktop-wide) {
+      font-size: 4rem;
+      line-height: 3.6rem;
+    }
+  }
+  &__excerpt {
+    font: 400 1.2rem/1.86rem $f-text;
+    @include mq(tablet) {
+      font-size: 1.6rem;
+      line-height: 2.48rem;
+    }
+  }
 }

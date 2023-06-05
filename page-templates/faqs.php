@@ -94,7 +94,7 @@ if ( isset( $_GET['case-category'] ) && isset( $GET['state'] ) ) {
 $query = new WP_Query( $args );
 if ( $query->have_posts() ) :
 	?>
-<section class="section-archive">
+<section class="section-archive a-up">
 	<div class="container">
 		<div class="section-archive__sidebar">
 			<?php
