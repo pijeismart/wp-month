@@ -213,6 +213,7 @@ function am_add_javascript() {
 		// external Javascript
 		$am_links = array(
 			'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js',
+			'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js',
 		);
 		foreach ( $am_links as $am_link ) {
 			// phpcs:disabled WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion
@@ -237,6 +238,7 @@ function am_add_css() {
 		'https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Open+Sans:wght@400;500;600;700&display=swap',
 		'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css',
 		'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css',
+		'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css',
 	);
 	foreach ( $am_links as $am_link ) {
 		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
