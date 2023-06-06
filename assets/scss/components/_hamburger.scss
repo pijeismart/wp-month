@@ -13,7 +13,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 50;
-  @include mq(desktop) {
+  @include mq(desktop-small) {
     display: none;
   }
 

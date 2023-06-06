@@ -60,6 +60,7 @@ function custom_post_type() {
 			'slug'       => 'practice-area',
 			'with_front' => false,
 		),
+		'menu_icon'           => 'dashicons-admin-site',
 	);
 	register_post_type( 'practice', $args_practice );
 
@@ -115,6 +116,7 @@ function custom_post_type() {
 			'slug'       => 'areas-we-serve',
 			'with_front' => false,
 		),
+		'menu_icon'           => 'dashicons-location-alt',
 	);
 	register_post_type( 'city', $args_city );
 
@@ -170,6 +172,7 @@ function custom_post_type() {
 			'slug'       => 'faq',
 			'with_front' => false,
 		),
+		'menu_icon'           => 'dashicons-info-outline',
 	);
 	register_post_type( 'faq', $args_faq );
 
@@ -221,6 +224,64 @@ function custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+		'menu_icon'           => 'dashicons-chart-bar',
 	);
 	register_post_type( 'case_result', $args_case );
+
+	
+	// Register Attorney Custom Post Type
+	$labels_case = array(
+		'name'                  => _x( 'Attorneys', 'attorneys', 'text_domain' ),
+		'singular_name'         => _x( 'Attorney', 'attorney', 'text_domain' ),
+		'menu_name'             => __( 'Attorneys', 'text_domain' ),
+		'name_admin_bar'        => __( 'Attorneys', 'text_domain' ),
+		'archives'              => __( 'Attorneys Archives', 'text_domain' ),
+		'attributes'            => __( 'Attorneys Attributes', 'text_domain' ),
+		'parent_item_colon'     => __( 'Parent Attorneys:', 'text_domain' ),
+		'all_items'             => __( 'All Attorneys', 'text_domain' ),
+		'add_new_item'          => __( 'Add Attorney', 'text_domain' ),
+		'add_new'               => __( 'Add Attorney', 'text_domain' ),
+		'new_item'              => __( 'New Attorney', 'text_domain' ),
+		'edit_item'             => __( 'Edit Attorney', 'text_domain' ),
+		'update_item'           => __( 'Update Attorney', 'text_domain' ),
+		'view_item'             => __( 'View Attorney', 'text_domain' ),
+		'view_items'            => __( 'View Attorneys', 'text_domain' ),
+		'search_items'          => __( 'Search Attorneys', 'text_domain' ),
+		'not_found'             => __( 'Not found', 'text_domain' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+		'insert_into_item'      => __( 'Insert into Practice', 'text_domain' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Practice', 'text_domain' ),
+		'items_list'            => __( 'Attorneys list', 'text_domain' ),
+		'items_list_navigation' => __( 'Attorneys list navigation', 'text_domain' ),
+		'filter_items_list'     => __( 'Filter Attorneys list', 'text_domain' ),
+	);
+	$args_case   = array(
+		'label'               => __( 'Attorneys', 'text_domain' ),
+		'description'         => __( 'Attorneys post type', 'text_domain' ),
+		'labels'              => $labels_case,
+		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_rest'        => true,
+		'menu_position'       => 5,
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'menu_icon'           => 'dashicons-welcome-learn-more',
+		'rewrite'             => array(
+			'slug'       => 'attorney',
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'attorney', $args_case );
 }

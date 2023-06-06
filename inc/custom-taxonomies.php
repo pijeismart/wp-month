@@ -12,7 +12,7 @@ function custom_taxonomies() {
 	// Claim Type - Apply to all post types (including page/post)
 	register_taxonomy(
 		'claim_type',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		array( 'practice', 'post', 'page', 'city', 'faq', 'case_result' ),             // post type name
+		array( 'practice', 'post', 'page', 'city', 'faq', 'case_result', 'attorney' ),             // post type name
 		array(
 			'hierarchical' => true,
 			'label'        => 'Claim Type', // display name
@@ -27,7 +27,7 @@ function custom_taxonomies() {
 	// Case Category - Apply to all post types (including page/post)
 	register_taxonomy(
 		'case_category',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		array( 'practice', 'post', 'page', 'city', 'faq', 'case_result' ),             // post type name
+		array( 'practice', 'post', 'page', 'city', 'faq', 'case_result', 'attorney' ),             // post type name
 		array(
 			'hierarchical' => true,
 			'label'        => 'Case Category', // display name

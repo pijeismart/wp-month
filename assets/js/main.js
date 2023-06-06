@@ -189,6 +189,7 @@
           theme.initPostCarousel
         );
         helper.isElementExist('.section-archive', theme.initCPT);
+        helper.isElementExist('.attorney-details__sidebar', theme.initAttorneySidebar);
 
         $('.navigation-bar__social__item.twitter').on('click', function() {
           const url = $(this).attr('data-url');
@@ -511,6 +512,21 @@
         $('.podcasts-loadmore').hide();
         $('.podcast').fadeIn();
       });
+    },
+    /**
+     * init attorney sidebar
+     */
+    initAttorneySidebar() {
+      const $slider = $('.attorney-details__sidebar'),
+            option = {
+              arrows: false,
+              dots: false,
+              autoplay: true,
+              autoplaySpeed: 2000,
+              variableWidth: true
+            };
+      helper.mobileSlider($slider, option);
+      helper.windowResize(theme.initAttorneySidebar);
     }
   };
 

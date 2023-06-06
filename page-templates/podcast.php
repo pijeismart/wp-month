@@ -129,7 +129,7 @@ get_header();
 							<div class="embed-container">
 								<?php echo $youtube; ?>
 							</div>
-							<a class="podcast-btn" href="<?php echo esc_url( $src ); ?>" data-fancybox>
+							<a class="podcast-btn" href="<?php echo esc_url( $src ); ?>">
 								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Podcast">
                             </a>
 						</div>
