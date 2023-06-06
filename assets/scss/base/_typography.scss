@@ -2,16 +2,18 @@
  * Basic typography style for copy text
  */
 
+
+
 h1,
 .h1 {
   font: 400 5.5rem/4.4rem $f-heading;
   letter-spacing: -0.03em;
   @include mq(tablet) {
-    font-size: 6.5rem;
+    font-size: 6rem;
     line-height: 0.9; 
   }
   @include mq(desktop-wide) {
-    font-size: 9rem;
+    font-size: 7rem;
   }
 }
 

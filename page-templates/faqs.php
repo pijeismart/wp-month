@@ -42,9 +42,9 @@ get_header();
 			?>
 		</div>
 		<?php if ( have_rows( 'related_pages' ) ) : ?>
-			<div class="archive-banner__right a-up">
-				<h6><?php echo esc_html__( 'Related Pages' ); ?></h6>
-				<ul>
+			<div class="archive-banner__right related-pages-block a-up">
+				<h6 class="related-pages-block__heading"><?php echo esc_html__( 'Related Pages' ); ?></h6>
+				<ul class="related-pages-block__link">
 					<?php
 					while ( have_rows( 'related_pages' ) ) :
 						the_row();

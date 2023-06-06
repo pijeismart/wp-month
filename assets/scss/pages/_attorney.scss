@@ -1,0 +1,113 @@
+.archive-attorney {
+  padding-block: 2.4rem;
+  @include mq(tablet) {
+    background-color: transparent;
+    background-image: none;
+  }
+  .container {
+    position: relative;
+    display: flex;
+    @include mq(tablet, max) {
+      flex-direction: column-reverse;
+    }
+  }
+  &__video {
+    border-radius: 1rem;
+    overflow: hidden;
+    @include mq(tablet, max) {
+      margin-bottom: 2.4rem;
+    }
+    @include mq(tablet) {
+      flex-grow: 1;
+    }
+  }
+  &__content {
+    @include mq(tablet) {
+      margin-right: 5rem;
+      flex: 0 0 50%;
+      padding-block: 7.4rem;
+    }
+    @include mq(desktop) {
+      margin-right: 14rem;
+      flex-basis: 49.8rem;
+    }
+  }
+  &__links {
+    @include mq(tablet, max) {
+      order: -1;
+    }
+    @include mq(tablet) {
+      position: absolute;
+      right: calc(var(--gutter) + 4px);
+      bottom: calc(var(--gutter) + 4px);
+    }
+  }
+  &__subheading {
+    margin-bottom: 2.4rem;
+    color: $clr-green;
+    @include mq(tablet) {
+      margin-bottom: 2rem;
+    }
+  }
+  &__heading {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 3rem;
+    }
+    span {
+      color: $clr-green;
+    }
+  }
+}
+
+.attorney-cta {
+  position: relative;
+  padding-block: 4rem;
+  background-color: $clr-navy;
+  color: $clr-white;
+  @include mq(tablet, max) {
+    text-align: center;
+  }
+  @include mq(tablet) {
+    padding-block: 11rem;
+  }
+  &__img {
+    margin: 0 auto 2.4rem;
+    max-width: 20rem;
+    @include mq(tablet) {
+      position: absolute;
+      margin-bottom: 0;
+      top: 50%;
+      right: var(--gutter);
+      height: 100%;
+      max-width: 95rem;
+      transform: translateY(-50%);
+    }
+    @include mq(desktop-wide) {
+      right: calc((100vw - 130rem) / 2 + var(--gutter));
+    }
+  }
+  &__heading {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 4.2rem;
+    }
+  }
+  &__content {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 4.2rem;
+    }
+  }
+  &__cta {
+    @include mq(tablet, max) {
+      display: block;
+      text-align: left;
+    }
+  }
+  &__inner {
+    @include mq(tablet) {
+      max-width: 53.3rem;
+    }
+  }
+}

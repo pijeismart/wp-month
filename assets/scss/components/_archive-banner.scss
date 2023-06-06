@@ -15,35 +15,6 @@
       max-width: 86rem;
     }
   }
-  &__right {
-    padding: 2.4rem;
-    border: 1px solid $clr-border;
-    border-radius: 1rem;
-    background-color: $clr-white;
-    @include mq(tablet, max) {
-      margin-top: 4rem;
-    }
-    @include mq(tablet) {
-      padding-inline: 3.2rem;
-    }
-    h6 {
-      margin-bottom: 2.4rem;
-      font: 700 1.4rem/1.6 $f-text;
-    }
-    ul {
-      padding-left: 0;
-      list-style: none;
-      li {
-        &:not(:last-child) {
-          margin-bottom: 2.4rem;
-        }
-        a {
-          display: block;
-          width: 100%;
-        }
-      }
-    }
-  }
   .breadcrumbs {
     margin-bottom: 2.4rem;
     @include mq(tablet) {
