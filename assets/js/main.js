@@ -135,8 +135,8 @@
           $(this)
             .next()
             .toggleClass('is-active');
+          return false;
         }
-        return false;
       });
       // add header height value
       $(window).on('load resize', function() {

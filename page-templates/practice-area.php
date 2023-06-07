@@ -80,11 +80,10 @@ $states = get_terms( array( 'taxonomy' => 'practice_state' ) );
 					<h6 class=""><?php echo esc_html( 'By State' ); ?></h6>
 					<div class="section-archive__sidebar__widget__body">
 						<?php foreach ( $states as $state ) : ?>
-							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['state'] ) && $_GET['state'] == $state->slug ) ? ' is-active' : ''; ?>" 
-								data-target="data-state"
-								data-state="<?php echo esc_attr( $state->slug ); ?>">
+							<a class="section-archive__filter__btn<?php echo ( isset( $_GET['state'] ) && $_GET['state'] == $state->slug ) ? ' is-active' : ''; ?>" 
+								href="#<?php echo esc_attr( $state->slug ); ?>">
 								<?php echo esc_html( $state->name ); ?>
-							</button>
+							</a>
 						<?php endforeach; ?>
 					</div>
 				</div>
@@ -111,7 +110,7 @@ $states = get_terms( array( 'taxonomy' => 'practice_state' ) );
 					$query = new WP_Query( $args );
 					if ( $query->have_posts() ) :
 						?>
-						<div class="loop-state">
+						<div class="loop-state" id="<?php echo esc_attr( $state->slug ); ?>">
 							<div class="loop-state__info">
 								<h2 class="loop-state__name"><?php echo $state->name; ?></h2>
 								<p class="loop-state__desc"><?php echo $state->description; ?></p>

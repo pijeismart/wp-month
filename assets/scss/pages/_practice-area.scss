@@ -13,10 +13,17 @@
     }
   }
   .section-archive {
+    @include mq(tablet) {
+      margin-top: -10rem;
+    }
     &__sidebar__widget {
       padding: 4rem 3.2rem;
       border: 1px solid $clr-border;
       border-radius: 1rem;
+
+      @include mq(tablet, max) {
+        margin-top: -5rem;
+      }
       @include mq(tablet) {
         padding: 5rem;
       }
@@ -36,6 +43,9 @@
       font: 700 1.2rem/1.6 $f-text;
       background-color: transparent;
       border-right: none;
+      @include mq(tablet, max) {
+        border-left: none;
+      }
       @include mq(tablet) {
         font-weight: 400;
         font-size: 1.4rem;
@@ -50,6 +60,7 @@
 .loop-state {
   margin-bottom: 8rem;
   padding-block: 4rem;
+  background-color: $clr-white;
   @include mq(tablet) {
     margin-bottom: 2rem;
     padding: 6rem 4rem 6rem 6rem;
