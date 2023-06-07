@@ -246,11 +246,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_647e7d6ef4c11",
-            "label": "Podcast",
-            "name": "podcast",
+            "key": "field_647fef942305d",
+            "label": "Posts Per Page",
+            "name": "posts_per_page",
             "aria-label": "",
-            "type": "repeater",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -259,54 +259,13 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_647e7d89f4c12",
-                    "label": "Title",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_647e7d6ef4c11"
-                },
-                {
-                    "key": "field_647e7db7f4c13",
-                    "label": "Youtube",
-                    "name": "youtube",
-                    "aria-label": "",
-                    "type": "oembed",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "width": "",
-                    "height": "",
-                    "parent_repeater": "field_647e7d6ef4c11"
-                }
-            ]
+            "default_value": 9,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_647e7dc8f4c14",
@@ -411,5 +370,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686016118
+    "modified": 1686106015
 }

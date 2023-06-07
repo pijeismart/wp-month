@@ -339,7 +339,52 @@ function ajax_cpt() {
 	endif;
 	$res         = new \stdClass();
 	$res->output = ob_get_clean();
+	if ( $query->max_num_pages > $paged ) :
+		$res->show_loadmore = true;
+	endif;
 	wp_reset_postdata();
 	echo wp_json_encode( $res );
 	wp_die();
 }
+
+
+/**
+ * Extract youtube URL and than get preview image and save as featured image
+ */
+function set_youtube_as_featured_image( $post_id, $post, $update ) {
+	global $post;
+	$p_type = get_post_type( $post );
+	if ( ( ! defined( 'DOING_AUTOSAVE' ) || ! DOING_AUTOSAVE ) && ( 'video' == $p_type ) ) {
+		if ( ! has_post_thumbnail( $post ) ) {
+			$youtube_video_id = get_field( 'youtube_video_id', $post_id );
+
+			$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_video_id . '/0.jpg';
+			$get               = wp_remote_get( $youtube_thumb_url );
+			$mime_type         = wp_remote_retrieve_header( $get, 'content-type' );
+			if ( ! substr_count( $mime_type, 'image' ) ) {
+				return false;
+			}
+			$name = 'youtube-thumb-post-' . $post_id . '.jpg';
+			$bits = wp_upload_bits( $name, '', wp_remote_retrieve_body( $get ) );
+			if ( $bits['error'] ) {
+				return false;
+			}
+			// save attachment post, and setting as post thumbnails
+			$thumb_data   = array(
+				'post_title'     => $post->post_title . ' - Video Image',
+				'post_mime_type' => $mime_type,
+			);
+			$thumbnail_id = wp_insert_attachment( $thumb_data, $bits['file'], $post_id );
+			if ( $thumbnail_id ) {
+				require_once ABSPATH . 'wp-admin/includes/image.php';
+				$metadata = wp_generate_attachment_metadata( $thumbnail_id, $bits['file'] );
+				wp_update_attachment_metadata( $thumbnail_id, $metadata );
+				set_post_thumbnail( $post, $thumbnail_id );
+			}
+		}
+	}
+}
+
+// set featured image and set or publish post
+add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
+add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );

@@ -1,4 +1,4 @@
-<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php') || is_page_template( 'page-templates/blog.php') ) : ?>
+<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php') || is_page_template( 'page-templates/blog.php') || is_page_template( 'page-templates/practice-area.php' ) ) : ?>
 			<section class="results">
 				<div class="container">
 					<div class="results-content">

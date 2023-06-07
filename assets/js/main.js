@@ -188,7 +188,7 @@
           '.posts-slider__carousel',
           theme.initPostCarousel
         );
-        helper.isElementExist('.section-archive', theme.initCPT);
+        helper.isElementExist('.section-archive__posts', theme.initCPT);
         helper.isElementExist('.attorney-details__sidebar', theme.initAttorneySidebar);
 
         $('.navigation-bar__social__item.twitter').on('click', function() {
@@ -404,6 +404,9 @@
 
     initCPT() {
       const $grid = $('.section-archive__posts');
+      const $loadmore = $('.cpt-load-more');
+      const $loadmoreBtn = $('.cpt-load-more-btn');
+
       // ajax cpt function
       function ajaxCPT(loadmore = false) {
         const paged = $grid.attr('data-paged');
@@ -425,24 +428,46 @@
             posts_per_page: postsPerPage
           },
           beforeSend() {
-            $('html, body').animate(
-              {
-                scrollTop: $grid.offset().top - $('header').outerHeight() - 50
-              },
-              500
-            );
-            $grid.html(
-              '<div class="lds-wrapper"><div class="lds-dual-ring"></div></div>'
-            );
+            if (loadmore) {
+              $loadmore.hide();
+              $grid.append(
+                '<div class="lds-wrapper"><div class="lds-dual-ring"></div></div>'
+              );
+            } else {
+              $('html, body').animate(
+                {
+                  scrollTop: $grid.offset().top - $('header').outerHeight() - 50
+                },
+                500
+              );
+              $grid.html(
+                '<div class="lds-wrapper"><div class="lds-dual-ring"></div></div>'
+              );
+            }
           },
           success(res) {
             const data = JSON.parse(res);
             $('.lds-wrapper').remove();
-            $grid.html(data.output);
+            if (loadmore) {
+              $grid.append(data.output);
+            } else {
+              $grid.html(data.output);
+            }
+            if (data.show_loadmore) {
+              $loadmore.show();
+            }
           },
           complete() {}
         });
       }
+
+      // load more
+      $loadmoreBtn.on('click', function() {
+        let paged = parseInt($grid.attr('data-paged'));
+        paged += 1;
+        $grid.attr('data-paged', paged);
+        ajaxCPT(true);
+      });
 
       // click category
       $('.section-archive__filter__btn').on('click', function() {
@@ -508,10 +533,6 @@
             };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initPodcasts);
-      $('.podcasts-loadmore__btn').on('click', function() {
-        $('.podcasts-loadmore').hide();
-        $('.podcast').fadeIn();
-      });
     },
     /**
      * init attorney sidebar

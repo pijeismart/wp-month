@@ -111,53 +111,40 @@ get_header();
 </section>
 
 <!-- Podcasts -->
-<?php if ( have_rows( 'podcast' ) ) : ?>
-<section class="podcasts-grid">
-	<div class="container">
-		<div class="podcasts-grid__inner">
-			<?php
-			while ( have_rows( 'podcast' ) ) :
-				the_row();
-				$title   = get_sub_field( 'title' );
-				$youtube = get_sub_field( 'youtube' );
-				if ( $youtube ) :
-					preg_match( '/src="(.+?)"/', $youtube, $matches );
-					$src = $matches[1];
-					?>
-					<div class="podcast">
-						<div class="podcast-video">
-							<div class="embed-container">
-								<?php echo $youtube; ?>
-							</div>
-							<a class="podcast-btn" href="<?php echo esc_url( $src ); ?>">
-								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Podcast">
-                            </a>
-						</div>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'title',
-								't'  => 'p',
-								'tc' => 'podcast-title',
-							)
-						);
-						?>
-					</div>
-					<?php
-				endif;
-				if ( 9 == get_row_index() ) :
-					?>
-					<div class="podcasts-loadmore d-md-only">
-						<button class="underline-link podcasts-loadmore__btn"><?php echo esc_html( 'Load More' ); ?></button>
-					</div>
-					<?php
-				endif;
-			endwhile;
-			?>
+<?php
+$posts_per_page = get_field( 'posts_per_page' ) ? get_field( 'posts_per_page' ) : 9;
+$args           = array(
+	'post_type'      => 'video',
+	'posts_per_page' => $posts_per_page,
+	'post_status'    => 'publish',
+);
+$query          = new WP_Query( $args );
+if ( $query->have_posts() ) :
+	?>
+	<section class="podcasts-grid">
+		<div class="container">
+			<div class="podcasts-grid__inner section-archive__posts" 
+				data-post-type="video" 
+				data-posts-per-page="<?php echo esc_attr( $posts_per_page ); ?>" 
+				data-paged="1">
+				<?php
+				while ( $query->have_posts() ) :
+					$query->the_post();
+					get_template_part( 'template-parts/loop', 'video' );
+				endwhile;
+				?>
+			</div>
+			<?php if ( $query->max_num_pages > 1 ) : ?>
+				<div class="podcasts-loadmore d-md-only cpt-load-more">
+					<button class="underline-link podcasts-loadmore__btn cpt-load-more-btn"><?php echo esc_html( 'Load More' ); ?></button>
+				</div>
+			<?php endif; ?>
 		</div>
-	</div>
-</section>
+	</section>
+	<?php
+endif;
+wp_reset_postdata();
+?>
 
 <!-- Content Image -->
 <section class="p-content-image">
@@ -202,6 +189,5 @@ get_header();
 		</div>
 	</div>
 </section>
-<?php endif; ?>
 <?php
 get_footer();

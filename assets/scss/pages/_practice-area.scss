@@ -1,0 +1,134 @@
+.page-template-practice-area {
+  --header-bg: #EFF2F6;
+  .archive-banner {
+    padding-block: 2.6rem 20.6rem;
+    @include mq(tablet) {
+      padding-block: 8rem 18rem;
+    }
+    &__subheading {
+      margin-bottom: 2.4rem;
+      @include mq(tablet) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+  .section-archive {
+    &__sidebar__widget {
+      padding: 4rem 3.2rem;
+      border: 1px solid $clr-border;
+      border-radius: 1rem;
+      @include mq(tablet) {
+        padding: 5rem;
+      }
+      &__body {
+        padding-left: 2rem;
+        border-left: 1px solid $clr-green;
+      }
+      h6 {
+        margin-bottom: 2rem;
+        font: 700 1.5rem/1.5 $f-text;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+      }
+    }
+    &__filter__btn {
+      padding: 0;
+      font: 700 1.2rem/1.6 $f-text;
+      background-color: transparent;
+      border-right: none;
+      @include mq(tablet) {
+        font-weight: 400;
+        font-size: 1.4rem;
+      }
+      &:hover {
+        color: $clr-green;
+      }
+    }
+  }
+}
+
+.loop-state {
+  margin-bottom: 8rem;
+  padding-block: 4rem;
+  @include mq(tablet) {
+    margin-bottom: 2rem;
+    padding: 6rem 4rem 6rem 6rem;
+    border: 1px solid $clr-border;
+    border-radius: 1rem;
+  } 
+  &__info {
+    margin-bottom: 4rem;
+    @include mq(tablet) {
+      display: flex;
+      margin-bottom: 3rem;
+    }
+  }
+  &__name {
+    font: 400 3.6rem/1.15 $f-heading;
+    @include mq(tablet, max) {
+      margin-bottom: 2.4rem;
+    }
+    @include mq(tablet) {
+      flex: 0 0 20rem;
+    }
+  }
+  &__desc {
+    @include mq(tablet) {
+      flex-grow: 1;
+    }
+  }
+}
+
+.loop-practice-area {
+  margin-bottom: 4rem;
+  @include mq(tablet) {
+    display: flex;
+    margin-bottom: 4.8rem;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__content {
+    @include mq(tablet) {
+      margin-right: 3rem;
+      flex: 0 0 27rem;
+    }
+  }
+  &__title {
+    display: inline-block;
+    margin-bottom: 8px;
+    font: 700 1.8rem/1.6 $f-text;
+    color: $clr-navy;
+    @include mq(tablet) {
+      margin-bottom: 1.6rem;
+    }
+  }
+  &__excerpt {
+    margin-bottom: 2.4rem;
+    p {
+      font: 400 1.2rem/1.6 $f-text;
+    }
+  }
+  &__metas {
+    padding-top: 2.4rem;
+    border-top: 1px solid $clr-green;
+    @include mq(tablet) {
+      flex-grow: 1;
+    }
+  }
+  &__meta {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+    img {
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+    }
+    span {
+      font: 700 1.4rem/1.3 $f-text;
+      letter-spacing: 0.01em;
+    }
+  }
+}
