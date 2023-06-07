@@ -137,6 +137,13 @@
       }
     }
   }
+  .lds-wrapper {
+    @include mq(tablet) {
+      grid-column: span 3;
+      margin-block: 3rem;
+      text-align: center;
+    }
+  }
   .podcast {
     position: relative;
     border-radius: 1.2rem;
