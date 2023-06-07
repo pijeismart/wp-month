@@ -676,6 +676,13 @@
                                         "operator": "==",
                                         "value": "contained-ctas"
                                     }
+                                ],
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "==",
+                                        "value": "experience-testimonial"
+                                    }
                                 ]
                             ],
                             "wrapper": {
@@ -779,6 +786,26 @@
                             "endpoint": 0
                         },
                         {
+                            "key": "field_646ebe14d7b0a",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_6465ec7d90fda",
                             "label": "Options",
                             "name": "options",
@@ -788,7 +815,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -807,11 +834,11 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_646ebe14d7b0a",
-                            "label": "Anchor ID",
-                            "name": "anchor_id",
+                            "key": "field_6480adb28ed29",
+                            "label": "Content Direction",
+                            "name": "content_direction",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "button_group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -820,11 +847,14 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right"
+                            },
+                            "default_value": "right",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
                         }
                     ],
                     "min": "",
@@ -836,6 +866,23 @@
                     "label": "Testimonials",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_646ebe22d7b0b",
+                            "label": "Content",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
                         {
                             "key": "field_6465ecc090fdd",
                             "label": "Testimonials",
@@ -922,23 +969,6 @@
                                     "parent_repeater": "field_6465ecc090fdd"
                                 }
                             ]
-                        },
-                        {
-                            "key": "field_646ebe22d7b0b",
-                            "label": "Content",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
                         },
                         {
                             "key": "field_646ebe2ed7b0c",
@@ -4195,5 +4225,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686151582
+    "modified": 1686154721
 }

@@ -203,14 +203,7 @@
             .closest('.cards-slider__showmore')
             .hide();
         });
-
-        // $('.video-player__btn').on('click', function() {
-        //   const $parent = $(this).closest('.video-player'),
-        //     video = $('video', $parent).get(0);
-        //   video.play();
-        //   $(this).hide();
-        //   return false;
-        // });
+        
         $('.navigation-popup__link').on('click', function() {
           $.fancybox.close();
         });
