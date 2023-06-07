@@ -30,7 +30,12 @@
   }
   .posts-pagination {
     margin-left: auto;
-    max-width: 40rem;
+    @include mq(tablet) {
+      max-width: 40rem;
+    }
+    .slider-pagination {
+      padding-inline: 2rem;
+    }
     .prev-posts {
       padding-left: 3rem;
       padding-right: 0;
