@@ -89,7 +89,7 @@ if ( $query->have_posts() ) :
 	<div class="container">
 		<div class="section-archive__sidebar">
 			<div class="section-archive__search-box">
-				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search for someone' ); ?>">
+				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search Blog' ); ?>">
 			</div>
 			<?php
 			$categories = get_categories();
