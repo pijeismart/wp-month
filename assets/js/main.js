@@ -194,6 +194,7 @@
           theme.initAttorneySidebar
         );
 
+
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
           const $cards = $(this).closest('.cards-slider');
@@ -202,6 +203,14 @@
             .closest('.cards-slider__showmore')
             .hide();
         });
+
+        // $('.video-player__btn').on('click', function() {
+        //   const $parent = $(this).closest('.video-player'),
+        //     video = $('video', $parent).get(0);
+        //   video.play();
+        //   $(this).hide();
+        //   return false;
+        // });
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {

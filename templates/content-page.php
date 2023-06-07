@@ -14,7 +14,7 @@ if ( have_rows( 'modules' ) ) :
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
-				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<?php
 				get_template_part_args(
 					'template-parts/content-modules-image',
@@ -107,7 +107,7 @@ if ( have_rows( 'modules' ) ) :
 			?>
 			<!-- Cards Slider -->
 			<section class="cards-slider cards-slider--<?php echo esc_attr( $theme ); ?>"
-				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<?php if ( $case_results ) : ?>
 					<div class="cards-slider__carousel">
 						<?php
@@ -141,7 +141,7 @@ if ( have_rows( 'modules' ) ) :
 			?>
 			<!-- Content Image -->
 			<section class="content-image content-image--<?php echo esc_attr( $type ); ?>"
-				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="content-image__media">
 						<?php
@@ -170,7 +170,7 @@ if ( have_rows( 'modules' ) ) :
 								<?php
 								$claim_types = get_sub_field( 'claim_type' );
 								if ( $claim_types ) :
-									$args           = array(
+									$args  = array(
 										'post_type'      => 'practice',
 										'post_status'    => 'publish',
 										'post__not_in'   => array( get_the_ID() ),
@@ -183,7 +183,7 @@ if ( have_rows( 'modules' ) ) :
 											),
 										),
 									);
-									$query          = new WP_Query( $args );
+									$query = new WP_Query( $args );
 									if ( $query->have_posts() ) :
 										?>
 										<ul class="content-image__experience__cities">
@@ -295,7 +295,7 @@ if ( have_rows( 'modules' ) ) :
 			<!-- Testimonials -->
 			<?php if ( have_rows( 'testimonials' ) ) : ?>
 				<section class="testimonials"
-					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 					<div class="testimonials-desktop d-md-only a-up">
 						<div class="testimonials-main-slider">
 							<?php
@@ -471,7 +471,7 @@ if ( have_rows( 'modules' ) ) :
 		elseif ( 'map' == get_row_layout() ) :
 			?>
 			<!-- Map -->
-			<section class="map"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="map"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="map-content">
 						<?php
@@ -525,7 +525,7 @@ if ( have_rows( 'modules' ) ) :
 			$posts = get_sub_field( 'posts' );
 			?>
 			<!-- Posts -->
-			<section class="posts-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="posts-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="posts-slider__content">
 						<?php
@@ -584,7 +584,7 @@ if ( have_rows( 'modules' ) ) :
 			$gallery = get_sub_field( 'gallery' );
 			?>
 			<!-- Gallery -->
-			<section class="masonry"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="masonry"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php if ( $gallery ) : ?>
 					<div class="masonry-gallery">
@@ -640,7 +640,7 @@ if ( have_rows( 'modules' ) ) :
 			$form = get_sub_field( 'form' );
 			?>
 			<!-- Contact Form -->
-			<section class="contact-form"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="contact-form"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="contact-form__main">
 						<?php if ( have_rows( 'cards' ) ) : ?>
@@ -806,7 +806,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 		<?php elseif ( 'cards_content' == get_row_layout() ) : ?>
 			<!-- Two Cards and Content -->
-			<section class="cards-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="cards-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="cards-content__cards">
 						<?php
@@ -878,7 +878,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 		<?php elseif ( 'testimonials_slider' == get_row_layout() ) : ?>
 			<!-- Testimonial Slider -->
-			<section class="testimonial-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="testimonial-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<?php if ( have_rows( 'testimonials' ) ) : ?>
 				<div class="testimonial-slider__items">
 					<?php
@@ -915,7 +915,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 		<?php elseif ( 'milestone_cards' == get_row_layout() ) : ?>
 			<!-- Milestone Cards -->
-			<section class="milestone-cards"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="milestone-cards"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
 					get_template_part_args(
@@ -971,9 +971,12 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
-		<?php elseif ( 'podcasts' == get_row_layout() ) : ?>
+			<?php
+		elseif ( 'podcasts' == get_row_layout() ) :
+			$podcasts = get_sub_field( 'podcasts' );
+			?>
 		<!-- Podcasts -->
-			<section class="podcasts"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="podcasts"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
 					get_template_part_args(
@@ -1006,51 +1009,34 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
-					<?php if ( have_rows( 'podcasts' ) ) : ?>
+					<?php if ( $podcasts ) : ?>
 						<div class="podcasts-items">
 							<?php
-							while ( have_rows( 'podcasts' ) ) :
-								the_row();
-								$image = get_sub_field( 'image' );
-								$video = get_sub_field( 'video' );
+							foreach ( $podcasts as $post ) :
+								setup_postdata( $post );
+								$youtube_id  = get_field( 'youtube_video_id' );
+								$youtube_url = 'https://www.youtube.com/embed/' . $youtube_id . '?feature=oembed';
 								?>
-							<div class="podcasts-item a-up a-delay-1">
-								<div class="podcasts-item__media">
-									<?php
-									get_template_part(
-										'template-parts/content-modules',
-										'media',
-										array(
-											'image' => $image,
-											'video' => $video,
-										)
-									);
-									?>
+								<div class="podcasts-item a-up a-delay-1">
+									<?php if ( has_post_thumbnail() ) : ?>
+									<div class="podcasts-item__media video-player">
+										<?php the_post_thumbnail(); ?>
+										<a href="<?php echo esc_url( $youtube_url ); ?>" class="video-player__btn" data-fancybox>
+											<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play-blue.svg' ); ?>" alt="Play">
+										</a>
+									</div>
+									<?php endif; ?>
+									<h6 class="opdcasts-item__heading"><?php the_title(); ?></h6>
+									<?php if ( has_excerpt() ) : ?>
+										<div class="podcasts-item__content"><?php the_excerpt(); ?></div>
+									<?php endif; ?>
 								</div>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'heading',
-										't'  => 'h6',
-										'tc' => 'podcasts-item__heading',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'content',
-										'w'  => 'div',
-										'wc' => 'podcasts-item__content',
-									)
-								);
-								?>
-							</div>
-							<?php endwhile; ?>
+							<?php endforeach; ?>
 						</div>
-					<?php endif; ?>
+						<?php
+						endif;
+					wp_reset_postdata();
+					?>
 				</div>
 			</section>
 			<?php
@@ -1059,7 +1045,7 @@ if ( have_rows( 'modules' ) ) :
 			$video = get_sub_field( 'video' );
 			?>
 			<!-- Section Video Content -->
-			<section class="video-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="video-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="video-content__wrapper">
 						<?php
@@ -1073,7 +1059,7 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 						<div class="video-content__main">
-							<div class="video-content__video a-up a-delay-1">
+							<div class="video-content__video a-up a-delay-1 video-player">
 								<?php
 								get_template_part(
 									'template-parts/content-modules',
@@ -1081,9 +1067,15 @@ if ( have_rows( 'modules' ) ) :
 									array(
 										'image' => $image,
 										'video' => $video,
+										'disable_autoplay' => true,
 									)
 								);
 								?>
+								<?php if ( $video ) : ?>
+									<a href="<?php echo esc_url( $video ); ?>" class="video-player__btn" data-fancybox>
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play-blue.svg' ); ?>" alt="Play">
+									</a>
+								<?php endif; ?>
 							</div>
 							<div class="video-content__content a-up a-delay-1">
 								<?php
@@ -1117,7 +1109,7 @@ if ( have_rows( 'modules' ) ) :
 			$claim_types     = get_sub_field( 'claim_type' );
 			?>
 			<!-- Practice FAQs -->
-			<section class="practice-faqs"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="practice-faqs"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="practice-faqs__info a-up">
 						<?php
@@ -1253,7 +1245,7 @@ if ( have_rows( 'modules' ) ) :
 			$claim_types     = get_sub_field( 'claim_type' );
 			?>
 			<!-- Practice Case Results -->
-			<section class="case-results"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="case-results"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="case-results__info a-up">
 						<?php
@@ -1424,7 +1416,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 		<?php elseif ( 'practice_areas' == get_row_layout() ) : ?>
 			<!-- Practice Areas -->
-			<section class="practice-areas"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="practice-areas"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="practice-areas__main">
 						<div class="practice-areas__title a-up">
@@ -1521,7 +1513,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 		<?php elseif ( 'block_content' == get_row_layout() ) : ?>
 			<!-- Block Content -->
-			<section class="block-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="block-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
 					get_template_part_args(
@@ -1615,7 +1607,7 @@ if ( have_rows( 'modules' ) ) :
 			$social = get_sub_field( 'social' );
 			?>
 			<!-- Navigation Bar -->
-			<section class="navigation-bar"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ). '"' : ''; ?>>
+			<section class="navigation-bar"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="navigation-bar__main">
 						<div class="navigation-bar__nav">
