@@ -4064,6 +4064,22 @@
                             ]
                         },
                         {
+                            "key": "field_6480af24e5126",
+                            "label": "CTA",
+                            "name": "cta",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
                             "key": "field_646ebfacd7b33",
                             "label": "Settings",
                             "name": "",
@@ -4225,5 +4241,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686154721
+    "modified": 1686155054
 }

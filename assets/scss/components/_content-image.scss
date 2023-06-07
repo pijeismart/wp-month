@@ -48,6 +48,13 @@
       }
     }
   }
+  &--left {
+    .container {
+      @include mq(tablet) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
   .container {
     @include mq(tablet) {
       display: flex;

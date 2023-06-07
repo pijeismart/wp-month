@@ -135,12 +135,13 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'content_image' == get_row_layout() ) :
-			$image = get_sub_field( 'image' );
-			$video = get_sub_field( 'video' );
-			$type  = get_sub_field( 'options' );
+			$image     = get_sub_field( 'image' );
+			$video     = get_sub_field( 'video' );
+			$type      = get_sub_field( 'options' );
+			$direction = get_sub_field( 'content_direction' );
 			?>
 			<!-- Content Image -->
-			<section class="content-image content-image--<?php echo esc_attr( $type ); ?>"
+			<section class="content-image content-image--<?php echo esc_attr( $type ); ?> content-image--<?php echo esc_attr( $direction ); ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="content-image__media">
@@ -1065,8 +1066,8 @@ if ( have_rows( 'modules' ) ) :
 									'template-parts/content-modules',
 									'media',
 									array(
-										'image' => $image,
-										'video' => $video,
+										'image'            => $image,
+										'video'            => $video,
 										'disable_autoplay' => true,
 									)
 								);
@@ -1600,6 +1601,15 @@ if ( have_rows( 'modules' ) ) :
 						<?php endwhile; ?>
 					</div>
 					<?php endif; ?>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-cta',
+						array(
+							'v' => 'cta',
+							'c' => 'btn btn-primary block-content__cta',
+						)
+					);
+					?>
 				</div>
 			</section>
 			<?php
@@ -1627,7 +1637,7 @@ if ( have_rows( 'modules' ) ) :
 								while ( have_rows( 'sections' ) ) :
 									the_row();
 									if ( get_row_index() < 4 ) :
-									?>
+										?>
 									<div class="navigation-bar__nav__menu__item">
 										<?php
 										get_template_part_args(
