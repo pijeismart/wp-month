@@ -1,27 +1,16 @@
-@font-face {
-  font-family: "Founders Grotesk";
-  src: url("../fonts/Founders/founders-grotesk-web-regular.eot");
-  src: url("../fonts/Founders/founders-grotesk-web-regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/Founders/founders-grotesk-web-regular.woff2") format("woff2"),
-    url("../fonts/Founders/founders-grotesk-web-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
-  color: #01161e;
-  font: normal 16px / 1.625 "Founders Grotesk", sans-serif;
+  color: #0A1631;
+  font: normal 16px / 1.625 sans-serif;
 }
 
 .login {
   display: flex;
   justify-content: center;
-  background-color: #f1f0d8;
+  background-color: #EFF2F6;
 }
 
 .message {
-  color: #01161e;
+  color: #0A1631;
   font-weight: 600;
 }
 
@@ -31,7 +20,7 @@ body {
 }
 
 .login #login h1 a {
-  background-image: url("../img/logo.svg");
+  background-image: url("../img/logo.png");
   height: 80px;
   width: 200px;
   background-size: 200px auto;
@@ -73,7 +62,7 @@ input[type="text"]:focus {
   border-radius: 0;
   border: none;
   outline: none;
-  border-bottom: 1px solid #01161e;
+  border-bottom: 1px solid #78BE38;
   background-color: transparent;
 }
 
@@ -83,7 +72,7 @@ input[type="text"]:focus {
   display: block;
   height: auto;
   min-height: 0;
-  color: #01161e;
+  color: #0A1631;
   font-size: 16px;
   line-height: 1.4;
   font-weight: 400;
@@ -91,7 +80,7 @@ input[type="text"]:focus {
   border-radius: 0;
   text-shadow: none;
   background-color: transparent;
-  background-image: linear-gradient(to right, #01161e, #01161e);
+  background-image: linear-gradient(to right, #0A1631, #0A1631);
   background-size: 0 2px;
   background-position: bottom left;
   background-repeat: no-repeat;
@@ -117,7 +106,7 @@ input[type="text"]:focus {
 
 .login #login p#nav a,
 .login #login p#backtoblog a {
-  color: #01161e;
+  color: #0A1631;
   opacity: 0.7;
 }
 
@@ -150,7 +139,7 @@ input[type="text"]:focus {
   top: 50%;
   width: 16px;
   height: 16px;
-  border: 1px solid #01161e;
+  border: 1px solid #78BE38;
   transform: translateY(-50%);
   content: "";
 }
@@ -161,7 +150,7 @@ input[type="text"]:focus {
   top: 50%;
   width: 10px;
   height: 10px;
-  background-color: #01161e;
+  background-color: #0A1631;
   transform: translateY(-50%);
   opacity: 0;
   content: "";

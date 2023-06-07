@@ -117,6 +117,11 @@
     }
   }
   &--practice {
+    @extend .has-decor;
+    padding-block: 2.4rem 15rem;
+    @include mq(tablet) {
+      padding-block: 2.4rem 8rem;
+    }
     .container {
       flex-direction: row;
     }

@@ -496,10 +496,10 @@
                         },
                         {
                             "key": "field_646d29bcb6c61",
-                            "label": "Experience Cities",
-                            "name": "experience_cities",
+                            "label": "Claim Type",
+                            "name": "claim_type",
                             "aria-label": "",
-                            "type": "repeater",
+                            "type": "taxonomy",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -516,35 +516,14 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "table",
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "",
-                            "button_label": "Add Row",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_646d29d4b6c62",
-                                    "label": "City",
-                                    "name": "city",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_646d29bcb6c61"
-                                }
-                            ]
+                            "taxonomy": "claim_type",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
                         },
                         {
                             "key": "field_6465ec0f90fd0",
@@ -759,7 +738,7 @@
                             "label": "Testimonial",
                             "name": "testimonial",
                             "aria-label": "",
-                            "type": "wysiwyg",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -777,10 +756,10 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
+                            "maxlength": "",
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
                         },
                         {
                             "key": "field_6465ec7190fd9",
@@ -817,7 +796,7 @@
                                 "cards": "Cards",
                                 "full-ctas": "Full CTAs",
                                 "contained-ctas": "Contained CTAs",
-                                "experience-testimonial": "Experience Testimonial"
+                                "experience-testimonial": "Related Practice Areas"
                             },
                             "default_value": "cards",
                             "return_format": "value",
@@ -4274,5 +4253,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685968150
+    "modified": 1686148797
 }

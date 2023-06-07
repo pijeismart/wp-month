@@ -189,12 +189,10 @@
           theme.initPostCarousel
         );
         helper.isElementExist('.section-archive__posts', theme.initCPT);
-        helper.isElementExist('.attorney-details__sidebar', theme.initAttorneySidebar);
-
-        $('.navigation-bar__social__item.twitter').on('click', function() {
-          const url = $(this).attr('data-url');
-          window.open(`https://twitter.com/share?url=${url}`);
-        });
+        helper.isElementExist(
+          '.attorney-details__sidebar',
+          theme.initAttorneySidebar
+        );
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -493,7 +491,10 @@
         $grid.attr('data-s', search);
         ajaxCPT();
       }
-      $('.section-archive__search').on('keyup', helper.debounce(instantSearch, 300));
+      $('.section-archive__search').on(
+        'keyup',
+        helper.debounce(instantSearch, 300)
+      );
 
       // filter btns
       $('.search-filter__btn').on('click', function() {
@@ -528,7 +529,7 @@
         $grid.attr('data-paged', paged);
         $('.current-page-num').html(paged);
         $('.prev-posts').removeAttr('disabled');
-        if ( paged == nextPaged ) $(this).attr('disabled', true);
+        if (paged == nextPaged) $(this).attr('disabled', true);
         else $(this).removeAttr('disabled');
         ajaxCPT();
       });
@@ -539,7 +540,7 @@
         $grid.attr('data-paged', paged);
         $('.current-page-num').html(paged);
         $('.next-posts').removeAttr('disabled');
-        if ( paged == 1 ) $(this).attr('disabled', true);
+        if (paged == 1) $(this).attr('disabled', true);
         else $(this).removeAttr('disabled');
         ajaxCPT();
       });
@@ -549,13 +550,13 @@
      */
     initPodcasts() {
       const $slider = $('.podcasts-grid__inner'),
-            option = {
-              arrows: false,
-              dots: false,
-              autoplay: true,
-              autoplaySpeed: 2000,
-              variableWidth: true
-            };
+        option = {
+          arrows: false,
+          dots: false,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          variableWidth: true
+        };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initPodcasts);
     },
@@ -564,13 +565,13 @@
      */
     initAttorneySidebar() {
       const $slider = $('.attorney-details__sidebar'),
-            option = {
-              arrows: false,
-              dots: false,
-              autoplay: true,
-              autoplaySpeed: 2000,
-              variableWidth: true
-            };
+        option = {
+          arrows: false,
+          dots: false,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          variableWidth: true
+        };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initAttorneySidebar);
     }
