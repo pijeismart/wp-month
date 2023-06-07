@@ -302,6 +302,7 @@ function ajax_cpt() {
 	$type           = $_POST['post_type'] ? $_POST['post_type'] : 'post';
 	$posts_per_page = $_POST['posts_per_page'] ? $_POST['posts_per_page'] : 12;
 	$cat            = $_POST['cat'];
+	$case_cat       = $_POST['caseCat'];
 	$state          = $_POST['state'];
 	$s              = $_POST['s'];
 	$args           = array(
@@ -312,12 +313,15 @@ function ajax_cpt() {
 	if ( $s ) {
 		$args['s'] = $s;
 	}
-	$args['tax_query']['relation'] = 'AND';
 	if ( $cat ) {
+		$args['cat'] = $cat;
+	}
+	$args['tax_query']['relation'] = 'AND';
+	if ( $case_cat ) {
 		$args['tax_query'][] = array(
 			'taxonomy' => 'case_category',
 			'field'    => 'slug',
-			'terms'    => $cat,
+			'terms'    => $case_cat,
 		);
 	}
 	if ( $state ) {

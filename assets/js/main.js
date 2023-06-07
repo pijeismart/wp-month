@@ -413,6 +413,7 @@
         const postsPerPage = $grid.attr('data-posts-per-page');
         const postType = $grid.attr('data-post-type');
         const cat = $grid.attr('data-cat');
+        const caseCat = $grid.attr('data-case-cat');
         const state = $grid.attr('data-state');
         const s = $grid.attr('data-s');
         $.ajax({
@@ -421,6 +422,7 @@
           data: {
             action: 'ajax_cpt',
             cat,
+            caseCat,
             paged,
             post_type: postType,
             state,
@@ -516,6 +518,29 @@
       // confirm filters
       $('.search-filters__popup__apply').on('click', function() {
         $('.search-filters__popup').removeClass('is-active');
+        ajaxCPT();
+      });
+      // next post pagination
+      $('.next-posts').on('click', function() {
+        let paged = parseInt($grid.attr('data-paged')),
+          nextPaged = parseInt($('.max-page-num'));
+        paged += 1;
+        $grid.attr('data-paged', paged);
+        $('.current-page-num').html(paged);
+        $('.prev-posts').removeAttr('disabled');
+        if ( paged == nextPaged ) $(this).attr('disabled', true);
+        else $(this).removeAttr('disabled');
+        ajaxCPT();
+      });
+      // prev post pagination
+      $('.prev-posts').on('click', function() {
+        let paged = parseInt($grid.attr('data-paged'));
+        paged -= 1;
+        $grid.attr('data-paged', paged);
+        $('.current-page-num').html(paged);
+        $('.next-posts').removeAttr('disabled');
+        if ( paged == 1 ) $(this).attr('disabled', true);
+        else $(this).removeAttr('disabled');
         ajaxCPT();
       });
     },

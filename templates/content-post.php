@@ -64,7 +64,7 @@ endif;
 	</div>
 </section>
 
-<?php if ( $post_img ) : ?>
+<?php if ( isset( $post_img ) ) : ?>
 <!-- Post Image -->
 <section class="post-img">
 	<div class="container a-up">
@@ -123,14 +123,16 @@ $args  = array(
 	'post__not_in'   => array( get_the_ID() ),
 	'post_status'    => 'publish',
 	'posts_per_page' => 5,
-	'tax_query'      => array(
+);
+if ( $terms ) :
+	$args['tax_query'] = array(
 		array(
 			'taxonomy' => 'category',
 			'field'    => 'slug',
 			'terms'    => $term_list,
 		),
-	),
-);
+	);
+endif;
 $query = new WP_Query( $args );
 ?>
 <section class="posts-slider related-posts">

@@ -42,9 +42,9 @@ get_header();
 			?>
 		</div>
 		<?php if ( have_rows( 'related_pages' ) ) : ?>
-			<div class="archive-banner__right a-up">
-				<h6><?php echo esc_html__( 'Related Pages' ); ?></h6>
-				<ul>
+			<div class="archive-banner__right related-pages-block a-up">
+				<h6 class="related-pages-block__heading"><?php echo esc_html__( 'Related Pages' ); ?></h6>
+				<ul class="related-pages-block__link">
 					<?php
 					while ( have_rows( 'related_pages' ) ) :
 						the_row();
@@ -81,12 +81,35 @@ if ( isset( $_GET['case-category'] ) ) {
 		'terms'    => $_GET['case-category'],
 	);
 }
+$paged = isset( $_GET['paged'] ) ? $_GET['paged'] : 1;
 $query = new WP_Query( $args );
 if ( $query->have_posts() ) :
 	?>
 <section class="section-archive a-up">
 	<div class="container">
 		<div class="section-archive__sidebar">
+			<div class="section-archive__search-box">
+				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search for someone' ); ?>">
+			</div>
+			<?php
+			$categories = get_categories();
+			if ( $categories ) :
+				?>
+				<div class="accordion section-archive__sidebar__widget">
+					<div class="accordion-header">
+						<?php echo esc_html__( 'By Resource Category' ); ?>
+					</div>
+					<div class="accordion-body">
+						<?php foreach ( $categories as $category ) : ?>
+							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['category'] ) && $_GET['category'] == $category->slug ) ? ' is-active' : ''; ?>" 
+								data-target="data-cat"
+								data-cat="<?php echo esc_attr( $category->slug ); ?>">
+								<?php echo esc_html( $category->name ); ?>
+							</button>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			<?php endif; ?>
 			<?php
 			$case_categories = get_terms( array( 'taxonomy' => 'case_category' ) );
 			if ( $case_categories ) :
@@ -108,10 +131,8 @@ if ( $query->have_posts() ) :
 			<?php endif; ?>
 		</div>
 		<div class="section-archive__content">
-			<div class="section-archive__search-box">
-				<input type="text" class="section-archive__search" placeholder="<?php echo esc_html__( 'Search The Blog' ); ?>">
-			</div>
 			<div class="section-archive__posts"
+				data-paged="<?php echo esc_attr( $paged ); ?>"
 				data-posts-per-page="5" 
 				data-post-type="post" 
 				data-cat="" 
@@ -124,6 +145,15 @@ if ( $query->have_posts() ) :
 				endwhile;
 				?>
 			</div>
+			<?php if ( $query->max_num_pages > 1 ) : ?>
+				<div class="slider-controls posts-pagination">
+					<button class="link prev-posts" disabled><?php echo esc_html__( 'Previous' ); ?></button>
+					<div class="slider-pagination">
+						<span class="current-page-num"><?php echo esc_html( $paged ); ?></span> / <span class="max-page-num"><?php echo esc_html( $query->max_num_pages ); ?></span>
+					</div>
+					<button class="link next-posts"><?php echo esc_html__( 'Next' ); ?></button>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
