@@ -1626,19 +1626,56 @@ if ( have_rows( 'modules' ) ) :
 								<?php
 								while ( have_rows( 'sections' ) ) :
 									the_row();
+									if ( get_row_index() < 4 ) :
 									?>
-								<div class="navigation-bar__nav__menu__item">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-cta',
-										array(
-											'v' => 'cta',
-											'c' => 'navigation-bar__nav__menu__item__cta',
-										)
-									);
-									?>
-								</div>
+									<div class="navigation-bar__nav__menu__item">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-cta',
+											array(
+												'v' => 'cta',
+												'c' => 'navigation-bar__nav__menu__item__cta',
+											)
+										);
+										?>
+									</div>
+									<?php endif; ?>
 								<?php endwhile; ?>
+								<?php if ( count( get_sub_field( 'sections' ) ) > 3 ) : ?>
+									<div class="navigation-bar__nav__menu__item">
+										<a href="javascript:;" data-src="#navigation-popup" class="navigation-bar__nav__menu__item__cta navigation-popup__toggler" data-fancybox>
+											<?php echo esc_html__( 'Expand Table of Contents' ); ?>
+										</a>
+									</div>
+									<div class="navigation-popup" id="navigation-popup">
+										<div class="navigation-popup__header">
+											<h5 class="navigation-popup__title"><?php echo esc_html__( 'Table of contents' ); ?></h5>
+										</div>
+										<div class="navigation-popup__body">
+											<div class="navigation-popup__dates">
+												Page Published <?php echo get_the_date( 'm/d/y' ); ?> | Page Updated <?php echo get_the_modified_date( 'm/d/y' ); ?>
+											</div>
+											<ul class="navigation-popup__links">
+												<?php
+												while ( have_rows( 'sections' ) ) :
+													the_row();
+													?>
+													<li>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-cta',
+															array(
+																'v' => 'cta',
+																'c' => 'navigation-popup__link',
+															)
+														);
+														?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										</div>
+									</div>
+								<?php endif; ?>
 							</div>
 							<?php endif; ?>
 						</div>

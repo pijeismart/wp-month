@@ -211,6 +211,9 @@
         //   $(this).hide();
         //   return false;
         // });
+        $('.navigation-popup__link').on('click', function() {
+          $.fancybox.close();
+        });
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {
