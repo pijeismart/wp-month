@@ -83,7 +83,7 @@ if ( isset( $_GET['case-category'] ) ) {
 }
 if ( isset( $_GET['state'] ) ) {
 	$args['tax_query'][] = array(
-		'taxonomy' => 'practice_state',
+		'taxonomy' => 'state',
 		'field'    => 'slug',
 		'terms'    => $_GET['state'],
 	);
@@ -117,7 +117,7 @@ if ( $query->have_posts() ) :
 				</div>
 			<?php endif; ?>
 			<?php
-			$states = get_terms( array( 'taxonomy' => 'practice_state' ) );
+			$states = get_terms( array( 'taxonomy' => 'state' ) );
 			if ( $states ) :
 				?>
 				<div class="accordion section-archive__sidebar__widget">

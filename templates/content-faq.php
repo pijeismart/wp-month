@@ -10,7 +10,7 @@ $case_cat_ids = wp_list_pluck( $case_cat, 'term_id' );
 $faq_types = get_the_terms( $post, 'faq_type' );
 $faq_type  = $faq_types[0];
 
-$state     = get_the_terms( $post, 'practice_state' );
+$state     = get_the_terms( $post, 'state' );
 
 // create queries
 $tax_query = array(

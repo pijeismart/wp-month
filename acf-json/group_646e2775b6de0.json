@@ -1,6 +1,6 @@
 {
     "key": "group_646e2775b6de0",
-    "title": "[Page] - Practice Area",
+    "title": "[Page] - Areas We Serve",
     "fields": [
         {
             "key": "field_646e2776d1b0f",
@@ -126,7 +126,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/practice-area.php"
+                "value": "page-templates\/areas-we-serve.php"
             }
         ]
     ],
@@ -141,5 +141,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686056914
+    "modified": 1686213315
 }

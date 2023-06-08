@@ -29,7 +29,7 @@
         margin-right: 6rem;
         max-width: 42rem;
         min-height: 55rem;
-        height: vw(600px);
+        height: 100%;
       }
     }
     @include mq(tablet) {
@@ -109,7 +109,7 @@
       }
     }
   }
-  .container {
+  &-inner {
     @include mq(tablet) {
       display: flex;
       align-items: center;
@@ -122,24 +122,74 @@
     @include mq(tablet) {
       padding-block: 2.4rem 8rem;
     }
-    .container {
+    .banner-inner {
       flex-direction: row;
     }
     .banner-medai {
       max-width: 42rem;
     }
-  }
-  .btn {
-    @include when-inside(".banner-practice") {
+    .btn {
       @include mq(tablet) {
+        margin-left: 20rem;
         background-color: $clr-green;
       }
     }
   }
-  &.banner--practice {
-    .btn {
+  .breadcrumbs {
+    margin-bottom: 2.4rem;
+    @include mq(tablet) {
+      margin-bottom: 5.5rem;
+    }
+  }
+  &-categories {
+    display: flex;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    @include mq(tablet) {
+      margin-bottom: 3rem;
+    }
+    img {
+      margin-right: 2rem;  
+      flex-shrink: 0;
+    }
+  }
+  &-subheading {
+    font: 700 1.2rem/1.8rem $f-text;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    @include mq(tablet) {
+      font-size: 1.5rem;
+      line-height: 2.25rem;
+    }
+  }
+  &--practice-cards {
+    @extend .has-decor;
+    padding-block: 2.4rem 15rem;
+    background-color: $clr-white-off;
+    @include mq(tablet) {
+      padding-block: 2.4rem 8rem;
+    }
+    .banner-inner {
       @include mq(tablet) {
-        margin-left: 20rem;
+        flex-direction: row;
+      }
+    }
+    .banner-content {
+      margin-right: 0;
+    }
+    .contact-form__cards {
+      @include mq(tablet) {
+        margin-right: 6rem;
+        margin-bottom: 0;
+        max-width: 42.5rem;
+      }
+      &__item {
+        background-color: $clr-white;
+        height: 27rem;
+        @include mq(tablet) {
+          padding: 3.8rem 8.5px;
+          width: calc(50% - 1rem);
+        }
       }
     }
   }

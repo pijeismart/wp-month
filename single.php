@@ -10,7 +10,7 @@
 
 			<?php
 			$type = get_post_type();
-			if ( 'practice' == $type ) :
+			if ( 'city' == $type || 'practice' == $type ) :
 				get_template_part( 'templates/content', 'page' );
 			else :
 				get_template_part( 'templates/content', $type );

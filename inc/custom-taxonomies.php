@@ -55,31 +55,16 @@ function custom_taxonomies() {
 		)
 	);
 
-	// Practice State - Only for Practice Areas post type
+	// State - 
 	register_taxonomy(
-		'practice_state',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		array( 'practice', 'faq' ),             // post type name
+		'state',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+		array( 'city', 'faq' ),             // post type name
 		array(
 			'hierarchical' => true,
 			'label'        => 'States', // display name
 			'query_var'    => true,
 			'rewrite'      => array(
-				'slug'       => 'practice-state',    // This controls the base slug that will display before each term
-				'with_front' => false,  // Don't display the category base before
-			),
-			'show_in_rest' => true,
-		)
-	);
-	// Practice City - Only for Practice Areas post type
-	register_taxonomy(
-		'practice_city',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		'practice',             // post type name
-		array(
-			'hierarchical' => true,
-			'label'        => 'Cities', // display name
-			'query_var'    => true,
-			'rewrite'      => array(
-				'slug'       => 'practice-city',    // This controls the base slug that will display before each term
+				'slug'       => 'state',    // This controls the base slug that will display before each term
 				'with_front' => false,  // Don't display the category base before
 			),
 			'show_in_rest' => true,

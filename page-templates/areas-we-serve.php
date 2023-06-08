@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Name: Practice Areas
+ * Template Name: Areas We Serve
  * Template Post Type: page
  */
 get_header();
-$states = get_terms( array( 'taxonomy' => 'practice_state' ) );
+$states = get_terms( array( 'taxonomy' => 'state' ) );
 ?>
 <!-- Banner -->
 <section class="archive-banner has-decor">
@@ -92,17 +92,18 @@ $states = get_terms( array( 'taxonomy' => 'practice_state' ) );
 		<div class="section-archive__content">
 			<div class="section-archive__posts"
 				data-posts-per-page="-1" 
-				data-post-type="practice" 
+				data-post-type="city" 
 				data-state="">
 				<?php
 				foreach ( $states as $state ) :
 					$args  = array(
-						'post_type'      => 'practice',
+						'post_type'      => 'city',
 						'post_status'    => 'publish',
 						'posts_per_page' => -1,
+						'post_parent'    => 0,
 						'tax_query'      => array(
 							array(
-								'taxonomy' => 'practice_state',
+								'taxonomy' => 'state',
 								'terms'    => $state->term_id,
 							),
 						),
@@ -118,7 +119,7 @@ $states = get_terms( array( 'taxonomy' => 'practice_state' ) );
 							<?php
 							while ( $query->have_posts() ) :
 								$query->the_post();
-								get_template_part( 'template-parts/loop', 'practice-area' );
+								get_template_part( 'template-parts/loop', 'city' );
 							endwhile;
 							?>
 						</div>

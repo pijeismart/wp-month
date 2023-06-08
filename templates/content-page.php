@@ -11,91 +11,204 @@ if ( have_rows( 'modules' ) ) :
 			$type  = get_sub_field( 'type' );
 			$image = get_sub_field( 'image' );
 			$video = get_sub_field( 'video' );
+			$claim_types = get_the_terms( $post, 'claim_type' );
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-				<?php
-				get_template_part_args(
-					'template-parts/content-modules-image',
-					array(
-						'v'     => 'background_image',
-						'v2x'   => false,
-						'is'    => false,
-						'is_2x' => false,
-						'c'     => 'background-image',
-						'w'     => 'div',
-						'wc'    => 'banner-background',
-					)
-				);
-				?>
 				<div class="container">
-					<div class="banner-media a-op">
 						<?php
-						get_template_part(
-							'template-parts/content-modules',
-							'media',
-							array(
-								'image' => $image,
-								'video' => $video,
-							)
-						);
+					if ( 'home' != $type ) :
+						$parents = get_post_parent( $post );
 						?>
-						<div class="banner-media__small">
+						<ul class="breadcrumbs a-up">
+							<li>
+								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
+							</li>
+							<li>
+								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
+									<?php echo esc_html( 'Areas We Serve' ); ?>
+								</a>
+							</li>
+							<?php if ( $parents ) : ?>
+								<li>
+									<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
+										<?php echo esc_html( get_the_title( $parents ) ); ?>
+									</a>
+								</li>
+							<?php endif; ?>
+							<li>
+								<span><?php the_title(); ?></span>
+							</li>
+						</ul>
+					<?php endif; ?>
+					<div class="banner-inner">
+						<?php if ( 'practice-cards' != $type ) : ?>
+							<div class="banner-media a-op">
+								<?php
+								get_template_part(
+									'template-parts/content-modules',
+									'media',
+									array(
+										'image' => $image,
+										'video' => $video,
+									)
+								);
+								?>
+								<div class="banner-media__small">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'small_image',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'small-image',
+										)
+									);
+									?>
+								</div>
+							</div>
+						<?php else : ?>
+							<?php if ( have_rows( 'cards' ) ) : ?>
+							<div class="contact-form__cards">
+								<?php
+								while ( have_rows( 'cards' ) ) :
+									the_row();
+									$type = get_sub_field( 'type' );
+									?>
+								<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'eyebrow',
+											't'  => 'h5',
+											'tc' => 'item-eyebrow',
+										)
+									);
+									?>
+									<?php if ( 'money' == $type ) : ?>
+										<div class="item-badge">
+											<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
+											</svg>
+										</div>
+										<?php
+									else: 
+										get_template_part_args(
+											'template-parts/content-modules-image',
+											array(
+												'v'     => 'badge',
+												'v2x'   => false,
+												'is'    => false,
+												'is_2x' => false,
+												'c'     => 'item-badge__img',
+												'w'     => 'div',
+												'wc'    => 'item-badge',
+											)
+										);
+									endif;
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'award',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'item-award__img',
+											'w'     => 'div',
+											'wc'    => 'item-award',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											't'  => 'h5',
+											'tc' => 'item-content',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'sub_title',
+											't'  => 'h5',
+											'tc' => 'item-sub_title',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v' => 'cta',
+											'c' => 'contact-form__cards__item__cta link',
+										)
+									);
+									?>
+								</div>
+								<?php endwhile; ?>
+							</div>
+							<?php endif; ?>
+						<?php endif; ?>
+						<div class="banner-content">
+							<?php if ( 'home' != $type && $claim_types ) :
+								$img = get_field( 'icon', 'claim_type_' . $claim_types[0]->term_id );  ?>
+								<div class="banner-categories">
+									<?php if ( $img ) : ?>
+										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
+									<?php endif; ?>
+									<h6 class="banner-subheading"><?php echo esc_html( $claim_types[0]->name ); ?></h6>
+								</div>
+							<?php endif; ?>
 							<?php
 							get_template_part_args(
-								'template-parts/content-modules-image',
+								'template-parts/content-modules-text',
 								array(
-									'v'     => 'small_image',
-									'v2x'   => false,
-									'is'    => false,
-									'is_2x' => false,
-									'c'     => 'small-image',
+									'v'  => 'heading',
+									't'  => 'h1',
+									'tc' => 'banner-heading a-up',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'content',
+									't'  => 'div',
+									'tc' => 'banner-copy a-up a-delay-1',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v' => 'cta',
+									'c' => 'btn btn-primary a-up a-delay-2',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'description',
+									't'  => 'div',
+									'tc' => 'banner-desc a-up a-delay-3',
 								)
 							);
 							?>
 						</div>
-					</div>
-					<div class="banner-content">
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'heading',
-								't'  => 'h1',
-								'tc' => 'banner-heading a-up',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'content',
-								't'  => 'div',
-								'tc' => 'banner-copy a-up a-delay-1',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v' => 'cta',
-								'c' => 'btn btn-primary a-up a-delay-2',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'description',
-								't'  => 'div',
-								'tc' => 'banner-desc a-up a-delay-3',
-							)
-						);
-						?>
 					</div>
 				</div>
 			</section>
@@ -172,7 +285,7 @@ if ( have_rows( 'modules' ) ) :
 								$claim_types = get_sub_field( 'claim_type' );
 								if ( $claim_types ) :
 									$args  = array(
-										'post_type'      => 'practice',
+										'post_type'      => 'city',
 										'post_status'    => 'publish',
 										'post__not_in'   => array( get_the_ID() ),
 										'posts_per_page' => 10,
@@ -191,7 +304,7 @@ if ( have_rows( 'modules' ) ) :
 											<?php
 											while ( $query->have_posts() ) :
 												$query->the_post();
-												$state = get_the_terms( $post, 'practice_state' );
+												$state = get_the_terms( $post, 'state' );
 												?>
 												<li>
 													<a href="<?php echo esc_url( get_the_permalink() ); ?>">
@@ -662,19 +775,27 @@ if ( have_rows( 'modules' ) ) :
 									)
 								);
 								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-image',
-									array(
-										'v'     => 'badge',
-										'v2x'   => false,
-										'is'    => false,
-										'is_2x' => false,
-										'c'     => 'item-badge__img',
-										'w'     => 'div',
-										'wc'    => 'item-badge',
-									)
-								);
+								<?php if ( 'money' == $type ) : ?>
+									<div class="item-badge">
+										<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
+										</svg>
+									</div>
+									<?php
+								else: 
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'badge',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'item-badge__img',
+											'w'     => 'div',
+											'wc'    => 'item-badge',
+										)
+									);
+								endif;
 								?>
 								<?php
 								get_template_part_args(
