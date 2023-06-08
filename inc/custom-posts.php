@@ -57,7 +57,7 @@ function custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'rewrite'             => array(
-			'slug'       => 'practice-area',
+			'slug'       => '%category_name%',
 			'with_front' => false,
 		),
 		'menu_icon'           => 'dashicons-admin-site',

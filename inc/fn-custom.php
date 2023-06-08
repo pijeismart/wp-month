@@ -28,10 +28,10 @@ function theme_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'theme_body_classes' );
 
-//Styling login form
+// Styling login form
 function my_login_stylesheet() {
-    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/style-login.css' );
-    // wp_enqueue_script( 'custom-login', get_stylesheet_directory_uri() . '/style-login.js' );
+	wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/style-login.css' );
+	// wp_enqueue_script( 'custom-login', get_stylesheet_directory_uri() . '/style-login.js' );
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
@@ -40,36 +40,36 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 // add_filter('use_block_editor_for_post_type', '__return_false', 10);
 // add_action('init', 'my_remove_editor_from_post_type');
 // function my_remove_editor_from_post_type() {
-// 	remove_post_type_support( 'page', 'editor' );
+// remove_post_type_support( 'page', 'editor' );
 // }
 
 add_post_type_support( 'page', 'excerpt' );
 
-//** *Enable upload for webp image files.*/
-function webp_upload_mimes($existing_mimes) {
+// ** *Enable upload for webp image files.*/
+function webp_upload_mimes( $existing_mimes ) {
 	$existing_mimes['webp'] = 'image/webp';
 	return $existing_mimes;
 }
-add_filter('mime_types', 'webp_upload_mimes');
+add_filter( 'mime_types', 'webp_upload_mimes' );
 
-//Wp ajax init
+// Wp ajax init
 add_action( 'wp_head', 'my_wp_ajaxurl' );
 function my_wp_ajaxurl() {
-	$url = parse_url( home_url( ) );
-	if( $url['scheme'] == 'https' ){
-	   $protocol = 'https';
-	}        
-	else{
-	    $protocol = 'http';
+	$url = parse_url( home_url() );
+	if ( $url['scheme'] == 'https' ) {
+		$protocol = 'https';
+	} else {
+		$protocol = 'http';
 	}
-    ?>
-    <?php global $wp_query; ?>
-    <script type="text/javascript">
-        var ajaxurl = '<?php echo admin_url( 'admin-ajax.php', $protocol ); ?>';
-    </script>
-    <?php
+	?>
+	<?php global $wp_query; ?>
+	<script type="text/javascript">
+		var ajaxurl = '<?php echo admin_url( 'admin-ajax.php', $protocol ); ?>';
+	</script>
+	<?php
 }
-/* Disable WordPress Admin Bar for all users */
+/*
+ Disable WordPress Admin Bar for all users */
 // add_filter( 'show_admin_bar', '__return_false' );
 
 /**
@@ -129,48 +129,50 @@ function get_template_part_args( $file, $template_args = array(), $cache_args = 
 
 /**
  * Get child menu items
- * @param id $parent_id parent menu id
- * @param array $nav_menu_items nav menu items array
+ *
+ * @param id      $parent_id parent menu id
+ * @param array   $nav_menu_items nav menu items array
  * @param boolean $depth
  */
 function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
-    $nav_menu_item_list = array();
-    foreach ( (array) $nav_menu_items as $nav_menu_item ) {
-        if ( $nav_menu_item->menu_item_parent == $parent_id ) {
-            $nav_menu_item_list[] = $nav_menu_item;
-            if ( $depth ) {
-                if ( $children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) ){
-                    $nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
-                }
-            }
-        }
-    }
-    return $nav_menu_item_list;
+	$nav_menu_item_list = array();
+	foreach ( (array) $nav_menu_items as $nav_menu_item ) {
+		if ( $nav_menu_item->menu_item_parent == $parent_id ) {
+			$nav_menu_item_list[] = $nav_menu_item;
+			if ( $depth ) {
+				if ( $children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) ) {
+					$nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
+				}
+			}
+		}
+	}
+	return $nav_menu_item_list;
 }
 
 if ( function_exists( 'custom_mega_menu' ) ) {
 	/**
 	 * Create custom mega menu
+	 *
 	 * @param string $theme_location Theme location
 	 */
-	function custom_mega_menu($theme_location) {
+	function custom_mega_menu( $theme_location ) {
 
-		if ( ($theme_location) && ( $locations = get_nav_menu_locations() ) && isset($locations[$theme_location]) ) {
+		if ( ( $theme_location ) && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $theme_location ] ) ) {
 
 			$menu_list = '';
-			$post_id = get_the_ID();
+			$post_id   = get_the_ID();
 
-			$menu = get_term($locations[$theme_location], 'nav_menu');
-			$menu_items = wp_get_nav_menu_items($menu->term_id);
+			$menu       = get_term( $locations[ $theme_location ], 'nav_menu' );
+			$menu_items = wp_get_nav_menu_items( $menu->term_id );
 
 			foreach ( $menu_items as $menu_item ) {
 				$id = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
 
-				$cols = get_field('cols', $menu_item);
-				$css_class = get_field('cssclass', $menu_item);
+				$cols      = get_field( 'cols', $menu_item );
+				$css_class = get_field( 'cssclass', $menu_item );
 
-				if ( !$menu_item->menu_item_parent ) {
-					$curr_id = $menu_item->ID;
+				if ( ! $menu_item->menu_item_parent ) {
+					$curr_id     = $menu_item->ID;
 					$menu_items2 = get_nav_menu_item_children( $curr_id, $menu_items );
 
 					if ( $menu_items2 ) {
@@ -183,7 +185,7 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 
 					if ( $menu_items2 ) {
 						$menu_list .= '<div class="drop ' . ( ( $cols == 2 ) ? 'drop-v2' : 'drop-v3' ) . '"><div class="drop-box"><ul class="drop-nav">' . "\n";
-					
+
 						foreach ( $menu_items2 as $menu_item2 ) {
 							if ( $menu_item2->menu_item_parent == $curr_id ) {
 								$curr_id2 = $menu_item2->ID;
@@ -200,7 +202,7 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 										$menu_list .= '<li>';
 										$menu_list .= '<a href="' . $menu_item3->url . '">' . $menu_item3->title . '</a>';
 
-										$subheading = get_field('subheading', $menu_item3);
+										$subheading = get_field( 'subheading', $menu_item3 );
 										if ( $subheading ) {
 											$menu_list .= '<span>' . $subheading . '</span>';
 										}
@@ -217,12 +219,12 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 
 						$menu_list .= '</ul>';
 
-						$image = get_field('image', $menu_item);
-						$heading = get_field('heading', $menu_item);
-						$content = get_field('content', $menu_item);
-						$link_text = get_field('link_text', $menu_item);
-						$link_url = get_field('link_url', $menu_item);
-						$link_target = get_field('open_new_window', $menu_item) ? '_blank' : '';
+						$image       = get_field( 'image', $menu_item );
+						$heading     = get_field( 'heading', $menu_item );
+						$content     = get_field( 'content', $menu_item );
+						$link_text   = get_field( 'link_text', $menu_item );
+						$link_url    = get_field( 'link_url', $menu_item );
+						$link_target = get_field( 'open_new_window', $menu_item ) ? '_blank' : '';
 
 						$menu_list .= '<div class="drop-card">';
 						if ( $image ) {
@@ -239,14 +241,12 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 						}
 						$menu_list .= '</div>';
 
-
 						$menu_list .= '</div></div>' . "\n";
 					}
 
 					$menu_list .= '</li>' . "\n";
 
 				}
-				
 			}
 		}
 		echo $menu_list;
@@ -392,3 +392,55 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 // set featured image and set or publish post
 add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
 add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );
+
+
+// update permalink for the practice area
+function wpse346452_permalink( $post_link, $post ) {
+	if ( is_object( $post ) && $post->post_type == 'practice' ) {
+		$terms = wp_get_object_terms( $post->ID, 'case_category' );
+		if ( $terms ) {
+			return str_replace( '%category_name%', $terms[0]->slug, $post_link );
+		}
+	}
+	return $post_link;
+}
+add_filter( 'post_type_link', 'wpse346452_permalink', 10, 2 );
+
+function wpse346452_dynamic_rw_rules() {
+
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'case_category',
+			'hide_empty' => false,
+		)
+	);
+
+	if ( ! empty( $terms ) ) {
+		foreach ( $terms as $term ) {
+			add_rewrite_rule(
+				'^' . $term->slug . '/(.*)/?$',
+				'index.php?post_type=practice&name=$matches[1]',
+				'top'
+			);
+		}
+	}
+
+}
+add_action( 'init', 'wpse346452_dynamic_rw_rules' );
+
+function wpse346452_flush_rewrite( $term_id, $tt_id, $taxonomy = 'case_category' ) {
+	if ( $taxonomy === 'case_category' ) {
+		$term = get_term_by( 'term_taxonomy_id', $tt_id );
+		add_rewrite_rule(
+			'^' . $term->slug . '/(.*)/?$',
+			'index.php?post_type=practice&name=$matches[1]',
+			'top'
+		);
+		if ( ! function_exists( 'flush_rewrite_rules' ) ) {
+			require_once WPINC . '/rewrite.php';
+		}
+		flush_rewrite_rules();
+	}
+}
+add_action( 'edit_term', 'wpse346452_flush_rewrite', 10, 3 );
+add_action( 'create_campaign', 'wpse346452_flush_rewrite', 10, 3 );
