@@ -26,9 +26,17 @@ if ( have_rows( 'modules' ) ) :
 								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 							</li>
 							<li>
+								<?php if ( 'city' == get_post_type( ) ) : ?>
 								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
 									<?php echo esc_html( 'Areas We Serve' ); ?>
 								</a>
+								<?php else : ?>
+									<?php if ( $claim_types ) : ?>
+									<span>
+										<?php echo esc_html( $claim_types[0]->name ); ?>
+									</span>
+									<?php endif; ?>
+								<?php endif; ?>
 							</li>
 							<?php if ( $parents ) : ?>
 								<li>
