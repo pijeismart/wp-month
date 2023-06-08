@@ -153,6 +153,11 @@
       margin-right: 2rem;
       border: 1px solid $clr-border;
     }
+    &:hover {
+      .podcast-btn img {
+        transform: scale(1.1);
+      }
+    }
     &-title {
       @include mq(tablet, max) {
         padding: 1.6rem;
@@ -194,11 +199,6 @@
       img {
         transition: transform .3s ease-in-out;
         will-change: transform;
-      }
-      &:hover {
-        img {
-          transform: scale(1.1);
-        }
       }
     }
     &-title {

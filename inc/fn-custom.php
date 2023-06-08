@@ -362,7 +362,7 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 		if ( ! has_post_thumbnail( $post ) ) {
 			$youtube_video_id = get_field( 'youtube_video_id', $post_id );
 
-			$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_video_id . '/0.jpg';
+			$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_video_id . '/maxresdefault.jpg';
 			$get               = wp_remote_get( $youtube_thumb_url );
 			$mime_type         = wp_remote_retrieve_header( $get, 'content-type' );
 			if ( ! substr_count( $mime_type, 'image' ) ) {
