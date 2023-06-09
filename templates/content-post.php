@@ -40,12 +40,12 @@ endif;
 				<span class="post-banner__author__name">By <b><?php echo get_the_author_meta( 'display_name' ); ?></b></span>
 			</div>
 		</div>
-		<?php if ( have_rows( 'related_pages' ) ) : ?>
+		<?php if ( have_rows( 'post_related_pages', 'options' ) ) : ?>
 			<div class="post-banner__links a-up">
 				<p><?php echo esc_html( 'Related Pages' ); ?></p>
 				<ul>
 					<?php
-					while ( have_rows( 'related_pages' ) ) :
+					while ( have_rows( 'post_related_pages', 'options' ) ) :
 						the_row();
 						?>
 						<li>
