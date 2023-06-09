@@ -20,9 +20,9 @@ $categories = get_the_terms( $post, 'case_category' );
 			<?php the_title(); ?>
 		</a>
 		<?php if ( has_excerpt() ) : ?>
-			<p class="loop-post-card__excerpt">
+			<div class="loop-post-card__excerpt">
 				<?php the_excerpt(); ?>
-			</p>
+			</div>
 		<?php endif; ?>
 	</div>
 </div>

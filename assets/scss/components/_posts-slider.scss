@@ -106,5 +106,6 @@
     margin-top: 1rem;
     font: 400 1.4rem/1.55 $f-text;
     letter-spacing: 0.01em;
+    @include max-line(4);
   }
 }
