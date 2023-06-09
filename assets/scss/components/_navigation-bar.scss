@@ -1,11 +1,12 @@
 .navigation-bar {
-  position: sticky;
+  position: relative;
   margin-top: -8.3rem;
-  top: calc(var(--header-height) + 2rem);
-  left: 0;
   z-index: 10;
   @include mq(tablet) {
+    position: sticky;
     margin-top: -4.25rem;
+    top: calc(var(--header-height) + 2rem);
+    left: 0;
   }
   &__main {
     padding: 1.5rem;
