@@ -36,19 +36,13 @@ if ( have_rows( 'modules' ) ) :
 							<li>
 								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 							</li>
+							<?php if ( 'city' == get_post_type( ) ) : ?>
 							<li>
-								<?php if ( 'city' == get_post_type( ) ) : ?>
 								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
 									<?php echo esc_html( 'Areas We Serve' ); ?>
 								</a>
-								<?php else : ?>
-									<?php if ( $case_categories ) : ?>
-									<span>
-										<?php echo esc_html( $case_categories[0]->name ); ?>
-									</span>
-									<?php endif; ?>
-								<?php endif; ?>
 							</li>
+							<?php endif; ?>
 							<?php if ( $parents ) : ?>
 								<li>
 									<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
