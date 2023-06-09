@@ -393,54 +393,27 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
 add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );
 
-
-// update permalink for the practice area
-function wpse346452_permalink( $post_link, $post ) {
-	if ( is_object( $post ) && $post->post_type == 'practice' ) {
-		$terms = wp_get_object_terms( $post->ID, 'case_category' );
-		if ( $terms ) {
-			return str_replace( '%category_name%', $terms[0]->slug, $post_link );
-		}
-	}
-	return $post_link;
+/**
+ * Remove the slug from published post permalinks. Only affect our custom post type, though.
+ */
+function wptw_remove_cpt_slug( $post_link, $post ) {
+ 
+    if ( 'practice' === $post->post_type && 'publish' === $post->post_status ) {
+        $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
+    }
+ 
+    return $post_link;
 }
-add_filter( 'post_type_link', 'wpse346452_permalink', 10, 2 );
+add_filter( 'post_type_link', 'wptw_remove_cpt_slug', 10, 2 );
 
-function wpse346452_dynamic_rw_rules() {
-
-	$terms = get_terms(
-		array(
-			'taxonomy'   => 'case_category',
-			'hide_empty' => false,
-		)
-	);
-
-	if ( ! empty( $terms ) ) {
-		foreach ( $terms as $term ) {
-			add_rewrite_rule(
-				'^' . $term->slug . '/(.*)/?$',
-				'index.php?post_type=practice&name=$matches[1]',
-				'top'
-			);
-		}
-	}
-
+function wptw_parse_request( $query ) {
+ 
+    if ( ! $query->is_main_query() || 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
+        return;
+    }
+ 
+    if ( ! empty( $query->query['name'] ) ) {
+        $query->set( 'post_type', array( 'post', 'practice', 'page' ) );
+    }
 }
-add_action( 'init', 'wpse346452_dynamic_rw_rules' );
-
-function wpse346452_flush_rewrite( $term_id, $tt_id, $taxonomy = 'case_category' ) {
-	if ( $taxonomy === 'case_category' ) {
-		$term = get_term_by( 'term_taxonomy_id', $tt_id );
-		add_rewrite_rule(
-			'^' . $term->slug . '/(.*)/?$',
-			'index.php?post_type=practice&name=$matches[1]',
-			'top'
-		);
-		if ( ! function_exists( 'flush_rewrite_rules' ) ) {
-			require_once WPINC . '/rewrite.php';
-		}
-		flush_rewrite_rules();
-	}
-}
-add_action( 'edit_term', 'wpse346452_flush_rewrite', 10, 3 );
-add_action( 'create_campaign', 'wpse346452_flush_rewrite', 10, 3 );
+add_action( 'pre_get_posts', 'wptw_parse_request' );

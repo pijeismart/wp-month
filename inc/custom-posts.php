@@ -43,7 +43,7 @@ function custom_post_type() {
 		'description'         => __( 'Practice Areas post type', 'text_domain' ),
 		'labels'              => $labels_practice,
 		'supports'            => array( 'title', 'custom-fields', 'page-attributes', 'thumbnail', 'excerpt', 'editor' ),
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
@@ -57,7 +57,7 @@ function custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'rewrite'             => array(
-			'slug'       => '%category_name%',
+			'slug'       => 'practice',
 			'with_front' => false,
 		),
 		'menu_icon'           => 'dashicons-admin-site',
@@ -116,7 +116,7 @@ function custom_post_type() {
 			'slug'       => 'areas-we-serve',
 			'with_front' => false,
 		),
-		'menu_icon'           => 'dashicons-location-alt', 
+		'menu_icon'           => 'dashicons-location-alt',
 	);
 	register_post_type( 'city', $args_city );
 

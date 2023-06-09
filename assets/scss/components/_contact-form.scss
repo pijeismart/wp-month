@@ -33,12 +33,18 @@
             width: calc((100% - 60px) / 4);
             border-radius: 1rem;
             border: 1px solid $clr-light-gray;
+            cursor: pointer;
             @include mq(desktop, max) {
                 width: calc((100% - 2rem) / 2);
             }
             @include mq(tablet, max) {
                 padding: 2.4rem 0.8rem;
                 height: 24rem;
+            }
+            &:hover {
+                .link:after {
+                    transform: translate(5px, -50%);
+                }
             }
             &.review {
                 .item-eyebrow {

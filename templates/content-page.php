@@ -1,17 +1,28 @@
 <?php
 global $post;
-
+$toc_links = [];
 if ( have_rows( 'modules' ) ) :
 	while ( have_rows( 'modules' ) ) :
 		the_row();
-		$anchor_id = get_sub_field( 'anchor_id' );
+		$toc_title = get_sub_field( 'toc_title' );
+		if ( $toc_title ) :
+			$toc_links[] = $toc_title;
+		endif;
+	endwhile;
+endif;
+if ( have_rows( 'modules' ) ) :
+	while ( have_rows( 'modules' ) ) :
+		the_row();
+		$toc_title = get_sub_field( 'toc_title' );
+		$anchor_id = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : get_sub_field( 'anchor_id' );
 		?>
 		<?php
 		if ( 'banner' == get_row_layout() ) :
 			$type  = get_sub_field( 'type' );
 			$image = get_sub_field( 'image' );
 			$video = get_sub_field( 'video' );
-			$claim_types = get_the_terms( $post, 'claim_type' );
+			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
+			$case_categories = get_the_terms( $post, 'case_category' );
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
@@ -31,9 +42,9 @@ if ( have_rows( 'modules' ) ) :
 									<?php echo esc_html( 'Areas We Serve' ); ?>
 								</a>
 								<?php else : ?>
-									<?php if ( $claim_types ) : ?>
+									<?php if ( $case_categories ) : ?>
 									<span>
-										<?php echo esc_html( $claim_types[0]->name ); ?>
+										<?php echo esc_html( $case_categories[0]->name ); ?>
 									</span>
 									<?php endif; ?>
 								<?php endif; ?>
@@ -85,96 +96,99 @@ if ( have_rows( 'modules' ) ) :
 								while ( have_rows( 'cards' ) ) :
 									the_row();
 									$type = get_sub_field( 'type' );
+									$cta  = get_sub_field( 'cta' );
 									?>
-								<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'eyebrow',
-											't'  => 'h5',
-											'tc' => 'item-eyebrow',
-										)
-									);
-									?>
-									<?php if ( 'money' == $type ) : ?>
-										<div class="item-badge">
-											<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
-											</svg>
-										</div>
+									<?php if ( $cta ) : ?>
+									<a href="<?php echo esc_url( $cta['url'] ); ?>" class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1" target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
+									<?php else : ?>
+									<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
+									<?php endif; ?>
 										<?php
-									else: 
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'eyebrow',
+												't'  => 'h5',
+												'tc' => 'item-eyebrow',
+											)
+										);
+										?>
+										<?php if ( 'money' == $type ) : ?>
+											<div class="item-badge">
+												<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
+												</svg>
+											</div>
+											<?php
+										else: 
+											get_template_part_args(
+												'template-parts/content-modules-image',
+												array(
+													'v'     => 'badge',
+													'v2x'   => false,
+													'is'    => false,
+													'is_2x' => false,
+													'c'     => 'item-badge__img',
+													'w'     => 'div',
+													'wc'    => 'item-badge',
+												)
+											);
+										endif;
+										?>
+										<?php
 										get_template_part_args(
 											'template-parts/content-modules-image',
 											array(
-												'v'     => 'badge',
+												'v'     => 'award',
 												'v2x'   => false,
 												'is'    => false,
 												'is_2x' => false,
-												'c'     => 'item-badge__img',
+												'c'     => 'item-award__img',
 												'w'     => 'div',
-												'wc'    => 'item-badge',
+												'wc'    => 'item-award',
 											)
 										);
-									endif;
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-image',
-										array(
-											'v'     => 'award',
-											'v2x'   => false,
-											'is'    => false,
-											'is_2x' => false,
-											'c'     => 'item-award__img',
-											'w'     => 'div',
-											'wc'    => 'item-award',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											't'  => 'h5',
-											'tc' => 'item-content',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'sub_title',
-											't'  => 'h5',
-											'tc' => 'item-sub_title',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-cta',
-										array(
-											'v' => 'cta',
-											'c' => 'contact-form__cards__item__cta link',
-										)
-									);
-									?>
-								</div>
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'h5',
+												'tc' => 'item-content',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'sub_title',
+												't'  => 'h5',
+												'tc' => 'item-sub_title',
+											)
+										);
+										?>
+										<?php if ( $cta ) : ?>
+											<span class="contact-form__cards__item__cta link" aria-label="<?php echo esc_attr( $cta['title'] ); ?>"></span>
+										<?php endif; ?>
+									<?php if ( $cta ) : ?>
+										</a>
+									<?php else: ?>
+										</div>
+									<?php endif; ?>
 								<?php endwhile; ?>
 							</div>
 							<?php endif; ?>
 						<?php endif; ?>
 						<div class="banner-content">
-							<?php if ( 'home' != $type && $claim_types ) :
-								$img = get_field( 'icon', 'claim_type_' . $claim_types[0]->term_id );  ?>
+							<?php if ( 'home' != $type && $case_categories ) :
+								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );  ?>
 								<div class="banner-categories">
 									<?php if ( $img ) : ?>
 										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
 									<?php endif; ?>
-									<h6 class="banner-subheading"><?php echo esc_html( $claim_types[0]->name ); ?></h6>
+									<h6 class="banner-subheading"><?php echo esc_html( $case_categories[0]->name ); ?></h6>
 								</div>
 							<?php endif; ?>
 							<?php
@@ -220,6 +234,70 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
+			<?php if ( ! $disable_navigation && count( $toc_links ) > 0 ) : ?>
+			<!-- Navigation Bar -->
+			<section class="navigation-bar"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container">
+					<div class="navigation-bar__main">
+						<div class="navigation-bar__nav">
+							<h5 class="navigation-bar__nav__heading"><?php echo esc_html__( 'On This Page' ); ?>:</h5>
+							<div class="navigation-bar__nav__menu">
+								<?php
+								foreach ( $toc_links as $key => $toc_link ) :
+									if ( $key < 3 ) :
+										?>
+										<div class="navigation-bar__nav__menu__item">
+											<a href="#<?php echo esc_attr( str_replace( ' ', '-', strtolower( $toc_link ) ) ); ?>" class="navigation-bar__nav__menu__item__cta">
+												<?php echo $toc_link; ?>
+											</a>
+										</div>
+										<?php
+									endif;
+								endforeach;
+								?>
+								<?php if ( count( $toc_links ) > 3 ) : ?>
+									<div class="navigation-bar__nav__menu__item">
+										<a href="javascript:;" data-src="#navigation-popup" class="navigation-bar__nav__menu__item__cta navigation-popup__toggler" data-fancybox>
+											<?php echo esc_html__( 'Expand Table of Contents' ); ?>
+										</a>
+									</div>
+									<div class="navigation-popup" id="navigation-popup">
+										<div class="navigation-popup__header">
+											<h5 class="navigation-popup__title"><?php echo esc_html__( 'Table of contents' ); ?></h5>
+										</div>
+										<div class="navigation-popup__body">
+											<div class="navigation-popup__dates">
+												Page Published <?php echo get_the_date( 'm/d/y' ); ?> | Page Updated <?php echo get_the_modified_date( 'm/d/y' ); ?>
+											</div>
+											<ul class="navigation-popup__links">
+												<?php foreach ( $toc_links as $toc_link ) : ?>
+													<li>
+														<a href="#<?php echo esc_attr( str_replace( ' ', '-', strtolower( $toc_link ) ) ); ?>" 
+															class="navigation-popup__link">
+															<?php echo $toc_link; ?>
+														</a>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+										</div>
+									</div>
+								<?php endif; ?>
+							</div>
+						</div>
+						<div class="navigation-bar__social">
+							<h5 class="navigation-bar__social__heading">
+								<?php echo esc_html__( 'Leave Feedback' ); ?>
+							</h5>
+							<ul class="navigation-bar__social__items">
+								<li class="navigation-bar__social__item facebook"><a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></a></li>
+								<li class="navigation-bar__social__item twitter"><a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( get_the_permalink() ); ?>&text=<?php echo esc_html( get_the_title() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></a></li>
+								<li class="navigation-bar__social__item share" data-url=""><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<?php endif; ?>
 			<?php
 		elseif ( 'card_slider' == get_row_layout() ) :
 			$case_results = get_sub_field( 'case_results' );
@@ -766,91 +844,94 @@ if ( have_rows( 'modules' ) ) :
 				<div class="container">
 					<div class="contact-form__main">
 						<?php if ( have_rows( 'cards' ) ) : ?>
-						<div class="contact-form__cards">
-							<?php
-							while ( have_rows( 'cards' ) ) :
-								the_row();
-								$type = get_sub_field( 'type' );
-								?>
-							<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
+							<div class="contact-form__cards">
 								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'eyebrow',
-										't'  => 'h5',
-										'tc' => 'item-eyebrow',
-									)
-								);
-								?>
-								<?php if ( 'money' == $type ) : ?>
-									<div class="item-badge">
-										<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
-										</svg>
-									</div>
-									<?php
-								else: 
-									get_template_part_args(
-										'template-parts/content-modules-image',
-										array(
-											'v'     => 'badge',
-											'v2x'   => false,
-											'is'    => false,
-											'is_2x' => false,
-											'c'     => 'item-badge__img',
-											'w'     => 'div',
-											'wc'    => 'item-badge',
-										)
-									);
-								endif;
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-image',
-									array(
-										'v'     => 'award',
-										'v2x'   => false,
-										'is'    => false,
-										'is_2x' => false,
-										'c'     => 'item-award__img',
-										'w'     => 'div',
-										'wc'    => 'item-award',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'content',
-										't'  => 'h5',
-										'tc' => 'item-content',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'sub_title',
-										't'  => 'h5',
-										'tc' => 'item-sub_title',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'contact-form__cards__item__cta link',
-									)
-								);
-								?>
+								while ( have_rows( 'cards' ) ) :
+									the_row();
+									$type = get_sub_field( 'type' );
+									$cta  = get_sub_field( 'cta' );
+									?>
+									<?php if ( $cta ) : ?>
+									<a href="<?php echo esc_url( $cta['url'] ); ?>" class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1" target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
+									<?php else : ?>
+									<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
+									<?php endif; ?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'eyebrow',
+												't'  => 'h5',
+												'tc' => 'item-eyebrow',
+											)
+										);
+										?>
+										<?php if ( 'money' == $type ) : ?>
+											<div class="item-badge">
+												<svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path opacity="0.8" d="M9.09375 4.18945C10.7285 4.34766 12.3105 4.66406 13.4707 4.98047C13.9453 5.08594 14.209 5.50781 14.1035 5.98242C13.998 6.45703 13.5234 6.7207 13.1016 6.61523C11.3613 6.19336 8.77734 5.66602 6.50977 5.87695C5.40234 5.98242 4.45312 6.19336 3.76758 6.66797C3.08203 7.14258 2.60742 7.77539 2.39648 8.77734C2.23828 9.56836 2.34375 10.1484 2.55469 10.5703C2.76562 11.0449 3.13477 11.4141 3.71484 11.7832C4.875 12.5215 6.5625 12.9434 8.46094 13.4707H8.51367C10.3066 13.9453 12.2578 14.4727 13.6289 15.3691C14.3672 15.8438 15 16.4238 15.4219 17.2148C15.791 18.0586 15.8965 19.0078 15.7383 20.0625C15.3691 21.8555 14.1035 23.0684 12.416 23.7539C11.4141 24.123 10.3066 24.334 9.09375 24.3867V26.918C9.09375 27.3926 8.67188 27.7617 8.25 27.7617C7.77539 27.7617 7.40625 27.3926 7.40625 26.918V24.334C7.03711 24.2812 6.7207 24.2812 6.4043 24.2285C4.98047 24.0176 2.92383 23.543 1.13086 22.752C0.708984 22.5938 0.498047 22.0664 0.708984 21.6445C0.867188 21.2227 1.39453 21.0117 1.81641 21.2227C3.39844 21.9082 5.34961 22.3301 6.61523 22.541C8.67188 22.8574 10.4648 22.6992 11.7832 22.1719C13.1016 21.6445 13.8398 20.8535 14.0508 19.7461C14.209 18.9551 14.1035 18.4277 13.8926 17.9531C13.6816 17.5312 13.3125 17.1094 12.7324 16.793C11.5723 16.0547 9.88477 15.5801 7.98633 15.1055L7.93359 15.0527C6.14062 14.5781 4.18945 14.1035 2.81836 13.207C2.08008 12.7324 1.44727 12.0996 1.02539 11.3086C0.65625 10.5176 0.550781 9.56836 0.708984 8.46094C1.02539 6.98438 1.76367 5.98242 2.81836 5.24414C3.87305 4.61133 5.13867 4.29492 6.4043 4.18945C6.7207 4.13672 7.03711 4.13672 7.40625 4.13672V1.60547C7.40625 1.18359 7.77539 0.761719 8.25 0.761719C8.67188 0.761719 9.09375 1.18359 9.09375 1.60547V4.18945Z" fill="#78BE38"/>
+												</svg>
+											</div>
+											<?php
+										else: 
+											get_template_part_args(
+												'template-parts/content-modules-image',
+												array(
+													'v'     => 'badge',
+													'v2x'   => false,
+													'is'    => false,
+													'is_2x' => false,
+													'c'     => 'item-badge__img',
+													'w'     => 'div',
+													'wc'    => 'item-badge',
+												)
+											);
+										endif;
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-image',
+											array(
+												'v'     => 'award',
+												'v2x'   => false,
+												'is'    => false,
+												'is_2x' => false,
+												'c'     => 'item-award__img',
+												'w'     => 'div',
+												'wc'    => 'item-award',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'h5',
+												'tc' => 'item-content',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'sub_title',
+												't'  => 'h5',
+												'tc' => 'item-sub_title',
+											)
+										);
+										?>
+										<?php if ( $cta ) : ?>
+											<span class="contact-form__cards__item__cta link" aria-label="<?php echo esc_attr( $cta['title'] ); ?>"></span>
+										<?php endif; ?>
+									<?php if ( $cta ) : ?>
+										</a>
+									<?php else: ?>
+										</div>
+									<?php endif; ?>
+								<?php endwhile; ?>
 							</div>
-							<?php endwhile; ?>
-						</div>
 						<?php endif; ?>
 						<div class="contact-form__content">
 							<?php
@@ -1739,103 +1820,6 @@ if ( have_rows( 'modules' ) ) :
 						)
 					);
 					?>
-				</div>
-			</section>
-			<?php
-		elseif ( 'navigation_bar' == get_row_layout() ) :
-			$social = get_sub_field( 'social' );
-			?>
-			<!-- Navigation Bar -->
-			<section class="navigation-bar"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-				<div class="container">
-					<div class="navigation-bar__main">
-						<div class="navigation-bar__nav">
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'section_heading',
-									't'  => 'h5',
-									'tc' => 'navigation-bar__nav__heading',
-								)
-							);
-							?>
-							<?php if ( have_rows( 'sections' ) ) : ?>
-							<div class="navigation-bar__nav__menu">
-								<?php
-								while ( have_rows( 'sections' ) ) :
-									the_row();
-									if ( get_row_index() < 4 ) :
-										?>
-									<div class="navigation-bar__nav__menu__item">
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-cta',
-											array(
-												'v' => 'cta',
-												'c' => 'navigation-bar__nav__menu__item__cta',
-											)
-										);
-										?>
-									</div>
-									<?php endif; ?>
-								<?php endwhile; ?>
-								<?php if ( count( get_sub_field( 'sections' ) ) > 3 ) : ?>
-									<div class="navigation-bar__nav__menu__item">
-										<a href="javascript:;" data-src="#navigation-popup" class="navigation-bar__nav__menu__item__cta navigation-popup__toggler" data-fancybox>
-											<?php echo esc_html__( 'Expand Table of Contents' ); ?>
-										</a>
-									</div>
-									<div class="navigation-popup" id="navigation-popup">
-										<div class="navigation-popup__header">
-											<h5 class="navigation-popup__title"><?php echo esc_html__( 'Table of contents' ); ?></h5>
-										</div>
-										<div class="navigation-popup__body">
-											<div class="navigation-popup__dates">
-												Page Published <?php echo get_the_date( 'm/d/y' ); ?> | Page Updated <?php echo get_the_modified_date( 'm/d/y' ); ?>
-											</div>
-											<ul class="navigation-popup__links">
-												<?php
-												while ( have_rows( 'sections' ) ) :
-													the_row();
-													?>
-													<li>
-														<?php
-														get_template_part_args(
-															'template-parts/content-modules-cta',
-															array(
-																'v' => 'cta',
-																'c' => 'navigation-popup__link',
-															)
-														);
-														?>
-													</li>
-												<?php endwhile; ?>
-											</ul>
-										</div>
-									</div>
-								<?php endif; ?>
-							</div>
-							<?php endif; ?>
-						</div>
-						<div class="navigation-bar__social">
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'feedback_heading',
-									't'  => 'h5',
-									'tc' => 'navigation-bar__social__heading',
-								)
-							);
-							?>
-							<ul class="navigation-bar__social__items">
-								<li class="navigation-bar__social__item facebook"><a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></a></li>
-								<li class="navigation-bar__social__item twitter"><a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( get_the_permalink() ); ?>&text=<?php echo esc_html( get_the_title() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></a></li>
-								<li class="navigation-bar__social__item share" data-url=""><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
-							</ul>
-						</div>
-					</div>
 				</div>
 			</section>
 		<?php endif; ?>

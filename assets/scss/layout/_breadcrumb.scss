@@ -3,11 +3,16 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  @include mq(tablet, max) {
+    margin-left: -1rem;
+  }
   li {
     padding-inline: 1rem;
     line-height: 1;
-    &:first-child {
-      padding-left: 0;
+    @include mq(tablet) {
+      &:first-child {
+        padding-left: 0;
+      }
     }
     &:not(:last-child) {
       border-right: 1px solid $clr-navy;
