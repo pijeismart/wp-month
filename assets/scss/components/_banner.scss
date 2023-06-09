@@ -74,8 +74,8 @@
       font-size: 7rem;
       line-height: 7rem;
       @include mq(tablet, max) {
-        font-size: 5.5rem;
-        line-height: 5.2rem;
+        font-size: 3rem;
+        line-height: 3.6rem;
       }
       @include mq(tablet) {
         margin-bottom: 9rem;
