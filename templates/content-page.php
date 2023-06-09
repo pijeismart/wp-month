@@ -1401,7 +1401,7 @@ if ( have_rows( 'modules' ) ) :
 						$args  = array(
 							'post_type'      => 'faq',
 							'post_status'    => 'publish',
-							'posts_per_page' => -1,
+							'posts_per_page' => 4,
 							'tax_query'      => $tax_query,
 						);
 						$query = new WP_Query( $args );
