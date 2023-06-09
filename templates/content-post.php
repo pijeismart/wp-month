@@ -26,7 +26,9 @@ endif;
 					<span><?php echo esc_html( 'Updated' ); ?> <?php echo get_the_date( 'M, d Y' ); ?></span>
 				</li>
 			</ul>
-			<h6 class="h7 post-banner__subtitle a-up"><?php echo esc_html( 'Montlick Resources' ); ?></h6>
+			<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">
+				<h6 class="h7 post-banner__subtitle a-up"><?php echo esc_html( 'Montlick Resources' ); ?></h6>
+			</a>
 			<h1 class="post-banner__title a-up a-delay-1"><?php the_title(); ?></h1>
 			<?php if ( has_excerpt() ) : ?>
 				<div class="post-banner__excerpt a-up a-delay-2"><?php the_excerpt(); ?></div>
