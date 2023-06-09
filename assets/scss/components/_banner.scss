@@ -48,6 +48,9 @@
       width: 20rem;
       height: 23rem;
       bottom: 0;
+      @include mq(tablet, max) {
+        display: none;
+      }
     }
   }
   &-content {
