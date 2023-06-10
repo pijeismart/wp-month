@@ -182,7 +182,7 @@ if ( have_rows( 'modules' ) ) :
 									<?php if ( $img ) : ?>
 										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
 									<?php endif; ?>
-									<h6 class="banner-subheading"><?php echo esc_html( $case_categories[0]->name ); ?></h6>
+									<span class="h6 banner-subheading"><?php echo esc_html( $case_categories[0]->name ); ?></span>
 								</div>
 							<?php endif; ?>
 							<?php
