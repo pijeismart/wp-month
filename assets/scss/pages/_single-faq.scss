@@ -226,7 +226,9 @@
     }
   }
   &__video {
+    flex-grow: 1;
     margin: 0 auto 2.4rem;
+    width: 100%;
     max-width: 50rem;
     border-radius: 12px;
     overflow: hidden;
