@@ -15,7 +15,7 @@ get_header();
 					<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 				</li>
 				<li>
-					<span><?php echo esc_html( 'Montlick Resources' ); ?></span>
+					<span><?php echo esc_html( 'Montlick Legal Blog and Resources' ); ?></span>
 				</li>
 			</ul>
 			<?php
