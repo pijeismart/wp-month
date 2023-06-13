@@ -20,26 +20,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_647efc817cbb8",
-            "label": "Attorney Title",
-            "name": "attorney_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_647efcff7cbb9",
             "label": "Education",
             "name": "education",
@@ -215,5 +195,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686622028
+    "modified": 1686682298
 }

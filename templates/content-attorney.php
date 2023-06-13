@@ -40,17 +40,9 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 		<?php endif; ?>
 		<div class="attorney-banner__content">
 			<div class="attorney-banner__meta a-up">
-				<?php
-				get_template_part_args(
-					'template-parts/content-modules-text',
-					array(
-						'v'  => 'attorney_title',
-						't'  => 'h6',
-						'tc' => 'h7',
-						'o'  => 'f',
-					)
-				);
-				?>
+				<a href="<?php echo esc_url( home_url( '/attorney/' ) ); ?>" class="h7">
+					<?php echo esc_html__( 'Attorneys' ); ?>
+				</a>
 				<h1 class="h7 attorney-banner__title"><?php the_title(); ?></h1>
 			</div>
 			<?php
