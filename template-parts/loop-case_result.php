@@ -23,7 +23,7 @@ $theme      = $args['theme'];
                 <h3 class="cards-slider__slide__heading"><?php echo esc_html( '$' . floatval( $price ) / 1000000 ); ?></h3>
                 <p class="cards-slider__slide__content"><?php echo esc_html__( 'Million' ); ?></p>
             <?php else : ?>
-                <h3 class="cards-slider__slide__heading"><?php echo esc_html( '$' . intval( $price ) ); ?></h3>
+                <h3 class="cards-slider__slide__heading"><?php echo esc_html( '$' . number_format( intval( $price ) ) ); ?></h3>
             <?php endif; ?>
         <?php endif; ?>
     <?php else : ?>
