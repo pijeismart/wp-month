@@ -1,8 +1,15 @@
 <?php
 global $post;
 // Get author information
-$get_author_id       = get_the_author_meta( 'ID' );
-$get_author_gravatar = get_avatar_url( $get_author_id, array( 'size' => 40 ) );
+$author_id = get_the_author_meta( 'ID' );
+if ( $author_id ) {
+	$author_img = get_avatar_url( $author_id );
+	if ( strpos( $author_img, 'gravatar.com' ) !== false ) {
+		$author_img = get_template_directory_uri() . '/assets/img/default-author.jpg';
+	} else {
+		$author_img = get_avatar_url( $author_id, array( 'size' => 40 ) );
+	}
+}
 
 // Get post fields
 $terms     = get_the_terms( get_the_ID(), 'case_category' );
@@ -34,8 +41,8 @@ endif;
 				<div class="post-banner__excerpt a-up a-delay-2"><?php the_excerpt(); ?></div>
 			<?php endif; ?>
 			<div class="post-banner__author a-up a-delay-3">
-				<?php if ( $get_author_gravatar ) : ?>
-					<img src="<?php echo esc_url( $get_author_gravatar ); ?>" alt="" class="post-banner__author__img">
+				<?php if ( $author_img ) : ?>
+					<img src="<?php echo esc_url( $author_img ); ?>" alt="" class="post-banner__author__img">
 				<?php endif; ?>
 				<span class="post-banner__author__name">By <b><?php echo get_the_author_meta( 'display_name' ); ?></b></span>
 			</div>
