@@ -505,68 +505,9 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'testimonials' == get_row_layout() ) :
-			$testimonials = get_sub_field( 'testimonials' );
 			$shortcode    = get_field( 'testimonial_shortcode', 'options' );
 			?>
 			<!-- Testimonials -->
-			<?php if ( have_rows( 'testimonials' ) ) : ?>
-				<section class="testimonials"
-					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-					<div class="testimonials-main-slider">
-						<?php
-						while ( have_rows( 'testimonials' ) ) :
-							the_row();
-							?>
-							<div class="testimonial-main__slide">
-								<div class="testimonial-main__slide__inner">
-									<div class="testimonial-main__content">
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-text',
-											array(
-												'v'  => 'content',
-												't'  => 'div',
-												'tc' => 'testimonial-main__slide__content',
-											)
-										);
-										?>
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-cta',
-											array(
-												'v' => 'cta',
-												'c' => 'link',
-											)
-										);
-										?>
-									</div>
-									<div class="testimonial-main__media">
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-image',
-											array(
-												'v'   => 'image',
-												'v2x' => false,
-												'is'  => 'testimonial-large',
-												'is_2x' => 'testimonial-large-2x',
-												'w'   => 'div',
-												'wc'  => 'testimonial-main__slide__img',
-											)
-										);
-										?>
-										<div class="slider-controls testimonial-main__controls d-md-only">
-											<div class="testimonial-main__pagination slider-pagination">
-												<?php echo esc_html( get_row_index() ); ?> / <?php echo count( $testimonials ); ?>
-											</div>
-											<button class="link testimonial-next"><?php echo esc_html__( 'Next' ); ?></button>
-										</div>
-									</div>
-								</div>
-							</div>
-						<?php endwhile; ?>
-					</div>
-				</section>
-			<?php endif; ?>
 			<?php if ( $shortcode ) : ?>
 				<section class="testimonials"
 					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
