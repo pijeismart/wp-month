@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
   }
+  .rplg-reviews,
   &-main-slider {
     position: relative;
     width: 100%;
@@ -133,14 +134,17 @@
       @include mq(tablet) {
         padding-left: var(--gutter);
       }
-      .link {
-        @include mq(tablet) {
+      > a {
+        @extend .link;
+      }
+      // .link {
+      //   @include mq(tablet) {
           // display: none;
           // @include when-inside('.slick-current') {
-            display: inline-block;
+            // display: inline-block;
           // }
-        }
-      }
+      //   }
+      // }
     }
     &__controls {
       @include mq(tablet) {
