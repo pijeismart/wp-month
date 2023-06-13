@@ -18,9 +18,10 @@ if ( have_rows( 'modules' ) ) :
 		?>
 		<?php
 		if ( 'banner' == get_row_layout() ) :
-			$type  = get_sub_field( 'type' );
-			$image = get_sub_field( 'image' );
-			$video = get_sub_field( 'video' );
+			$type         = get_sub_field( 'type' );
+			$image        = get_sub_field( 'image' );
+			$video        = get_sub_field( 'video' );
+			$mobile_video = get_sub_field( 'mobile_video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
 			?>
@@ -64,8 +65,9 @@ if ( have_rows( 'modules' ) ) :
 										'template-parts/content-modules',
 										'media',
 										array(
-											'image' => $image,
-											'video' => $video,
+											'image'        => $image,
+											'video'        => $video,
+											'mobile_video' => $mobile_video,
 										)
 									);
 									?>
