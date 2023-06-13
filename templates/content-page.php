@@ -58,16 +58,18 @@ if ( have_rows( 'modules' ) ) :
 					<div class="banner-inner">
 						<?php if ( 'practice-cards' != $type ) : ?>
 							<div class="banner-media a-op">
-								<?php
-								get_template_part(
-									'template-parts/content-modules',
-									'media',
-									array(
-										'image' => $image,
-										'video' => $video,
-									)
-								);
-								?>
+								<div class="banner-media__large">
+									<?php
+									get_template_part(
+										'template-parts/content-modules',
+										'media',
+										array(
+											'image' => $image,
+											'video' => $video,
+										)
+									);
+									?>
+								</div>
 								<div class="banner-media__small">
 									<?php
 									get_template_part_args(
