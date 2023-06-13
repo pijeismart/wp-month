@@ -75,15 +75,15 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 				)
 			);
 			?>
-			<?php if ( have_rows( 'banner_ctas' ) ) : ?>
+			<?php if ( have_rows( 'attorney_links', 'options' ) ) : ?>
 				<div class="attorney-banner__links">
 					<?php
-					while ( have_rows( 'banner_ctas' ) ) :
+					while ( have_rows( 'attorney_links', 'options' ) ) :
 						the_row();
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v' => 'cta',
+								'v' => 'link',
 								'c' => 'attorney-banner__link',
 							)
 						);
