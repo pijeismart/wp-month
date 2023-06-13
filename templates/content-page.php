@@ -179,7 +179,7 @@ if ( have_rows( 'modules' ) ) :
 							<?php if ( 'home' != $type && $case_categories ) :
 								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
 								?>
-								<div class="banner-categories">
+								<div class="banner-categories a-up">
 									<?php if ( $img ) : ?>
 										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
 									<?php endif; ?>
@@ -189,7 +189,7 @@ if ( have_rows( 'modules' ) ) :
 										array(
 											'v'  => 'heading',
 											't'  => 'h1',
-											'tc' => 'h6 banner-subheading a-up',
+											'tc' => 'h6 banner-subheading',
 										)
 									);
 									?>
@@ -200,7 +200,7 @@ if ( have_rows( 'modules' ) ) :
 									array(
 										'v'  => 'sub_heading',
 										't'  => 'h2',
-										'tc' => 'h1 banner-heading a-up',
+										'tc' => 'h1 banner-heading a-up a-delay-1',
 									)
 								);
 								?>
