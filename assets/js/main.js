@@ -357,6 +357,23 @@
           }
         ]
       });
+      $('.rplg-reviews').slick({
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        speed: 1000,
+        fade: true,
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              variableWidth: true,
+              fade: false
+            }
+          }
+        ]
+      });
       // init desktop next slider
       // $('.testimonials-next-slider').slick({
       //   arrows: false,
