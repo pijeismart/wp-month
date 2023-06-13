@@ -86,7 +86,9 @@
   &__links {
     @include mq(tablet) {
       display: flex;
+      margin-inline: -0.8rem;
       align-items: center;
+      flex-wrap: wrap;
     }
   }
   &__link {
@@ -103,7 +105,7 @@
       margin-bottom: 0.8rem;
     }
     @include mq(tablet) {
-      margin-right: 1.6rem;
+      margin: 0.8rem;
       padding: 3rem 7.4rem 3rem 3rem;
       border-radius: 1rem;
     }

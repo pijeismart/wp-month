@@ -1677,6 +1677,126 @@ if ( have_rows( 'modules' ) ) :
 					?>
 				</div>
 			</section>
+
+			<?php
+		elseif ( 'support_module' == get_row_layout() ) :
+			$image = get_field( 'support_image', 'options' );
+			$video = get_field( 'support_video', 'options' );
+			?>
+			<!-- Support Module -->
+			<section class="content-image content-image--cards content-image--right"
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container">
+					<div class="content-image__media">
+						<?php
+						get_template_part(
+							'template-parts/content-modules',
+							'media',
+							array(
+								'image' => $image,
+								'video' => $video,
+								'size'  => 'content-image-cards',
+							)
+						);
+						?>
+					</div>
+					<div class="content-image__content">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'support_heading',
+								't'  => 'h2',
+								'tc' => 'content-image__heading a-up',
+								'o'  => 'o',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'support_content',
+								't'  => 'div',
+								'tc' => 'content-image__copy a-up a-delay-1',
+								'o'  => 'o',
+							)
+						);
+						?>
+						<?php if ( have_rows( 'support_cards', 'options' ) ) : ?>
+							<div class="content-image__cards a-up a-delay-2">
+								<?php
+								while ( have_rows( 'support_cards', 'options' ) ) :
+									the_row();
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'text',
+											't'  => 'div',
+											'tc' => 'content-image__card',
+										)
+									);
+								endwhile;
+								?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</section>
+			<?php
+		elseif ( 'about_module' == get_row_layout() ) :
+			$image = get_field( 'about_image', 'options' );
+			$video = get_field( 'about_video', 'options' );
+			?>
+			<!-- About Module -->
+			<section class="content-image content-image--full-ctas content-image--right"
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container">
+					<div class="content-image__media">
+						<?php
+						get_template_part(
+							'template-parts/content-modules',
+							'media',
+							array(
+								'image' => $image,
+								'video' => $video,
+								'size'  => 'content-image-full-ctas',
+							)
+						);
+						?>
+					</div>
+					<div class="content-image__content">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'about_content',
+								't'  => 'div',
+								'tc' => 'content-image__copy a-up a-delay-1',
+								'o'  => 'o',
+							)
+						);
+						?>
+						<?php if ( have_rows( 'about_ctas', 'options' ) ) : ?>
+							<div class="content-image__ctas a-up a-delay-2">
+								<?php
+								while ( have_rows( 'about_ctas', 'options' ) ) :
+									the_row();
+									$style = get_sub_field( 'style' );
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v' => 'cta',
+											'c' => 'btn btn-' . $style,
+										)
+									);
+								endwhile;
+								?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</section>
 		<?php endif; ?>
 		<?php
 	endwhile;

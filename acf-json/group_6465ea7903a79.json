@@ -1281,11 +1281,11 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_646ebe22d7b0b",
-                            "label": "Content",
+                            "key": "field_6488c159c44ca",
+                            "label": "Message",
                             "name": "",
                             "aria-label": "",
-                            "type": "tab",
+                            "type": "message",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1294,112 +1294,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_6465ecc090fdd",
-                            "label": "Testimonials",
-                            "name": "testimonials",
-                            "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "table",
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "",
-                            "button_label": "Add Row",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_6465ecc690fde",
-                                    "label": "Image",
-                                    "name": "image",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": "",
-                                    "preview_size": "medium",
-                                    "parent_repeater": "field_6465ecc090fdd"
-                                },
-                                {
-                                    "key": "field_6465eccb90fdf",
-                                    "label": "Content",
-                                    "name": "content",
-                                    "aria-label": "",
-                                    "type": "wysiwyg",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "tabs": "all",
-                                    "toolbar": "full",
-                                    "media_upload": 1,
-                                    "delay": 0,
-                                    "parent_repeater": "field_6465ecc090fdd"
-                                },
-                                {
-                                    "key": "field_6465ecd190fe0",
-                                    "label": "CTA",
-                                    "name": "cta",
-                                    "aria-label": "",
-                                    "type": "link",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "parent_repeater": "field_6465ecc090fdd"
-                                }
-                            ]
-                        },
-                        {
-                            "key": "field_646ebe2ed7b0c",
-                            "label": "Settings",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
+                            "message": "You may update fields in Theme Settings > Testimonial",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
                         },
                         {
                             "key": "field_64831f8bb2f13",
@@ -4833,6 +4730,142 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_6488bcfdf7c52": {
+                    "key": "layout_6488bcfdf7c52",
+                    "name": "support_module",
+                    "label": "Support Module",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6488bd09f7c54",
+                            "label": "Message",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "You may update fields in Theme Settings > Support.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_6488c181c44cb",
+                            "label": "TOC Title",
+                            "name": "toc_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6488c188c44cc",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6488bd1ff7c55": {
+                    "key": "layout_6488bd1ff7c55",
+                    "name": "about_module",
+                    "label": "About Module",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6488bd24f7c57",
+                            "label": "Message",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "You may update fields in Theme Settings > About",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_6488c190c44cd",
+                            "label": "TOC Title",
+                            "name": "toc_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6488c19bc44ce",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -4872,5 +4905,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686679581
+    "modified": 1686684070
 }
