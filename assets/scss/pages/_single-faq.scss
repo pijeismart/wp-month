@@ -172,6 +172,7 @@
   &__bottom {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 3.2rem;
     h6 {
       margin-bottom: 1.6rem;
       font: 600 1.2rem/1.55 $f-text;
@@ -179,7 +180,9 @@
       text-transform: uppercase;
     }
     &__right {
-      text-align: right;
+      @include mq(tablet) {
+        text-align: right;
+      }
     }
   }
   .rating-buttons {
