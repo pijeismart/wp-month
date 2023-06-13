@@ -276,6 +276,8 @@
     @include mq(tablet, max) {
       display: flex;
       margin-right: calc(var(--gutter) * -1);
+      overflow: auto;
+      scroll-snap-type: x mandatory;
     }
     @include mq(tablet) {
       display: grid;

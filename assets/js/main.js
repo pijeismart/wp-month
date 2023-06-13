@@ -331,14 +331,14 @@
 
     initTestimonials() {
       // init mobile slider
-      $('.testimonials-mobile').slick({
-        arrows: false,
-        dots: false,
-        variableWidth: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        speed: 1000
-      });
+      // $('.testimonials-mobile').slick({
+      //   arrows: false,
+      //   dots: false,
+      //   variableWidth: true,
+      //   autoplay: true,
+      //   autoplaySpeed: 3000,
+      //   speed: 1000
+      // });
       // init desktop main slider
       const $mainSlider = $('.testimonials-main-slider').slick({
         arrows: false,
@@ -347,18 +347,26 @@
         autoplaySpeed: 3000,
         speed: 1000,
         fade: true,
-        asNavFor: '.testimonials-next-slider'
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              variableWidth: true,
+              fade: false
+            }
+          }
+        ]
       });
       // init desktop next slider
-      $('.testimonials-next-slider').slick({
-        arrows: false,
-        dots: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        speed: 1000,
-        fade: true,
-        asNavFor: '.testimonials-main-slider'
-      });
+      // $('.testimonials-next-slider').slick({
+      //   arrows: false,
+      //   dots: false,
+      //   autoplay: true,
+      //   autoplaySpeed: 3000,
+      //   speed: 1000,
+      //   fade: true,
+      //   asNavFor: '.testimonials-main-slider'
+      // });
       // show next slide
       $('.testimonial-next').on('click', function() {
         $mainSlider.slick('slickNext');

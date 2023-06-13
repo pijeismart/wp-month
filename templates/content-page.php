@@ -512,168 +512,56 @@ if ( have_rows( 'modules' ) ) :
 			<?php if ( have_rows( 'testimonials' ) ) : ?>
 				<section class="testimonials"
 					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-					<div class="testimonials-desktop d-md-only a-up">
-						<div class="testimonials-main-slider">
-							<?php
-							while ( have_rows( 'testimonials' ) ) :
-								the_row();
-								?>
-								<div class="testimonial-main__slide">
-									<div class="testimonial-main__slide__inner">
-										<div class="testimonial-main__content">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'content',
-													't'  => 'div',
-													'tc' => 'testimonial-main__slide__content',
-												)
-											);
-											?>
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-cta',
-												array(
-													'v' => 'cta',
-													'c' => 'link',
-												)
-											);
-											?>
-										</div>
-										<div class="testimonial-main__media">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-image',
-												array(
-													'v'   => 'image',
-													'v2x' => false,
-													'is'  => 'testimonial-large',
-													'is_2x' => 'testimonial-large-2x',
-													'w'   => 'div',
-													'wc'  => 'testimonial-main__slide__img',
-												)
-											);
-											?>
-											<div class="slider-controls testimonial-main__controls">
-												<div class="testimonial-main__pagination slider-pagination">
-													<?php echo esc_html( get_row_index() ); ?> / <?php echo count( $testimonials ); ?>
-												</div>
-												<button class="link testimonial-next"><?php echo esc_html__( 'Next' ); ?></button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<?php endwhile; ?>
-						</div>
-						<div class="testimonials-next-slider">
-							<?php
-							while ( have_rows( 'testimonials' ) ) :
-								the_row();
-								if ( get_row_index() > 1 ) :
-									?>
-									<div class="testimonial-next__slide">
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-image',
-											array(
-												'v'     => 'image',
-												'v2x'   => false,
-												'is'    => 'testimonial-large',
-												'is_2x' => 'testimonial-large-2x',
-												'w'     => 'div',
-												'wc'    => 'testimonial-next__slide__img',
-											)
-										);
-										?>
-										<div class="testimonial-next__content">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'content',
-													't'  => 'div',
-													'tc' => 'testimonial-next__slide__content',
-												)
-											);
-											?>
-										</div>
-									</div>
-								<?php endif; ?>
-							<?php endwhile; ?>
-							<?php
-							while ( have_rows( 'testimonials' ) ) :
-								the_row();
-								if ( 1 == get_row_index() ) :
-									?>
-									<div class="testimonial-next__slide">
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-image',
-											array(
-												'v'     => 'image',
-												'v2x'   => false,
-												'is'    => 'testimonial-large',
-												'is_2x' => 'testimonial-large-2x',
-												'w'     => 'div',
-												'wc'    => 'testimonial-next__slide__img',
-											)
-										);
-										?>
-										<div class="testimonial-next__content">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'content',
-													't'  => 'div',
-													'tc' => 'testimonial-next__slide__content',
-												)
-											);
-											?>
-										</div>
-									</div>
-								<?php endif; ?>
-							<?php endwhile; ?>
-						</div>
-					</div>
-					<div class="testimonials-mobile d-sm-only">
+					<div class="testimonials-main-slider">
 						<?php
 						while ( have_rows( 'testimonials' ) ) :
 							the_row();
 							?>
-							<div class="testimonial-card">
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-image',
-									array(
-										'v'   => 'image',
-										'v2x' => false,
-										'is'  => 'testimonial-large',
-										'w'   => 'div',
-										'wc'  => 'testimonial-card__img',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'content',
-										't'  => 'div',
-										'tc' => 'testimonial-card__content',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'link',
-									)
-								);
-								?>
+							<div class="testimonial-main__slide">
+								<div class="testimonial-main__slide__inner">
+									<div class="testimonial-main__content">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'div',
+												'tc' => 'testimonial-main__slide__content',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-cta',
+											array(
+												'v' => 'cta',
+												'c' => 'link',
+											)
+										);
+										?>
+									</div>
+									<div class="testimonial-main__media">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-image',
+											array(
+												'v'   => 'image',
+												'v2x' => false,
+												'is'  => 'testimonial-large',
+												'is_2x' => 'testimonial-large-2x',
+												'w'   => 'div',
+												'wc'  => 'testimonial-main__slide__img',
+											)
+										);
+										?>
+										<div class="slider-controls testimonial-main__controls d-md-only">
+											<div class="testimonial-main__pagination slider-pagination">
+												<?php echo esc_html( get_row_index() ); ?> / <?php echo count( $testimonials ); ?>
+											</div>
+											<button class="link testimonial-next"><?php echo esc_html__( 'Next' ); ?></button>
+										</div>
+									</div>
+								</div>
 							</div>
 						<?php endwhile; ?>
 					</div>
@@ -682,11 +570,7 @@ if ( have_rows( 'modules' ) ) :
 			<?php if ( $shortcode ) : ?>
 				<section class="testimonials"
 					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-					<div class="testimonials-desktop a-up">
-						<div class="testimonials-main-slider">
-							<?php echo do_shortcode( $shortcode ); ?>
-						</div>
-					</div>
+					<?php echo do_shortcode( $shortcode ); ?>
 				</section>
 			<?php endif; ?>
 			<?php
