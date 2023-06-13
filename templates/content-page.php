@@ -22,7 +22,7 @@ if ( have_rows( 'modules' ) ) :
 			$image = get_sub_field( 'image' );
 			$video = get_sub_field( 'video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
-			$case_categories = get_the_terms( $post, 'case_category' );
+			$case_categories    = get_the_terms( $post, 'case_category' );
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
@@ -177,24 +177,45 @@ if ( have_rows( 'modules' ) ) :
 						<?php endif; ?>
 						<div class="banner-content">
 							<?php if ( 'home' != $type && $case_categories ) :
-								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );  ?>
+								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
+								?>
 								<div class="banner-categories">
 									<?php if ( $img ) : ?>
 										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
 									<?php endif; ?>
-									<span class="h6 banner-subheading"><?php echo esc_html( $case_categories[0]->name ); ?></span>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'heading',
+											't'  => 'h1',
+											'tc' => 'h6 banner-subheading a-up',
+										)
+									);
+									?>
 								</div>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'sub_heading',
+										't'  => 'h2',
+										'tc' => 'h1 banner-heading a-up',
+									)
+								);
+								?>
+							<?php else: ?>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'heading',
+										't'  => 'h1',
+										'tc' => 'banner-heading a-up',
+									)
+								);
+								?>
 							<?php endif; ?>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'heading',
-									't'  => 'h1',
-									'tc' => 'banner-heading a-up',
-								)
-							);
-							?>
 							<?php
 							get_template_part_args(
 								'template-parts/content-modules-text',
