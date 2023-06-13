@@ -506,6 +506,7 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'testimonials' == get_row_layout() ) :
 			$testimonials = get_sub_field( 'testimonials' );
+			$shortcode    = get_field( 'testimonial_shortcode', 'options' );
 			?>
 			<!-- Testimonials -->
 			<?php if ( have_rows( 'testimonials' ) ) : ?>
@@ -678,16 +679,16 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</section>
 			<?php endif; ?>
-			<?php
-			get_template_part_args(
-				'template-parts/content-modules-shortcode',
-				array(
-					'v' => 'testimonial_shortcode',
-					'c' => 'testimonials',
-					'o' => 'o',
-				)
-			);
-			?>
+			<?php if ( $shortcode ) : ?>
+				<section class="testimonials"
+					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+					<div class="testimonials-desktop a-up">
+						<div class="testimonials-main-slider">
+							<?php echo do_shortcode( $shortcode ); ?>
+						</div>
+					</div>
+				</section>
+			<?php endif; ?>
 			<?php
 		elseif ( 'awards' == get_row_layout() ) :
 			get_template_part( 'template-parts/section', 'award' );
