@@ -68,22 +68,27 @@ $phone = get_field( 'header_cta_url', 'options' );
 					</li>
 					<li>
 						<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url( $url ); ?>" class="share-facebook">
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-facebook.svg' ); ?>" alt="">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-facebook.svg' ); ?>" alt="Facebook">
 						</a>
 					</li>
 					<li>
 						<a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( $url ); ?>&text=<?php echo esc_html( $title ); ?>" class="share-twitter">
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-twitter.svg' ); ?>" alt="">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-twitter.svg' ); ?>" alt="Twitter">
 						</a>
 					</li>
 					<li>
 						<a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url( $url ); ?>&title=<?php echo esc_html( $title ); ?>" class="share-linkedin">
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-linkedin.svg' ); ?>" alt="">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-linkedin.svg' ); ?>" alt="Linkedin">
+						</a>
+					</li>
+					<li>
+						<a href="mailto:?subject=<?php echo esc_attr( get_the_title( ) ); ?>&body=Link:<?php echo esc_url( get_the_permalink() ); ?>" class="share-email">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-mail.svg' ); ?>" alt="Email">
 						</a>
 					</li>
 					<li class="d-sm-only">
-						<a href="#" class="share-email">
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-mail.svg' ); ?>" alt="">
+						<a href="sms:?&body=<?php echo esc_url( get_the_permalink( ) ); ?>" class="share-sms">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-sms.svg' ); ?>" alt="SMS">
 						</a>
 					</li>
 				</ul>
