@@ -1040,6 +1040,43 @@
                     "parent_repeater": "field_6487cdb9e3e62"
                 }
             ]
+        },
+        {
+            "key": "field_6487dfb1cae93",
+            "label": "Testimonial",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6487dfb8cae94",
+            "label": "Testimonial Shortcode",
+            "name": "testimonial_shortcode",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -1060,5 +1097,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686621656
+    "modified": 1686626278
 }

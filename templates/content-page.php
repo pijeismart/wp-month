@@ -679,6 +679,16 @@ if ( have_rows( 'modules' ) ) :
 				</section>
 			<?php endif; ?>
 			<?php
+			get_template_part_args(
+				'template-parts/content-modules-shortcode',
+				array(
+					'v' => 'testimonial_shortcode',
+					'c' => 'testimonials',
+					'o' => 'o',
+				)
+			);
+			?>
+			<?php
 		elseif ( 'awards' == get_row_layout() ) :
 			get_template_part( 'template-parts/section', 'award' );
 			?>
