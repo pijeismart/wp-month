@@ -357,6 +357,14 @@
           }
         ]
       });
+      $('.rplg-reviews').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
+        //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        $('.slider-pagination--count').text(slick.slideCount);
+      });
+      $('.testimonial-main__slide .slider-pagination--current').each(function(index) {
+        $(this).html(index + 1);
+      });
       $('.rplg-reviews').slick({
         arrows: false,
         dots: false,
