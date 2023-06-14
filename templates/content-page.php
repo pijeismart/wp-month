@@ -697,7 +697,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact_form' == get_row_layout() ) :
-			$form = get_sub_field( 'form' );
+			$form = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
 			?>
 			<!-- Contact Form -->
 			<section class="contact-form"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -857,7 +857,11 @@ if ( have_rows( 'modules' ) ) :
 							)
 						);
 						?>
-						<?php echo do_shortcode( $form ); ?>
+						<?php if ( $form ) : ?>
+							<div class="contact-form__form__form">
+								<?php echo do_shortcode( $form ); ?>
+							</div>
+						<?php endif; ?>
 						<?php
 						get_template_part_args(
 							'template-parts/content-modules-image',
