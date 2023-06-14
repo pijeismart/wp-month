@@ -3,7 +3,11 @@
   @include mq(tablet, max) {
     margin-bottom: 5.4rem;
   }
-  &-desktop {
+  @include mq(tablet) {
+    display: flex;
+    align-items: center;
+  }
+  .slick-track {
     display: flex;
     align-items: center;
   }
@@ -34,10 +38,6 @@
         height: calc(100% - 7.7rem);
         background: linear-gradient(180deg, #E1F4D0 0%, rgba(225, 244, 208, 0) 100%);
       }
-    }
-    .slick-track {
-      display: flex;
-      align-items: center;
     }
   }
   &-next {
@@ -75,13 +75,13 @@
         padding-block: 0;
         max-width: 30rem;
       }
-      @include mq(tablet) {
-        padding-right: var(--gutter);
-      }
       @include mq(desktop-wide) {
-        padding-right: 0;
         padding-left: calc( (100vw - var(--max-width)) / 2);
       }
+      @include when-inside('.testimonials-next') {
+        padding: 0;
+      }
+
       &__content {
         margin-bottom: 3.2rem;
         font: 400 2.4rem/1.1 $f-heading;
@@ -112,12 +112,12 @@
         display: flex;
         flex-direction: column-reverse;
         @include mq(tablet) {
-          // flex-direction: row-reverse;
           align-items: center;
           justify-content: space-between;
-          // @include when-inside('.slick-current') {
-            flex-direction: row;
-          // }
+          flex-direction: row;
+          @include when-inside('.testimonials-next') {
+            flex-direction: row-reverse;
+          }
         }
       }
       &__img {
@@ -149,11 +149,17 @@
       }
       > a {
         @extend .link;
+        @include when-inside('.testimonials-next') {
+          display: none; 
+        }
       }
     }
     &__controls {
       @include mq(tablet) {
-          display: flex;
+        display: flex;
+      }
+      @include when-inside('.testimonials-next') {
+        display: none !important;
       }
     }
   }
