@@ -63,13 +63,25 @@
 .attorney-cta {
   position: relative;
   padding-block: 4rem;
-  background-color: $clr-navy;
   color: $clr-white;
   @include mq(tablet, max) {
+    margin-bottom: 2rem;
     text-align: center;
   }
   @include mq(tablet) {
     padding-block: 11rem;
+    grid-column: span 3;
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    background-color: $clr-navy;
+    z-index: -1;
   }
   &__img {
     margin: 0 auto 2.4rem;
@@ -82,9 +94,6 @@
       height: 100%;
       max-width: 95rem;
       transform: translateY(-50%);
-    }
-    @include mq(desktop-wide) {
-      right: calc((100vw - 130rem) / 2 + var(--gutter));
     }
   }
   &__heading {
@@ -108,6 +117,188 @@
   &__inner {
     @include mq(tablet) {
       max-width: 53.3rem;
+    }
+  }
+}
+
+.section-archive--attorney {
+  margin-bottom: 5rem;
+  @include mq(tablet) {
+    margin-bottom: 7rem;
+  }
+  .container {
+    display: block;
+  }
+}
+
+.attorney-grid {
+  @include mq(tablet) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 2.4rem;
+  }
+}
+
+.attorney-filters {
+  margin-bottom: 4rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid $clr-border;
+  border-radius: 1rem;
+  @include mq(tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section-archive__search {
+    margin-bottom: 0;
+    &-box {
+      @include mq(tablet) {
+        flex: 0 0 43rem;
+      }
+    }
+  }
+}
+
+.attorney-select {
+  padding: 1.3rem 3.2rem 1.3rem 1.6rem;
+  border: 1px solid $clr-border;
+  border-radius: 5px;
+  font: 400 1.6rem/1.55 $f-text;
+  letter-spacing: 0.01em;
+  color: $clr-black;
+}
+
+.loop-attorney {
+  border-radius: 1rem;
+  overflow: hidden;
+  @include mq(tablet, max) {
+     margin-bottom: 2rem;
+  }
+  &__inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    &::before {
+      position: absolute;
+      content: '';
+      inset: 0;
+      background: rgba(10, 22, 49, 0.4);
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      z-index: 1;
+    }
+  }
+  &__img {
+    position: absolute;
+    inset: 0;
+    img {
+      @include cover-image;
+    }
+  }
+  &__title {
+    position: absolute;
+    padding-right: 7.4rem;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    font: 400 2rem/1.2 $f-heading;
+    color: $clr-white;
+    z-index: 2;
+    @include mq(tablet) {
+      font-size: 3rem;
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      content: '';
+      width: 4rem;
+      height: 4rem;
+      @include svg-background('<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.4097 9H1.40967M17.4097 9L9.40967 1M17.4097 9L9.40967 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      background-color: $clr-green;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: all .3s ease-in-out;
+      @include mq(tablet) {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+  &:hover {
+    .loop-attorney__inner::before {
+      opacity: 1;
+    }
+    .loop-attorney__title::after {
+      opacity: 1;
+      transform: translate(5px, -50%);
+    }
+  }
+  &-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @include mq(tablet, max) {
+      margin-bottom: 2rem;
+    }
+    &--image {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      @include mq(tablet) {
+        grid-column: span 2;
+      }
+      img {
+        position: absolute;
+        inset: 0;
+        @include cover-image;
+      }
+    }
+    
+    &:not(.loop-attorney-card--image) {
+      position: relative;
+      padding: 1.6rem;
+      border-radius: 1rem;
+      background-image: url('../img/decor-m-card.svg');
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      background-size: 80%;
+      @include mq(tablet, max) {
+        padding-top: 10rem;
+      }
+      @include mq(tablet) {
+        padding: 3.2rem;
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        top: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        background: url('../img/icon-arrow-topright.svg') no-repeat center;
+        background-size: contain;
+      }
+    }
+    &--community {
+      background-color: $clr-green;
+    }
+    &--firm,
+    &--results {
+      background-color: $clr-navy;
+      color: $clr-white;
+      &::before {
+        filter: invert(1);
+      }
+    }
+    &__title {
+      margin-bottom: 1.2rem;
+      @include mq(tablet) {
+        margin-bottom: 2.4rem;
+      }
     }
   }
 }
