@@ -360,7 +360,6 @@
         asNavFor: '.testimonials-next .rplg-reviews'
       });
       // init next slider
-      $('.testimonials-next .rplg-reviews').slick('slickGoTo', 1, true);
       $('.testimonials-next .rplg-reviews').slick({
         arrows: false,
         dots: false,
@@ -368,6 +367,7 @@
         autoplaySpeed: 3000,
         speed: 1000,
         fade: true,
+        initialSlide: 1,
         asNavFor: '.testimonials-main .rplg-reviews'
       });
 
