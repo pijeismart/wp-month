@@ -515,7 +515,12 @@ if ( have_rows( 'modules' ) ) :
 			<?php if ( $shortcode ) : ?>
 				<section class="testimonials"
 					<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-					<?php echo do_shortcode( $shortcode ); ?>
+					<div class="testimonials-main">
+						<?php echo do_shortcode( $shortcode ); ?>
+					</div>
+					<div class="testimonials-next-slider">
+						<?php echo do_shortcode( $shortcode ); ?>
+					</div>
 				</section>
 			<?php endif; ?>
 			<?php

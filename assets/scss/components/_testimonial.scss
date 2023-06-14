@@ -99,6 +99,15 @@
             color: $clr-navy;
           // }
         }
+        @include when-inside('.testimonials-next-slider') {
+          margin-bottom: 0;
+          margin-right: 0;
+          font: 400 4rem/1.1 $f-heading;
+          font-style: italic;
+          letter-spacing: -0.01em;
+          color: rgba($clr-navy, 0.3);
+          min-width: 64rem;
+        }
       }
       &__inner {
         display: flex;
@@ -121,18 +130,19 @@
         @extend .object-cover;
         @include mq(tablet) {
           margin-bottom: 0;
-          // height: 26rem;
         }
-        // @include when-inside('.slick-current') {
-          // height: 42.2rem;
-        // }
+        @include when-inside('.testimonials-next-slider') {
+          margin-right: 5.5rem;
+          height: 260px;
+          border-radius: 0 1rem 1rem 0;
+        }
       }
     }
     &__media {
-      // flex: 0 0 18.5rem;
-      // @include when-inside('.slick-current') {
-        flex: 0 0 31rem;
-      // }
+      flex: 0 0 31rem;
+      @include when-inside('.testimonials-next-slider') {
+        flex-basis: 18.5rem;
+      }
     }
     &__content {
       @include mq(tablet) {
@@ -141,43 +151,11 @@
       > a {
         @extend .link;
       }
-      // .link {
-      //   @include mq(tablet) {
-          // display: none;
-          // @include when-inside('.slick-current') {
-            // display: inline-block;
-          // }
-      //   }
-      // }
     }
     &__controls {
       @include mq(tablet) {
-        // display: none;
-        // @include when-inside('.slick-current') {
           display: flex;
-        // }
       }
     }
   }
-  // &-next {
-  //   &__slide {
-  //     display: flex !important;
-  //     align-items: center;
-  //     &__img {
-  //       margin-right: 5.5rem;
-  //       flex: 0 0 18.5rem;
-  //       height: 260px;
-  //       border-radius: 0 1rem 1rem 0;
-  //       overflow: hidden;
-  //       @extend .object-cover;
-  //     }
-  //     &__content {
-  //       font: 400 4rem/1.1 $f-heading;
-  //       font-style: italic;
-  //       letter-spacing: -0.01em;
-  //       color: rgba($clr-navy, 0.3);
-  //       min-width: 64rem;
-  //     }
-  //   }
-  // }
 }
