@@ -13,8 +13,25 @@ get_header(); ?>
 			<?php
 				wp_list_pages(
 					array(
-						'exclude'  => '310',
-						'title_li' => '',
+						'title_li'  => __( 'Practice Areas', 'am' ),
+						'post_type' => 'practice',
+					)
+				);
+            ?>
+			<?php
+				wp_list_pages(
+					array(
+						'title_li'  => __( 'Areas We Serve', 'am' ),
+						'post_type' => 'city',
+					)
+				);
+            ?>
+			<?php
+				wp_list_pages(
+					array(
+						'exclude'   => '310',
+						'title_li'  => '',
+						'post_type' => 'page',
 					)
 				);
             ?>
