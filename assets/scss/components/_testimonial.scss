@@ -8,8 +8,10 @@
     align-items: center;
   }
   .slick-track {
-    display: flex;
-    align-items: center;
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
   }
   &-main .rplg-reviews {
     position: relative;
