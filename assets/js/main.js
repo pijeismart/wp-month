@@ -574,6 +574,12 @@
         else $(this).removeAttr('disabled');
         ajaxCPT();
       });
+
+      $('.attorney-select').on('change', function() {
+        let state = $(this).val();
+        $grid.attr('data-state', state);
+        ajaxCPT();
+      });
     },
     /**
      * init podcasts

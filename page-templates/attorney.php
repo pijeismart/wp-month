@@ -103,8 +103,9 @@ if ( $query->have_posts() ) :
 			<div class="section-archive__filters attorney-filters">
 				<?php if ( $states ) : ?>
 				<select name="states" id="state" class="attorney-select">
+					<option value="">Location</option>
 					<?php foreach ( $states as $state ) : ?>
-						<option value="<?php echo esc_attr( $state->term_id ); ?>"><?php echo esc_html( $state->name ); ?></option>
+						<option value="<?php echo esc_attr( $state->slug ); ?>"><?php echo esc_html( $state->name ); ?></option>
 					<?php endforeach; ?>
 				</select>
 				<?php endif; ?>

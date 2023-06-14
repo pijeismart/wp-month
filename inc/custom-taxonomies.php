@@ -58,7 +58,7 @@ function custom_taxonomies() {
 	// State - 
 	register_taxonomy(
 		'state',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		array( 'city', 'faq' ),             // post type name
+		array( 'city', 'faq', 'attorney' ),             // post type name
 		array(
 			'hierarchical' => true,
 			'label'        => 'States', // display name
