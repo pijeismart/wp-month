@@ -356,8 +356,7 @@
               fade: false
             }
           }
-        ],
-        asNavFor: '.testimonials-next .rplg-reviews'
+        ]
       });
       // init next slider
       $('.testimonials-next .rplg-reviews').slick({
@@ -367,8 +366,10 @@
         autoplaySpeed: 3000,
         speed: 1000,
         fade: true,
-        initialSlide: 1,
-        asNavFor: '.testimonials-main .rplg-reviews'
+        initialSlide: 1
+      });
+      $('.testimonials-main .rplg-reviews').on('afterChange', function(event, slick, currentSlide) {
+        $('.testimonials-next .rplg-reviews').slick('slickNext');
       });
 
       // show next slide
