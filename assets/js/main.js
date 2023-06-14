@@ -330,42 +330,18 @@
     },
 
     initTestimonials() {
-      // init mobile slider
-      // $('.testimonials-mobile').slick({
-      //   arrows: false,
-      //   dots: false,
-      //   variableWidth: true,
-      //   autoplay: true,
-      //   autoplaySpeed: 3000,
-      //   speed: 1000
-      // });
-      // init desktop main slider
-      const $mainSlider = $('.testimonials-main-slider').slick({
-        arrows: false,
-        dots: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        speed: 1000,
-        fade: true,
-        responsive: [
-          {
-            breakpoint: 769,
-            settings: {
-              variableWidth: true,
-              fade: false
-            }
-          }
-        ]
-      });
+      // add total count
       $('.rplg-reviews').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
         //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
         var i = (currentSlide ? currentSlide : 0) + 1;
         $('.slider-pagination--count').text(slick.slideCount);
       });
+      // add current slide count
       $('.testimonial-main__slide .slider-pagination--current').each(function(index) {
         $(this).html(index + 1);
       });
-      $('.rplg-reviews').slick({
+      // init main slider
+      const $mainSlider = $('.testimonials-main .rplg-reviews').slick({
         arrows: false,
         dots: false,
         autoplay: true,
@@ -380,18 +356,21 @@
               fade: false
             }
           }
-        ]
+        ],
+        asNavFor: '.testimonials-next .rplg-reviews'
       });
-      // init desktop next slider
-      // $('.testimonials-next-slider').slick({
-      //   arrows: false,
-      //   dots: false,
-      //   autoplay: true,
-      //   autoplaySpeed: 3000,
-      //   speed: 1000,
-      //   fade: true,
-      //   asNavFor: '.testimonials-main-slider'
-      // });
+      // init next slider
+      const $nextSlider = $('.testimonials-next .rplg-reviews').slick({
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        speed: 1000,
+        fade: true,
+        initialSlide: 1,
+        asNavFor: '.testimonials-main .rplg-reviews'
+      });
+
       // show next slide
       $('.testimonial-next').on('click', function() {
         $mainSlider.slick('slickNext');

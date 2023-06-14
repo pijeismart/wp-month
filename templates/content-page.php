@@ -518,7 +518,7 @@ if ( have_rows( 'modules' ) ) :
 					<div class="testimonials-main">
 						<?php echo do_shortcode( $shortcode ); ?>
 					</div>
-					<div class="testimonials-next-slider">
+					<div class="testimonials-next">
 						<?php echo do_shortcode( $shortcode ); ?>
 					</div>
 				</section>

@@ -7,8 +7,7 @@
     display: flex;
     align-items: center;
   }
-  .rplg-reviews,
-  &-main-slider {
+  &-main .rplg-reviews {
     position: relative;
     width: 100%;
     @include mq(tablet, max) {
@@ -41,7 +40,7 @@
       align-items: center;
     }
   }
-  &-next-slider {
+  &-next {
     max-width: vw(590px);
     width: 100%;
     @include mq(desktop-small, max) {
@@ -99,7 +98,7 @@
             color: $clr-navy;
           // }
         }
-        @include when-inside('.testimonials-next-slider') {
+        @include when-inside('.testimonials-next') {
           margin-bottom: 0;
           margin-right: 0;
           font: 400 4rem/1.1 $f-heading;
@@ -131,7 +130,7 @@
         @include mq(tablet) {
           margin-bottom: 0;
         }
-        @include when-inside('.testimonials-next-slider') {
+        @include when-inside('.testimonials-next') {
           margin-right: 5.5rem;
           height: 260px;
           border-radius: 0 1rem 1rem 0;
@@ -140,7 +139,7 @@
     }
     &__media {
       flex: 0 0 31rem;
-      @include when-inside('.testimonials-next-slider') {
+      @include when-inside('.testimonials-next') {
         flex-basis: 18.5rem;
       }
     }
