@@ -154,6 +154,7 @@
       }
     }
     &__controls {
+      display: none;
       @include mq(tablet) {
         display: flex;
       }
