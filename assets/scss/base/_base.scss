@@ -68,3 +68,13 @@ h5 {
 .fancybox-bg {
   background: rgba(10, 22, 49, 0.64); 
 }
+
+.content {
+  padding-block: 5rem;
+  @include mq(tablet) {
+    padding-block: 8rem;
+  }
+  h1, h2, h3 ,h4, h5, h6, p {
+    margin-bottom: 1em;
+  }
+}
