@@ -72,6 +72,11 @@
     @include mq(tablet) {
       margin-bottom: 0;
     }
+    @include when-inside('.content-image--left') {
+      @include mq(tablet) {
+        margin-left: 2rem;
+      }
+    }
     @include when-inside('.content-image--cards') {
       @include mq(tablet) {
         flex: 0 0 50%;
