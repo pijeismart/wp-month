@@ -304,13 +304,14 @@
       $('.testimonial-slider .rplg-reviews').slick({
         dots: false,
         variableWidth: true,
+        infinite: true,
         responsive: [
           {
             breakpoint: 768,
             settings: {
               variableWidth: false,
               centerMode: true,
-              centerPadding: '28%'
+              centerPadding: '32px'
             }
           }
         ]
