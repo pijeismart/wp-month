@@ -308,23 +308,13 @@
         centerPadding: '28%',
         responsive: [
           {
-            breakpoint: 768,
+            breakpoint: 769,
             settings: {
-              slideToScroll: 1,
-              slideToShow: 1,
+              variableWidth: true,
               centerMode: true,
               centerPadding: '5%'
             }
           },
-          {
-            breakpoint: 1024,
-            settings: {
-              slideToScroll: 1,
-              slideToShow: 1,
-              centerMode: true,
-              centerPadding: '15%'
-            }
-          }
         ]
       });
     },
