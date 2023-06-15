@@ -2799,7 +2799,7 @@
                             "label": "Testimonials",
                             "name": "testimonials",
                             "aria-label": "",
-                            "type": "repeater",
+                            "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -2808,79 +2808,11 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "table",
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "",
-                            "button_label": "Add Row",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_646d2969b6c5d",
-                                    "label": "Content",
-                                    "name": "content",
-                                    "aria-label": "",
-                                    "type": "wysiwyg",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "tabs": "all",
-                                    "toolbar": "full",
-                                    "media_upload": 1,
-                                    "delay": 0,
-                                    "parent_repeater": "field_646d2961b6c5c"
-                                },
-                                {
-                                    "key": "field_646d2971b6c5e",
-                                    "label": "Name",
-                                    "name": "name",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "25",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_646d2961b6c5c"
-                                },
-                                {
-                                    "key": "field_646d2977b6c5f",
-                                    "label": "Rating",
-                                    "name": "rating",
-                                    "aria-label": "",
-                                    "type": "number",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "25",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "min": "",
-                                    "max": "",
-                                    "placeholder": "",
-                                    "step": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_646d2961b6c5c"
-                                }
-                            ]
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_646ebed3d7b1c",
@@ -4905,5 +4837,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686684070
+    "modified": 1686802450
 }

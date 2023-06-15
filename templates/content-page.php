@@ -1109,43 +1109,16 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
-		<?php elseif ( 'testimonials_slider' == get_row_layout() ) : ?>
+			<?php
+		elseif ( 'testimonials_slider' == get_row_layout() ) :
+			$testimonials = get_sub_field( 'testimonials' );
+			?>
 			<!-- Testimonial Slider -->
+			<?php if ( $testimonials ) : ?>
 			<section class="testimonial-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-				<?php if ( have_rows( 'testimonials' ) ) : ?>
-				<div class="testimonial-slider__items">
-					<?php
-					while ( have_rows( 'testimonials' ) ) :
-						the_row();
-						?>
-					<div class="testimonial-slider__item">
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'content',
-								'w'  => 'div',
-								'wc' => 'testimonial-slider__item__content',
-							)
-						);
-						?>
-						<div class="testimonial-slider__item__info">
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'name',
-									't'  => 'h5',
-									'tc' => 'testimonial-slider__item__name',
-								)
-							);
-							?>
-						</div>
-					</div>
-					<?php endwhile; ?>
-				</div>
-				<?php endif; ?>
+				<?php echo do_shortcode( $testimonials ); ?>
 			</section>
+			<?php endif; ?>
 		<?php elseif ( 'milestone_cards' == get_row_layout() ) : ?>
 			<!-- Milestone Cards -->
 			<section class="milestone-cards"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
