@@ -7,6 +7,9 @@
     &__items,
     .rplg-reviews {
         display: flex;
+        .slick-slide {
+            height: inherit !important;
+        }
         .slick-arrow {
             top: calc(100% + 4.4rem);
             left: 50%;
@@ -36,21 +39,20 @@
     &__item {
         margin-inline: 1rem;
         padding: 6rem;
-        width: calc((100% - 40px) / 3);
+        // width: calc((100% - 40px) / 3);
         background-color: rgba(255, 255, 255, 0.05);
         border-radius: 1rem;
+
         @include mq(tablet, max) {
             margin-inline: 0.8rem;
             padding: 4rem 2.4rem;
         }
         &__content {
             margin-bottom: 8rem;
+            color: $clr-white;
+            opacity: 0.4;
             @include mq(tablet, max) {
                 margin-bottom: 2.4rem;
-            }
-            * {
-                font-style: italic;
-                color: $clr-green-light;
             }
         }
         &__info {
