@@ -101,7 +101,7 @@ if ( $query->have_posts() ) :
 	<section class="section-archive section-archive--attorney">
 		<div class="container">
 			<div class="section-archive__filters attorney-filters">
-				<?php if ( $states ) : ?>
+				<?php if ( $states && count( $states ) > 1 ) : ?>
 				<select name="states" id="state" class="attorney-select">
 					<option value="">Location</option>
 					<?php foreach ( $states as $state ) : ?>
