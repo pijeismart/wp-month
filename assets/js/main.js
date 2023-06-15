@@ -302,18 +302,17 @@
      */
     initTestimonialSlider() {
       $('.testimonial-slider .rplg-reviews').slick({
-        slideToShow: 1,
-        slideToScroll: 1,
-        centerMode: true,
-        centerPadding: '28%',
+        dots: false,
+        variableWidth: true,
         responsive: [
           {
-            breakpoint: 769,
+            breakpoint: 768,
             settings: {
-              variableWidth: true,
-              centerMode: false
+              variableWidth: false,
+              centerMode: true,
+              centerPadding: '28%'
             }
-          },
+          }
         ]
       });
     },
