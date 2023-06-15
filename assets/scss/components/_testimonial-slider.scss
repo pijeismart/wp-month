@@ -4,7 +4,8 @@
     @include mq(tablet, max) {
         padding: 8rem 0 13.6rem;
     }
-    &__items {
+    &__items,
+    .rplg-reviews {
         display: flex;
         .slick-arrow {
             top: calc(100% + 4.4rem);

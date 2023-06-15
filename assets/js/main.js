@@ -301,7 +301,7 @@
      * init testimonials
      */
     initTestimonialSlider() {
-      $('.testimonial-slider__items').slick({
+      $('.testimonial-slider .rplg-reviews').slick({
         slideToShow: 1,
         slideToScroll: 1,
         centerMode: true,
