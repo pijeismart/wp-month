@@ -311,8 +311,7 @@
             breakpoint: 769,
             settings: {
               variableWidth: true,
-              centerMode: true,
-              centerPadding: '5%'
+              centerMode: false
             }
           },
         ]
