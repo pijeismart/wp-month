@@ -31,15 +31,7 @@
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_6465f5dae5389",
-                                        "operator": "!=",
-                                        "value": "practice-cards"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -147,11 +139,76 @@
                             "mime_types": ""
                         },
                         {
-                            "key": "field_64819db69edc3",
-                            "label": "Cards",
+                            "key": "field_6465ead490fbf",
+                            "label": "Content",
                             "name": "",
                             "aria-label": "",
                             "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_6465eada90fc0",
+                            "label": "Heading",
+                            "name": "heading",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 2,
+                            "placeholder": "",
+                            "new_lines": "br"
+                        },
+                        {
+                            "key": "field_6487c9cac63f1",
+                            "label": "Sub Heading",
+                            "name": "sub_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465f5dae5389",
+                                        "operator": "!=",
+                                        "value": "home"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_64819e019edc4",
+                            "label": "Cards",
+                            "name": "cards",
+                            "aria-label": "",
+                            "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -163,23 +220,6 @@
                                     }
                                 ]
                             ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_64819e019edc4",
-                            "label": "Cards",
-                            "name": "cards",
-                            "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -248,15 +288,7 @@
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_64819e019edc6",
-                                                "operator": "!=",
-                                                "value": "money"
-                                            }
-                                        ]
-                                    ],
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "50",
                                         "class": "",
@@ -267,40 +299,6 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_64819e019edc4"
-                                },
-                                {
-                                    "key": "field_64819e019edc8",
-                                    "label": "Badge",
-                                    "name": "badge",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_64819e019edc6",
-                                                "operator": "==",
-                                                "value": "money"
-                                            }
-                                        ]
-                                    ],
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": "",
-                                    "preview_size": "medium",
                                     "parent_repeater": "field_64819e019edc4"
                                 },
                                 {
@@ -426,7 +424,7 @@
                                     },
                                     "default_value": "",
                                     "min": "",
-                                    "max": "",
+                                    "max": 5,
                                     "placeholder": "",
                                     "step": "",
                                     "prepend": "",
@@ -451,71 +449,6 @@
                                     "parent_repeater": "field_64819e019edc4"
                                 }
                             ]
-                        },
-                        {
-                            "key": "field_6465ead490fbf",
-                            "label": "Content",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_6465eada90fc0",
-                            "label": "Heading",
-                            "name": "heading",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "rows": 2,
-                            "placeholder": "",
-                            "new_lines": "br"
-                        },
-                        {
-                            "key": "field_6487c9cac63f1",
-                            "label": "Sub Heading",
-                            "name": "sub_heading",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_6465f5dae5389",
-                                        "operator": "!=",
-                                        "value": "home"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
                         },
                         {
                             "key": "field_6465eae690fc1",
@@ -5115,5 +5048,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686884890
+    "modified": 1686919417
 }
