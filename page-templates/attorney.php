@@ -81,7 +81,6 @@ $video = get_field( 'video' );
 $community = get_field( 'community' );
 $history   = get_field( 'history' );
 $results   = get_field( 'results' );
-$gallery   = get_field( 'gallery' );
 
 $team_image   = get_field( 'team_image' );
 $team_heading = get_field( 'team_heading' );
@@ -144,13 +143,8 @@ if ( $query->have_posts() ) :
 							<?php
 						endif;
 					endif;
-					if ( 3 == $i ) :
+					if ( 5 == $i ) :
 						?>
-						<?php if ( $gallery[0] ) : ?>
-							<div class="loop-attorney-card loop-attorney-card--image">
-								<img src="<?php echo esc_url( $gallery[0]['url'] ); ?>" alt="<?php echo esc_attr( $gallery[0]['alt'] ); ?>">
-							</div>
-						<?php endif; ?>
 						<?php if ( $history ) : ?>
 							<div class="loop-attorney-card loop-attorney-card--firm">
 								<?php if ( $history['heading'] ) : ?>
@@ -163,16 +157,7 @@ if ( $query->have_posts() ) :
 						<?php endif; ?>
 						<?php
 					endif;
-					if ( 8 == $i ) :
-						if ( $gallery[1] ) :
-							?>
-							<div class="loop-attorney-card loop-attorney-card--image">
-								<img src="<?php echo esc_url( $gallery[1]['url'] ); ?>" alt="<?php echo esc_attr( $gallery[1]['alt'] ); ?>">
-							</div>
-							<?php
-						endif;
-					endif;
-					if ( 9 == $i ) :
+					if ( 13 == $i ) :
 						?>
 						<?php if ( $results ) : ?>
 							<div class="loop-attorney-card loop-attorney-card--results">
@@ -187,7 +172,7 @@ if ( $query->have_posts() ) :
 						<?php
 					endif;
 					get_template_part( 'template-parts/loop', 'attorney' );
-					if ( 4 == $i ) :
+					if ( 6 == $i ) :
 						?>
 						<div class="attorney-cta">
 							<?php if ( $team_image ) : ?>
