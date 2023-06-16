@@ -92,11 +92,11 @@
       }
       @include mq(tablet) {
         position: relative;
+        flex-basis: 38rem;
         width: 100%;
         margin-bottom: 4rem;
       }
       @include mq(desktop) {
-        flex-basis: 38rem;
         margin-bottom: 0;
       }
       img {
@@ -135,7 +135,7 @@
   &__experience {
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 14rem;
     width: 100%;
     max-width: 42rem;
     padding: 6rem 5rem;
@@ -217,14 +217,8 @@
         padding-inline: var(--gutter);
         z-index: 1;
       }
-      @include mq(tablet) {
-        width: 45%;
-      }
       @include mq(desktop-small) {
-        width: 50%;
-      }
-      @include mq(desktop) {
-        width: 55%;
+        width: calc(100% - 55rem);
       }
     }
   }
