@@ -14,10 +14,9 @@
   }
 
   &__main {
-    margin-right: 2rem;
-
-    @include mq(tablet, max) {
-      margin-right: 0;
+    @include mq(tablet) {
+      margin-right: 2rem;
+      max-width: calc(100% - 40rem);
     }
   }
 
@@ -224,8 +223,14 @@
       margin-bottom: 1.6rem;
     }
   }
+  .rplg-reviews {
+    .slick-track {
+      display: flex;
+    }
+  }
   .rplg-review {
     margin: 0 1rem 0;
+    height: inherit;
   }
   .testimonial-slider__item {
     padding: 3.2rem;
