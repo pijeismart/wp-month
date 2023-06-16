@@ -224,5 +224,36 @@
       margin-bottom: 1.6rem;
     }
   }
-
+  .rplg-review {
+    margin: 0 1rem 0;
+  }
+  .testimonial-slider__item {
+    padding: 3.2rem;
+    background-color: #17233D;
+    border: 1px solid #050D1F; 
+    &__content {
+      margin-bottom: 2rem;
+      font: 400 16px/1.6 'Open Sans', sans-serif;
+      color: #fff;
+      opacity: 0.8;
+    }
+    &__info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 2rem;
+    }
+    &__name {
+      margin-bottom: 0;
+      font: 600 1.6rem/1 'Open Sans', sans-serif;
+      color: #fff;
+    }
+  }
+  .contact-form__content__content .rplg-stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+  }
+  .contact-form__content__content .rplg-stars svg {
+    margin-bottom: 0;
+  }
 }

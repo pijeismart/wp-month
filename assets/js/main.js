@@ -218,6 +218,22 @@
           $parent.toggleClass('is-playing');
           $(this).hide();
         });
+
+        if ($('.contact-form .rplg-review').length>1) {
+          $('.contact-form .rplg-reviews').slick({
+            arrows: false,
+            dots: false,
+            slidesToShow: 2,
+            responsive: [
+                {
+                breakpoint: 660,
+                settings: {
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
+        }
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {
