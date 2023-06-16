@@ -17,10 +17,10 @@ const sourcemaps = require('gulp-sourcemaps');
 // Start browserSync server
 gulp.task('browserSync', () => {
   browserSync.init({
-    server: {
-      baseDir: '.'
-    },
-    notify: false
+    proxy: 'https://montlick.local/',
+    watchOptions: {
+      debounceDelay: 1000 // This introduces a small delay when watching for file change events to avoid triggering too many reloads
+    }
   });
 
   gulp.watch('./assets/scss/**/**/*.scss', gulp.parallel('sass'));

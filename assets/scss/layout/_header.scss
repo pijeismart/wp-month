@@ -1,6 +1,11 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+.home {
+  @include mq(tablet, max) {
+    --header-bg: #EFF2F6;
+  }
+}
 .header {
   position: sticky;
   top: 0;

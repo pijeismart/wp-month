@@ -1,6 +1,6 @@
 <?php
 global $post;
-$toc_links = [];
+$toc_links = array();
 if ( have_rows( 'modules' ) ) :
 	while ( have_rows( 'modules' ) ) :
 		the_row();
@@ -18,10 +18,10 @@ if ( have_rows( 'modules' ) ) :
 		?>
 		<?php
 		if ( 'banner' == get_row_layout() ) :
-			$type         = get_sub_field( 'type' );
-			$image        = get_sub_field( 'image' );
-			$video        = get_sub_field( 'video' );
-			$mobile_video = get_sub_field( 'mobile_video' );
+			$type               = get_sub_field( 'type' );
+			$image              = get_sub_field( 'image' );
+			$video              = get_sub_field( 'video' );
+			$mobile_video       = get_sub_field( 'mobile_video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
 			?>
@@ -30,14 +30,14 @@ if ( have_rows( 'modules' ) ) :
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 						<?php
-					if ( 'home' != $type ) :
-						$parents = get_post_parent( $post );
-						?>
+						if ( 'home' != $type ) :
+							$parents = get_post_parent( $post );
+							?>
 						<ul class="breadcrumbs a-up">
 							<li>
 								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 							</li>
-							<?php if ( 'city' == get_post_type( ) ) : ?>
+							<?php if ( 'city' == get_post_type() ) : ?>
 							<li>
 								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
 									<?php echo esc_html( 'Areas We Serve' ); ?>
@@ -55,7 +55,7 @@ if ( have_rows( 'modules' ) ) :
 								<span><?php the_title(); ?></span>
 							</li>
 						</ul>
-					<?php endif; ?>
+						<?php endif; ?>
 					<div class="banner-inner">
 						<?php if ( 'practice-cards' != $type ) : ?>
 							<div class="banner-media a-op">
@@ -118,17 +118,17 @@ if ( have_rows( 'modules' ) ) :
 												</svg>
 											</div>
 											<?php
-										else: 
+										else :
 											get_template_part_args(
 												'template-parts/content-modules-image',
 												array(
-													'v'     => 'badge',
-													'v2x'   => false,
-													'is'    => false,
+													'v'   => 'badge',
+													'v2x' => false,
+													'is'  => false,
 													'is_2x' => false,
-													'c'     => 'item-badge__img',
-													'w'     => 'div',
-													'wc'    => 'item-badge',
+													'c'   => 'item-badge__img',
+													'w'   => 'div',
+													'wc'  => 'item-badge',
 												)
 											);
 										endif;
@@ -172,7 +172,7 @@ if ( have_rows( 'modules' ) ) :
 										<?php endif; ?>
 									<?php if ( $cta ) : ?>
 										</a>
-									<?php else: ?>
+									<?php else : ?>
 										</div>
 									<?php endif; ?>
 								<?php endwhile; ?>
@@ -180,7 +180,8 @@ if ( have_rows( 'modules' ) ) :
 							<?php endif; ?>
 						<?php endif; ?>
 						<div class="banner-content">
-							<?php if ( 'home' != $type && $case_categories ) :
+							<?php
+							if ( 'home' != $type && $case_categories ) :
 								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
 								?>
 								<div class="banner-categories a-up">
@@ -208,7 +209,7 @@ if ( have_rows( 'modules' ) ) :
 									)
 								);
 								?>
-							<?php else: ?>
+							<?php else : ?>
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
@@ -318,6 +319,122 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php endif; ?>
 			<?php
+		elseif ( 'homepage_mobile_banner' == get_row_layout() ) :
+			$video = get_sub_field( 'video' );
+			?>
+			<!-- Homepage Mobile Banner -->
+			<section class="hp-mobile-banner d-sm-only">
+				<div class="container">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-cta',
+						array(
+							'v' => 'cta',
+							'c' => 'btn btn-primary btn-phone a-up',
+						)
+					);
+					?>
+					<?php if ( $video ) : ?>
+						<div class="hp-mobile-banner__video a-up a-delay-1">
+							<video src="<?php echo esc_url( $video ); ?>#t=0.5" loop muted autoplay preload="metadata">
+								<source src="<?php echo esc_url( $video ); ?>#t=0.5" type="video/mp4">
+							</video>
+							<button class="video-play">
+								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" 
+									alt="Video Play">
+							</button>
+						</div>
+					<?php endif; ?>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'sub_heading',
+							't'  => 'h6',
+							'tc' => 'hp-mobile-banner__subheading a-up a-delay-2',
+						)
+					);
+					?>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'heading',
+							't'  => 'h2',
+							'tc' => 'hp-mobile-banner__heading a-up a-delay-3',
+						)
+					);
+					?>
+					<?php if ( have_rows( 'cards' ) ) : ?>
+						<div class="hp-mobile-banner__cards">
+							<?php
+							while ( have_rows( 'cards' ) ) :
+								the_row();
+								?>
+								<div class="hp-mobile-banner__card">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'icon',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'hp-mobile-banner__card__img',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											't'  => 'p',
+											'tc' => 'hp-mobile-banner__card__text',
+										)
+									);
+									?>
+								</div>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<div class="hp-mobile-banner__bottom">
+					<div class="container">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'bottom_heading',
+								't'  => 'h2',
+								'tc' => 'hp-mobile-banner__bottom-heading a-up',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'bottom_content',
+								't'  => 'p',
+								'tc' => 'hp-mobile-banner__bottom-content a-up a-delay-1',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v' => 'bottom_cta',
+								'c' => 'btn btn-primary',
+							)
+						);
+						?>
+					</div>
+				</div>
+			</section>
+			
+			<?php
 		elseif ( 'card_slider' == get_row_layout() ) :
 			$case_results = get_sub_field( 'case_results' );
 			$theme        = get_sub_field( 'theme' ) ? get_sub_field( 'theme' ) : 'compact';
@@ -341,7 +458,7 @@ if ( have_rows( 'modules' ) ) :
 						endforeach;
 						?>
 					</div>
-					<?php if ( count( $case_results ) > $limit_cnt ) : ?>
+					<?php if ( count( $case_results ) > $limit_cnt && 'full' == $theme ) : ?>
 						<div class="cards-slider__showmore d-sm-only">
 							<button class="btn-show-more"><?php echo esc_html__( 'Show More' ); ?></button>
 						</div>
@@ -349,6 +466,18 @@ if ( have_rows( 'modules' ) ) :
 					<?php
 					endif;
 				wp_reset_query();
+				?>
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-text',
+					array(
+						'v'  => 'sub_heading',
+						't'  => 'p',
+						'tc' => 'cards-slider__subheading',
+						'w'  => 'div',
+						'wc' => 'container',
+					)
+				);
 				?>
 			</section>
 			<?php
@@ -724,15 +853,11 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 					<?php
 					get_template_part_args(
-						'template-parts/content-modules-image',
+						'template-parts/content-modules-shortcode',
 						array(
-							'v'     => 'image',
-							'v2x'   => false,
-							'is'    => false,
-							'is_2x' => false,
-							'c'     => 'map-image',
-							'w'     => 'div',
-							'wc'    => 'd-md-only',
+							'v'     => 'map',
+							't'     => 'div',
+							'tc'    => 'map-image',
 						)
 					);
 					?>
@@ -891,17 +1016,17 @@ if ( have_rows( 'modules' ) ) :
 												</svg>
 											</div>
 											<?php
-										else: 
+										else :
 											get_template_part_args(
 												'template-parts/content-modules-image',
 												array(
-													'v'     => 'badge',
-													'v2x'   => false,
-													'is'    => false,
+													'v'   => 'badge',
+													'v2x' => false,
+													'is'  => false,
 													'is_2x' => false,
-													'c'     => 'item-badge__img',
-													'w'     => 'div',
-													'wc'    => 'item-badge',
+													'c'   => 'item-badge__img',
+													'w'   => 'div',
+													'wc'  => 'item-badge',
 												)
 											);
 										endif;
@@ -945,7 +1070,7 @@ if ( have_rows( 'modules' ) ) :
 										<?php endif; ?>
 									<?php if ( $cta ) : ?>
 										</a>
-									<?php else: ?>
+									<?php else : ?>
 										</div>
 									<?php endif; ?>
 								<?php endwhile; ?>

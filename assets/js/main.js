@@ -159,8 +159,12 @@
         self.smoothScrollLinks();
 
         helper.isElementExist(
-          '.cards-slider__carousel',
-          theme.initCardsCarousel
+          '.cards-slider--full .cards-slider__carousel',
+          theme.initCardsCarouselFull
+        );
+        helper.isElementExist(
+          '.cards-slider--compact .cards-slider__carousel',
+          theme.initCardsCarouselCompact
         );
         helper.isElementExist('.testimonials', theme.initTestimonials);
         helper.isElementExist(
@@ -248,7 +252,7 @@
     /**
      * init cards carousel
      */
-    initCardsCarousel() {
+    initCardsCarouselFull() {
       const option = {
         arrows: false,
         dots: false,
@@ -257,9 +261,20 @@
         autoplaySpeed: 2000,
         speed: 1000
       };
-      const $slider = $('.cards-slider__carousel');
+      const $slider = $('.cards-slider--full .cards-slider__carousel');
       helper.desktopSlider($slider, option);
-      helper.windowResize(theme.initCardsCarousel);
+      helper.windowResize(theme.initCardsCarouselFull);
+    },
+
+    initCardsCarouselCompact() {
+      $('.cards-slider--compact .cards-slider__carousel').slick({
+        arrows: false,
+        dots: false,
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 1000
+      });
     },
 
     /**

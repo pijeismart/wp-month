@@ -1,19 +1,18 @@
 .cards-slider {
   position: relative;
+  margin-block: 4rem;
+  @include mq(tablet) {
+    margin-bottom: 15rem;
+  }
   &__carousel {
     position: relative;
-    margin-block: 4rem;
     @include mq(tablet, max) {
       padding-inline: 1.5rem;
       @include when-inside('.cards-slider--compact') {
-        display: grid;
-        padding-bottom: 3.5rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-gap: 1.5rem;
+        padding-right: 0;
       }
     }
     @include mq(tablet) {
-      margin-bottom: 15rem;
       &:not(.slick-slider) {
         display: flex;
       }
@@ -38,34 +37,31 @@
   &__slide {
     display: block;
     padding: 2rem;
-    background-color: $clr-white;
+    height: inherit;
+    background-color: $clr-navy;
     border: 1px solid $clr-border;
+    color: $clr-white;
     border-radius: 1rem;
     text-align: center;
     transition: all .3s esae-in-out;
-    @include mq(tablet, max) {
-      @include when-inside('.cards-slider--compact:not(.is-show)') {
-        &:nth-child(n+7) {
-          display: none;
-        }
-      }
-      @include when-inside('.cards-slider--compact') {
-        &:nth-child(even) {
-          transform: translateY(3.5rem);
-        }
-      }
-    }
     @include mq(tablet) {
       display: flex !important;
       padding: 7rem 2rem;
       margin-inline: 0.5rem;
       min-width: 24rem;
-      height: inherit;
       align-items: center;
       flex-direction: column;
     }
+    @include when-inside('.cards-slider--compact') {
+      @include mq(tablet, max) {
+        padding: 1.6rem;
+        margin-right: 1.2rem;
+      }
+    }
     @include when-inside('.cards-slider--full') {
       padding: 2.8rem 2.3rem;
+      background-color: $clr-white;
+      color: $clr-navy;
       &:not(:last-child) {
         margin-bottom: 1.3rem;
       }
@@ -87,16 +83,27 @@
       }
     }
     &:hover {
-      background-color: $clr-navy;
-      color: $clr-white;
+      background-color: $clr-white;
+      color: $clr-navy;
       .cards-slider__slide__subheading,
       .cards-slider__slide__cta {
-        color: $clr-white
+        color: $clr-navy
+      }
+      @include when-inside('.cards-slider--full') {
+        background-color: $clr-navy;
+        color: $clr-white;
+        .cards-slider__slide__subheading,
+        .cards-slider__slide__cta {
+          color: $clr-white
+        }
       }
     }
     &__icon {
       margin: 0 auto 2.3rem;
-      @include mq(tablet) {
+      @include when-inside('.cards-slider--compact') {
+        @include mq(tablet, max) {
+          display: none;
+        }
       }
       @include when-inside('.cards-slider--full') {
         margin-bottom: 2rem;
@@ -107,13 +114,19 @@
       font: 700 1.2rem/1.8rem $f-text;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: $clr-navy;
+      color: $clr-white;
       transition: color .3s ease-in-out;
       @include mq(tablet) {
         margin-bottom: 1rem;
       }
+      @include when-inside('.cards-slider--compact') {
+        @include mq(tablet, max) {
+          margin-bottom: 1rem;
+        }
+      }
       @include when-inside('.cards-slider--full') {
         margin-bottom: 2.8rem;
+        color: $clr-navy;
       }
     }
     &__heading {
@@ -138,11 +151,10 @@
     }
     &__content {
       margin-bottom: 1.5rem;
-      font: 700 1.2rem/1.8rem $f-text;
+      font: 800 1.2rem/1.8rem $f-text;
       @include when-inside('.cards-slider--compact') {
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        opacity: 0.6;
       }
       @include when-inside('.cards-slider--full') {
         opacity: 1;
@@ -183,5 +195,14 @@
   }
   .slick-track {
     display: flex;
+  }
+  &__subheading {
+    margin-top: 1.6rem;
+    font: 600 1rem/1.6 $f-text;
+    @include mq(tablet) {
+      margin-top: 2rem;
+      text-align: right;
+      font-size: 1.6rem;
+    }
   }
 }
