@@ -335,9 +335,9 @@ if ( have_rows( 'modules' ) ) :
 					);
 					?>
 					<?php if ( $video ) : ?>
-						<div class="hp-mobile-banner__video a-up a-delay-1">
-							<video src="<?php echo esc_url( $video ); ?>#t=0.5" loop muted autoplay preload="metadata">
-								<source src="<?php echo esc_url( $video ); ?>#t=0.5" type="video/mp4">
+						<div class="video-player hp-mobile-banner__video a-up a-delay-1">
+							<video src="<?php echo esc_url( $video ); ?>#t=1" loop muted preload="metadata">
+								<source src="<?php echo esc_url( $video ); ?>#t=1" type="video/mp4">
 							</video>
 							<button class="video-play">
 								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" 

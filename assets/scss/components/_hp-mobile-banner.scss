@@ -37,6 +37,11 @@
       max-width: 5rem;
       transform: translate(-50%, -50%);
     }
+    &.is-playing {
+      &::before {
+        content: none;
+      }
+    }
   }
   &__subheading {
     margin-bottom: 1rem;

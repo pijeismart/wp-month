@@ -211,6 +211,13 @@
         $('.navigation-popup__link').on('click', function() {
           $.fancybox.close();
         });
+
+        $('.video-play').on('click', function() {
+          let $parent = $(this).closest('.video-player');
+          $('video', $parent).get(0).play();
+          $parent.toggleClass('is-playing');
+          $(this).hide();
+        });
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {
