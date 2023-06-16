@@ -275,6 +275,12 @@
         max-width: 65rem;
         line-height: 1.7;
       }
+      h1, h2, h3, h4, h5, h6, p {
+        margin-bottom: 1em;
+      }
+      ul, ol {
+        padding-left: 2rem;
+      }
     }
   }
   &__cards {
