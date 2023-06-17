@@ -153,7 +153,6 @@
     margin-bottom: 0;
     &-box {
       @include mq(tablet) {
-        margin-left: auto;
         flex: 0 0 43rem;
       }
     }
