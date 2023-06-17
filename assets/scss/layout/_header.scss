@@ -78,12 +78,12 @@
     @include mq(desktop-small, max) {
       position: fixed;
       padding: 9.2rem 2rem 4rem !important;
-      top: var(--header-height);
+      top: calc(var(--header-height) - 2px);
       left: 0;
       width: 100%;
-      height: calc(100vh - var(--header-height));
+      height: calc(100vh - var(--header-height) + 2px);
       transform: translateX(-100%);
-      background-color: $clr-white;
+      background-color: var(--header-bg);
       overflow: auto;
       transition: all .3s ease-in-out;
       @include when-inside('.admin-bar .header:not(.header--sticky)') {

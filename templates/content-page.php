@@ -33,7 +33,7 @@ if ( have_rows( 'modules' ) ) :
 						if ( 'home' != $type ) :
 							$parents = get_post_parent( $post );
 							?>
-						<ul class="breadcrumbs a-up">
+						<ul class="breadcrumbs a-up d-md-only">
 							<li>
 								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 							</li>
