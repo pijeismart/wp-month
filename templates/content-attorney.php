@@ -92,12 +92,12 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 	<div class="container attorney-details__inner">
 		<div class="attorney-details__sidebar">
 			<?php if ( $office ) : ?>
-			<div class="sidebar-widget">
+			<!-- <div class="sidebar-widget">
 				<h6><?php echo esc_html( 'Office Locations' ); ?></h6>
 				<div class="sidebar-widget__content">
 					<?php echo $office; ?>
 				</div>
-			</div>
+			</div> -->
 			<?php endif; ?>
 			<?php if ( $education ) : ?>
 			<div class="sidebar-widget">
