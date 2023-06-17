@@ -90,11 +90,13 @@ if ( have_rows( 'modules' ) ) :
 							</div>
 						<div class="banner-content">
 							<?php
-							if ( 'home' != $type && $case_categories ) :
-								$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
+							if ( 'home' != $type ) :
+								if ( $case_categories ) :
+									$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
+								endif;
 								?>
 								<div class="banner-categories a-up">
-									<?php if ( $img ) : ?>
+									<?php if ( isset( $img ) && $img ) : ?>
 										<img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $img['alt'] ); ?>">
 									<?php endif; ?>
 									<?php
