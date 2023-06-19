@@ -26,7 +26,7 @@ add_action( 'init', 'am_demo_role' );
 // acf plugin
 if ( function_exists( 'acf_add_options_page' ) ) {
 
-	acf_add_options_page(
+	$parent = acf_add_options_page(
 		array(
 			'page_title' => 'Theme General Settings',
 			'menu_title' => 'Theme Settings',
@@ -34,6 +34,15 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 			'capability' => 'edit_posts',
 			'redirect'   => false,
 			'position'   => 59,
+		)
+	);
+
+	 // Add sub page.
+	$child = acf_add_options_sub_page(
+		array(
+			'page_title'  => __( 'Community Page Settings' ),
+			'menu_title'  => __( 'Community Settings' ),
+			'parent_slug' => $parent['menu_slug'],
 		)
 	);
 }

@@ -122,6 +122,14 @@
         max-width: 70rem;
       }
     }
+    &.video-player {
+      aspect-ratio: 16/9;
+      padding-top: 0;
+      height: auto;
+      &::before {
+        background: linear-gradient(0deg, rgba(17, 36, 57, 0.5), rgba(17, 36, 57, 0.5));
+      }
+    }
     picture {
       img {
         border-radius: 1rem;

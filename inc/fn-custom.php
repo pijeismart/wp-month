@@ -291,29 +291,28 @@ function custom_case_result_column( $column, $post_id ) {
 	}
 }
 
-function search_by_title_only($search, $wp_query)
-{
-    if (!empty($search) && !empty($wp_query->query_vars['search_terms']) ) {
-        global $wpdb;
+function search_by_title_only( $search, $wp_query ) {
+	if ( ! empty( $search ) && ! empty( $wp_query->query_vars['search_terms'] ) ) {
+		global $wpdb;
 
-        $q = $wp_query->query_vars;
-        $n = !empty($q['exact']) ? '' : '%';
-        $search = array();
+		$q      = $wp_query->query_vars;
+		$n      = ! empty( $q['exact'] ) ? '' : '%';
+		$search = array();
 
-        foreach ((array) $q['search_terms'] as $term) {
-            $search[] = $wpdb->prepare("$wpdb->posts.post_title LIKE %s", $n . $wpdb->esc_like($term) . $n);
-        }
+		foreach ( (array) $q['search_terms'] as $term ) {
+			$search[] = $wpdb->prepare( "$wpdb->posts.post_title LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
+		}
 
-        if (!is_user_logged_in()) {
-            $search[] = "$wpdb->posts.post_password = ''";
-        }
+		if ( ! is_user_logged_in() ) {
+			$search[] = "$wpdb->posts.post_password = ''";
+		}
 
-        $search = ' AND ' . implode(' AND ', $search);
-    }
+		$search = ' AND ' . implode( ' AND ', $search );
+	}
 
-    return $search;
+	return $search;
 }
-add_filter('posts_search', 'search_by_title_only', 10, 2);
+add_filter( 'posts_search', 'search_by_title_only', 10, 2 );
 
 /**
  * load ajax cpt handler
@@ -415,3 +414,11 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 // set featured image and set or publish post
 add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
 add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );
+
+// extract youtube id from url
+function get_youtube_image_from_url( $url ) {
+	preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+	$youtube_id = $match[1];
+	$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_id . '/maxresdefault.jpg';
+	return $youtube_thumb_url;
+}

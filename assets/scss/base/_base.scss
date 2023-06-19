@@ -88,3 +88,42 @@ h5 {
     padding-left: 2rem;
   }
 }
+
+.video-player {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: hp(514, 305);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  &::before {
+    @include pseudo-elements;
+    background: linear-gradient(0deg,rgba(0,0,0,.8),rgba(0,0,0,.2));
+    z-index: 1;
+  }
+  > img {
+    position: absolute;
+    inset: 0;
+    @include cover-image;
+  }
+  &__title {
+    position: absolute;
+    padding: 2.4rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.642293) 39.07%, rgba(0, 0, 0, 0.8) 99.95%);
+    color: rgba($clr-white, 0.7);
+    font: 400 1.6rem/1.55 $f-text;
+    letter-spacing: -0.015em;
+    z-index: 2;
+  }
+  .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+}
