@@ -140,16 +140,8 @@
     }
 
     &__content {
-      * {
-        margin-bottom: 3rem;
-
-        @include mq(tablet, max) {
-          margin-bottom: 2.4rem;
-        }
-
-        &:last-child {
-          margin-bottom: 0;
-        }
+      h1, h2, h3, h4, h5, h6, p {
+        margin-bottom: 1em;
       }
 
       h5 {
