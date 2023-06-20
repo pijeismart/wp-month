@@ -20,9 +20,6 @@
       margin-right: 2rem;
       max-width: calc(100% - 40rem);
     }
-    @include mq(desktop) {
-      max-width: 64rem;
-    } 
   }
 
   &__cards {
@@ -54,6 +51,11 @@
       @include mq(tablet, max) {
         padding: 2.4rem 0.8rem;
         height: 24rem;
+      }
+
+      &__rating {
+        margin-top: 1.6rem;
+        line-height: 0;
       }
 
       &:hover {
