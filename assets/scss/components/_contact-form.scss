@@ -7,7 +7,9 @@
 
   .container {
     display: flex;
-
+    @include mq(tablet) {
+      justify-content: space-between;
+    }
     @include mq(tablet, max) {
       flex-direction: column;
     }
@@ -18,6 +20,9 @@
       margin-right: 2rem;
       max-width: calc(100% - 40rem);
     }
+    @include mq(desktop) {
+      max-width: 64rem;
+    } 
   }
 
   &__cards {
@@ -233,14 +238,18 @@
     height: inherit;
   }
   .testimonial-slider__item {
+    display: flex;
     padding: 3.2rem;
     background-color: #17233D;
     border: 1px solid #050D1F; 
+    flex-direction: column;
+    justify-content: space-between;
     &__content {
       margin-bottom: 2rem;
       font: 400 16px/1.6 'Open Sans', sans-serif;
       color: #fff;
       opacity: 0.8;
+      @include max-line(8);
     }
     &__info {
       display: grid;
