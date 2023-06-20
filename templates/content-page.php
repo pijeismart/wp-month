@@ -1253,7 +1253,7 @@ if ( have_rows( 'modules' ) ) :
 									<div class="cards-content__cards__item a-up a-delay-1" style="background-color: <?php echo esc_attr( $color ); ?>">
 										<?php
 										get_template_part_args(
-											'template-parts/content-modules-text',
+											'template-parts/content-modules-shortcode',
 											array(
 												'v'  => 'heading',
 												't'  => 'h5',

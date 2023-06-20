@@ -417,8 +417,15 @@ add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );
 
 // extract youtube id from url
 function get_youtube_image_from_url( $url ) {
-	preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-	$youtube_id = $match[1];
+	preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match );
+	$youtube_id        = $match[1];
 	$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_id . '/maxresdefault.jpg';
 	return $youtube_thumb_url;
+}
+
+// year shortcode
+add_shortcode( 'year', 'montlick_year' );
+function montlick_year( $atts ) {
+	$year = get_field( 'montlick_year', 'options' );
+	return $year;
 }
