@@ -61,16 +61,28 @@ $awards = get_field( 'awards', 'options' );
 				)
 			);
 			?>
-			<?php
-			get_template_part_args(
-				'template-parts/content-modules-cta',
-				array(
-					'v' => 'awards_download_cta',
-					'c' => 'btn btn-download a-up a-delay-1',
-					'o' => 'o',
-				)
-			);
-			?>
+			<?php if ( have_rows( 'awards_dropdown', 'options' ) ) : ?>
+			<div class="awards-dropdown dropdown">
+				<button class="dropdown-toggler btn btn-download a-up a-delay-1">
+					<?php echo esc_html__( 'What kind of accident did you have?', 'am' ); ?>
+				</button>
+				<ul class="dropdown-content">
+					<?php
+					while ( have_rows( 'awards_dropdown', 'options' ) ) :
+						the_row();
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v' => 'link',
+								'c' => 'dropdown-link',
+								'w' => 'li',
+							)
+						);
+					endwhile;
+					?>
+				</ul>
+			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

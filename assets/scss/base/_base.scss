@@ -127,3 +127,28 @@ h5 {
     z-index: 3;
   }
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  &-toggler {
+    border: none;
+    &.is-opened + .dropdown-content {
+      @include element-show;
+    }
+  }
+  &-content {
+    position: absolute;
+    padding: 2rem;
+    width: 100%;
+    background-color: $clr-white;
+    list-style: none;
+    @include element-hidden;
+    border: 1px solid $clr-border;
+    border-radius: 8px;
+    z-index: 1;
+  }
+  &-link {
+    font: 700 1.4rem/1.3 Open Sans,sans-serif;
+  }
+}

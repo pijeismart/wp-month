@@ -246,6 +246,12 @@
             ]
           });
         }
+
+        // dropdown toggler
+        $('.dropdown-toggler').on('click', function() {
+          let $dropdown = $(this).closest('.dropdown');
+          $(this).toggleClass('is-opened');
+        });
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {
