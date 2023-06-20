@@ -29,65 +29,65 @@ if ( have_rows( 'modules' ) ) :
 			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
-						<?php
-						if ( 'home' != $type ) :
-							$parents = get_post_parent( $post );
-							?>
-						<ul class="breadcrumbs a-up d-md-only">
+					<?php
+					if ( 'home' != $type ) :
+						$parents = get_post_parent( $post );
+						?>
+					<ul class="breadcrumbs a-up d-md-only">
+						<li>
+							<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
+						</li>
+						<?php if ( 'city' == get_post_type() ) : ?>
+						<li>
+							<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
+								<?php echo esc_html( 'Areas We Serve' ); ?>
+							</a>
+						</li>
+						<?php endif; ?>
+						<?php if ( $parents ) : ?>
 							<li>
-								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
-							</li>
-							<?php if ( 'city' == get_post_type() ) : ?>
-							<li>
-								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
-									<?php echo esc_html( 'Areas We Serve' ); ?>
+								<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
+									<?php echo esc_html( get_the_title( $parents ) ); ?>
 								</a>
 							</li>
-							<?php endif; ?>
-							<?php if ( $parents ) : ?>
-								<li>
-									<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
-										<?php echo esc_html( get_the_title( $parents ) ); ?>
-									</a>
-								</li>
-							<?php endif; ?>
-							<li>
-								<span><?php the_title(); ?></span>
-							</li>
-						</ul>
 						<?php endif; ?>
+						<li>
+							<span><?php the_title(); ?></span>
+						</li>
+					</ul>
+					<?php endif; ?>
 					<div class="banner-inner">
-							<div class="banner-media a-op">
-								<div class="banner-media__large">
-									<?php
-									get_template_part(
-										'template-parts/content-modules',
-										'media',
-										array(
-											'image'        => $image,
-											'video'        => $video,
-											'mobile_video' => $mobile_video,
-										)
-									);
-									?>
-								</div>
-								<?php if ( 'practice' == $type ) : ?>
-								<div class="banner-media__small">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-image',
-										array(
-											'v'     => 'small_image',
-											'v2x'   => false,
-											'is'    => false,
-											'is_2x' => false,
-											'c'     => 'small-image',
-										)
-									);
-									?>
-								</div>
-								<?php endif; ?>
+						<div class="banner-media a-op">
+							<div class="banner-media__large">
+								<?php
+								get_template_part(
+									'template-parts/content-modules',
+									'media',
+									array(
+										'image'        => $image,
+										'video'        => $video,
+										'mobile_video' => $mobile_video,
+									)
+								);
+								?>
 							</div>
+							<?php if ( 'practice' == $type ) : ?>
+							<div class="banner-media__small">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-image',
+									array(
+										'v'     => 'small_image',
+										'v2x'   => false,
+										'is'    => false,
+										'is_2x' => false,
+										'c'     => 'small-image',
+									)
+								);
+								?>
+							</div>
+							<?php endif; ?>
+						</div>
 						<div class="banner-content">
 							<?php
 							if ( 'home' != $type ) :
@@ -324,14 +324,10 @@ if ( have_rows( 'modules' ) ) :
 					);
 					?>
 					<?php if ( $video ) : ?>
-						<div class="video-player hp-mobile-banner__video a-up a-delay-1">
-							<video src="<?php echo esc_url( $video ); ?>#t=1" loop muted preload="metadata">
-								<source src="<?php echo esc_url( $video ); ?>#t=1" type="video/mp4">
+						<div class="hp-mobile-banner__video a-up a-delay-1">
+							<video src="<?php echo esc_url( $video ); ?>" loop muted playsinline autoplay preload="metadata">
+								<source src="<?php echo esc_url( $video ); ?>" type="video/mp4">
 							</video>
-							<button class="video-play">
-								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" 
-									alt="Video Play">
-							</button>
 						</div>
 					<?php endif; ?>
 					<?php
@@ -882,7 +878,6 @@ if ( have_rows( 'modules' ) ) :
 										?>
 									<?php endif ?>
 								<?php endwhile; ?>
-								<?php // print_r($location_array); ?>
 							<?php endif; ?>
 							location_arr = <?php echo ! empty( $location_array ) ? json_encode( $location_array ) : ''; ?>;
 							jQuery(document).ready(function($) {
