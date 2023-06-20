@@ -840,16 +840,94 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
-					<?php
-					get_template_part_args(
-						'template-parts/content-modules-shortcode',
-						array(
-							'v'     => 'map',
-							't'     => 'div',
-							'tc'    => 'map-image',
-						)
-					);
-					?>
+					<div class="map-image a-up">
+						<div class="select-block d-sm-only">
+							<select class="map-state-selector" id="map-redirect">
+								<option><?php echo esc_html__( 'Select State', 'am' ); ?></option>
+								<?php if ( have_rows( 'locations' ) ) : ?>
+									<?php while ( have_rows( 'locations' ) ) : ?> 
+										<?php the_row(); ?>
+										<?php if ( get_sub_field( 'active' ) ) : ?> 
+											<?php
+											$location = array(
+												'state_code' => get_sub_field( 'state_code' ),
+												'state_url' => get_sub_field( 'state_url' ),
+											);
+											$field    = get_sub_field_object( 'state_code' );
+											$value    = get_sub_field( 'state_code' );
+											$state    = $field['choices'][ $value ];
+											?>
+											<option value="<?php echo $location['state_url']; ?>">
+												<?php echo $state; ?>
+											</option>
+										<?php endif; ?>
+									<?php endwhile; ?>
+									<?php // print_r($location_array); ?>
+								<?php endif; ?>
+							</select>
+						</div>
+						<div class="map-area d-md-only" id="map1"></div>
+						<script>
+							var location_arr = [];
+							<?php $location_array = array(); ?>
+							<?php if ( have_rows( 'locations' ) ) : ?>
+								<?php while ( have_rows( 'locations' ) ) : ?>
+									<?php the_row(); ?>
+									<?php if ( get_sub_field( 'active' ) ) : ?>
+										<?php
+										$location = array(
+											'state_code' => get_sub_field( 'state_code' ),
+											'state_url'  => get_sub_field( 'state_url' ),
+										);
+										array_push( $location_array, $location );
+										?>
+									<?php endif ?>
+								<?php endwhile; ?>
+								<?php // print_r($location_array); ?>
+							<?php endif; ?>
+							location_arr = <?php echo ! empty( $location_array ) ? json_encode( $location_array ) : ''; ?>;
+							jQuery(document).ready(function($) {
+							$('#map1').usmap({
+									'stateSpecificStyles': {
+									<?php if ( have_rows( 'locations' ) ) : ?>
+										<?php while ( have_rows( 'locations' ) ) : ?>
+											<?php the_row(); ?>
+											<?php if ( get_sub_field( 'active' ) ) : ?>
+											'<?php echo get_sub_field( 'state_code' ); ?>' : {fill: '#AEDF82'},
+											<?php endif ?>
+										<?php endwhile; ?>
+									<?php endif; ?>
+									},
+									'stateStyles': {
+										fill: "#fff",
+										stroke: "#0A1631",
+										"stroke-width": 1,
+										"stroke-linejoin": "round",
+										scale: [1, 1]
+									},
+									'stateHoverStyles': {
+										fill: "#aedf8233",
+										stroke: "#000",
+									},
+									'click' : function(event, data) {
+										if (location_arr.length > 0){
+										$.each(location_arr, function(index, obj) {
+										if (data.name == obj.state_code){
+										window.location = obj.state_url;
+										return;
+										}
+									});
+									}
+									/* $( '#alert' )
+									 .text( 'Click '+data.name+' on map 1' )
+									 .stop()
+									 .css( 'backgroundColor', '#ff0' )
+									 .animate({backgroundColor: '#ddd'}, 1000);*/
+									}
+							});
+							});
+						</script>
+					</div>
 				</div>
 			</section>
 			<?php
