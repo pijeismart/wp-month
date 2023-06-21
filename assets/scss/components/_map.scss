@@ -27,10 +27,14 @@
     }
   }
   &-area {
-    @include mq(desktop, max) {
+    @include mq(tablet) {
       margin: 3rem auto;
       width: 74rem;
       height: 50rem;
+    }
+    @include mq(desktop, max) {
+      margin-block: 0;
+      margin-right: 0;
     }
     svg {
       width: 100%;
