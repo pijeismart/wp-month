@@ -32,7 +32,7 @@
       width: 74rem;
       height: 50rem;
     }
-    @include mq(desktop, max) {
+    @include mq(desktop) {
       margin-block: 0;
       margin-right: 0;
     }
