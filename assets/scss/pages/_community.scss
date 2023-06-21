@@ -157,6 +157,7 @@
       }
     }
     &__image-links {
+      padding-inline: 1.6rem;
       @include mq(tablet) {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));;
@@ -292,6 +293,7 @@
         display: block;
         border: 1px solid $clr-border;
         border-radius: 8px;
+        overflow: hidden;
         @include mq(tablet, max) {
           margin-bottom: 1rem;
         }
