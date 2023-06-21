@@ -176,8 +176,9 @@ if ( have_rows( 'content_modules' ) ) :
 						$toc_title          = get_sub_field( 'toc_title' );
 						$anchor_id          = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : '';
 						$enable_image_links = get_sub_field( 'enable_image_links' );
+						$enable_external    = get_sub_field( 'enable_external_sites' );
 						?>
-						<div class="general-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+						<div class="general-block<?php echo get_sub_field( 'disable_container_padding' ) ? ' general-block--no-padding' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 							<?php
 							get_template_part_args(
 								'template-parts/content-modules-image',
@@ -190,35 +191,37 @@ if ( have_rows( 'content_modules' ) ) :
 								)
 							);
 							?>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'heading',
-									't'  => 'h3',
-									'tc' => 'block-heading',
-								)
-							);
-							?>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'content',
-									't'  => 'div',
-									'tc' => 'general-block__content',
-								)
-							);
-							?>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-cta',
-								array(
-									'v' => 'cta',
-									'c' => 'underline-link',
-								)
-							);
-							?>
+							<div class="general-block__inner">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'heading',
+										't'  => 'h3',
+										'tc' => 'block-heading',
+									)
+								);
+								?>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'content',
+										't'  => 'div',
+										'tc' => 'general-block__content',
+									)
+								);
+								?>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-cta',
+									array(
+										'v' => 'cta',
+										'c' => 'underline-link',
+									)
+								);
+								?>
+							</div>
 							<?php if ( $enable_image_links && have_rows( 'image_links' ) ) : ?>
 								<div class="general-block__image-links">
 									<?php
@@ -249,12 +252,55 @@ if ( have_rows( 'content_modules' ) ) :
 									<?php endwhile; ?>
 								</div>
 							<?php endif; ?>
+							<?php if ( $enable_external && have_rows( 'external_sites' ) ) : ?>
+								<div class="general-block__externals">
+									<?php
+									while ( have_rows( 'external_sites' ) ) :
+										the_row();
+										$url = get_sub_field( 'url' );
+										?>
+										<a href="<?php echo esc_url( $url ); ?>" class="general-block__external" target="_blank">
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-image',
+												array(
+													'v'     => 'image',
+													'v2x'   => false,
+													'is'    => false,
+													'is_2x' => false,
+													'w'     => 'div',
+													'wc'    => 'external-image',
+												)
+											);
+											?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'content',
+													't'  => 'div',
+													'tc' => 'external-content',
+												)
+											);
+											?>
+										</a>
+									<?php endwhile; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 						<?php
 					elseif ( 'videos_block' == get_row_layout() ) :
+						$is_full_width = get_sub_field( 'is_full_width' );
 						if ( have_rows( 'videos' ) ) :
 							?>
-							<div class="videos-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+							<?php if ( $is_full_width ) : ?>
+									</div>
+								</div>
+							</section>
+							<section class="full-videos-block">
+								<div class="container">
+							<?php endif; ?>
+							<div class="videos-block<?php echo $is_full_width ? ' videos-block--full' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 								<?php
 								while ( have_rows( 'videos' ) ) :
 									the_row();
@@ -280,6 +326,10 @@ if ( have_rows( 'content_modules' ) ) :
 									<?php endif; ?>
 								<?php endwhile; ?>
 							</div>
+							<?php if ( $is_full_width ) : ?>
+								</div>
+							</section>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php
 					elseif ( 'guides_block' == get_row_layout() ) :
