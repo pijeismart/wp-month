@@ -12,10 +12,11 @@ $parents = get_post_parent( $post );
 <!-- Banner -->
 <?php
 $heading     = get_field( 'banner_heading' );
+$image       = get_field( 'banner_image' );
 $video       = get_field( 'banner_video' );
 $video_title = get_field( 'banner_video_title' );
 
-if ( $heading || $video ) :
+if ( $heading || $video || $image ) :
 	?>
 	<!-- Community Banner -->
 	<section class="community-banner has-decor">
@@ -46,8 +47,9 @@ if ( $heading || $video ) :
 				);
 				?>
 			</div>
-			<?php if ( $video ) : ?>
+			<?php if ( $video || $image ) : ?>
 			<div class="community-banner__right a-op">
+				<?php if ( $video ) : ?>
 				<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
 					<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
 					<span class="video-play">
@@ -65,6 +67,11 @@ if ( $heading || $video ) :
 					);
 					?>
 				</a>
+				<?php elseif ( $image ) : ?>
+					<div class="video-player">
+						<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+					</div>
+				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 		</div>
