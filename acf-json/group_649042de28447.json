@@ -1417,7 +1417,15 @@
                                     "type": "wysiwyg",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492fc1dcd806",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1459,7 +1467,7 @@
                                 },
                                 {
                                     "key": "field_6492fc1dcd806",
-                                    "label": "For Teachers",
+                                    "label": "Is Iframe",
                                     "name": "for_teachers",
                                     "aria-label": "",
                                     "type": "true_false",
@@ -2069,5 +2077,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687356731
+    "modified": 1687357988
 }

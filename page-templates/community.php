@@ -631,7 +631,7 @@ $gallery = get_field( 'gallery' );
 if ( get_field( 'gallery_heading' ) || $gallery ) :
 	?>
 	<!-- Gallery -->
-	<section class="gallery">
+	<section class="gallery-block">
 		<div class="container">
 			<?php
 			get_template_part_args(
@@ -639,15 +639,15 @@ if ( get_field( 'gallery_heading' ) || $gallery ) :
 				array(
 					'v'  => 'gallery_heading',
 					't'  => 'h3',
-					'tc' => 'gallery-heading a-up',
+					'tc' => 'gallery-block__heading a-up',
 					'o'  => 'f',
 				)
 			);
 			?>
 			<?php if ( $gallery ) : ?>
-				<div class="gallery-grid a-up a-delay-1">
+				<div class="gallery-block__grid a-up a-delay-1">
 					<?php foreach ( $gallery as $image ) : ?>
-						<a class="gallery-image" href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox="gallery">
+						<a class="gallery-block__image" href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox="gallery">
 							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
 						</a>
 					<?php endforeach; ?>
