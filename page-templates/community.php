@@ -463,6 +463,7 @@ if ( have_rows( 'content_modules' ) ) :
 														<?php
 														while ( have_rows( 'people' ) ) :
 															the_row();
+															$cta = get_sub_field( 'cta' );
 															?>
 															<div class="person-card">
 																<?php
@@ -507,15 +508,14 @@ if ( have_rows( 'content_modules' ) ) :
 																	)
 																);
 																?>
-																<?php
-																get_template_part_args(
-																	'template-parts/content-modules-cta',
-																	array(
-																		'v' => 'cta',
-																		'c' => 'underline-link person-card__cta',
-																	)
-																);
-																?>
+																<?php if ( $cta ) : ?>
+																	<a href="<?php echo esc_url( $cta['url'] ); ?>"
+																		class="underlink person-card__cta"
+																		data-fancybox
+																		target="<?php echo esc_attr( $cta['target'] ? $cta['target']: '_self' ); ?>">
+																		<?php echo esc_html( $cta['title'] ); ?>
+																	</a>
+																<?php endif; ?>
 															</div>
 														<?php endwhile; ?>
 													</div>
