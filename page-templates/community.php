@@ -510,7 +510,7 @@ if ( have_rows( 'content_modules' ) ) :
 																?>
 																<?php if ( $cta ) : ?>
 																	<a href="<?php echo esc_url( $cta['url'] ); ?>"
-																		class="underlink person-card__cta"
+																		class="underline-link person-card__cta"
 																		data-fancybox
 																		target="<?php echo esc_attr( $cta['target'] ? $cta['target']: '_self' ); ?>">
 																		<?php echo esc_html( $cta['title'] ); ?>
