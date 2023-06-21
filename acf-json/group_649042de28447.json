@@ -213,6 +213,47 @@
             "endpoint": 0
         },
         {
+            "key": "field_64926073f1c70",
+            "label": "Sidebar Links",
+            "name": "sidebar_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6492607af1c71",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_64926073f1c70"
+                }
+            ]
+        },
+        {
             "key": "field_649043a307401",
             "label": "Content Modules",
             "name": "content_modules",
@@ -1621,5 +1662,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687313144
+    "modified": 1687314563
 }

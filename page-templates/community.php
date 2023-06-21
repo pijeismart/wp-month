@@ -154,17 +154,22 @@ if ( have_rows( 'content_modules' ) ) :
 	?>
 	<section class="community-modules">
 		<div class="container">
-			<?php if ( count( $toc_links ) > 1 ) : ?>
+			<?php if ( have_rows( 'sidebar_links' ) ) : ?>
 			<div class="community-modules__sidebar d-md-only">
 				<h6><?php echo esc_html__( 'Related Pages' ); ?></h6>
 				<ul>
-					<?php foreach ( $toc_links as $toc_link ) : ?>
-						<li>
-							<a href="#<?php echo str_replace( ' ', '-', strtolower( $toc_link ) ); ?>">
-								<?php echo esc_html( $toc_link ); ?>
-							</a>
-						</li>
-					<?php endforeach; ?>
+					<?php
+					while ( have_rows( 'sidebar_links' ) ) :
+						the_row();
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v' => 'link',
+								'w' => 'li',
+							)
+						);
+					endwhile;
+					?>
 				</ul>
 			</div>
 			<?php endif; ?>
