@@ -407,4 +407,101 @@
       }
     } 
   }
+  .accordions-block {
+    padding: 3.2rem;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    @include mq(tablet) {
+      padding: 6.4rem;
+    }
+    .accordion {
+      border-top: 1px solid $clr-border;
+      &-header {
+        position: relative;
+        padding-block: 1.6rem;
+        font: 700 1.8rem/1.2 $f-text;
+        @include mq(tablet) {
+          font-size: 2.4rem;
+        }
+        &::before,
+        &::after {
+          position: absolute;
+          content: '';
+          width: 1.6rem;
+          height: 2px;
+          background-color: $clr-green;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          transition: transform .3s ease-in-out;
+          will-change: transform;
+        }
+        &::after {
+          transform: translateY(-50%) rotate(90deg);
+        }
+        &.active::after {
+          transform: translateY(-50%);
+        }
+      }
+      &-copy {
+        @include base-typography;
+      }
+      &-people {
+        margin-top: 1.6rem;
+        @include mq(phablet) {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-gap: 8px;
+        }
+        @include mq(desktop) {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .person-card {
+        padding: 2rem;
+        border: 1px solid $clr-border;
+        border-radius: 1.2rem;
+        text-align: center;
+        @include mq(tablet, max) {
+          margin-bottom: 1rem;
+        }
+        @include mq(tablet) {
+          padding: 4rem;
+        }
+        &__img {
+          display: block;
+          margin: 0 auto 1.6rem;
+          width: 6.4rem;
+          height: 6.4rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &__name {
+          margin-bottom: 4px;
+          font: 600 1.6rem/2.7rem $f-text;
+        }
+        &__info {
+          position: relative;
+          margin-bottom: 8px;
+          padding-bottom: 8px;
+          font: 400 1.2rem/1.8rem $f-text;
+          letter-spacing: 0.01em;
+          &::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            @include svg-background('<svg width="198" height="2" viewBox="0 0 198 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H197.333" stroke="url(%23paint0_linear_2351_9085)"/><defs><linearGradient id="paint0_linear_2351_9085" x1="197.333" y1="1" x2="0" y2="1" gradientUnits="userSpaceOnUse"><stop stop-color="%2378BE38" stop-opacity="0"/><stop offset="0.501978" stop-color="%2378BE38"/><stop offset="1" stop-color="%2378BE38" stop-opacity="0"/></linearGradient></defs></svg>');
+          }
+        }
+        &__desc {
+          font: 600 1.2rem/1.8rem $f-text;
+          font-style: italic;
+          letter-spacing: 0.01em;
+        }
+      }
+    }
+  }
 }

@@ -278,12 +278,12 @@ if ( have_rows( 'content_modules' ) ) :
 											get_template_part_args(
 												'template-parts/content-modules-image',
 												array(
-													'v'     => 'image',
-													'v2x'   => false,
-													'is'    => false,
+													'v'   => 'image',
+													'v2x' => false,
+													'is'  => false,
 													'is_2x' => false,
-													'w'     => 'div',
-													'wc'    => 'external-image',
+													'w'   => 'div',
+													'wc'  => 'external-image',
 												)
 											);
 											?>
@@ -415,6 +415,116 @@ if ( have_rows( 'content_modules' ) ) :
 								endwhile;
 							endif;
 							?>
+						</div>
+						<?php
+					elseif ( 'accordions' == get_row_layout() ) :
+						?>
+						<div class="accordions-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'heading',
+									't'  => 'h3',
+									'tc' => 'block-heading',
+								)
+							);
+							?>
+							<?php if ( have_rows( 'accordions' ) ) : ?>
+								<div class="accordions">
+									<?php
+									while ( have_rows( 'accordions' ) ) :
+										the_row();
+										?>
+										<div class="accordion">
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'heading',
+													't'  => 'h3',
+													'tc' => 'accordion-header',
+												)
+											);
+											?>
+											<div class="accordion-body">
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-text',
+													array(
+														'v'  => 'content',
+														't'  => 'div',
+														'tc' => 'accordion-copy',
+													)
+												);
+												?>
+												<?php if ( have_rows( 'people' ) ) : ?>
+													<div class="accordion-people">
+														<?php
+														while ( have_rows( 'people' ) ) :
+															the_row();
+															?>
+															<div class="person-card">
+																<?php
+																get_template_part_args(
+																	'template-parts/content-modules-image',
+																	array(
+																		'v'     => 'image',
+																		'v2x'   => false,
+																		'is'    => false,
+																		'is_2x' => false,
+																		'c'     => 'person-card__img',
+																	)
+																);
+																?>
+																<?php
+																get_template_part_args(
+																	'template-parts/content-modules-text',
+																	array(
+																		'v'  => 'name',
+																		't'  => 'h6',
+																		'tc' => 'person-card__name',
+																	)
+																);
+																?>
+																<?php
+																get_template_part_args(
+																	'template-parts/content-modules-text',
+																	array(
+																		'v'  => 'info',
+																		't'  => 'p',
+																		'tc' => 'person-card__info',
+																	)
+																);
+																?>
+																<?php
+																get_template_part_args(
+																	'template-parts/content-modules-text',
+																	array(
+																		'v'  => 'description',
+																		't'  => 'p',
+																		'tc' => 'person-card__desc',
+																	)
+																);
+																?>
+																<?php
+																get_template_part_args(
+																	'template-parts/content-modules-cta',
+																	array(
+																		'v' => 'cta',
+																		'c' => 'underline-link person-card__cta',
+																	)
+																);
+																?>
+															</div>
+														<?php endwhile; ?>
+													</div>
+												<?php endif; ?>
+											</div>
+										</div>
+									<?php endwhile; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					<?php else : ?>
 					<?php endif; ?>
