@@ -507,24 +507,33 @@ if ( have_rows( 'content_modules' ) ) :
 															while ( have_rows( 'videos' ) ) :
 																the_row();
 																$video = get_sub_field( 'video' );
+																$iframe = get_sub_field( 'iframe' );
 																?>
 																<div class="accordion-video">
-																	<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-																		<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
-																		<span class="video-play">
-																			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-																		</span>
-																		<?php
-																		get_template_part_args(
-																			'template-parts/content-modules-text',
-																			array(
-																				'v'  => 'title',
-																				't'  => 'div',
-																				'tc' => 'video-player__title',
-																			)
-																		);
-																		?>
-																	</a>
+																	<?php if ( $for_teachter ) : ?>
+																		<?php if ( $iframe ) : ?>
+																			<div class="video-player">
+																				<?php echo $iframe; ?>
+																			</div>
+																		<?php endif; ?>
+																	<?php else : ?>
+																		<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+																			<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+																			<span class="video-play">
+																				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+																			</span>
+																			<?php
+																			get_template_part_args(
+																				'template-parts/content-modules-text',
+																				array(
+																					'v'  => 'title',
+																					't'  => 'div',
+																					'tc' => 'video-player__title',
+																				)
+																			);
+																			?>
+																		</a>
+																	<?php endif; ?>
 																	<?php
 																	get_template_part_args(
 																		'template-parts/content-modules-text',

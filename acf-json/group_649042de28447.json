@@ -1786,7 +1786,15 @@
                                             "type": "url",
                                             "instructions": "",
                                             "required": 0,
-                                            "conditional_logic": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_6492fc1dcd806",
+                                                        "operator": "!=",
+                                                        "value": "1"
+                                                    }
+                                                ]
+                                            ],
                                             "wrapper": {
                                                 "width": "",
                                                 "class": "",
@@ -1794,6 +1802,35 @@
                                             },
                                             "default_value": "",
                                             "placeholder": "",
+                                            "parent_repeater": "field_6492f122c3c84"
+                                        },
+                                        {
+                                            "key": "field_6493051078e12",
+                                            "label": "Iframe",
+                                            "name": "iframe",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_6492fc1dcd806",
+                                                        "operator": "==",
+                                                        "value": "1"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "rows": "",
+                                            "placeholder": "",
+                                            "new_lines": "",
                                             "parent_repeater": "field_6492f122c3c84"
                                         },
                                         {
@@ -2032,5 +2069,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687354477
+    "modified": 1687356731
 }
