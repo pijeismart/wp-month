@@ -1504,7 +1504,7 @@
                                             "label": "Info",
                                             "name": "info",
                                             "aria-label": "",
-                                            "type": "text",
+                                            "type": "textarea",
                                             "instructions": "",
                                             "required": 0,
                                             "conditional_logic": 0,
@@ -1515,9 +1515,9 @@
                                             },
                                             "default_value": "",
                                             "maxlength": "",
+                                            "rows": 2,
                                             "placeholder": "",
-                                            "prepend": "",
-                                            "append": "",
+                                            "new_lines": "br",
                                             "parent_repeater": "field_64907a472eae5"
                                         },
                                         {
@@ -1752,5 +1752,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687316624
+    "modified": 1687350663
 }
