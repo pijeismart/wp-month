@@ -517,6 +517,45 @@
           margin-top: 8px;
           font: 400 1.6rem/1.2 $f-text;
         }
+        &__title {
+          margin-bottom: 1.6rem;
+        }
+      }
+      
+      .row {
+        margin-bottom: 2rem;
+        @include mq(tablet) {
+          display: grid;
+          margin-bottom: 4rem;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-gap: 0.8rem;
+        }
+      }
+      &-main {
+        &__video {
+          border-radius: 1.2rem;
+          overflow: hidden;
+        }
+        &__gallery {
+          border-radius: 1.2rem;
+          overflow: hidden;
+          .slick-arrow {
+            width: 3.2rem;
+            height: 3.2rem;
+            z-index: 1;
+            &::before {
+              content: none;
+            }
+          }
+          .slick-prev {
+            left: 1.6rem;
+            @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="white"/><path d="M17 12L13 16L17 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+          }
+          .slick-next {
+            right: 1.6rem;
+            @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="white"/><path d="M15 12L19 16L15 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+          }
+        }
       }
     }
   }

@@ -197,6 +197,7 @@
           '.attorney-details__sidebar',
           theme.initAttorneySidebar
         );
+        helper.isElementExist('.accordion-main__gallery', theme.initAccordionGallery);
 
 
         // Show all cards on click
@@ -630,6 +631,19 @@
         };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initAttorneySidebar);
+    },
+
+    /**
+     * init accordion gallery on community page
+     */
+    initAccordionGallery() {
+      $('.accordion-main__gallery').slick({
+        arrows: true,
+        dots: false,
+        autoplay: true,
+        slidesToShow: 1,
+        infinite: true
+      });
     }
   };
 

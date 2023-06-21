@@ -1440,7 +1440,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1455,6 +1455,35 @@
                                     "ui": 0,
                                     "ajax": 0,
                                     "placeholder": "",
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492fc1dcd806",
+                                    "label": "For Teachers",
+                                    "name": "for_teachers",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492f0f7c3c83",
+                                                "operator": "==",
+                                                "value": "video"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1,
                                     "parent_repeater": "field_649079c72ead9"
                                 },
                                 {
@@ -1593,6 +1622,130 @@
                                             "parent_repeater": "field_64907a472eae5"
                                         }
                                     ],
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492fb0f4bfda",
+                                    "label": "Main Video Heading",
+                                    "name": "main_video_heading",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492fc1dcd806",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492fb044bfd9",
+                                    "label": "Main Video",
+                                    "name": "main_video",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492fc1dcd806",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "rows": "",
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492fb304bfdb",
+                                    "label": "Gallery",
+                                    "name": "gallery",
+                                    "aria-label": "",
+                                    "type": "gallery",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492fc1dcd806",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min": "",
+                                    "max": "",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "insert": "append",
+                                    "preview_size": "medium",
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492fb744bfdc",
+                                    "label": "Videos Heading",
+                                    "name": "videos_heading",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492f0f7c3c83",
+                                                "operator": "==",
+                                                "value": "video"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
                                     "parent_repeater": "field_649079c72ead9"
                                 },
                                 {
@@ -1879,5 +2032,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687351663
+    "modified": 1687354477
 }

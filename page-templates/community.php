@@ -436,6 +436,9 @@ if ( have_rows( 'content_modules' ) ) :
 									while ( have_rows( 'accordions' ) ) :
 										the_row();
 										$content_type = get_sub_field( 'content_type' );
+										$for_teachter = get_sub_field( 'for_teachers' );
+										$main_video   = get_sub_field( 'main_video' );
+										$gallery      = get_sub_field( 'gallery' );
 										?>
 										<div class="accordion">
 											<?php
@@ -460,6 +463,44 @@ if ( have_rows( 'content_modules' ) ) :
 												);
 												?>
 												<?php if ( 'video' == $content_type ) : ?>
+													<?php if ( $for_teachter ) : ?>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'main_video_heading',
+																't'  => 'p',
+																'tc' => 'accordion-video__title',
+															)
+														);
+														?>
+														<?php if ( $main_video || $gallery ) : ?>
+															<div class="row">
+																<?php if ( $main_video ) : ?>
+																	<div class="accordion-main__video embed-container">
+																		<?php echo $main_video; ?>
+																	</div>
+																<?php endif; ?>
+																<?php if ( $gallery ) : ?>
+																	<div class="accordion-main__gallery">
+																		<?php foreach ( $gallery as $image ) : ?>
+																			<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+																		<?php endforeach; ?>
+																	</div>
+																<?php endif; ?>
+															</div>
+														<?php endif; ?>
+													<?php endif; ?>
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-text',
+														array(
+															'v'  => 'videos_heading',
+															't'  => 'h6',
+															'tc' => 'accordion-video__title',
+														)
+													);
+													?>
 													<?php if ( have_rows( 'videos' ) ) : ?>
 														<div class="accordion-videos">
 															<?php
