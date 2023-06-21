@@ -435,6 +435,7 @@ if ( have_rows( 'content_modules' ) ) :
 									<?php
 									while ( have_rows( 'accordions' ) ) :
 										the_row();
+										$content_type = get_sub_field( 'content_type' );
 										?>
 										<div class="accordion">
 											<?php
@@ -458,67 +459,108 @@ if ( have_rows( 'content_modules' ) ) :
 													)
 												);
 												?>
-												<?php if ( have_rows( 'people' ) ) : ?>
-													<div class="accordion-people">
-														<?php
-														while ( have_rows( 'people' ) ) :
-															the_row();
-															$cta = get_sub_field( 'cta' );
-															?>
-															<div class="person-card">
-																<?php
-																get_template_part_args(
-																	'template-parts/content-modules-image',
-																	array(
-																		'v'     => 'image',
-																		'v2x'   => false,
-																		'is'    => false,
-																		'is_2x' => false,
-																		'c'     => 'person-card__img',
-																	)
-																);
+												<?php if ( 'video' == $content_type ) : ?>
+													<?php if ( have_rows( 'videos' ) ) : ?>
+														<div class="accordion-videos">
+															<?php
+															while ( have_rows( 'videos' ) ) :
+																the_row();
+																$video = get_sub_field( 'video' );
 																?>
-																<?php
-																get_template_part_args(
-																	'template-parts/content-modules-text',
-																	array(
-																		'v'  => 'name',
-																		't'  => 'h6',
-																		'tc' => 'person-card__name',
-																	)
-																);
-																?>
-																<?php
-																get_template_part_args(
-																	'template-parts/content-modules-text',
-																	array(
-																		'v'  => 'info',
-																		't'  => 'p',
-																		'tc' => 'person-card__info',
-																	)
-																);
-																?>
-																<?php
-																get_template_part_args(
-																	'template-parts/content-modules-text',
-																	array(
-																		'v'  => 'description',
-																		't'  => 'p',
-																		'tc' => 'person-card__desc',
-																	)
-																);
-																?>
-																<?php if ( $cta ) : ?>
-																	<a href="<?php echo esc_url( $cta['url'] ); ?>"
-																		class="underline-link person-card__cta"
-																		data-fancybox
-																		target="<?php echo esc_attr( $cta['target'] ? $cta['target']: '_self' ); ?>">
-																		<?php echo esc_html( $cta['title'] ); ?>
+																<div class="accordion-video">
+																	<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+																		<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+																		<span class="video-play">
+																			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+																		</span>
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-text',
+																			array(
+																				'v'  => 'title',
+																				't'  => 'div',
+																				'tc' => 'video-player__title',
+																			)
+																		);
+																		?>
 																	</a>
-																<?php endif; ?>
-															</div>
-														<?php endwhile; ?>
-													</div>
+																	<?php
+																	get_template_part_args(
+																		'template-parts/content-modules-text',
+																		array(
+																			'v'  => 'content',
+																			't'  => 'p',
+																			'tc' => 'accordion-video__content',
+																		)
+																	);
+																	?>
+																</div>
+															<?php endwhile; ?>
+														</div>
+													<?php endif; ?>
+												<?php else : ?>
+													<?php if ( have_rows( 'people' ) ) : ?>
+														<div class="accordion-people">
+															<?php
+															while ( have_rows( 'people' ) ) :
+																the_row();
+																$cta = get_sub_field( 'cta' );
+																?>
+																<div class="person-card">
+																	<?php
+																	get_template_part_args(
+																		'template-parts/content-modules-image',
+																		array(
+																			'v'     => 'image',
+																			'v2x'   => false,
+																			'is'    => false,
+																			'is_2x' => false,
+																			'c'     => 'person-card__img',
+																		)
+																	);
+																	?>
+																	<?php
+																	get_template_part_args(
+																		'template-parts/content-modules-text',
+																		array(
+																			'v'  => 'name',
+																			't'  => 'h6',
+																			'tc' => 'person-card__name',
+																		)
+																	);
+																	?>
+																	<?php
+																	get_template_part_args(
+																		'template-parts/content-modules-text',
+																		array(
+																			'v'  => 'info',
+																			't'  => 'p',
+																			'tc' => 'person-card__info',
+																		)
+																	);
+																	?>
+																	<?php
+																	get_template_part_args(
+																		'template-parts/content-modules-text',
+																		array(
+																			'v'  => 'description',
+																			't'  => 'p',
+																			'tc' => 'person-card__desc',
+																		)
+																	);
+																	?>
+																	<?php if ( $cta ) : ?>
+																		<a href="<?php echo esc_url( $cta['url'] ); ?>"
+																			class="underline-link person-card__cta"
+																			data-fancybox
+																			target="<?php echo esc_attr( $cta['target'] ? $cta['target']: '_self' ); ?>">
+																			<?php echo esc_html( $cta['title'] ); ?>
+																		</a>
+																	<?php endif; ?>
+																</div>
+															<?php endwhile; ?>
+														</div>
+													<?php endif; ?>
 												<?php endif; ?>
 											</div>
 										</div>

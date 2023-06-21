@@ -505,6 +505,19 @@
           letter-spacing: 0.01em;
         }
       }
+      &-videos {
+        @include mq(tablet) {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-gap: 3.2rem 0.8rem;
+        }
+      }
+      &-video {
+        &__content {
+          margin-top: 8px;
+          font: 400 1.6rem/1.2 $f-text;
+        }
+      }
     }
   }
 }

@@ -1431,11 +1431,11 @@
                                     "parent_repeater": "field_649079c72ead9"
                                 },
                                 {
-                                    "key": "field_64907a472eae5",
-                                    "label": "People",
-                                    "name": "people",
+                                    "key": "field_6492f0f7c3c83",
+                                    "label": "Content Type",
+                                    "name": "content_type",
                                     "aria-label": "",
-                                    "type": "repeater",
+                                    "type": "select",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -1444,8 +1444,42 @@
                                         "class": "",
                                         "id": ""
                                     },
+                                    "choices": {
+                                        "people": "People",
+                                        "video": "Video"
+                                    },
+                                    "default_value": false,
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_64907a472eae5",
+                                    "label": "People",
+                                    "name": "people",
+                                    "aria-label": "",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492f0f7c3c83",
+                                                "operator": "==",
+                                                "value": "people"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
                                     "layout": "table",
-                                    "pagination": 0,
                                     "min": 0,
                                     "max": 0,
                                     "collapsed": "",
@@ -1557,6 +1591,99 @@
                                             },
                                             "return_format": "array",
                                             "parent_repeater": "field_64907a472eae5"
+                                        }
+                                    ],
+                                    "parent_repeater": "field_649079c72ead9"
+                                },
+                                {
+                                    "key": "field_6492f122c3c84",
+                                    "label": "Videos",
+                                    "name": "videos",
+                                    "aria-label": "",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6492f0f7c3c83",
+                                                "operator": "==",
+                                                "value": "video"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "pagination": 0,
+                                    "min": 0,
+                                    "max": 0,
+                                    "collapsed": "",
+                                    "button_label": "Add Row",
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6492f149c3c85",
+                                            "label": "Video",
+                                            "name": "video",
+                                            "aria-label": "",
+                                            "type": "url",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "parent_repeater": "field_6492f122c3c84"
+                                        },
+                                        {
+                                            "key": "field_6492f151c3c86",
+                                            "label": "Title",
+                                            "name": "title",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "parent_repeater": "field_6492f122c3c84"
+                                        },
+                                        {
+                                            "key": "field_6492f158c3c87",
+                                            "label": "Content",
+                                            "name": "content",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "rows": 2,
+                                            "placeholder": "",
+                                            "new_lines": "br",
+                                            "parent_repeater": "field_6492f122c3c84"
                                         }
                                     ],
                                     "parent_repeater": "field_649079c72ead9"
@@ -1752,5 +1879,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687350663
+    "modified": 1687351663
 }
