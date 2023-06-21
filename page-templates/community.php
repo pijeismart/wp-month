@@ -425,6 +425,37 @@ if ( have_rows( 'content_modules' ) ) :
 <?php endif; ?>
 
 <?php
+$gallery = get_field( 'gallery' );
+if ( get_field( 'gallery_heading' ) || $gallery ) :
+	?>
+	<!-- Gallery -->
+	<section class="gallery">
+		<div class="container">
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'gallery_heading',
+					't'  => 'h3',
+					'tc' => 'gallery-heading a-up',
+					'o'  => 'f',
+				)
+			);
+			?>
+			<?php if ( $gallery ) : ?>
+				<div class="gallery-grid">
+					<?php foreach ( $gallery as $image ) : ?>
+						<a class="gallery-image" href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox="gallery">
+							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+						</a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php
 if ( ! get_field( 'disable_content_video' ) ) :
 	$image = get_field( 'c1_image', 'options' );
 	$video = get_field( 'c1_video', 'options' );
