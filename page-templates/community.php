@@ -443,7 +443,7 @@ if ( get_field( 'gallery_heading' ) || $gallery ) :
 			);
 			?>
 			<?php if ( $gallery ) : ?>
-				<div class="gallery-grid">
+				<div class="gallery-grid a-up a-delay-1">
 					<?php foreach ( $gallery as $image ) : ?>
 						<a class="gallery-image" href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox="gallery">
 							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
