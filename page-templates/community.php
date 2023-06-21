@@ -80,6 +80,7 @@ if ( $heading || $video || $image ) :
 
 <?php
 $video = get_field( 's2_video' );
+$image = get_field( 's2_image' );
 ?>
 <!-- Content Image -->
 <section class="c-content-image">
@@ -87,7 +88,8 @@ $video = get_field( 's2_video' );
 		<div class="c-content-image__media a-op">
 			<?php if ( $video ) : ?>
 				<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-					<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+					<?php $img_url = $image ? $image['url'] : get_youtube_image_from_url( $video ); ?>
+					<img src="<?php echo esc_url( $img_url ); ?>" alt="">
 					<span class="video-play">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
 					</span>
