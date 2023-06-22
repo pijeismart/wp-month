@@ -197,9 +197,15 @@
           '.attorney-details__sidebar',
           theme.initAttorneySidebar
         );
-        helper.isElementExist('.accordion-main__gallery', theme.initAccordionGallery);
-        helper.isElementExist('.timeslider-carousel', theme.initTimeSliderCarousel);
-
+        helper.isElementExist(
+          '.accordion-main__gallery',
+          theme.initAccordionGallery
+        );
+        helper.isElementExist(
+          '.timeslider-carousel',
+          theme.initTimeSliderCarousel
+        );
+        helper.isElementExist('.hc-videos', theme.initHCVideos);
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
           const $cards = $(this).closest('.cards-slider');
@@ -208,38 +214,40 @@
             .closest('.cards-slider__showmore')
             .hide();
         });
-        
+
         $('.navigation-popup__link').on('click', function() {
           $.fancybox.close();
         });
 
         $('.video-play').on('click', function() {
-          let $parent = $(this).closest('.video-player');
-          $('video', $parent).get(0).play();
+          const $parent = $(this).closest('.video-player');
+          $('video', $parent)
+            .get(0)
+            .play();
           $parent.toggleClass('is-playing');
           $(this).hide();
         });
 
-        if ($('.contact-form .rplg-review').length>1) {
+        if ($('.contact-form .rplg-review').length > 1) {
           $('.contact-form .rplg-reviews').slick({
             arrows: false,
             dots: false,
             slidesToShow: 2,
             autoplay: true,
             responsive: [
-                {
-                  breakpoint: 991,
-                  settings: {
-                    slidesToShow: 1
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 2
-                  }
-                },
-                {
+              {
+                breakpoint: 991,
+                settings: {
+                  slidesToShow: 1
+                }
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 2
+                }
+              },
+              {
                 breakpoint: 576,
                 settings: {
                   slidesToShow: 1
@@ -251,7 +259,7 @@
 
         // dropdown toggler
         $('.dropdown-toggler').on('click', function() {
-          let $dropdown = $(this).closest('.dropdown');
+          const $dropdown = $(this).closest('.dropdown');
           $(this).toggleClass('is-opened');
         });
       });
@@ -377,39 +385,39 @@
     },
 
     initTestimonials() {
-        // init mobile slider
-        $('.testimonials-mobile').slick({
-          arrows: false,
-          dots: false,
-          variableWidth: true,
-          autoplay: true,
-          autoplaySpeed: 3000,
-          speed: 1000
-        });
-        // init desktop main slider
-        const $mainSlider = $('.testimonials-main-slider').slick({
-          arrows: false,
-          dots: false,
-          autoplay: true,
-          autoplaySpeed: 3000,
-          speed: 1000,
-          fade: true,
-          asNavFor: '.testimonials-next-slider'
-        });
-        // init desktop next slider
-        $('.testimonials-next-slider').slick({
-          arrows: false,
-          dots: false,
-          autoplay: true,
-          autoplaySpeed: 3000,
-          speed: 1000,
-          fade: true,
-          asNavFor: '.testimonials-main-slider'
-        });
-        // show next slide
-        $('.testimonial-next').on('click', function() {
-          $mainSlider.slick('slickNext');
-        });
+      // init mobile slider
+      $('.testimonials-mobile').slick({
+        arrows: false,
+        dots: false,
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        speed: 1000
+      });
+      // init desktop main slider
+      const $mainSlider = $('.testimonials-main-slider').slick({
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        speed: 1000,
+        fade: true,
+        asNavFor: '.testimonials-next-slider'
+      });
+      // init desktop next slider
+      $('.testimonials-next-slider').slick({
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        speed: 1000,
+        fade: true,
+        asNavFor: '.testimonials-main-slider'
+      });
+      // show next slide
+      $('.testimonial-next').on('click', function() {
+        $mainSlider.slick('slickNext');
+      });
     },
     /**
      * init post carousel
@@ -575,8 +583,8 @@
       });
       // next post pagination
       $('.next-posts').on('click', function() {
-        let paged = parseInt($grid.attr('data-paged')),
-          nextPaged = parseInt($('.max-page-num'));
+        let paged = parseInt($grid.attr('data-paged'));
+        const nextPaged = parseInt($('.max-page-num'));
         paged += 1;
         $grid.attr('data-paged', paged);
         $('.current-page-num').html(paged);
@@ -598,7 +606,7 @@
       });
 
       $('.attorney-select').on('change', function() {
-        let state = $(this).val();
+        const state = $(this).val();
         $grid.attr('data-state', state);
         ajaxCPT();
       });
@@ -607,14 +615,14 @@
      * init podcasts
      */
     initPodcasts() {
-      const $slider = $('.podcasts-grid__inner'),
-        option = {
-          arrows: false,
-          dots: false,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          variableWidth: true
-        };
+      const $slider = $('.podcasts-grid__inner');
+      const option = {
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        variableWidth: true
+      };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initPodcasts);
     },
@@ -622,14 +630,14 @@
      * init attorney sidebar
      */
     initAttorneySidebar() {
-      const $slider = $('.attorney-details__sidebar'),
-        option = {
-          arrows: false,
-          dots: false,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          variableWidth: true
-        };
+      const $slider = $('.attorney-details__sidebar');
+      const option = {
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        variableWidth: true
+      };
       helper.mobileSlider($slider, option);
       helper.windowResize(theme.initAttorneySidebar);
     },
@@ -655,8 +663,63 @@
         dots: true,
         autoplay: true,
         speed: 1000,
-        customPaging: function(slider, i) {
-          return '<span class="slick-year">' + $(slider.$slides[i]).attr('data-year') + '</span>';
+        customPaging(slider, i) {
+          return `<span class="slick-year">${$(slider.$slides[i]).attr(
+            'data-year'
+          )}</span>`;
+        }
+      });
+    },
+    /**
+     * init Hero Center Videos
+     */
+    initHCVideos() {
+      const $select = $('#video_year');
+      const $loadmore = $('.hc-videos__loadmore');
+      const $loadmoreBtn = $('.btn-loadmore-videos');
+      // change year select
+      $select.on('change', function() {
+        let year = $(this).val();
+        if (year == 'all') year = '';
+        $('.hc-videos__item').hide();
+        $('.hc-videos__item').removeClass('is-active');
+        const $videos =
+          year == ''
+            ? $('.hc-videos__item')
+            : $(`.hc-videos__item[data-year=${year}]`);
+        $videos.addClass('is-active');
+        $videos.show();
+        $videos.each(function(index) {
+          if (index > 8) {
+            $(this).hide();
+          }
+        });
+        if ($videos.length > 9) {
+          $loadmore.show();
+        } else {
+          $loadmore.hide();
+        }
+        $loadmoreBtn.attr('data-paged', 1);
+      });
+      // show load more
+      $loadmoreBtn.on('click', function() {
+        let paged = $(this).attr('data-paged');
+        let year = $select.val();
+        if (year == 'all') year = '';
+        const $videos =
+          year == ''
+            ? $('.hc-videos__item')
+            : $(`.hc-videos__item[data-year=${year}]`);
+        paged += 1;
+        $videos.each(function(index) {
+          if (index < 9 * paged) {
+            $(this).show();
+          }
+        });
+        if ($('.hc-videos__item').length / 9 >= paged) {
+          $loadmore.show();
+        } else {
+          $loadmore.hide();
         }
       });
     }

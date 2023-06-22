@@ -34,6 +34,46 @@
     h1 {
       text-transform: capitalize;
     }
+    &__content {
+      margin-bottom: 3.2rem;
+      @include mq(tablet) {
+        margin-bottom: 6.4rem;
+      }
+    }
+    &__partner {
+      h6 {
+        margin-bottom: 0.8rem;
+        font: 600 1.4rem/1.6 $f-text;
+        letter-spacing: 0.112rem;
+        text-transform: uppercase;
+      }
+    }
+    &--content_only {
+      .community-banner__left {
+        @include mq(tablet) {
+          margin-inline: auto;
+          max-width: 66.5rem;
+          text-align: center;
+        }
+        .breadcrumbs {
+          justify-content: center;
+        }
+      }
+      h1 {
+        margin-bottom: 1.6rem;
+        @include mq(tablet) {
+          margin-bottom: 3.2rem;
+        }
+      }
+      .community-banner__partner {
+        @include mq(tablet) {
+          text-align: center;
+          &-img {
+            margin-inline: auto;
+          }
+        }
+      }
+    }
   }
   .c-content-image {
     padding-block: 4rem;
@@ -758,6 +798,62 @@
           background-color: #6C7383;
           transition: background .3s esae-in-out;
         }
+      }
+    }
+  }
+  .hc-videos {
+    padding-block: 4rem;
+    @include mq(tablet) {
+      padding-block: 6.4rem;
+    }
+    &__select {
+      margin-bottom: 3.2rem;
+      padding: 1.25rem 3.6rem 1.25rem 1.6rem;
+      width: 18rem;
+      appearance: none;
+      font: 400 1.6rem/1.55 $f-text;
+      text-transform: capitalize;
+      letter-spacing: 0.016rem;
+      color: $clr-black;
+      @include svg-background('<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.46094 6.53906L0.960938 2.03906C0.65625 1.75781 0.65625 1.26562 0.960938 0.984375C1.24219 0.679688 1.73438 0.679688 2.01562 0.984375L6 4.94531L9.96094 0.984375C10.2422 0.679688 10.7344 0.679688 11.0156 0.984375C11.3203 1.26562 11.3203 1.75781 11.0156 2.03906L6.51562 6.53906C6.23438 6.84375 5.74219 6.84375 5.46094 6.53906Z" fill="%230A1631"/></svg>');
+      background-position: center right 1.6rem;
+      border: 1px solid $clr-border;
+      border-radius: 4px;
+      cursor: pointer;
+      @include mq(tablet) {
+        margin-bottom: 6.4rem;
+      }
+    }
+    &__grid {
+      @include mq(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-gap: 4rem 2rem;
+      }
+    }
+    &__item {
+      display: none;
+      @include mq(tablet, max) {
+        margin-bottom: 2rem;
+      }
+      &.is-active {
+        display: block;
+      }
+      &:nth-child(n+10) {
+        display: none;
+      }
+      &-date {
+        margin-top: 0.8rem;
+        text-align: right;
+        font-size: 1.4rem;
+        line-height: 1.6;
+      }
+    }
+    &__loadmore {
+      margin-top: 3.2rem;
+      text-align: center;
+      @include mq(tablet) {
+        margin-top: 6.4rem;
       }
     }
   }

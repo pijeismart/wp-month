@@ -11,6 +11,7 @@ $parents = get_post_parent( $post );
 ?>
 <!-- Banner -->
 <?php
+$type        = get_field( 'type' );
 $heading     = get_field( 'banner_heading' );
 $image       = get_field( 'banner_image' );
 $video       = get_field( 'banner_video' );
@@ -19,7 +20,7 @@ $video_title = get_field( 'banner_video_title' );
 if ( $heading || $video || $image ) :
 	?>
 	<!-- Community Banner -->
-	<section class="community-banner has-decor">
+	<section class="community-banner has-decor community-banner--<?php echo esc_attr( $type ); ?>">
 		<div class="container">
 			<div class="community-banner__left">
 				<ul class="breadcrumbs a-up d-md-only">
@@ -46,8 +47,39 @@ if ( $heading || $video || $image ) :
 					)
 				);
 				?>
+				<?php
+				if ( 'content_only' == $type ) :
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'banner_content',
+							't'  => 'div',
+							'tc' => 'community-banner__content a-up a-delay-1',
+							'o'  => 'f',
+						)
+					);
+				endif;
+				?>
+				<?php if ( get_field( 'partner_logo' ) ) : ?>
+					<div class="community-banner__partner a-up">
+						<h6><?php echo esc_html__( 'Proud Partner of' ); ?></h6>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-image',
+							array(
+								'v'     => 'partner_logo',
+								'v2x'   => false,
+								'is'    => false,
+								'is_2x' => false,
+								'c'     => 'community-banner__partner-img',
+								'o'     => 'f',
+							)
+						);
+						?>
+					</div>
+				<?php endif; ?>
 			</div>
-			<?php if ( $video || $image ) : ?>
+			<?php if ( ( $video || $image ) && 'content_only' != $type ) : ?>
 			<div class="community-banner__right a-op">
 				<?php if ( $video ) : ?>
 				<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
@@ -83,6 +115,7 @@ $video = get_field( 's2_video' );
 $image = get_field( 's2_image' );
 ?>
 <!-- Content Image -->
+<?php if ( $video || $image || get_field( 's2_heading' ) || get_field( 's2_content' ) ) : ?>
 <section class="c-content-image">
 	<div class="container">
 		<?php if ( $video || $image ) : ?>
@@ -149,6 +182,7 @@ $image = get_field( 's2_image' );
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <?php
 $toc_links = array();
@@ -697,6 +731,76 @@ if ( have_rows( 'content_modules' ) ) :
 								<?php endif; ?>
 							</div>
 						</section>
+						<?php
+					elseif ( 'hero_central_videos' == get_row_layout() ) :
+						?>
+						<?php if ( have_rows( 'videos' ) ) : ?>
+						</div></div></section>
+						<section class="hc-videos">
+							<div class="container">
+								<?php
+								$years = array();
+								while ( have_rows( 'videos' ) ) :
+									the_row();
+									$date     = get_sub_field( 'date' );
+									if ( $date ) {
+										$date_arr = explode( ', ', $date );
+										$year     = $date_arr[1];
+										if ( ! in_array( $year, $years ) ) {
+											$years[] = $year;
+										}
+									}
+								endwhile;
+								?>
+								<select name="video_year" id="video_year" class="hc-videos__select a-up" jcf-select>
+									<option value="all"><?php echo esc_html__( 'All' ); ?></option>
+									<?php foreach ( $years as $year ) : ?>
+										<option value="<?php echo esc_attr( $year ); ?>"><?php echo esc_html( $year ); ?></option>
+									<?php endforeach; ?>
+								</select>
+								<div class="hc-videos__grid a-up">
+									<?php
+									while ( have_rows( 'videos' ) ) :
+										the_row();
+										$video    = get_sub_field( 'video_url' );
+										$date     = get_sub_field( 'date' );
+										if ( $date ) {
+											$date_arr = explode( ', ', $date );
+										}
+										if ( $video ) :
+											?>
+											<div class="hc-videos__item is-active" data-year="<?php echo $date_arr[1]; ?>">
+												<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+													<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+													<span class="video-play">
+														<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+													</span>
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-text',
+														array(
+															'v'  => 'video_title',
+															't'  => 'div',
+															'tc' => 'video-player__title',
+														)
+													);
+													?>
+												</a>
+												<?php if ( $date ) : ?>
+													<h6 class="hc-videos__item-date"><?php echo esc_html( $date ); ?></h6>
+												<?php endif; ?>
+											</div>
+										<?php endif; ?>
+									<?php endwhile; ?>
+								</div>
+								<?php if ( count( get_sub_field( 'videos' ) ) > 9 ) : ?>
+									<div class="hc-videos__loadmore a-up">
+										<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
+									</div>
+								<?php endif; ?>
+							</div>
+						</section>
+						<?php endif; ?>
 					<?php else : ?>
 					<?php endif; ?>
 				<?php endwhile; ?>
@@ -742,7 +846,7 @@ if ( ! get_field( 'disable_content_video' ) ) :
 	$video = get_field( 'c1_video', 'options' );
 	?>
 	<!-- Content Image -->
-	<section class="content-image content-image--contained-ctas content-image--right" <?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+	<section class="content-image content-image--contained-ctas content-image--right">
 		<div class="container">
 			<div class="content-image__media<?php echo $video ? ' video-player' : ''; ?>">
 				<?php
@@ -805,7 +909,7 @@ if ( ! get_field( 'disable_content_video' ) ) :
 $posts = get_field( 'c2_posts', 'options' );
 ?>
 <!-- Posts Slider -->
-<section class="posts-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+<section class="posts-slider">
 	<div class="container">
 		<div class="posts-slider__content">
 			<?php
