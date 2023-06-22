@@ -133,14 +133,16 @@ if ( have_rows( 'modules' ) ) :
 								?>
 							<?php endif; ?>
 							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'content',
-									't'  => 'div',
-									'tc' => 'banner-copy a-up a-delay-1',
-								)
-							);
+							if ( 'home' == $type ) : 
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'content',
+										't'  => 'div',
+										'tc' => 'banner-copy a-up a-delay-1',
+									)
+								);
+							endif;
 							?>
 							<?php if ( have_rows( 'cards' ) ) : ?>
 							<div class="contact-form__cards">
