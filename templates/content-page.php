@@ -112,7 +112,7 @@ if ( have_rows( 'modules' ) ) :
 								</div>
 								<?php
 								get_template_part_args(
-									'template-parts/content-modules-text',
+									'template-parts/content-modules-shortcode',
 									array(
 										'v'  => 'sub_heading',
 										't'  => 'h2',
