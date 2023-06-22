@@ -61,27 +61,31 @@
 }
 
 .attorney-cta {
-  position: relative;
   padding-block: 4rem;
+  background-color: $clr-navy;
   color: $clr-white;
   @include mq(tablet, max) {
+    position: relative;
     margin-bottom: 2rem;
     text-align: center;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: calc(var(--gutter) * -1);
+      width: calc(100% + (var(--gutter) * 2));
+      height: 100%;
+      background-color: $clr-navy;
+      z-index: -1;
+    }
   }
   @include mq(tablet) {
-    padding-block: 11rem;
+    padding: 4rem 6rem;
     grid-column: span 3;
+    border-radius: 1.2rem;
   }
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 50%;
-    width: 100vw;
-    height: 100%;
-    transform: translateX(-50%);
-    background-color: $clr-navy;
-    z-index: -1;
+  @include mq(desktop-wide) {
+    padding: 6.4rem 9.6rem;
   }
   &__img {
     margin: 0 auto 2.4rem;
@@ -123,11 +127,20 @@
 
 .section-archive--attorney {
   margin-bottom: 5rem;
+  @include mq(tablet, max) {
+    padding-top: 2rem;
+  }
   @include mq(tablet) {
     margin-bottom: 7rem;
   }
   .container {
     display: block;
+  }
+  .section-archive__filters {
+    @include mq(tablet, max) {
+      padding: 0;
+      border: none;
+    }
   }
 }
 
