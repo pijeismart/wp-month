@@ -225,6 +225,7 @@
             arrows: false,
             dots: false,
             slidesToShow: 2,
+            autoplay: true,
             responsive: [
                 {
                   breakpoint: 991,
