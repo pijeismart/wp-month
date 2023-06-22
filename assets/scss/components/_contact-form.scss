@@ -115,6 +115,9 @@
             font-size: 4.2rem;
             line-height: 5.2rem;
           }
+          ul, ol {
+            clear: both;
+          }
         }
       }
 
@@ -142,9 +145,7 @@
     }
 
     &__content {
-      h1, h2, h3, h4, h5, h6, p {
-        margin-bottom: 1em;
-      }
+      @include base-typography();
 
       h5 {
         font-weight: 400;
@@ -158,11 +159,6 @@
           font-size: 1.6rem;
           line-height: 2.5rem;
         }
-      }
-
-      ul,
-      ol {
-        padding-left: 2rem;
       }
     }
   }
