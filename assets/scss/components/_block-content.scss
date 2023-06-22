@@ -149,6 +149,11 @@
       &__cta {
         margin-top: 2.8rem;
       }
+      & + .block-content__item__content {
+        ul, ol {
+          list-style-position: inside;
+        }
+      }
     }
 
     &__content {
