@@ -42,13 +42,8 @@ h3,
 
 h4,
 .h4 {
-  font: 400 1.6rem/1.05 $f-heading;
-  letter-spacing: -0.03em;
-  @include mq(tablet) {
-    font-size: 2rem;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
+  font: 400 2rem/1.05 $f-heading;
+  letter-spacing: -0.01em;
   @include mq(desktop-wide) {
     font-size: 2.6rem;
   }

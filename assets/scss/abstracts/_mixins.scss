@@ -281,6 +281,7 @@
     padding-left: 2rem;
   }
   a:not([class]) {
-    text-decoration: underline;
+    font-weight: bold;
+    color: $clr-green;
   }
 }
