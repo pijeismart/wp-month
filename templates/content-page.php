@@ -526,7 +526,7 @@ if ( have_rows( 'modules' ) ) :
 												?>
 												<li>
 													<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-														<?php echo $state ? $state[0]->name . ', ' : ''; ?><?php the_title(); ?>
+														<?php the_title(); ?>
 													</a>
 												</li>
 												<?php
