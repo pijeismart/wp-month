@@ -40,9 +40,11 @@ $query = new WP_Query( $args );
 				?>
 				<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-practice-area__meta">
 					<?php if ( isset( $image ) ) : ?>
-						<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php the_title(); ?>">
+						<span class="loop-practice-area__meta-img">
+							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php the_title(); ?>">
+						</span>
 					<?php endif; ?>
-					<span><?php the_title(); ?></span>
+					<span class="loop-practice-area__meta-text"><?php the_title(); ?></span>
 				</a>
 			<?php endwhile; ?>
 		</div>
