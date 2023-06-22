@@ -703,7 +703,7 @@
       });
       // show load more
       $loadmoreBtn.on('click', function() {
-        let paged = $(this).attr('data-paged');
+        let paged = parseInt( $(this).attr('data-paged') );
         let year = $select.val();
         if (year == 'all') year = '';
         const $videos =
