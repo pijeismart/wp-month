@@ -1941,7 +1941,7 @@ if ( have_rows( 'modules' ) ) :
 						<div class="block-content__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
 							<?php
 							get_template_part_args(
-								'template-parts/content-modules-text',
+								'template-parts/content-modules-shortcode',
 								array(
 									'v'  => 'heading',
 									't'  => 'p',
