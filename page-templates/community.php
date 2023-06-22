@@ -127,7 +127,7 @@ $image = get_field( 's2_image' );
 				'template-parts/content-modules-text',
 				array(
 					'v'  => 's2_heading',
-					't'  => 'h2',
+					't'  => 'h3',
 					'tc' => 'c-content-image__heading a-up',
 					'o'  => 'f',
 				)
