@@ -827,8 +827,11 @@
     &__grid {
       @include mq(tablet) {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-gap: 4rem 2rem;
+      }
+      @include mq(desktop) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
     &__item {
@@ -839,7 +842,7 @@
       &.is-active {
         display: block;
       }
-      &:nth-child(n+10) {
+      &:nth-child(n+13) {
         display: none;
       }
       &-date {

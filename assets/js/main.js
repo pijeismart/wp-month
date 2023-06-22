@@ -677,6 +677,7 @@
       const $select = $('#video_year');
       const $loadmore = $('.hc-videos__loadmore');
       const $loadmoreBtn = $('.btn-loadmore-videos');
+      const perPage = 12;
       // change year select
       $select.on('change', function() {
         let year = $(this).val();
@@ -690,11 +691,11 @@
         $videos.addClass('is-active');
         $videos.show();
         $videos.each(function(index) {
-          if (index > 8) {
+          if (index > perPage - 1) {
             $(this).hide();
           }
         });
-        if ($videos.length > 9) {
+        if ($videos.length > perPage) {
           $loadmore.show();
         } else {
           $loadmore.hide();
@@ -703,7 +704,7 @@
       });
       // show load more
       $loadmoreBtn.on('click', function() {
-        let paged = parseInt( $(this).attr('data-paged') );
+        let paged = parseInt($(this).attr('data-paged'));
         let year = $select.val();
         if (year == 'all') year = '';
         const $videos =
@@ -712,11 +713,11 @@
             : $(`.hc-videos__item[data-year=${year}]`);
         paged += 1;
         $videos.each(function(index) {
-          if (index < 9 * paged) {
+          if (index < perPage * paged) {
             $(this).show();
           }
         });
-        if ($('.hc-videos__item').length / 9 >= paged) {
+        if ($('.hc-videos__item').length / perPage >= paged) {
           $loadmore.show();
         } else {
           $loadmore.hide();

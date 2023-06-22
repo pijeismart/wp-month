@@ -793,7 +793,7 @@ if ( have_rows( 'content_modules' ) ) :
 										<?php endif; ?>
 									<?php endwhile; ?>
 								</div>
-								<?php if ( count( get_sub_field( 'videos' ) ) > 9 ) : ?>
+								<?php if ( count( get_sub_field( 'videos' ) ) > 12 ) : ?>
 									<div class="hc-videos__loadmore a-up">
 										<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
 									</div>
