@@ -1,0 +1,23 @@
+.ui-datepicker {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.ui-datepicker-calendar tr th {
+  width: 3rem;
+}
+.ui-datepicker-calendar tr td {
+  text-align: center;
+}
+.ui-datepicker-calendar tr td a:hover,
+.ui-state-active {
+  color: #78be38;
+}
+.ui-datepicker-title {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 1rem;
+}
+.ui-datepicker-next {
+  float: right;
+}
