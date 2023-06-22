@@ -200,9 +200,6 @@ if ( have_rows( 'modules' ) ) :
 											)
 										);
 										?>
-										<?php if ( $cta ) : ?>
-											<span class="contact-form__cards__item__cta link" aria-label="<?php echo esc_attr( $cta['title'] ); ?>"></span>
-										<?php endif; ?>
 										<?php if ( $rating ) : ?>
 											<div class="contact-form__cards__item__rating d-md-only">
 												<?php for ( $i = 0; $i < $rating; $i ++ ) : ?>
