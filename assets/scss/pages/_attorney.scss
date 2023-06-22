@@ -61,11 +61,11 @@
 }
 
 .attorney-cta {
+  position: relative;
   padding-block: 4rem;
   background-color: $clr-navy;
   color: $clr-white;
   @include mq(tablet, max) {
-    position: relative;
     margin-bottom: 2rem;
     text-align: center;
     &::before {
