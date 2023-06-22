@@ -85,6 +85,7 @@ $image = get_field( 's2_image' );
 <!-- Content Image -->
 <section class="c-content-image">
 	<div class="container">
+		<?php if ( $video || $image ) : ?>
 		<div class="c-content-image__media a-op">
 			<?php if ( $video ) : ?>
 				<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
@@ -121,6 +122,7 @@ $image = get_field( 's2_image' );
 				?>
 			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 		<div class="c-content-image__content">
 			<?php
 			get_template_part_args(
@@ -506,7 +508,7 @@ if ( have_rows( 'content_modules' ) ) :
 															<?php
 															while ( have_rows( 'videos' ) ) :
 																the_row();
-																$video = get_sub_field( 'video' );
+																$video  = get_sub_field( 'video' );
 																$iframe = get_sub_field( 'iframe' );
 																?>
 																<div class="accordion-video">
@@ -603,7 +605,7 @@ if ( have_rows( 'content_modules' ) ) :
 																		<a href="<?php echo esc_url( $cta['url'] ); ?>"
 																			class="underline-link person-card__cta"
 																			data-fancybox
-																			target="<?php echo esc_attr( $cta['target'] ? $cta['target']: '_self' ); ?>">
+																			target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
 																			<?php echo esc_html( $cta['title'] ); ?>
 																		</a>
 																	<?php endif; ?>
@@ -618,6 +620,83 @@ if ( have_rows( 'content_modules' ) ) :
 								</div>
 							<?php endif; ?>
 						</div>
+						<?php
+					elseif ( 'time_slider' == get_row_layout() ) :
+						?>
+								</div>
+							</div>
+						</section>
+						<section class="timeslider">
+							<div class="container">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'heading',
+										't'  => 'h3',
+										'tc' => 'timeslider-heading a-up',
+									)
+								);
+								?>
+								<?php if ( have_rows( 'slides' ) ) : ?>
+									<div class="timeslider-carousel">
+										<?php
+										while ( have_rows( 'slides' ) ) :
+											the_row();
+											$year = get_sub_field( 'year' );
+											?>
+											<div class="timeslider-slide" data-year="<?php echo esc_attr( $year ); ?>">
+												<div class="timeslider-slide__content">
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-text',
+														array(
+															'v'  => 'title',
+															't'  => 'h6',
+															'tc' => 'timeslider-slide__title',
+														)
+													);
+													?>
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-text',
+														array(
+															'v'  => 'heading',
+															't'  => 'p',
+															'tc' => 'timeslider-slide__heading',
+														)
+													);
+													?>
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-text',
+														array(
+															'v'  => 'content',
+															't'  => 'p',
+															'tc' => 'timeslider-slide__copy',
+														)
+													);
+													?>
+												</div>
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-image',
+													array(
+														'v'     => 'image',
+														'v2x'   => false,
+														'is'    => false,
+														'is_2x' => false,
+														'w'     => 'div',
+														'wc'    => 'timeslider-slide__image',
+													)
+												);
+												?>
+											</div>
+										<?php endwhile; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						</section>
 					<?php else : ?>
 					<?php endif; ?>
 				<?php endwhile; ?>

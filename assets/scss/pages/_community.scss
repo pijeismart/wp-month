@@ -72,6 +72,14 @@
         flex: 0 0 50%;
         max-width: 59rem;
       }
+      &:only-child {
+        text-align: center;
+        @include mq(tablet) {
+          margin-inline: auto;
+          flex-basis: 100%;
+          max-width: 99rem;
+        }
+      }
     }
   }
   .community-modules {
@@ -571,6 +579,184 @@
           img {
             border-radius: 1.2rem;
           }
+        }
+      }
+    }
+  }
+  .timeslider {
+    padding-block: 5rem;
+    background-color: $clr-navy;
+    color: $clr-white;
+    overflow: hidden;
+    @include mq(tablet) {
+      padding-block: 10rem;
+    }
+    @include mq(desktop) {
+      padding-block: 16rem;
+    }
+    &-heading {
+      margin-bottom: 3rem;
+      text-align: center;
+      @include mq(tablet) {
+        margin: 0 auto 5rem;
+        max-width: 64.3rem;
+      }
+      @include mq(desktop) {
+        margin-bottom: 8rem;
+      }
+    }
+    &-carousel {
+      text-align: center;
+      @include mq(tablet) {
+        margin-inline: auto;
+        max-width: 108.6rem;
+      }
+      .slick-list {
+        overflow: visible;
+      }
+      .slick-track {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+    &-slide {
+      margin-inline: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(216, 220, 226, 0.20);
+      text-align: left;
+      @include mq(tablet) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      &__content {
+        padding: 2rem;
+        @include mq(tablet) {
+          display: flex;
+          padding: 4rem;
+          flex-direction: column;
+        }
+      }
+      &__title {
+        margin-bottom: auto;
+        font: 400 2rem/1.55 $f-heading;
+        text-transform: capitalize;
+        color: $clr-green;
+        @include mq(tablet) {
+          font-size: 2.4rem;
+        }
+      }
+      &__heading {
+        margin-bottom: 1.6rem;
+        font: 600 2rem/1.55 $f-text;
+        letter-spacing: -0.072em;
+        color: $clr-white;
+        @include mq(tablet) {
+          font-size: 2.4rem;
+        }
+      }
+      &__copy {
+        font: 400 1.6rem/1.55 $f-text;
+        letter-spacing: 0.016em;
+        color: $clr-white;
+        opacity: 0.4;
+      }
+      &__image {
+        padding: 1.6rem;
+        @include mq(tablet) {
+          height: 34rem;
+        }
+        img {
+          @include cover-image;
+          border-radius: 8px;
+        }
+      }
+      &.slick-current {
+        .timeslider-slide__image {
+          @include mq(tablet) {
+            height: 42rem;
+          }
+        }
+      }
+    }
+    .slick-dots {
+      position: static;
+      margin-top: 2rem;
+      margin-inline: auto;
+      display: inline-flex;
+      width: auto;
+      margin-inline: auto;
+      align-items: flex-end;
+      justify-content: center;
+      border-bottom: 1px solid rgba($clr-white, 0.4);
+      @include mq(tablet) {
+        margin-top: 4rem;
+      }
+      li {
+        width: auto;
+        height: auto;
+        @include mq(tablet) {
+          margin-inline: 2rem;
+        }
+        @include mq(desktop-wide) {
+          margin-inline: 4rem;
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        &.slick-active {
+          .slick-year {
+            font: 700 2rem/1.55 $f-text;
+            @include mq(tablet) {
+              font-size: 2.4rem;
+            }
+            color: $clr-green;
+            &::after {
+              background-color: $clr-green;
+            } 
+          }
+        }
+        &:first-child::before,
+        &:last-child::before {
+          position: absolute;
+          content: '';
+          bottom: 0;
+          width: 50%;
+          height: 5px;
+          background-color: $clr-navy;
+          transform: translateY(50%);
+        }
+        &:first-child::before {
+          left: 0;
+        }
+        &:last-child::before {
+          right: 0;
+        }
+      }
+      .slick-year {
+        position: relative;
+        display: block;
+        padding-bottom: 1.6rem;
+        font: 400 1.4rem/1.55 $f-text;
+        letter-spacing: -0.048rem;
+        color: rgba($clr-white, 0.4);
+        transition: color .3s ease-in-out;
+        @include mq(tablet) {
+          font-size: 1.6rem;
+        }
+        &::after {
+          position: absolute;
+          content: '';
+          left: 50%;
+          bottom: 0;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          transform: translate(-50%, 50%);
+          background-color: #6C7383;
+          transition: background .3s esae-in-out;
         }
       }
     }

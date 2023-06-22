@@ -198,7 +198,7 @@
           theme.initAttorneySidebar
         );
         helper.isElementExist('.accordion-main__gallery', theme.initAccordionGallery);
-
+        helper.isElementExist('.timeslider-carousel', theme.initTimeSliderCarousel);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -644,6 +644,20 @@
         autoplay: true,
         slidesToShow: 1,
         infinite: true
+      });
+    },
+    /**
+     * init timeslider carousel
+     */
+    initTimeSliderCarousel() {
+      $('.timeslider-carousel').slick({
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        speed: 1000,
+        customPaging: function(slider, i) {
+          return '<span class="slick-year">' + $(slider.$slides[i]).attr('data-year') + '</span>';
+        }
       });
     }
   };

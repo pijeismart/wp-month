@@ -1113,6 +1113,26 @@
                             "endpoint": 0
                         },
                         {
+                            "key": "field_64943eec07ae9",
+                            "label": "Heading",
+                            "name": "heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_6490794b2eacf",
                             "label": "Slides",
                             "name": "slides",
@@ -2077,5 +2097,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687357988
+    "modified": 1687437045
 }
