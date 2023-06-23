@@ -10,7 +10,7 @@ $case_cat_ids = wp_list_pluck( $case_cat, 'term_id' );
 $faq_types = get_the_terms( $post, 'faq_type' );
 $faq_type  = $faq_types[0];
 
-$state     = get_the_terms( $post, 'state' );
+$state = get_the_terms( $post, 'state' );
 
 // create queries
 $tax_query = array(
@@ -53,9 +53,9 @@ $phone = get_field( 'header_cta_url', 'options' );
 			<div class="faq-detail__top">
 				<?php if ( 'state-law-montlick-explains' == $faq_type->slug ) : ?>
 					<a href="<?php echo esc_url( home_url( '/faq/?state=' ) . $state[0]->slug ); ?>" class="link link-reverse">
-						<?php echo esc_html__( 'See All Frequently Asked Questions' )  . ' | ' . $state[0]->name; ?>
+						<?php echo esc_html__( 'See All Frequently Asked Questions' ) . ' | ' . $state[0]->name; ?>
 					</a>
-				<?php else: ?>
+				<?php else : ?>
 					<a href="<?php echo esc_url( home_url( '/faq' ) ); ?>" class="link link-reverse">
 						<?php echo esc_html__( 'See All Frequently Asked Questions' ); ?>
 					</a>
@@ -82,20 +82,28 @@ $phone = get_field( 'header_cta_url', 'options' );
 						</a>
 					</li>
 					<li>
-						<a href="mailto:?subject=<?php echo esc_attr( get_the_title( ) ); ?>&body=Link:<?php echo esc_url( get_the_permalink() ); ?>" class="share-email">
+						<a href="mailto:?subject=<?php echo esc_attr( get_the_title() ); ?>&body=Link:<?php echo esc_url( get_the_permalink() ); ?>" class="share-email">
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-mail.svg' ); ?>" alt="Email">
 						</a>
 					</li>
 					<li class="d-sm-only">
-						<a href="sms:?&body=<?php echo esc_url( get_the_permalink( ) ); ?>" class="share-sms">
+						<a href="sms:?&body=<?php echo esc_url( get_the_permalink() ); ?>" class="share-sms">
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-sms.svg' ); ?>" alt="SMS">
 						</a>
 					</li>
 				</ul>
 			</div>
-			<p class="faq-detail__notice">
-				<?php echo esc_html__( 'These questions and answers are written by the legal team at Montlick Injury Attorneys and some other disclaimer language should probably go here.' ); ?>
-			</p>
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'faq_notice',
+					't'  => 'p',
+					'tc' => 'faq-detail__notice',
+					'o'  => 'o',
+				)
+			);
+			?>
 			<h1 class="h2 faq-detail__title"><?php the_title(); ?></h1>
 			<?php if ( 'video-shorts' == $faq_type->slug ) : ?>
 				<div class="faq-detail__video__wrapper">

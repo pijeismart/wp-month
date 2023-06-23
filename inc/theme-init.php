@@ -29,7 +29,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	$parent = acf_add_options_page(
 		array(
 			'page_title' => 'Theme General Settings',
-			'menu_title' => 'Theme Settings',
+			'menu_title' => 'Global Settings',
 			'menu_slug'  => 'theme-general-settings',
 			'capability' => 'edit_posts',
 			'redirect'   => false,
@@ -38,10 +38,17 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	);
 
 	 // Add sub page.
-	$child = acf_add_options_sub_page(
+	acf_add_options_sub_page(
 		array(
 			'page_title'  => __( 'Community Page Settings' ),
 			'menu_title'  => __( 'Community Settings' ),
+			'parent_slug' => $parent['menu_slug'],
+		)
+	);
+	acf_add_options_sub_page(
+		array(
+			'page_title'  => __( 'Post Settings' ),
+			'menu_title'  => __( 'Post Settings' ),
 			'parent_slug' => $parent['menu_slug'],
 		)
 	);
