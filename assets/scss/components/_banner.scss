@@ -222,9 +222,12 @@
             line-height: 1.8rem;
           }
         }
+        .item-award {
+          max-width: 13rem;
+        }
         .item-content {
-          margin-top: auto;
-          margin-bottom: 0;
+          margin-block: auto;
+          // margin-bottom: 0;
           font: 400 3.2rem/1 $f-heading;
           @include mq(tablet) {
             font-size: 4rem;
