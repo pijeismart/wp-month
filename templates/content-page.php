@@ -137,6 +137,16 @@ if ( have_rows( 'modules' ) ) :
 								get_template_part_args(
 									'template-parts/content-modules-text',
 									array(
+										'v'  => 'sub_heading',
+										't'  => 'h6',
+										'tc' => 'banner-subheading a-up',
+									)
+								);
+								?>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
 										'v'  => 'heading',
 										't'  => 'h1',
 										'tc' => 'banner-heading a-up',

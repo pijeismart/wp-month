@@ -9,6 +9,17 @@
       display: none;
     }
   }
+  &--home.has-decor {
+    @include mq(tablet, max) {
+      display: block;
+    }
+    @include mq(tablet) {
+      padding-block: 5rem;
+    }
+    @include mq(desktop-wide) {
+      padding-block: 8.5rem 15rem;
+    }
+  }
   &-background {
     position: absolute;
     right: -15rem;
@@ -176,6 +187,10 @@
     @include mq(tablet) {
       font-size: 1.5rem;
       line-height: 2.25rem;
+    }
+    @include when-inside('.banner--home') {
+      margin-bottom: 2rem;
+      color: $clr-green;
     }
   }
   &--practice-cards {

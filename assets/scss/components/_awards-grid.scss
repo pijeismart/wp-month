@@ -1,3 +1,8 @@
+.navigation-bar + .awards-grid {
+  @include mq(tablet) {
+    margin-top: -5rem;
+  }
+}
 .awards-grid {
   padding-block: 5rem;
   background: $clr-navy;
