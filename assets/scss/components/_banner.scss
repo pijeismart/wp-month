@@ -96,11 +96,6 @@
         margin-bottom: 9rem;
       }
     }
-    @include when-inside('.home') {
-      @include mq(desktop-wide) {
-        font-size: 9rem;
-      }
-    }
     span {
       color: $clr-green;
     }
