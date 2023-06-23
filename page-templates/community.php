@@ -736,6 +736,11 @@ if ( have_rows( 'content_modules' ) ) :
 						?>
 						<?php if ( have_rows( 'videos' ) ) : ?>
 						</div></div></section>
+						<style>
+							.community-modules {
+								display: none;
+							}
+						</style>
 						<section class="hc-videos">
 							<div class="container">
 								<?php
