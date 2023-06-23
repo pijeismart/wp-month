@@ -2,9 +2,11 @@
   .community-banner {
     padding-block: 2.4rem 4rem;
     background-color: $clr-white-off;
+
     @include mq(tablet) {
       padding-block: 9rem 10rem;
     }
+
     .container {
       @include mq(tablet) {
         display: flex;
@@ -12,34 +14,42 @@
         justify-content: space-between;
       }
     }
+
     &__left {
       @include mq(tablet) {
         flex-grow: 1;
         max-width: 65rem;
       }
+
       .breadcrumbs {
         margin-bottom: 1.5rem;
       }
     }
+
     &__right {
       @include mq(tablet, max) {
         margin-top: 3rem;
       }
+
       @include mq(tablet) {
         margin-left: 3rem;
         flex: 1 1 50%;
         max-width: 51.5rem;
       }
     }
+
     h1 {
       text-transform: capitalize;
     }
+
     &__content {
       margin-bottom: 3.2rem;
+
       @include mq(tablet) {
         margin-bottom: 6.4rem;
       }
     }
+
     &__partner {
       h6 {
         margin-bottom: 0.8rem;
@@ -48,6 +58,7 @@
         text-transform: uppercase;
       }
     }
+
     &--content_only {
       .community-banner__left {
         @include mq(tablet) {
@@ -55,19 +66,24 @@
           max-width: 66.5rem;
           text-align: center;
         }
+
         .breadcrumbs {
           justify-content: center;
         }
       }
+
       h1 {
         margin-bottom: 1.6rem;
+
         @include mq(tablet) {
           margin-bottom: 3.2rem;
         }
       }
+
       .community-banner__partner {
         @include mq(tablet) {
           text-align: center;
+
           &-img {
             margin-inline: auto;
           }
@@ -75,13 +91,16 @@
       }
     }
   }
+
   .c-content-image {
     padding-block: 4rem;
     background-color: $clr-navy;
     color: $clr-white;
+
     @include mq(tablet) {
       padding-block: 6.4rem;
     }
+
     .container {
       @include mq(tablet) {
         display: flex;
@@ -89,31 +108,39 @@
         justify-content: space-between;
       }
     }
+
     &__img {
       @include cover-image;
       border-radius: 1.2rem;
     }
+
     &__heading {
       margin-bottom: 2.4rem;
     }
+
     &__media {
       margin-bottom: 3rem;
+
       @include mq(tablet) {
         margin-bottom: 0;
         margin-right: 5rem;
         flex-grow: 1;
       }
+
       @include mq(desktop-wide) {
         margin-right: 7.5rem;
       }
     }
+
     &__content {
       @include mq(tablet) {
         flex: 0 0 50%;
         max-width: 59rem;
       }
+
       &:only-child {
         text-align: center;
+
         @include mq(tablet) {
           margin-inline: auto;
           flex-basis: 100%;
@@ -122,24 +149,30 @@
       }
     }
   }
+
   .community-modules {
     padding-block: 4rem;
+
     @include mq(tablet) {
       padding-block: 6.4rem;
     }
+
     .block-heading {
       margin-bottom: 3.2rem;
+
       @include mq(tablet) {
         font-size: 3.6rem;
         line-height: 1.15;
       }
     }
-    > .container {
+
+    >.container {
       @include mq(tablet) {
         display: flex;
         align-items: flex-start;
       }
     }
+
     &__sidebar {
       position: sticky;
       margin-right: 2rem;
@@ -149,6 +182,7 @@
       flex: 0 0 31.2rem;
       border: 1px solid $clr-border;
       border-radius: 1.2rem;
+
       h6 {
         margin-bottom: 2.4rem;
         font: 700 1.5rem/1.5 $f-text;
@@ -156,9 +190,11 @@
         text-transform: uppercase;
         color: $clr-navy;
       }
+
       ul {
         list-style: none;
       }
+
       a {
         display: block;
         padding: 0.8rem 1.6rem;
@@ -166,6 +202,7 @@
         color: $clr-navy;
         transition: all .3s ease-in-out;
         border-right: 2px solid transparent;
+
         &:hover {
           background: rgba(174, 223, 130, 0.4);
           border-right-color: $clr-green;
@@ -173,67 +210,93 @@
       }
     }
   }
+
   .general-block {
     margin-bottom: 8px;
     padding: 3rem;
     border: 1px solid $clr-border;
     border-radius: 1.2rem;
+
     @include mq(tablet) {
       padding: 4rem;
     }
+
     @include mq(desktop-wide) {
       padding: 6.4rem;
     }
+
     &--no-padding {
       padding: 0 0 4rem;
+
       .general-block__img {
         border-radius: 1.2rem 1.2rem 0 0;
       }
+
       .general-block__inner {
         padding-inline: 2.4rem;
       }
     }
+
     &__img {
       display: block;
       margin-bottom: 3.2rem;
       width: 100%;
     }
+
     &__content {
       margin-bottom: 3.2rem;
-      h1, h2, h3, h4, h5, h6, p {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
         margin-bottom: 1em;
       }
-      ul, ol {
+
+      ul,
+      ol {
         padding-left: 2rem;
       }
     }
+
     &__image-links {
       padding-inline: 1.6rem;
+
       @include mq(tablet) {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        ;
         grid-gap: 1rem;
       }
     }
+
     &__image-link {
       position: relative;
       display: block;
       border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
+
       @include mq(tablet, max) {
         margin-bottom: 1rem;
       }
+
       &::before {
         @include pseudo-elements;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 70.07%, rgba(0, 0, 0, 0.642293) 81.22%, rgba(0, 0, 0, 0.8) 99.95%);
       }
+
       &:hover svg {
         transform: translateX(5px);
       }
+
       .link-img {
-        @include cover-image;        
+        @include cover-image;
       }
+
       .link-title {
         position: absolute;
         inset-inline: 2.4rem;
@@ -243,20 +306,24 @@
         justify-content: space-between;
         font: 600 1.6rem/2.48rem $f-text;
         color: $clr-white;
+
         @include mq(tablet) {
           inset-inline: 3.2rem;
           bottom: 3.2rem;
         }
+
         svg {
           margin-left: 1rem;
           transition: transform .3s ease-in-out;
         }
       }
     }
+
     &__externals {
       margin-top: 2.4rem;
       padding-top: 2.4rem;
       border-top: 1px solid $clr-border;
+
       @include mq(tablet) {
         display: grid;
         margin-top: 3.2rem;
@@ -265,21 +332,25 @@
         grid-gap: 1.6rem;
       }
     }
+
     &__external {
       display: block;
       padding-inline: 1.6rem;
       cursor: pointer;
+
       &:hover {
         .external-image img {
           transform: scale(1.1);
         }
       }
+
       .external-image {
         display: block;
         margin-bottom: 1.6rem;
         height: 13.5rem;
         border-radius: 8px;
         overflow: hidden;
+
         img {
           @include cover-image;
           transition: transform .3s ease-in-out;
@@ -287,8 +358,10 @@
         }
       }
     }
+
     .gform_wrapper {
       color: $text-color;
+
       .gform_fields {
         @include mq(tablet) {
           display: grid;
@@ -296,15 +369,18 @@
           grid-gap: 2.4rem 2rem;
         }
       }
+
       .gfield_radio {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-gap: 2rem;
       }
+
       .gchoice {
         .gfield-choice-input {
           display: none;
         }
+
         .gform-field-label {
           display: block;
           padding: 1.8rem 2rem;
@@ -317,27 +393,32 @@
           color: rgba($clr-navy, 0.7);
           transition: all .3s ease-in-out;
           cursor: pointer;
+
           &:hover {
             background-color: $clr-navy;
             color: $clr-white;
           }
         }
       }
+
       .gfield {
         @include mq(tablet) {
           margin-bottom: 0;
         }
+
         &--width-full {
           @include mq(tablet) {
             grid-column: span 2;
           }
         }
+
         h2 {
           @include mq(tablet) {
             margin-bottom: 3.2rem;
             font-size: 3.6rem;
           }
         }
+
         .gform-field-label {
           display: block;
           margin-bottom: 0.6rem;
@@ -345,6 +426,7 @@
           letter-spacing: -0.014rem;
           color: $clr-navy;
         }
+
         input {
           font: 400 1.4rem/1.3 $f-text;
           letter-spacing: -0.014rem;
@@ -352,12 +434,14 @@
           border-radius: 5px;
           background: $clr-white;
           color: $clr-navy;
+
           &::placeholder {
             color: $clr-navy;
             opacity: 0.7;
           }
         }
       }
+
       .gform_next_button {
         display: inline-block;
         @extend .btn;
@@ -365,135 +449,163 @@
         padding: 1.6rem 3.2rem;
         border: none;
         text-transform: capitalize;
+
         &::after {
           content: none;
         }
       }
+
       .gform_previous_button {
         display: none !important;
       }
-      
-    .required-fields-page {
-      display: block !important;
-      margin-top: 1.6rem;
-      padding: 3.2rem 2rem 3.2rem;
-      background-color: $clr-navy;
-      color: $clr-white;
-      border-bottom: none;
-      border-radius: 2.4rem;
-      @include mq(tablet) {
-        padding: 4rem 4rem 6.4rem;
+
+      .gform_page {
+        margin-bottom: 3.2rem;
+        padding-bottom: 3.2rem;
+        border-bottom: 1px solid $clr-border;
       }
-      h2 {
-        padding-bottom: 2rem;
-        border-bottom: 1px solid $clr-green;
-        text-align: center;
+
+      .required-fields-page {
+        display: block !important;
+        margin-top: 1.6rem;
+        padding: 3.2rem 2rem 3.2rem;
+        background-color: $clr-navy;
         color: $clr-white;
+        border-bottom: none;
+        border-radius: 2.4rem;
+
         @include mq(tablet) {
-          padding-bottom: 4rem;
+          margin-top: 3.2rem;
+          padding: 4rem 4rem 6.4rem;
         }
-      }
-      .gform_fields {
-        @include mq(tablet) {
-          grid-column: 4rem 2rem;
-        }
-      }
-      .gfield {
-        .gform-field-label {
+
+        h2 {
+          padding-bottom: 2rem;
+          border-bottom: 1px solid $clr-green;
+          text-align: center;
           color: $clr-white;
-        }
-        &--type-checkbox {
-          .gfield_label {
-            display: none;
+
+          @include mq(tablet) {
+            padding-bottom: 4rem;
           }
         }
-        input {
-          background: rgba(255, 255, 255, 0.05);
-          border-color: rgba(255, 255, 255, 0.05);
-          color: $clr-border;
-          &::placeholder {
-            color: rgba($clr-border, 0.7);
+
+        .gform_fields {
+          @include mq(tablet) {
+            grid-column: 4rem 2rem;
           }
         }
-      }
-      .gfield_checkbox {
-        .gchoice {
-          display: flex;
-          label {
-            position: relative;
-            margin-bottom: 1.6rem;
-            padding: 0 0 0 4rem;
-            background-color: transparent;
-            color: rgba($clr-white, 0.6);
-            text-transform: none;
-            font: 400 1.6rem/1.5 $f-text;
-            text-align: left;
-            cursor: pointer;
-            &::before {
-              position: absolute;
-              top: 0;
-              left: 0;
-              content: '';
-              width: 2.4rem;
-              height: 2.4rem;
-              border: 2px solid rgba($clr-white, 0.2);
-              border-radius: 6px;
-              transition: all .3s ease-in-out;
+
+        .gfield {
+          .gform-field-label {
+            color: $clr-white;
+          }
+
+          &--type-checkbox {
+            .gfield_label {
+              display: none;
             }
           }
-          .gfield-choice-input:checked + label::before {
-            background-color: $clr-white;
-            border-color: $clr-white;
+
+          input {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.05);
+            color: $clr-border;
+
+            &::placeholder {
+              color: rgba($clr-border, 0.7);
+            }
           }
         }
-      }
-      .gform_page_footer {
-        text-align: center;
-      }
-      .gform_button[type=submit] {
-        padding: 1.6rem 3.2rem;
-        background-image: none;
-      }
-      .gfield_required {
-        display: none;
+
+        .gfield_checkbox {
+          .gchoice {
+            display: flex;
+
+            label {
+              position: relative;
+              margin-bottom: 1.6rem;
+              padding: 0 0 0 4rem;
+              background-color: transparent;
+              color: rgba($clr-white, 0.6);
+              text-transform: none;
+              font: 400 1.6rem/1.5 $f-text;
+              text-align: left;
+              cursor: pointer;
+
+              &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                width: 2.4rem;
+                height: 2.4rem;
+                border: 2px solid rgba($clr-white, 0.2);
+                border-radius: 6px;
+                transition: all .3s ease-in-out;
+              }
+            }
+
+            .gfield-choice-input:checked+label::before {
+              background-color: $clr-white;
+              border-color: $clr-white;
+            }
+          }
+        }
+
+        .gform_page_footer {
+          text-align: center;
+        }
+
+        .gform_button[type=submit] {
+          padding: 1.6rem 3.2rem;
+          background-image: none;
+        }
+
+        .gfield_required {
+          display: none;
+        }
       }
     }
-    }
-    .gform_page {
-      padding-bottom: 3.2rem;
-      border-bottom: 1px solid $clr-border;
-    }
+
   }
+
   .videos-block {
     margin-block: 3.2rem;
+
     @include mq(tablet) {
       display: grid;
       margin-block: 6.4rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-gap: 1rem;
     }
+
     .video-player {
       @include mq(tablet, max) {
         margin-bottom: 1rem;
       }
     }
+
     &--full {
       flex-grow: 1;
+
       @include mq(tablet) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
   }
-  
+
   .guides-block {
     &-row {
       margin-bottom: 4rem;
+
       &__heading {
         position: relative;
         margin-bottom: 2.4rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         &::before {
           position: absolute;
           content: '';
@@ -506,6 +618,7 @@
           z-index: -1;
         }
       }
+
       &__content {
         @include mq(tablet) {
           display: grid;
@@ -513,20 +626,25 @@
           grid-gap: 1rem;
         }
       }
+
       &__col {
         display: block;
         border: 1px solid $clr-border;
         border-radius: 8px;
         overflow: hidden;
+
         @include mq(tablet, max) {
           margin-bottom: 1rem;
         }
+
         &:hover {
           border-color: $clr-green;
+
           img {
             transform: scale(1.1);
           }
         }
+
         img {
           @include cover-image;
           transition: transform .5s ease-in-out;
@@ -534,6 +652,7 @@
           border-radius: 8px;
         }
       }
+
       &__title {
         padding: 4px 1.2rem;
         background-color: $clr-white;
@@ -544,6 +663,7 @@
         text-transform: uppercase;
         color: $clr-navy;
       }
+
       &__cta {
         padding-left: 1.6rem;
         font: 400 1.4rem/1.82rem $f-text;
@@ -551,6 +671,7 @@
         letter-spacing: 0.01em;
         text-transform: capitalize;
         text-decoration: underline;
+
         &:hover {
           color: $clr-green;
         }
@@ -561,17 +682,21 @@
   .c-footer-cta {
     position: relative;
     padding-block: 10rem;
+
     @include mq(tablet) {
       padding-block: 15rem;
     }
+
     @include mq(desktop) {
       padding-block: 23rem;
     }
+
     &__bg {
       position: absolute;
       inset: 0;
       @include cover-image;
     }
+
     &__inner {
       position: relative;
       padding: 4rem;
@@ -579,71 +704,89 @@
       border-radius: 1.2rem;
       text-align: center;
     }
+
     &__heading {
       margin: 0 auto 4rem;
       max-width: 83rem;
       color: $clr-green-light;
+
       @include mq(tablet) {
         font-size: 4rem;
         line-height: 6.2rem;
         letter-spacing: 0.01em;
       }
     }
+
     .underline-link {
       color: $clr-white;
     }
   }
+
   .gallery-block {
     margin-block: 5rem;
     text-align: center;
+
     @include mq(tablet) {
       margin-block: 10rem;
     }
+
     &__heading {
       margin-bottom: 3rem;
+
       @include mq(tablet) {
         margin-bottom: 6rem;
       }
     }
+
     &__grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-gap: 8px;
+
       @include mq(tablet) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
+
     &__image {
       display: block;
       max-height: 22rem;
       border-radius: 6px;
       overflow: hidden;
+
       img {
         @include cover-image;
         transition: transform .5s ease-in-out;
         will-change: transform;
       }
+
       &:hover img {
         transform: scale(1.1);
       }
-    } 
+    }
   }
+
   .accordions-block {
     padding: 3.2rem;
     border: 1px solid $clr-border;
     border-radius: 1.2rem;
+
     @include mq(tablet) {
       padding: 6.4rem;
     }
+
     .accordion {
       border-top: 1px solid $clr-border;
+
       &-header {
         position: relative;
         padding-block: 1.6rem;
         font: 700 1.8rem/1.2 $f-text;
+
         @include mq(tablet) {
           font-size: 2.4rem;
         }
+
         &::before,
         &::after {
           position: absolute;
@@ -657,41 +800,52 @@
           transition: transform .3s ease-in-out;
           will-change: transform;
         }
+
         &::after {
           transform: translateY(-50%) rotate(90deg);
         }
+
         &.active::after {
           transform: translateY(-50%);
         }
       }
+
       &-body {
         padding-bottom: 1.6rem;
       }
+
       &-copy {
         @include base-typography;
       }
+
       &-people {
         margin-top: 1.6rem;
+
         @include mq(phablet) {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           grid-gap: 8px;
         }
+
         @include mq(desktop) {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
+
       .person-card {
         padding: 2rem;
         border: 1px solid $clr-border;
         border-radius: 1.2rem;
         text-align: center;
+
         @include mq(tablet, max) {
           margin-bottom: 1rem;
         }
+
         @include mq(tablet) {
           padding: 4rem;
         }
+
         &__img {
           display: block;
           margin: 0 auto 1.6rem;
@@ -700,16 +854,19 @@
           border-radius: 50%;
           object-fit: cover;
         }
+
         &__name {
           margin-bottom: 4px;
           font: 600 1.6rem/2.7rem $f-text;
         }
+
         &__info {
           position: relative;
           margin-bottom: 8px;
           padding-bottom: 8px;
           font: 400 1.2rem/1.8rem $f-text;
           letter-spacing: 0.01em;
+
           &::after {
             position: absolute;
             content: '';
@@ -720,12 +877,14 @@
             @include svg-background('<svg width="198" height="2" viewBox="0 0 198 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H197.333" stroke="url(%23paint0_linear_2351_9085)"/><defs><linearGradient id="paint0_linear_2351_9085" x1="197.333" y1="1" x2="0" y2="1" gradientUnits="userSpaceOnUse"><stop stop-color="%2378BE38" stop-opacity="0"/><stop offset="0.501978" stop-color="%2378BE38"/><stop offset="1" stop-color="%2378BE38" stop-opacity="0"/></linearGradient></defs></svg>');
           }
         }
+
         &__desc {
           font: 600 1.2rem/1.8rem $f-text;
           font-style: italic;
           letter-spacing: 0.01em;
         }
       }
+
       &-videos {
         @include mq(tablet) {
           display: grid;
@@ -733,18 +892,21 @@
           grid-gap: 3.2rem 0.8rem;
         }
       }
+
       &-video {
         &__content {
           margin-top: 8px;
           font: 400 1.6rem/1.2 $f-text;
         }
+
         &__title {
           margin-bottom: 1.6rem;
         }
       }
-      
+
       .row {
         margin-bottom: 2rem;
+
         @include mq(tablet) {
           display: grid;
           margin-bottom: 4rem;
@@ -752,43 +914,54 @@
           grid-gap: 0.8rem;
         }
       }
+
       &-main {
         &__video {
           border-radius: 1.2rem;
           overflow: hidden;
         }
+
         &__gallery {
           border-radius: 1.2rem;
           overflow: hidden;
+
           .slick-arrow {
             width: 3.2rem;
             height: 3.2rem;
             z-index: 1;
+
             &::before {
               content: none;
             }
           }
+
           .slick-prev {
             left: 1.6rem;
             @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="white"/><path d="M17 12L13 16L17 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
           }
+
           .slick-next {
             right: 1.6rem;
             @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="white"/><path d="M15 12L19 16L15 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
           }
         }
       }
+
       .gallery {
         display: grid;
         grid-gap: 8px;
+
         &-columns-2 {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
         &-columns-2 {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
+
         &-item {
           margin: 0;
+
           img {
             border-radius: 1.2rem;
           }
@@ -796,93 +969,116 @@
       }
     }
   }
+
   .timeslider {
     padding-block: 5rem;
     background-color: $clr-navy;
     color: $clr-white;
     overflow: hidden;
+
     @include mq(tablet) {
       padding-block: 10rem;
     }
+
     @include mq(desktop) {
       padding-block: 16rem;
     }
+
     &-heading {
       margin-bottom: 3rem;
       text-align: center;
+
       @include mq(tablet) {
         margin: 0 auto 5rem;
         max-width: 64.3rem;
       }
+
       @include mq(desktop) {
         margin-bottom: 8rem;
       }
     }
+
     &-carousel {
       text-align: center;
+
       @include mq(tablet) {
         margin-inline: auto;
         max-width: 108.6rem;
       }
+
       .slick-list {
         overflow: visible;
       }
+
       .slick-track {
         display: flex;
         align-items: flex-end;
       }
     }
+
     &-slide {
       margin-inline: 1rem;
       border-radius: 12px;
       border: 1px solid rgba(216, 220, 226, 0.20);
       text-align: left;
+
       @include mq(tablet) {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
       &__content {
         padding: 2rem;
+
         @include mq(tablet) {
           display: flex;
           padding: 4rem;
           flex-direction: column;
         }
       }
+
       &__title {
         margin-bottom: auto;
         font: 400 2rem/1.55 $f-heading;
         text-transform: capitalize;
         color: $clr-green;
+
         @include mq(tablet) {
           font-size: 2.4rem;
         }
       }
+
       &__heading {
         margin-bottom: 1.6rem;
         font: 600 2rem/1.55 $f-text;
         letter-spacing: -0.072em;
         color: $clr-white;
+
         @include mq(tablet) {
           font-size: 2.4rem;
         }
       }
+
       &__copy {
         font: 400 1.6rem/1.55 $f-text;
         letter-spacing: 0.016em;
         color: $clr-white;
         opacity: 0.4;
       }
+
       &__image {
         padding: 1.6rem;
+
         @include mq(tablet) {
           height: 34rem;
         }
+
         img {
           @include cover-image;
           border-radius: 8px;
         }
       }
+
       &.slick-current {
         .timeslider-slide__image {
           @include mq(tablet) {
@@ -891,6 +1087,7 @@
         }
       }
     }
+
     .slick-dots {
       position: static;
       margin-top: 2rem;
@@ -901,36 +1098,47 @@
       align-items: flex-end;
       justify-content: center;
       border-bottom: 1px solid rgba($clr-white, 0.4);
+
       @include mq(tablet) {
         margin-top: 4rem;
       }
+
       li {
         width: auto;
         height: auto;
+
         @include mq(tablet) {
           margin-inline: 2rem;
         }
+
         @include mq(desktop-wide) {
           margin-inline: 4rem;
         }
+
         &:first-child {
           margin-left: 0;
         }
+
         &:last-child {
           margin-right: 0;
         }
+
         &.slick-active {
           .slick-year {
             font: 700 2rem/1.55 $f-text;
+
             @include mq(tablet) {
               font-size: 2.4rem;
             }
+
             color: $clr-green;
+
             &::after {
               background-color: $clr-green;
-            } 
+            }
           }
         }
+
         &:first-child::before,
         &:last-child::before {
           position: absolute;
@@ -941,13 +1149,16 @@
           background-color: $clr-navy;
           transform: translateY(50%);
         }
+
         &:first-child::before {
           left: 0;
         }
+
         &:last-child::before {
           right: 0;
         }
       }
+
       .slick-year {
         position: relative;
         display: block;
@@ -956,9 +1167,11 @@
         letter-spacing: -0.048rem;
         color: rgba($clr-white, 0.4);
         transition: color .3s ease-in-out;
+
         @include mq(tablet) {
           font-size: 1.6rem;
         }
+
         &::after {
           position: absolute;
           content: '';
@@ -974,11 +1187,14 @@
       }
     }
   }
+
   .hc-videos {
     padding-block: 4rem;
+
     @include mq(tablet) {
       padding-block: 6.4rem;
     }
+
     &__select {
       margin-bottom: 3.2rem;
       padding: 1.25rem 3.6rem 1.25rem 1.6rem;
@@ -993,31 +1209,39 @@
       border: 1px solid $clr-border;
       border-radius: 4px;
       cursor: pointer;
+
       @include mq(tablet) {
         margin-bottom: 6.4rem;
       }
     }
+
     &__grid {
       @include mq(tablet) {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-gap: 4rem 2rem;
       }
+
       @include mq(desktop) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
+
     &__item {
       display: none;
+
       @include mq(tablet, max) {
         margin-bottom: 2rem;
       }
+
       &.is-active {
         display: block;
       }
+
       &:nth-child(n+13) {
         display: none;
       }
+
       &-date {
         margin-top: 0.8rem;
         text-align: right;
@@ -1025,9 +1249,11 @@
         line-height: 1.6;
       }
     }
+
     &__loadmore {
       margin-top: 3.2rem;
       text-align: center;
+
       @include mq(tablet) {
         margin-top: 6.4rem;
       }

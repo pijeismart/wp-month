@@ -8,6 +8,17 @@ if ( have_rows( 'modules' ) ) :
 		if ( $toc_title ) :
 			$toc_links[] = $toc_title;
 		endif;
+		if ( 'awards_content' == get_row_layout() ) :
+			if ( have_rows( 'blocks' ) ) :
+				while ( have_rows( 'blocks' ) ) :
+					the_row();
+					$toc_title = get_sub_field( 'toc_title' );
+					if ( $toc_title ) :
+						$toc_links[] = $toc_title;
+					endif;
+				endwhile;
+			endif;
+		endif;
 	endwhile;
 endif;
 if ( have_rows( 'modules' ) ) :
@@ -24,9 +35,10 @@ if ( have_rows( 'modules' ) ) :
 			$mobile_video       = get_sub_field( 'mobile_video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
+			$has_decor          = ( 'home' == $type && get_sub_field( 'has_decoration' ) );
 			?>
 			<!-- Banner -->
-			<section class="banner banner--<?php echo esc_attr( $type ); ?>"
+			<section class="banner banner--<?php echo esc_attr( $type ); ?><?php echo $has_decor ? ' has-decor' : ''; ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
@@ -133,7 +145,7 @@ if ( have_rows( 'modules' ) ) :
 								?>
 							<?php endif; ?>
 							<?php
-							if ( 'home' == $type ) : 
+							if ( 'home' == $type ) :
 								get_template_part_args(
 									'template-parts/content-modules-text',
 									array(
@@ -244,7 +256,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php if ( ! $disable_navigation && count( $toc_links ) > 0 ) : ?>
 			<!-- Navigation Bar -->
-			<section class="navigation-bar"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+			<section class="navigation-bar">
 				<div class="container">
 					<div class="navigation-bar__main">
 						<div class="navigation-bar__nav">
@@ -2124,6 +2136,162 @@ if ( have_rows( 'modules' ) ) :
 								?>
 							</div>
 						<?php endif; ?>
+					</div>
+				</div>
+			</section>
+			<?php
+		elseif ( 'awards_grid' == get_row_layout() ) :
+			$gallery = get_sub_field( 'awards' );
+			?>
+			<!-- Awards Grid -->
+			<section class="awards-grid"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'content',
+							't'  => 'div',
+							'tc' => 'awards-grid__content a-up',
+						)
+					);
+					?>
+					<?php if ( $gallery ) : ?>
+						<div class="awards-grid__images a-up a-delay-1">
+							<?php foreach ( $gallery as $image ) : ?>
+								<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			</section>
+			<?php
+		elseif ( 'awards_content' == get_row_layout() ) :
+			$form = get_sub_field( 'form' );
+			?>
+			<!-- Awards Content -->
+			<section class="contact-form awards-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container">
+					<?php if ( have_rows( 'blocks' ) ) : ?>
+					<div class="contact-form__main">
+						<?php
+						while ( have_rows( 'blocks' ) ) :
+							the_row();
+							if ( 'heading' == get_row_layout() ) :
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'heading',
+										't'  => 'h3',
+										'tc' => 'a-up',
+										'w'  => 'div',
+										'wc' => 'awards-content-heading',
+									)
+								);
+							elseif ( 'content' == get_row_layout() ) :
+								$blockquote = get_sub_field( 'blockquote' );
+								$cite       = get_sub_field( 'cite' );
+								$toc_title  = get_sub_field( 'toc_title' );
+								$padding    = get_sub_field( 'padding' );
+								?>
+								<div class="awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?>" id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'heading',
+											't'  => 'h3',
+											'w'  => 'div',
+											'wc' => 'awards-content-block__heading',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											't'  => 'div',
+											'tc' => 'awards-content-block__content',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v'  => 'link',
+											'c'  => 'underline-link',
+											'w'  => 'div',
+											'wc' => 'clear-both',
+										)
+									);
+									?>
+									<?php if ( $blockquote || $cite ) : ?>
+										<blockquote class="awards-content-block__blockquote">
+											<?php if ( $blockquote ) : ?>
+												<p><?php echo $blockquote; ?></p>
+											<?php endif; ?>
+											<?php if ( $cite ) : ?>
+												<cite><?php echo $cite; ?></cite>
+											<?php endif; ?>
+										</blockquote>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+						<?php endwhile; ?>
+					</div>
+					<?php endif; ?>
+					<div class="contact-form__form a-up a-delay-1">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_sub_heading',
+								't'  => 'h5',
+								'tc' => 'contact-form__form__sub_heading',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_heading',
+								't'  => 'h4',
+								'tc' => 'contact-form__form__heading',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_content',
+								't'  => 'p',
+								'tc' => 'contact-form__form__content',
+							)
+						);
+						?>
+						<?php if ( $form ) : ?>
+							<div class="contact-form__form__form">
+								<?php echo do_shortcode( $form ); ?>
+							</div>
+						<?php endif; ?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-image',
+							array(
+								'v'     => 'logo',
+								'v2x'   => false,
+								'is'    => false,
+								'is_2x' => false,
+								'c'     => 'logo',
+								'w'     => 'div',
+								'wc'    => 'contact-form__form__logo',
+							)
+						);
+						?>
 					</div>
 				</div>
 			</section>

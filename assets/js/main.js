@@ -262,6 +262,19 @@
           const $dropdown = $(this).closest('.dropdown');
           $(this).toggleClass('is-opened');
         });
+
+        // next button
+        $('.gform_next_button').removeAttr('onClick');
+        $(document).on('click', '.gform_next_button', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const $form = $(this).closest('form'),
+                $parent = $(this).closest('.gform_page'),
+                $next = $parent.next();
+          $next.show();
+          // $form.trigger("submit",[true]);
+          return false;
+        });
       });
       /** * Run on Window Load ** */
       $(window).on('scroll', function() {

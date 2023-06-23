@@ -1,0 +1,33 @@
+.awards-grid {
+  padding-block: 5rem;
+  background: $clr-navy;
+  color: $clr-white;
+  text-align: center;
+  @include mq(tablet) {
+    padding-block: 16.6rem 12.6rem;
+  }
+  &__content {
+    margin-bottom: 3.2rem;
+    @include mq(tablet) {
+      margin-bottom: 6.4rem;
+    }
+  }
+  &__images {
+    display: inline-block;
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 90rem;
+    @include mq(tablet) {
+      text-align: left;
+    }
+    img {
+      display: inline;
+      margin: 1rem;
+      max-height: 5rem;
+      @include mq(tablet) {
+        margin: 2rem;
+        max-height: 8rem;
+      }
+    }
+  }
+}
