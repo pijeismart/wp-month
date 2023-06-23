@@ -92,6 +92,7 @@ $args   = array(
 	'post_type'      => 'attorney',
 	'post_status'    => 'publish',
 	'posts_per_page' => -1,
+	'orderby'        => 'menu_order',
 );
 $query  = new WP_Query( $args );
 $i      = 0;

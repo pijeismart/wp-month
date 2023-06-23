@@ -353,6 +353,9 @@ function ajax_cpt() {
 			'terms'    => $state,
 		);
 	}
+	if ( 'attorney' == $type ) {
+		$args['orderby'] = 'menu_order';
+	}
 	$query = new WP_Query( $args );
 	if ( $query->have_posts() ) :
 		ob_start();
