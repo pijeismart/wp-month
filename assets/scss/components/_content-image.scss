@@ -375,5 +375,8 @@
         left: 6rem;
       }
     }
+    &::after {
+      content: '”';
+    }
   }
 }
