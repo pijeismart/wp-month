@@ -17,4 +17,4 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
           # git update to latest codebase on master branch
-          cd /www/montlickwp_290/public/wp-content/themes/montlick && git pull origin main
+          cd /www/montlickwp_290/public/wp-content/themes/montlick && git pull origin master
