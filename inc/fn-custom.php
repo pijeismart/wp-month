@@ -416,7 +416,6 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 
 // set featured image and set or publish post
 add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
-add_action( 'publish_post', 'set_youtube_as_featured_image', 10, 1 );
 
 // extract youtube id from url
 function get_youtube_image_from_url( $url ) {
