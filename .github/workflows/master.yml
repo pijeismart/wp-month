@@ -1,19 +1,20 @@
-on: [push]
-
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Deploy Live on push
 jobs:
-  upload_files:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-    name: Upload a builded file.
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.3.4
-    - name: Upload Files
-      id: upload
-      uses: Creepios/sftp-action@v1.0.3
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.LIVE_PORT }}
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
-        localPath: './'
-        remotePath: '/www/montlickwp_290/public/wp-content/themes/montlick'
+        script: |
+          # git update to latest codebase on main branch
+          cd /www/montlickwp_290/public/wp-content/themes/montlick && git pull origin main
