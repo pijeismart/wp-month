@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - master
 name: 🚀 Deploy Live on push
 jobs:
   web-deploy:
@@ -16,5 +16,5 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
-          # git update to latest codebase on main branch
+          # git update to latest codebase on master branch
           cd /www/montlickwp_290/public/wp-content/themes/montlick && git pull origin main
