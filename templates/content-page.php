@@ -1011,7 +1011,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'masonry' == get_row_layout() ) :
-			$gallery = get_sub_field( 'gallery' );
+			$gallery = get_field( 'masonry_gallery', 'options' );
 			?>
 			<!-- Gallery -->
 			<section class="masonry"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -1037,9 +1037,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'heading',
+								'v'  => 'masonry_heading',
 								't'  => 'h3',
 								'tc' => 'masonry-heading a-up',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -1047,9 +1048,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'content',
+								'v'  => 'masonry_content',
 								't'  => 'div',
 								'tc' => 'masonry-copy a-up a-up-delay-1',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -1057,8 +1059,9 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v' => 'cta',
+								'v' => 'masonry_cta',
 								'c' => 'link a-up a-delay-2',
+								'o'  => 'o',
 							)
 						);
 						?>

@@ -40,6 +40,13 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	 // Add sub page.
 	acf_add_options_sub_page(
 		array(
+			'page_title'  => __( 'Global Sections' ),
+			'menu_title'  => __( 'Global Sections' ),
+			'parent_slug' => $parent['menu_slug'],
+		)
+	);
+	acf_add_options_sub_page(
+		array(
 			'page_title'  => __( 'Community Page Settings' ),
 			'menu_title'  => __( 'Community Settings' ),
 			'parent_slug' => $parent['menu_slug'],
