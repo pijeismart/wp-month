@@ -1977,129 +1977,11 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6465eda190fef",
-                            "label": "Content",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_6465eda790ff0",
-                            "label": "Heading",
-                            "name": "heading",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_6465edab90ff1",
-                            "label": "Content",
-                            "name": "content",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "rows": "",
-                            "placeholder": "",
-                            "new_lines": ""
-                        },
-                        {
-                            "key": "field_6465edb290ff2",
-                            "label": "CTA",
-                            "name": "cta",
-                            "aria-label": "",
-                            "type": "link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array"
-                        },
-                        {
-                            "key": "field_6465edb890ff3",
-                            "label": "Posts",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_6465edc190ff4",
-                            "label": "Posts",
-                            "name": "posts",
-                            "aria-label": "",
-                            "type": "relationship",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "post"
-                            ],
-                            "post_status": "",
-                            "taxonomy": "",
-                            "filters": [
-                                "search",
-                                "taxonomy"
-                            ],
-                            "return_format": "object",
-                            "min": "",
-                            "max": "",
-                            "elements": ""
-                        },
-                        {
                             "key": "field_646ebe71d7b13",
-                            "label": "Settings",
+                            "label": "Message",
                             "name": "",
                             "aria-label": "",
-                            "type": "tab",
+                            "type": "message",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -2108,8 +1990,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "placement": "top",
-                            "endpoint": 0
+                            "message": "All fields are coming from Global Sections > Posts Slider.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
                         },
                         {
                             "key": "field_64831fc6b2f16",
@@ -4944,7 +4827,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "You may update fields in Theme Settings > Support.",
+                            "message": "You may update fields in Global Sections > Support.",
                             "new_lines": "wpautop",
                             "esc_html": 0
                         },
@@ -5012,7 +4895,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "You may update fields in Theme Settings > About",
+                            "message": "You may update fields in Global Sections > About",
                             "new_lines": "wpautop",
                             "esc_html": 0
                         },
@@ -5610,5 +5493,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687615768
+    "modified": 1687619323
 }

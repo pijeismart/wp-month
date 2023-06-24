@@ -952,7 +952,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'posts_slider' == get_row_layout() ) :
-			$posts = get_sub_field( 'posts' );
+			$posts = get_field( 'c2_posts', 'options' );
 			?>
 			<!-- Posts -->
 			<section class="posts-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -962,9 +962,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'heading',
+								'v'  => 'c2_heading',
 								't'  => 'h3',
 								'tc' => 'posts-slider__heading a-up',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -972,9 +973,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'content',
+								'v'  => 'c2_content',
 								't'  => 'div',
 								'tc' => 'posts-slider__copy a-up a-delay-1',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -982,8 +984,9 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v' => 'cta',
+								'v' => 'c2_cta',
 								'c' => 'link a-up a-delay-2',
+								'o'  => 'o',
 							)
 						);
 						?>
