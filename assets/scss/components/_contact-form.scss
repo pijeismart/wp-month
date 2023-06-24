@@ -1,8 +1,8 @@
 .contact-form {
-  margin: 15rem 0 10rem;
-
-  @include mq(tablet, max) {
-    margin: 8rem 0;
+  margin-block: 8rem;
+  
+  @include mq(tablet) {
+    margin-block: 10rem;
   }
 
   .container {
