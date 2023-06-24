@@ -1194,7 +1194,7 @@ if ( have_rows( 'modules' ) ) :
 									'v'  => 'content',
 									'w'  => 'div',
 									'wc' => 'contact-form__content__content a-up a-delay-1',
-								) 
+								)
 							);
 							?>
 						</div>
