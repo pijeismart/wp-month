@@ -8,7 +8,7 @@ if ( have_rows( 'modules' ) ) :
 		if ( $toc_title ) :
 			$toc_links[] = $toc_title;
 		endif;
-		if ( 'awards_content' == get_row_layout() ) :
+		if ( 'awards_content' == get_row_layout() || 'side_modules' == get_row_layout() ) :
 			if ( have_rows( 'blocks' ) ) :
 				while ( have_rows( 'blocks' ) ) :
 					the_row();
