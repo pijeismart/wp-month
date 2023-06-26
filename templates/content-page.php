@@ -2403,14 +2403,15 @@ if ( have_rows( 'modules' ) ) :
 						</ul>
 					</div>
 					<?php endif; ?>
-					<?php if ( have_rows( '_blocks' ) ) : ?>
+					<?php if ( have_rows( 'blocks' ) ) : ?>
 						<div class="community-modules__content">
 							<?php
-							while ( have_rows( '_blocks' ) ) :
+							while ( have_rows( 'blocks' ) ) :
 								the_row();
+								$toc_title = get_sub_field( 'toc_title' );
 								if ( 'general_block' == get_row_layout() ) :
 									?>
-									<div class="general-block">
+									<div class="general-block"<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>>
 										<div class="general-block__inner">
 											<?php
 											get_template_part_args(

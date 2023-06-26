@@ -5767,7 +5767,7 @@
                         {
                             "key": "field_64983a4167f70",
                             "label": "Blocks",
-                            "name": "_blocks",
+                            "name": "blocks",
                             "aria-label": "",
                             "type": "flexible_content",
                             "instructions": "",
@@ -5824,6 +5824,26 @@
                                             "toolbar": "full",
                                             "media_upload": 1,
                                             "delay": 0
+                                        },
+                                        {
+                                            "key": "field_6498e6e46ed22",
+                                            "label": "TOC Title",
+                                            "name": "toc_title",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": ""
                                         }
                                     ],
                                     "min": "",
@@ -5876,5 +5896,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687740270
+    "modified": 1687742191
 }
