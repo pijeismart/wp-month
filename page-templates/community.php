@@ -195,7 +195,7 @@ if ( have_rows( 'content_modules' ) ) :
 		endif;
 	endwhile;
 endif;
-if ( have_rows( 'content_modules' ) ) :
+if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 	?>
 	<section class="community-modules">
 		<div class="container">
@@ -218,30 +218,174 @@ if ( have_rows( 'content_modules' ) ) :
 				</ul>
 			</div>
 			<?php endif; ?>
-			<div class="community-modules__content">
-				<?php
-				while ( have_rows( 'content_modules' ) ) :
-					the_row();
-					if ( 'general_block' == get_row_layout() ) :
-						$toc_title          = get_sub_field( 'toc_title' );
-						$anchor_id          = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : '';
-						$enable_image_links = get_sub_field( 'enable_image_links' );
-						$enable_external    = get_sub_field( 'enable_external_sites' );
-						?>
-						<div class="general-block<?php echo get_sub_field( 'disable_container_padding' ) ? ' general-block--no-padding' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-image',
-								array(
-									'v'     => 'image',
-									'v2x'   => false,
-									'is'    => false,
-									'is_2x' => false,
-									'c'     => 'general-block__img',
-								)
-							);
+			<?php if ( have_rows( 'content_modules' ) ) : ?>
+				<div class="community-modules__content">
+					<?php
+					while ( have_rows( 'content_modules' ) ) :
+						the_row();
+						if ( 'general_block' == get_row_layout() ) :
+							$toc_title          = get_sub_field( 'toc_title' );
+							$anchor_id          = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : '';
+							$enable_image_links = get_sub_field( 'enable_image_links' );
+							$enable_external    = get_sub_field( 'enable_external_sites' );
 							?>
-							<div class="general-block__inner">
+							<div class="general-block<?php echo get_sub_field( 'disable_container_padding' ) ? ' general-block--no-padding' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-image',
+									array(
+										'v'     => 'image',
+										'v2x'   => false,
+										'is'    => false,
+										'is_2x' => false,
+										'c'     => 'general-block__img',
+									)
+								);
+								?>
+								<div class="general-block__inner">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'heading',
+											't'  => 'h3',
+											'tc' => 'block-heading',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											't'  => 'div',
+											'tc' => 'general-block__content',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v' => 'cta',
+											'c' => 'underline-link',
+										)
+									);
+									?>
+								</div>
+								<?php if ( $enable_image_links && have_rows( 'image_links' ) ) : ?>
+									<div class="general-block__image-links">
+										<?php
+										while ( have_rows( 'image_links' ) ) :
+											the_row();
+											$cta = get_sub_field( 'cta' );
+											?>
+											<a href="<?php echo esc_url( $cta['url'] ); ?>" class="general-block__image-link" target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-image',
+													array(
+														'v'   => 'image',
+														'v2x' => false,
+														'is'  => false,
+														'is_2x' => false,
+														'c'   => 'link-img',
+													)
+												);
+												?>
+												<span class="link-title">
+													<?php echo esc_html( $cta['title'] ); ?>
+													<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M13.3335 6.08984L19.3335 12.0898M19.3335 12.0898L13.3335 18.0898M19.3335 12.0898H4.3335" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</svg>
+												</span>
+											</a>
+										<?php endwhile; ?>
+									</div>
+								<?php endif; ?>
+								<?php if ( $enable_external && have_rows( 'external_sites' ) ) : ?>
+									<div class="general-block__externals">
+										<?php
+										while ( have_rows( 'external_sites' ) ) :
+											the_row();
+											$url = get_sub_field( 'url' );
+											?>
+											<a href="<?php echo esc_url( $url ); ?>" class="general-block__external" target="_blank">
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-image',
+													array(
+														'v'   => 'image',
+														'v2x' => false,
+														'is'  => false,
+														'is_2x' => false,
+														'w'   => 'div',
+														'wc'  => 'external-image',
+													)
+												);
+												?>
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-text',
+													array(
+														'v'  => 'content',
+														't'  => 'div',
+														'tc' => 'external-content',
+													)
+												);
+												?>
+											</a>
+										<?php endwhile; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+							<?php
+						elseif ( 'videos_block' == get_row_layout() ) :
+							$is_full_width = get_sub_field( 'is_full_width' );
+							if ( have_rows( 'videos' ) ) :
+								?>
+								<?php if ( $is_full_width ) : ?>
+										</div>
+									</div>
+								</section>
+								<section class="full-videos-block">
+									<div class="container">
+								<?php endif; ?>
+								<div class="videos-block<?php echo $is_full_width ? ' videos-block--full' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+									<?php
+									while ( have_rows( 'videos' ) ) :
+										the_row();
+										$video = get_sub_field( 'video' );
+										if ( $video ) :
+											?>
+											<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+												<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+												<span class="video-play">
+													<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+												</span>
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-text',
+													array(
+														'v'  => 'name',
+														't'  => 'div',
+														'tc' => 'video-player__title',
+													)
+												);
+												?>
+											</a>
+										<?php endif; ?>
+									<?php endwhile; ?>
+								</div>
+								<?php if ( $is_full_width ) : ?>
+									</div>
+								</section>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php
+						elseif ( 'guides_block' == get_row_layout() ) :
+							?>
+							<div class="guides-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
@@ -253,563 +397,421 @@ if ( have_rows( 'content_modules' ) ) :
 								);
 								?>
 								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'content',
-										't'  => 'div',
-										'tc' => 'general-block__content',
-									)
-								);
-								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'underline-link',
-									)
-								);
-								?>
-							</div>
-							<?php if ( $enable_image_links && have_rows( 'image_links' ) ) : ?>
-								<div class="general-block__image-links">
-									<?php
-									while ( have_rows( 'image_links' ) ) :
+								if ( have_rows( 'guides_row' ) ) :
+									while ( have_rows( 'guides_row' ) ) :
 										the_row();
-										$cta = get_sub_field( 'cta' );
 										?>
-										<a href="<?php echo esc_url( $cta['url'] ); ?>" class="general-block__image-link" target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-image',
-												array(
-													'v'   => 'image',
-													'v2x' => false,
-													'is'  => false,
-													'is_2x' => false,
-													'c'   => 'link-img',
-												)
-											);
-											?>
-											<span class="link-title">
-												<?php echo esc_html( $cta['title'] ); ?>
-												<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M13.3335 6.08984L19.3335 12.0898M19.3335 12.0898L13.3335 18.0898M19.3335 12.0898H4.3335" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-												</svg>
-											</span>
-										</a>
-									<?php endwhile; ?>
-								</div>
-							<?php endif; ?>
-							<?php if ( $enable_external && have_rows( 'external_sites' ) ) : ?>
-								<div class="general-block__externals">
-									<?php
-									while ( have_rows( 'external_sites' ) ) :
-										the_row();
-										$url = get_sub_field( 'url' );
-										?>
-										<a href="<?php echo esc_url( $url ); ?>" class="general-block__external" target="_blank">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-image',
-												array(
-													'v'   => 'image',
-													'v2x' => false,
-													'is'  => false,
-													'is_2x' => false,
-													'w'   => 'div',
-													'wc'  => 'external-image',
-												)
-											);
-											?>
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'content',
-													't'  => 'div',
-													'tc' => 'external-content',
-												)
-											);
-											?>
-										</a>
-									<?php endwhile; ?>
-								</div>
-							<?php endif; ?>
-						</div>
-						<?php
-					elseif ( 'videos_block' == get_row_layout() ) :
-						$is_full_width = get_sub_field( 'is_full_width' );
-						if ( have_rows( 'videos' ) ) :
-							?>
-							<?php if ( $is_full_width ) : ?>
-									</div>
-								</div>
-							</section>
-							<section class="full-videos-block">
-								<div class="container">
-							<?php endif; ?>
-							<div class="videos-block<?php echo $is_full_width ? ' videos-block--full' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-								<?php
-								while ( have_rows( 'videos' ) ) :
-									the_row();
-									$video = get_sub_field( 'video' );
-									if ( $video ) :
-										?>
-										<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-											<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
-											<span class="video-play">
-												<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-											</span>
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'name',
-													't'  => 'div',
-													'tc' => 'video-player__title',
-												)
-											);
-											?>
-										</a>
-									<?php endif; ?>
-								<?php endwhile; ?>
-							</div>
-							<?php if ( $is_full_width ) : ?>
-								</div>
-							</section>
-							<?php endif; ?>
-						<?php endif; ?>
-						<?php
-					elseif ( 'guides_block' == get_row_layout() ) :
-						?>
-						<div class="guides-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'heading',
-									't'  => 'h3',
-									'tc' => 'block-heading',
-								)
-							);
-							?>
-							<?php
-							if ( have_rows( 'guides_row' ) ) :
-								while ( have_rows( 'guides_row' ) ) :
-									the_row();
-									?>
-									<div class="guides-block-row">
-										<div class="guides-block-row__heading">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'title',
-													't'  => 'span',
-													'tc' => 'guides-block-row__title',
-												)
-											);
-											?>
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-cta',
-												array(
-													'v' => 'cta',
-													'c' => 'guides-block-row__cta',
-												)
-											);
-											?>
-										</div>
-										<?php if ( have_rows( 'guides' ) ) : ?>
-										<div class="guides-block-row__content">
-											<?php
-											while ( have_rows( 'guides' ) ) :
-												the_row();
-												$image = get_sub_field( 'guide_image' );
-												$url   = get_sub_field( 'guide_url' );
-												?>
-												<a href="<?php echo esc_url( $url ); ?>" class="guides-block-row__col" target="_blank">
-													<?php
-													get_template_part_args(
-														'template-parts/content-modules-image',
-														array(
-															'v'     => 'guide_image',
-															'v2x'   => false,
-															'is'    => false,
-															'is_2x' => false,
-														)
-													);
-													?>
-												</a>
-											<?php endwhile; ?>
-										</div>
-										<?php endif; ?>
-									</div>
-									<?php
-								endwhile;
-							endif;
-							?>
-						</div>
-						<?php
-					elseif ( 'accordions' == get_row_layout() ) :
-						?>
-						<div class="accordions-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-							<?php
-							get_template_part_args(
-								'template-parts/content-modules-text',
-								array(
-									'v'  => 'heading',
-									't'  => 'h3',
-									'tc' => 'block-heading',
-								)
-							);
-							?>
-							<?php if ( have_rows( 'accordions' ) ) : ?>
-								<div class="accordions">
-									<?php
-									while ( have_rows( 'accordions' ) ) :
-										the_row();
-										$content_type = get_sub_field( 'content_type' );
-										$for_teachter = get_sub_field( 'for_teachers' );
-										$main_video   = get_sub_field( 'main_video' );
-										$gallery      = get_sub_field( 'gallery' );
-										?>
-										<div class="accordion">
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-text',
-												array(
-													'v'  => 'heading',
-													't'  => 'h3',
-													'tc' => 'accordion-header',
-												)
-											);
-											?>
-											<div class="accordion-body">
+										<div class="guides-block-row">
+											<div class="guides-block-row__heading">
 												<?php
 												get_template_part_args(
 													'template-parts/content-modules-text',
 													array(
-														'v'  => 'content',
-														't'  => 'div',
-														'tc' => 'accordion-copy',
+														'v'  => 'title',
+														't'  => 'span',
+														'tc' => 'guides-block-row__title',
 													)
 												);
 												?>
-												<?php if ( 'video' == $content_type ) : ?>
-													<?php if ( $for_teachter ) : ?>
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-cta',
+													array(
+														'v' => 'cta',
+														'c' => 'guides-block-row__cta',
+													)
+												);
+												?>
+											</div>
+											<?php if ( have_rows( 'guides' ) ) : ?>
+											<div class="guides-block-row__content">
+												<?php
+												while ( have_rows( 'guides' ) ) :
+													the_row();
+													$image = get_sub_field( 'guide_image' );
+													$url   = get_sub_field( 'guide_url' );
+													?>
+													<a href="<?php echo esc_url( $url ); ?>" class="guides-block-row__col" target="_blank">
 														<?php
 														get_template_part_args(
-															'template-parts/content-modules-text',
+															'template-parts/content-modules-image',
 															array(
-																'v'  => 'main_video_heading',
-																't'  => 'p',
-																'tc' => 'accordion-video__title',
+																'v'     => 'guide_image',
+																'v2x'   => false,
+																'is'    => false,
+																'is_2x' => false,
 															)
 														);
 														?>
-														<?php if ( $main_video || $gallery ) : ?>
-															<div class="row">
-																<?php if ( $main_video ) : ?>
-																	<div class="accordion-main__video embed-container">
-																		<?php echo $main_video; ?>
-																	</div>
-																<?php endif; ?>
-																<?php if ( $gallery ) : ?>
-																	<div class="accordion-main__gallery">
-																		<?php foreach ( $gallery as $image ) : ?>
-																			<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
-																		<?php endforeach; ?>
-																	</div>
-																<?php endif; ?>
-															</div>
-														<?php endif; ?>
-													<?php endif; ?>
-													<?php
-													get_template_part_args(
-														'template-parts/content-modules-text',
-														array(
-															'v'  => 'videos_heading',
-															't'  => 'h6',
-															'tc' => 'accordion-video__title',
-														)
-													);
-													?>
-													<?php if ( have_rows( 'videos' ) ) : ?>
-														<div class="accordion-videos">
-															<?php
-															while ( have_rows( 'videos' ) ) :
-																the_row();
-																$video  = get_sub_field( 'video' );
-																$iframe = get_sub_field( 'iframe' );
-																?>
-																<div class="accordion-video">
-																	<?php if ( $for_teachter ) : ?>
-																		<?php if ( $iframe ) : ?>
-																			<div class="video-player">
-																				<?php echo $iframe; ?>
-																			</div>
-																		<?php endif; ?>
-																	<?php else : ?>
-																		<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-																			<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
-																			<span class="video-play">
-																				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-																			</span>
-																			<?php
-																			get_template_part_args(
-																				'template-parts/content-modules-text',
-																				array(
-																					'v'  => 'title',
-																					't'  => 'div',
-																					'tc' => 'video-player__title',
-																				)
-																			);
-																			?>
-																		</a>
-																	<?php endif; ?>
-																	<?php
-																	get_template_part_args(
-																		'template-parts/content-modules-text',
-																		array(
-																			'v'  => 'content',
-																			't'  => 'p',
-																			'tc' => 'accordion-video__content',
-																		)
-																	);
-																	?>
-																</div>
-															<?php endwhile; ?>
-														</div>
-													<?php endif; ?>
-												<?php else : ?>
-													<?php if ( have_rows( 'people' ) ) : ?>
-														<div class="accordion-people">
-															<?php
-															while ( have_rows( 'people' ) ) :
-																the_row();
-																$cta = get_sub_field( 'cta' );
-																?>
-																<div class="person-card">
-																	<?php
-																	get_template_part_args(
-																		'template-parts/content-modules-image',
-																		array(
-																			'v'     => 'image',
-																			'v2x'   => false,
-																			'is'    => false,
-																			'is_2x' => false,
-																			'c'     => 'person-card__img',
-																		)
-																	);
-																	?>
-																	<?php
-																	get_template_part_args(
-																		'template-parts/content-modules-text',
-																		array(
-																			'v'  => 'name',
-																			't'  => 'h6',
-																			'tc' => 'person-card__name',
-																		)
-																	);
-																	?>
-																	<?php
-																	get_template_part_args(
-																		'template-parts/content-modules-text',
-																		array(
-																			'v'  => 'info',
-																			't'  => 'p',
-																			'tc' => 'person-card__info',
-																		)
-																	);
-																	?>
-																	<?php
-																	get_template_part_args(
-																		'template-parts/content-modules-text',
-																		array(
-																			'v'  => 'description',
-																			't'  => 'p',
-																			'tc' => 'person-card__desc',
-																		)
-																	);
-																	?>
-																	<?php if ( $cta ) : ?>
-																		<a href="<?php echo esc_url( $cta['url'] ); ?>"
-																			class="underline-link person-card__cta"
-																			data-fancybox
-																			target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
-																			<?php echo esc_html( $cta['title'] ); ?>
-																		</a>
-																	<?php endif; ?>
-																</div>
-															<?php endwhile; ?>
-														</div>
-													<?php endif; ?>
-												<?php endif; ?>
+													</a>
+												<?php endwhile; ?>
 											</div>
+											<?php endif; ?>
 										</div>
-									<?php endwhile; ?>
-								</div>
-							<?php endif; ?>
-						</div>
-						<?php
-					elseif ( 'time_slider' == get_row_layout() ) :
-						?>
-								</div>
+										<?php
+									endwhile;
+								endif;
+								?>
 							</div>
-						</section>
-						<section class="timeslider">
-							<div class="container">
+							<?php
+						elseif ( 'accordions' == get_row_layout() ) :
+							?>
+							<div class="accordions-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
 									array(
 										'v'  => 'heading',
 										't'  => 'h3',
-										'tc' => 'timeslider-heading a-up',
+										'tc' => 'block-heading',
 									)
 								);
 								?>
-								<?php if ( have_rows( 'slides' ) ) : ?>
-									<div class="timeslider-carousel">
+								<?php if ( have_rows( 'accordions' ) ) : ?>
+									<div class="accordions">
 										<?php
-										while ( have_rows( 'slides' ) ) :
+										while ( have_rows( 'accordions' ) ) :
 											the_row();
-											$year = get_sub_field( 'year' );
+											$content_type = get_sub_field( 'content_type' );
+											$for_teachter = get_sub_field( 'for_teachers' );
+											$main_video   = get_sub_field( 'main_video' );
+											$gallery      = get_sub_field( 'gallery' );
 											?>
-											<div class="timeslider-slide" data-year="<?php echo esc_attr( $year ); ?>">
-												<div class="timeslider-slide__content">
-													<?php
-													get_template_part_args(
-														'template-parts/content-modules-text',
-														array(
-															'v'  => 'title',
-															't'  => 'h6',
-															'tc' => 'timeslider-slide__title',
-														)
-													);
-													?>
-													<?php
-													get_template_part_args(
-														'template-parts/content-modules-text',
-														array(
-															'v'  => 'heading',
-															't'  => 'p',
-															'tc' => 'timeslider-slide__heading',
-														)
-													);
-													?>
+											<div class="accordion">
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-text',
+													array(
+														'v'  => 'heading',
+														't'  => 'h3',
+														'tc' => 'accordion-header',
+													)
+												);
+												?>
+												<div class="accordion-body">
 													<?php
 													get_template_part_args(
 														'template-parts/content-modules-text',
 														array(
 															'v'  => 'content',
-															't'  => 'p',
-															'tc' => 'timeslider-slide__copy',
+															't'  => 'div',
+															'tc' => 'accordion-copy',
 														)
 													);
 													?>
+													<?php if ( 'video' == $content_type ) : ?>
+														<?php if ( $for_teachter ) : ?>
+															<?php
+															get_template_part_args(
+																'template-parts/content-modules-text',
+																array(
+																	'v'  => 'main_video_heading',
+																	't'  => 'p',
+																	'tc' => 'accordion-video__title',
+																)
+															);
+															?>
+															<?php if ( $main_video || $gallery ) : ?>
+																<div class="row">
+																	<?php if ( $main_video ) : ?>
+																		<div class="accordion-main__video embed-container">
+																			<?php echo $main_video; ?>
+																		</div>
+																	<?php endif; ?>
+																	<?php if ( $gallery ) : ?>
+																		<div class="accordion-main__gallery">
+																			<?php foreach ( $gallery as $image ) : ?>
+																				<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+																			<?php endforeach; ?>
+																		</div>
+																	<?php endif; ?>
+																</div>
+															<?php endif; ?>
+														<?php endif; ?>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'videos_heading',
+																't'  => 'h6',
+																'tc' => 'accordion-video__title',
+															)
+														);
+														?>
+														<?php if ( have_rows( 'videos' ) ) : ?>
+															<div class="accordion-videos">
+																<?php
+																while ( have_rows( 'videos' ) ) :
+																	the_row();
+																	$video  = get_sub_field( 'video' );
+																	$iframe = get_sub_field( 'iframe' );
+																	?>
+																	<div class="accordion-video">
+																		<?php if ( $for_teachter ) : ?>
+																			<?php if ( $iframe ) : ?>
+																				<div class="video-player">
+																					<?php echo $iframe; ?>
+																				</div>
+																			<?php endif; ?>
+																		<?php else : ?>
+																			<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+																				<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+																				<span class="video-play">
+																					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+																				</span>
+																				<?php
+																				get_template_part_args(
+																					'template-parts/content-modules-text',
+																					array(
+																						'v'  => 'title',
+																						't'  => 'div',
+																						'tc' => 'video-player__title',
+																					)
+																				);
+																				?>
+																			</a>
+																		<?php endif; ?>
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-text',
+																			array(
+																				'v'  => 'content',
+																				't'  => 'p',
+																				'tc' => 'accordion-video__content',
+																			)
+																		);
+																		?>
+																	</div>
+																<?php endwhile; ?>
+															</div>
+														<?php endif; ?>
+													<?php else : ?>
+														<?php if ( have_rows( 'people' ) ) : ?>
+															<div class="accordion-people">
+																<?php
+																while ( have_rows( 'people' ) ) :
+																	the_row();
+																	$cta = get_sub_field( 'cta' );
+																	?>
+																	<div class="person-card">
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-image',
+																			array(
+																				'v'     => 'image',
+																				'v2x'   => false,
+																				'is'    => false,
+																				'is_2x' => false,
+																				'c'     => 'person-card__img',
+																			)
+																		);
+																		?>
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-text',
+																			array(
+																				'v'  => 'name',
+																				't'  => 'h6',
+																				'tc' => 'person-card__name',
+																			)
+																		);
+																		?>
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-text',
+																			array(
+																				'v'  => 'info',
+																				't'  => 'p',
+																				'tc' => 'person-card__info',
+																			)
+																		);
+																		?>
+																		<?php
+																		get_template_part_args(
+																			'template-parts/content-modules-text',
+																			array(
+																				'v'  => 'description',
+																				't'  => 'p',
+																				'tc' => 'person-card__desc',
+																			)
+																		);
+																		?>
+																		<?php if ( $cta ) : ?>
+																			<a href="<?php echo esc_url( $cta['url'] ); ?>"
+																				class="underline-link person-card__cta"
+																				data-fancybox
+																				target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
+																				<?php echo esc_html( $cta['title'] ); ?>
+																			</a>
+																		<?php endif; ?>
+																	</div>
+																<?php endwhile; ?>
+															</div>
+														<?php endif; ?>
+													<?php endif; ?>
 												</div>
-												<?php
-												get_template_part_args(
-													'template-parts/content-modules-image',
-													array(
-														'v'     => 'image',
-														'v2x'   => false,
-														'is'    => false,
-														'is_2x' => false,
-														'w'     => 'div',
-														'wc'    => 'timeslider-slide__image',
-													)
-												);
-												?>
 											</div>
 										<?php endwhile; ?>
 									</div>
 								<?php endif; ?>
 							</div>
-						</section>
-						<?php
-					elseif ( 'hero_central_videos' == get_row_layout() ) :
-						?>
-						<?php if ( have_rows( 'videos' ) ) : ?>
-						</div></div></section>
-						<style>
-							.community-modules {
-								display: none;
-							}
-						</style>
-						<section class="hc-videos">
-							<div class="container">
-								<?php
-								$years = array();
-								while ( have_rows( 'videos' ) ) :
-									the_row();
-									$date     = get_sub_field( 'date' );
-									if ( $date ) {
-										$date_arr = explode( ', ', $date );
-										$year     = $date_arr[1];
-										if ( ! in_array( $year, $years ) ) {
-											$years[] = $year;
-										}
-									}
-								endwhile;
-								?>
-								<select name="video_year" id="video_year" class="hc-videos__select a-up" jcf-select>
-									<option value="all"><?php echo esc_html__( 'All' ); ?></option>
-									<?php foreach ( $years as $year ) : ?>
-										<option value="<?php echo esc_attr( $year ); ?>"><?php echo esc_html( $year ); ?></option>
-									<?php endforeach; ?>
-								</select>
-								<div class="hc-videos__grid a-up">
+							<?php
+						elseif ( 'time_slider' == get_row_layout() ) :
+							?>
+									</div>
+								</div>
+							</section>
+							<section class="timeslider">
+								<div class="container">
 									<?php
-									while ( have_rows( 'videos' ) ) :
-										the_row();
-										$video    = get_sub_field( 'video_url' );
-										$date     = get_sub_field( 'date' );
-										if ( $date ) {
-											$date_arr = explode( ', ', $date );
-										}
-										if ( $video ) :
-											?>
-											<div class="hc-videos__item is-active" data-year="<?php echo $date_arr[1]; ?>">
-												<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-													<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
-													<span class="video-play">
-														<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-													</span>
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'heading',
+											't'  => 'h3',
+											'tc' => 'timeslider-heading a-up',
+										)
+									);
+									?>
+									<?php if ( have_rows( 'slides' ) ) : ?>
+										<div class="timeslider-carousel">
+											<?php
+											while ( have_rows( 'slides' ) ) :
+												the_row();
+												$year = get_sub_field( 'year' );
+												?>
+												<div class="timeslider-slide" data-year="<?php echo esc_attr( $year ); ?>">
+													<div class="timeslider-slide__content">
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'title',
+																't'  => 'h6',
+																'tc' => 'timeslider-slide__title',
+															)
+														);
+														?>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'heading',
+																't'  => 'p',
+																'tc' => 'timeslider-slide__heading',
+															)
+														);
+														?>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'content',
+																't'  => 'p',
+																'tc' => 'timeslider-slide__copy',
+															)
+														);
+														?>
+													</div>
 													<?php
 													get_template_part_args(
-														'template-parts/content-modules-text',
+														'template-parts/content-modules-image',
 														array(
-															'v'  => 'video_title',
-															't'  => 'div',
-															'tc' => 'video-player__title',
+															'v'     => 'image',
+															'v2x'   => false,
+															'is'    => false,
+															'is_2x' => false,
+															'w'     => 'div',
+															'wc'    => 'timeslider-slide__image',
 														)
 													);
 													?>
-												</a>
-												<?php if ( $date ) : ?>
-													<h6 class="hc-videos__item-date"><?php echo esc_html( $date ); ?></h6>
-												<?php endif; ?>
-											</div>
-										<?php endif; ?>
-									<?php endwhile; ?>
+												</div>
+											<?php endwhile; ?>
+										</div>
+									<?php endif; ?>
 								</div>
-								<?php if ( count( get_sub_field( 'videos' ) ) > 12 ) : ?>
-									<div class="hc-videos__loadmore a-up">
-										<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
+							</section>
+							<?php
+						elseif ( 'hero_central_videos' == get_row_layout() ) :
+							?>
+							<?php if ( have_rows( 'videos' ) ) : ?>
+							</div></div></section>
+							<style>
+								.community-modules {
+									display: none;
+								}
+							</style>
+							<section class="hc-videos">
+								<div class="container">
+									<?php
+									$years = array();
+									while ( have_rows( 'videos' ) ) :
+										the_row();
+										$date     = get_sub_field( 'date' );
+										if ( $date ) {
+											$date_arr = explode( ', ', $date );
+											$year     = $date_arr[1];
+											if ( ! in_array( $year, $years ) ) {
+												$years[] = $year;
+											}
+										}
+									endwhile;
+									?>
+									<select name="video_year" id="video_year" class="hc-videos__select a-up" jcf-select>
+										<option value="all"><?php echo esc_html__( 'All' ); ?></option>
+										<?php foreach ( $years as $year ) : ?>
+											<option value="<?php echo esc_attr( $year ); ?>"><?php echo esc_html( $year ); ?></option>
+										<?php endforeach; ?>
+									</select>
+									<div class="hc-videos__grid a-up">
+										<?php
+										while ( have_rows( 'videos' ) ) :
+											the_row();
+											$video    = get_sub_field( 'video_url' );
+											$date     = get_sub_field( 'date' );
+											if ( $date ) {
+												$date_arr = explode( ', ', $date );
+											}
+											if ( $video ) :
+												?>
+												<div class="hc-videos__item is-active" data-year="<?php echo $date_arr[1]; ?>">
+													<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
+														<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+														<span class="video-play">
+															<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+														</span>
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'video_title',
+																't'  => 'div',
+																'tc' => 'video-player__title',
+															)
+														);
+														?>
+													</a>
+													<?php if ( $date ) : ?>
+														<h6 class="hc-videos__item-date"><?php echo esc_html( $date ); ?></h6>
+													<?php endif; ?>
+												</div>
+											<?php endif; ?>
+										<?php endwhile; ?>
 									</div>
-								<?php endif; ?>
-							</div>
-						</section>
+									<?php if ( count( get_sub_field( 'videos' ) ) > 12 ) : ?>
+										<div class="hc-videos__loadmore a-up">
+											<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
+										</div>
+									<?php endif; ?>
+								</div>
+							</section>
+							<?php endif; ?>
+						<?php else : ?>
 						<?php endif; ?>
-					<?php else : ?>
-					<?php endif; ?>
-				<?php endwhile; ?>
-			</div>
+					<?php endwhile; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 <?php endif; ?>

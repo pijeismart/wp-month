@@ -150,426 +150,6 @@
     }
   }
 
-  .community-modules {
-    padding-block: 4rem;
-
-    @include mq(tablet) {
-      padding-block: 6.4rem;
-    }
-
-    .block-heading {
-      margin-bottom: 3.2rem;
-
-      @include mq(tablet) {
-        font-size: 3.6rem;
-        line-height: 1.15;
-      }
-    }
-
-    >.container {
-      @include mq(tablet) {
-        display: flex;
-        align-items: flex-start;
-      }
-    }
-
-    &__sidebar {
-      position: sticky;
-      margin-right: 2rem;
-      top: var(--header-height);
-      left: 0;
-      padding: 2.4rem 0 2.4rem 3.2rem;
-      flex: 0 0 31.2rem;
-      border: 1px solid $clr-border;
-      border-radius: 1.2rem;
-
-      h6 {
-        margin-bottom: 2.4rem;
-        font: 700 1.5rem/1.5 $f-text;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: $clr-navy;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      a {
-        display: block;
-        padding: 0.8rem 1.6rem;
-        font: 400 1.2rem/1.9rem $f-text;
-        color: $clr-navy;
-        transition: all .3s ease-in-out;
-        border-right: 2px solid transparent;
-
-        &:hover {
-          background: rgba(174, 223, 130, 0.4);
-          border-right-color: $clr-green;
-        }
-      }
-    }
-  }
-
-  .general-block {
-    margin-bottom: 8px;
-    padding: 3rem;
-    border: 1px solid $clr-border;
-    border-radius: 1.2rem;
-
-    @include mq(tablet) {
-      padding: 4rem;
-    }
-
-    @include mq(desktop-wide) {
-      padding: 6.4rem;
-    }
-
-    &--no-padding {
-      padding: 0 0 4rem;
-
-      .general-block__img {
-        border-radius: 1.2rem 1.2rem 0 0;
-      }
-
-      .general-block__inner {
-        padding-inline: 2.4rem;
-      }
-    }
-
-    &__img {
-      display: block;
-      margin-bottom: 3.2rem;
-      width: 100%;
-    }
-
-    &__content {
-      margin-bottom: 3.2rem;
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        margin-bottom: 1em;
-      }
-
-      ul,
-      ol {
-        padding-left: 2rem;
-      }
-    }
-
-    &__image-links {
-      padding-inline: 1.6rem;
-
-      @include mq(tablet) {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        ;
-        grid-gap: 1rem;
-      }
-    }
-
-    &__image-link {
-      position: relative;
-      display: block;
-      border-radius: 6px;
-      overflow: hidden;
-      cursor: pointer;
-
-      @include mq(tablet, max) {
-        margin-bottom: 1rem;
-      }
-
-      &::before {
-        @include pseudo-elements;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 70.07%, rgba(0, 0, 0, 0.642293) 81.22%, rgba(0, 0, 0, 0.8) 99.95%);
-      }
-
-      &:hover svg {
-        transform: translateX(5px);
-      }
-
-      .link-img {
-        @include cover-image;
-      }
-
-      .link-title {
-        position: absolute;
-        inset-inline: 2.4rem;
-        bottom: 2.4rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font: 600 1.6rem/2.48rem $f-text;
-        color: $clr-white;
-
-        @include mq(tablet) {
-          inset-inline: 3.2rem;
-          bottom: 3.2rem;
-        }
-
-        svg {
-          margin-left: 1rem;
-          transition: transform .3s ease-in-out;
-        }
-      }
-    }
-
-    &__externals {
-      margin-top: 2.4rem;
-      padding-top: 2.4rem;
-      border-top: 1px solid $clr-border;
-
-      @include mq(tablet) {
-        display: grid;
-        margin-top: 3.2rem;
-        padding-top: 3.2rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-gap: 1.6rem;
-      }
-    }
-
-    &__external {
-      display: block;
-      padding-inline: 1.6rem;
-      cursor: pointer;
-
-      &:hover {
-        .external-image img {
-          transform: scale(1.1);
-        }
-      }
-
-      .external-image {
-        display: block;
-        margin-bottom: 1.6rem;
-        height: 13.5rem;
-        border-radius: 8px;
-        overflow: hidden;
-
-        img {
-          @include cover-image;
-          transition: transform .3s ease-in-out;
-          will-change: transform;
-        }
-      }
-    }
-
-    .gform_wrapper {
-      color: $text-color;
-
-      .gform_fields {
-        @include mq(tablet) {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          grid-gap: 2.4rem 2rem;
-        }
-      }
-
-      .gfield_radio {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-gap: 2rem;
-      }
-
-      .gchoice {
-        .gfield-choice-input {
-          display: none;
-        }
-
-        .gform-field-label {
-          display: block;
-          padding: 1.8rem 2rem;
-          border-radius: 5px;
-          background-color: $clr-white-off;
-          font: 400 1.4rem/1.3 $f-text;
-          letter-spacing: -0.014rem;
-          text-transform: uppercase;
-          text-align: center;
-          color: rgba($clr-navy, 0.7);
-          transition: all .3s ease-in-out;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $clr-navy;
-            color: $clr-white;
-          }
-        }
-      }
-
-      .gfield {
-        @include mq(tablet) {
-          margin-bottom: 0;
-        }
-
-        &--width-full {
-          @include mq(tablet) {
-            grid-column: span 2;
-          }
-        }
-
-        h2 {
-          @include mq(tablet) {
-            margin-bottom: 3.2rem;
-            font-size: 3.6rem;
-          }
-        }
-
-        .gform-field-label {
-          display: block;
-          margin-bottom: 0.6rem;
-          font: 600 1.4rem/1.3 $f-text;
-          letter-spacing: -0.014rem;
-          color: $clr-navy;
-        }
-
-        input {
-          font: 400 1.4rem/1.3 $f-text;
-          letter-spacing: -0.014rem;
-          border: 1px solid $clr-white-off;
-          border-radius: 5px;
-          background: $clr-white;
-          color: $clr-navy;
-
-          &::placeholder {
-            color: $clr-navy;
-            opacity: 0.7;
-          }
-        }
-      }
-
-      .gform_next_button {
-        display: inline-block;
-        @extend .btn;
-        @extend .btn-primary;
-        padding: 1.6rem 3.2rem;
-        border: none;
-        text-transform: capitalize;
-
-        &::after {
-          content: none;
-        }
-      }
-
-      .gform_previous_button {
-        display: none !important;
-      }
-
-      .gform_page {
-        margin-bottom: 3.2rem;
-        padding-bottom: 3.2rem;
-        border-bottom: 1px solid $clr-border;
-      }
-
-      .required-fields-page {
-        display: block !important;
-        margin-top: 1.6rem;
-        padding: 3.2rem 2rem 3.2rem;
-        background-color: $clr-navy;
-        color: $clr-white;
-        border-bottom: none;
-        border-radius: 2.4rem;
-
-        @include mq(tablet) {
-          margin-top: 3.2rem;
-          padding: 4rem 4rem 6.4rem;
-        }
-
-        h2 {
-          padding-bottom: 2rem;
-          border-bottom: 1px solid $clr-green;
-          text-align: center;
-          color: $clr-white;
-
-          @include mq(tablet) {
-            padding-bottom: 4rem;
-          }
-        }
-
-        .gform_fields {
-          @include mq(tablet) {
-            grid-column: 4rem 2rem;
-          }
-        }
-
-        .gfield {
-          .gform-field-label {
-            color: $clr-white;
-          }
-
-          &--type-checkbox {
-            .gfield_label {
-              display: none;
-            }
-          }
-
-          input {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.05);
-            color: $clr-border;
-
-            &::placeholder {
-              color: rgba($clr-border, 0.7);
-            }
-          }
-        }
-
-        .gfield_checkbox {
-          .gchoice {
-            display: flex;
-
-            label {
-              position: relative;
-              margin-bottom: 1.6rem;
-              padding: 0 0 0 4rem;
-              background-color: transparent;
-              color: rgba($clr-white, 0.6);
-              text-transform: none;
-              font: 400 1.6rem/1.5 $f-text;
-              text-align: left;
-              cursor: pointer;
-
-              &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                content: '';
-                width: 2.4rem;
-                height: 2.4rem;
-                border: 2px solid rgba($clr-white, 0.2);
-                border-radius: 6px;
-                transition: all .3s ease-in-out;
-              }
-            }
-
-            .gfield-choice-input:checked+label::before {
-              background-color: $clr-white;
-              border-color: $clr-white;
-            }
-          }
-        }
-
-        .gform_page_footer {
-          text-align: center;
-        }
-
-        .gform_button[type=submit] {
-          padding: 1.6rem 3.2rem;
-          background-image: none;
-        }
-
-        .gfield_required {
-          display: none;
-        }
-      }
-    }
-
-  }
-
   .videos-block {
     margin-block: 3.2rem;
 
@@ -679,48 +259,6 @@
     }
   }
 
-  .c-footer-cta {
-    position: relative;
-    padding-block: 10rem;
-
-    @include mq(tablet) {
-      padding-block: 15rem;
-    }
-
-    @include mq(desktop) {
-      padding-block: 23rem;
-    }
-
-    &__bg {
-      position: absolute;
-      inset: 0;
-      @include cover-image;
-    }
-
-    &__inner {
-      position: relative;
-      padding: 4rem;
-      background-color: $clr-navy;
-      border-radius: 1.2rem;
-      text-align: center;
-    }
-
-    &__heading {
-      margin: 0 auto 4rem;
-      max-width: 83rem;
-      color: $clr-green-light;
-
-      @include mq(tablet) {
-        font-size: 4rem;
-        line-height: 6.2rem;
-        letter-spacing: 0.01em;
-      }
-    }
-
-    .underline-link {
-      color: $clr-white;
-    }
-  }
 
   .gallery-block {
     margin-block: 5rem;
@@ -1258,5 +796,467 @@
         margin-top: 6.4rem;
       }
     }
+  }
+  
+  .c-footer-cta {
+    position: relative;
+    padding-block: 10rem;
+
+    @include mq(tablet) {
+      padding-block: 15rem;
+    }
+
+    @include mq(desktop) {
+      padding-block: 23rem;
+    }
+
+    &__bg {
+      position: absolute;
+      inset: 0;
+      @include cover-image;
+    }
+
+    &__inner {
+      position: relative;
+      padding: 4rem;
+      background-color: $clr-navy;
+      border-radius: 1.2rem;
+      text-align: center;
+    }
+
+    &__heading {
+      margin: 0 auto 4rem;
+      max-width: 83rem;
+      color: $clr-green-light;
+
+      @include mq(tablet) {
+        font-size: 4rem;
+        line-height: 6.2rem;
+        letter-spacing: 0.01em;
+      }
+    }
+
+    .underline-link {
+      color: $clr-white;
+    }
+  }
+}
+
+.community-modules {
+  padding-block: 4rem;
+
+  @include mq(tablet) {
+    padding-block: 6.4rem;
+  }
+
+  .block-heading {
+    margin-bottom: 3.2rem;
+
+    @include mq(tablet) {
+      font-size: 3.6rem;
+      line-height: 1.15;
+    }
+  }
+
+  >.container {
+    @include mq(tablet) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__sidebar {
+    position: sticky;
+    margin-right: 2rem;
+    top: var(--header-height);
+    left: 0;
+    padding: 2.4rem 0 2.4rem 3.2rem;
+    flex: 0 0 31.2rem;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+
+    h6 {
+      margin-bottom: 2.4rem;
+      font: 700 1.5rem/1.5 $f-text;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: $clr-navy;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      display: block;
+      padding: 0.8rem 1.6rem;
+      font: 400 1.2rem/1.9rem $f-text;
+      color: $clr-navy;
+      transition: all .3s ease-in-out;
+      border-right: 2px solid transparent;
+
+      &:hover {
+        background: rgba(174, 223, 130, 0.4);
+        border-right-color: $clr-green;
+      }
+    }
+  }
+  .general-block {
+    margin-bottom: 8px;
+    padding: 3rem;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+
+    @include mq(tablet) {
+      padding: 4rem;
+    }
+
+    @include mq(desktop-wide) {
+      padding: 6.4rem;
+    }
+
+    &--no-padding {
+      padding: 0 0 4rem;
+
+      .general-block__img {
+        border-radius: 1.2rem 1.2rem 0 0;
+      }
+
+      .general-block__inner {
+        padding-inline: 2.4rem;
+      }
+    }
+
+    &__img {
+      display: block;
+      margin-bottom: 3.2rem;
+      width: 100%;
+    }
+
+    &__content {
+      margin-bottom: 3.2rem;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin-bottom: 1em;
+      }
+
+      ul,
+      ol {
+        padding-left: 2rem;
+      }
+    }
+
+    &__image-links {
+      padding-inline: 1.6rem;
+
+      @include mq(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        ;
+        grid-gap: 1rem;
+      }
+    }
+
+    &__image-link {
+      position: relative;
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+
+      @include mq(tablet, max) {
+        margin-bottom: 1rem;
+      }
+
+      &::before {
+        @include pseudo-elements;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 70.07%, rgba(0, 0, 0, 0.642293) 81.22%, rgba(0, 0, 0, 0.8) 99.95%);
+      }
+
+      &:hover svg {
+        transform: translateX(5px);
+      }
+
+      .link-img {
+        @include cover-image;
+      }
+
+      .link-title {
+        position: absolute;
+        inset-inline: 2.4rem;
+        bottom: 2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: 600 1.6rem/2.48rem $f-text;
+        color: $clr-white;
+
+        @include mq(tablet) {
+          inset-inline: 3.2rem;
+          bottom: 3.2rem;
+        }
+
+        svg {
+          margin-left: 1rem;
+          transition: transform .3s ease-in-out;
+        }
+      }
+    }
+
+    &__externals {
+      margin-top: 2.4rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid $clr-border;
+
+      @include mq(tablet) {
+        display: grid;
+        margin-top: 3.2rem;
+        padding-top: 3.2rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-gap: 1.6rem;
+      }
+    }
+
+    &__external {
+      display: block;
+      padding-inline: 1.6rem;
+      cursor: pointer;
+
+      &:hover {
+        .external-image img {
+          transform: scale(1.1);
+        }
+      }
+
+      .external-image {
+        display: block;
+        margin-bottom: 1.6rem;
+        height: 13.5rem;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+          @include cover-image;
+          transition: transform .3s ease-in-out;
+          will-change: transform;
+        }
+      }
+    }
+
+    .gform_wrapper {
+      color: $text-color;
+
+      .gform_fields {
+        @include mq(tablet) {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-gap: 2.4rem 2rem;
+        }
+      }
+
+      .gfield_radio {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 2rem;
+      }
+
+      .gchoice {
+        .gfield-choice-input {
+          display: none;
+        }
+
+        .gform-field-label {
+          display: block;
+          padding: 1.8rem 2rem;
+          border-radius: 5px;
+          background-color: $clr-white-off;
+          font: 400 1.4rem/1.3 $f-text;
+          letter-spacing: -0.014rem;
+          text-transform: uppercase;
+          text-align: center;
+          color: rgba($clr-navy, 0.7);
+          transition: all .3s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $clr-navy;
+            color: $clr-white;
+          }
+        }
+      }
+
+      .gfield {
+        @include mq(tablet) {
+          margin-bottom: 0;
+        }
+
+        &--width-full {
+          @include mq(tablet) {
+            grid-column: span 2;
+          }
+        }
+
+        h2 {
+          @include mq(tablet) {
+            margin-bottom: 3.2rem;
+            font-size: 3.6rem;
+          }
+        }
+
+        .gform-field-label {
+          display: block;
+          margin-bottom: 0.6rem;
+          font: 600 1.4rem/1.3 $f-text;
+          letter-spacing: -0.014rem;
+          color: $clr-navy;
+        }
+
+        input {
+          font: 400 1.4rem/1.3 $f-text;
+          letter-spacing: -0.014rem;
+          border: 1px solid $clr-white-off;
+          border-radius: 5px;
+          background: $clr-white;
+          color: $clr-navy;
+
+          &::placeholder {
+            color: $clr-navy;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .gform_next_button {
+        display: inline-block;
+        @extend .btn;
+        @extend .btn-primary;
+        padding: 1.6rem 3.2rem;
+        border: none;
+        text-transform: capitalize;
+
+        &::after {
+          content: none;
+        }
+      }
+
+      .gform_previous_button {
+        display: none !important;
+      }
+
+      .gform_page {
+        margin-bottom: 3.2rem;
+        padding-bottom: 3.2rem;
+        border-bottom: 1px solid $clr-border;
+      }
+
+      .required-fields-page {
+        display: block !important;
+        margin-top: 1.6rem;
+        padding: 3.2rem 2rem 3.2rem;
+        background-color: $clr-navy;
+        color: $clr-white;
+        border-bottom: none;
+        border-radius: 2.4rem;
+
+        @include mq(tablet) {
+          margin-top: 3.2rem;
+          padding: 4rem 4rem 6.4rem;
+        }
+
+        h2 {
+          padding-bottom: 2rem;
+          border-bottom: 1px solid $clr-green;
+          text-align: center;
+          color: $clr-white;
+
+          @include mq(tablet) {
+            padding-bottom: 4rem;
+          }
+        }
+
+        .gform_fields {
+          @include mq(tablet) {
+            grid-column: 4rem 2rem;
+          }
+        }
+
+        .gfield {
+          .gform-field-label {
+            color: $clr-white;
+          }
+
+          &--type-checkbox {
+            .gfield_label {
+              display: none;
+            }
+          }
+
+          input {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.05);
+            color: $clr-border;
+
+            &::placeholder {
+              color: rgba($clr-border, 0.7);
+            }
+          }
+        }
+
+        .gfield_checkbox {
+          .gchoice {
+            display: flex;
+
+            label {
+              position: relative;
+              margin-bottom: 1.6rem;
+              padding: 0 0 0 4rem;
+              background-color: transparent;
+              color: rgba($clr-white, 0.6);
+              text-transform: none;
+              font: 400 1.6rem/1.5 $f-text;
+              text-align: left;
+              cursor: pointer;
+
+              &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                width: 2.4rem;
+                height: 2.4rem;
+                border: 2px solid rgba($clr-white, 0.2);
+                border-radius: 6px;
+                transition: all .3s ease-in-out;
+              }
+            }
+
+            .gfield-choice-input:checked+label::before {
+              background-color: $clr-white;
+              border-color: $clr-white;
+            }
+          }
+        }
+
+        .gform_page_footer {
+          text-align: center;
+        }
+
+        .gform_button[type=submit] {
+          padding: 1.6rem 3.2rem;
+          background-image: none;
+        }
+
+        .gfield_required {
+          display: none;
+        }
+      }
+    }
+
   }
 }

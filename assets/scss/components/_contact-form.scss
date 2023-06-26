@@ -5,6 +5,13 @@
     margin-block: 10rem;
   }
 
+  &--border {
+    .container {
+      @include mq(tablet) {
+        align-items: flex-start;
+      }
+    }
+  }
   .container {
     display: flex;
     @include mq(tablet) {
@@ -19,6 +26,14 @@
     @include mq(tablet) {
       margin-right: 2rem;
       max-width: calc(100% - 40rem);
+    }
+    @include when-inside('.contact-form--border') {
+      padding: 3.2rem;
+      border-radius: 1.2rem;
+      @include mq(tablet) {
+        padding: 6.4rem;
+        border: 1px solid $clr-border;
+      }
     }
   }
 

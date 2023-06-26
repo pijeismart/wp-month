@@ -58,6 +58,15 @@
       }
     }
   }
+  &.bg-navy {
+    padding-block: 4rem;
+    @include mq(tablet) {
+      padding-block: 6.4rem;
+    }
+    @include mq(desktop-wide) {
+      padding-block: 10.9rem 6.4rem;
+    }
+  }
   .container {
     @include mq(tablet) {
       display: flex;
@@ -120,6 +129,11 @@
       @include mq(tablet) {
         flex: 0 0 vw(700px);
         max-width: 70rem;
+      }
+    }
+    @include when-inside('.bg-navy') {
+      @include mq(desktop) {
+        height: auto;
       }
     }
     &.video-player {
@@ -255,6 +269,9 @@
         max-width: 65rem;
       }
     }
+    @include when-inside('.bg-navy') {
+      @extend .h3;
+    }
   }
   &__copy {
     margin-bottom: 2.4rem;
@@ -283,6 +300,14 @@
       ul, ol {
         padding-left: 2rem;
       }
+    }
+    @include when-inside('.bg-navy') {
+      color: $clr-white;
+      font-size: 1.6rem;
+      line-height: 1.6;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
   &__cards {

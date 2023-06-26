@@ -1,0 +1,50 @@
+.person-cta {
+  &__inner {
+    position: relative;
+    margin-block: 4rem;
+    padding: 4rem;
+    background-color: $clr-navy;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: auto 100%;
+    border-radius: 1.2rem;
+    @include mq(tablet, max) {
+      text-align: center;
+    }
+    @include mq(tablet) {
+      display: grid;
+      margin-block: 8rem 6.4rem;
+      padding: 8rem 3.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 2rem;
+      background-image: url('../img/person-cta__bg.svg');
+    }
+    @include mq(desktop-wide) {
+      padding: 8rem 6.4rem;
+    }
+  }
+  &__img {
+    position: relative;
+    img {
+      @include mq(tablet, max) {
+        margin: 0 auto 2rem;
+      }
+      @include mq(tablet) {
+        position: absolute;
+        left: 50%;
+        bottom: -8rem;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  &__heading {
+    margin-bottom: 1.5rem;
+    color: $clr-white;
+    @include mq(tablet) {
+      margin-bottom: 2.4rem;
+    }
+  }
+  &__copy {
+    color: $clr-white;
+  }
+}

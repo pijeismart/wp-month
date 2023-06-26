@@ -490,24 +490,47 @@ if ( have_rows( 'modules' ) ) :
 		elseif ( 'content_image' == get_row_layout() ) :
 			$image     = get_sub_field( 'image' );
 			$video     = get_sub_field( 'video' );
+			$video_url = get_sub_field( 'video_url' );
 			$type      = get_sub_field( 'options' );
 			$direction = get_sub_field( 'content_direction' );
+			$theme     = get_sub_field( 'theme' );
+			$is_margin = get_sub_field( 'remove_margins' );
 			?>
 			<!-- Content Image -->
-			<section class="content-image content-image--<?php echo esc_attr( $type ); ?> content-image--<?php echo esc_attr( $direction ); ?>"
+			<section class="content-image content-image--<?php echo esc_attr( $type ); ?> content-image--<?php echo esc_attr( $direction ); ?> <?php echo esc_attr( $theme ); ?><?php echo $is_margin ? ' my-0' : ''; ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="content-image__media">
-						<?php
-						get_template_part(
-							'template-parts/content-modules',
-							'media',
-							array(
-								'image' => $image,
-								'video' => $video,
-								'size'  => 'content-image-' . $type,
-							)
-						);
+						<?php if ( $video_url ) : ?>
+						<a href="<?php echo esc_url( $video_url ); ?>" class="video-player" data-fancybox>
+							<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+							<span class="video-play">
+								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+							</span>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'banner_video_title',
+									't'  => 'div',
+									'tc' => 'video-player__title',
+									'o'  => 'f',
+								)
+							);
+							?>
+						</a>	
+							<?php
+						else :
+							get_template_part(
+								'template-parts/content-modules',
+								'media',
+								array(
+									'image' => $image,
+									'video' => $video,
+									'size'  => 'content-image-' . $type,
+								)
+							);
+						endif;
 						?>
 						<?php if ( 'experience-testimonial' == $type ) : ?>
 							<div class="content-image__experience">
@@ -986,7 +1009,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v' => 'c2_cta',
 								'c' => 'link a-up a-delay-2',
-								'o'  => 'o',
+								'o' => 'o',
 							)
 						);
 						?>
@@ -1064,7 +1087,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v' => 'masonry_cta',
 								'c' => 'link a-up a-delay-2',
-								'o'  => 'o',
+								'o' => 'o',
 							)
 						);
 						?>
@@ -1073,10 +1096,11 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact_form' == get_row_layout() ) :
-			$form = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
+			$form       = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
+			$has_border = get_sub_field( 'content_has_border' );
 			?>
 			<!-- Contact Form -->
-			<section class="contact-form"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+			<section class="contact-form<?php echo $has_border ? ' contact-form--border' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="contact-form__main">
 						<?php if ( have_rows( 'cards' ) ) : ?>
@@ -1192,11 +1216,11 @@ if ( have_rows( 'modules' ) ) :
 							?>
 							<?php
 							get_template_part_args(
-								'template-parts/content-modules-text',
+								'template-parts/content-modules-shortcode',
 								array(
 									'v'  => 'content',
-									'w'  => 'div',
-									'wc' => 'contact-form__content__content a-up a-delay-1',
+									't'  => 'div',
+									'tc' => 'contact-form__content__content a-up a-delay-1',
 								)
 							);
 							?>
@@ -2311,13 +2335,123 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
+			<?php
+		elseif ( 'person_cta' == get_row_layout() ) :
+			?>
+			<!-- Person CTA -->
+			<section class="person-cta"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<div class="container person-cta__inner">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-image',
+						array(
+							'v'     => 'image',
+							'v2x'   => false,
+							'is'    => false,
+							'is_2x' => false,
+							'w'     => 'div',
+							'wc'    => 'person-cta__img',
+						)
+					);
+					?>
+					<div class="person-cta__content">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'heading',
+								't'  => 'h2',
+								'tc' => 'person-cta__heading a-up',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'content',
+								't'  => 'div',
+								'tc' => 'person-cta__copy a-up a-delay-1',
+							)
+						);
+						?>
+					</div>
+				</div>
+			</section>
+			<?php
+		elseif ( 'side_modules' == get_row_layout() ) :
+			?>
+			<!-- Side Modules -->
+			<section class="community-modules">
+				<div class="container">
+					<?php if ( have_rows( 'sidebar_links' ) ) : ?>
+					<div class="community-modules__sidebar d-md-only">
+						<h6><?php echo esc_html__( 'Related Pages' ); ?></h6>
+						<ul>
+							<?php
+							while ( have_rows( 'sidebar_links' ) ) :
+								the_row();
+								get_template_part_args(
+									'template-parts/content-modules-cta',
+									array(
+										'v' => 'link',
+										'w' => 'li',
+									)
+								);
+							endwhile;
+							?>
+						</ul>
+					</div>
+					<?php endif; ?>
+					<?php if ( have_rows( '_blocks' ) ) : ?>
+						<div class="community-modules__content">
+							<?php
+							while ( have_rows( '_blocks' ) ) :
+								the_row();
+								if ( 'general_block' == get_row_layout() ) :
+									?>
+									<div class="general-block">
+										<div class="general-block__inner">
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'heading',
+													't'  => 'h3',
+													'tc' => 'block-heading',
+												)
+											);
+											?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'content',
+													't'  => 'div',
+													'tc' => 'general-block__content',
+												)
+											);
+											?>
+										</div>
+									</div>
+									<?php
+								endif;
+							endwhile;
+							?>
+						</div>
+					<?php endif; ?>
+				</div>
+			</section>
 		<?php endif; ?>
 		<?php
 	endwhile;
 endif;
-?>
-<section class="content">
-	<div class="container">
-		<?php the_content(); ?>
-	</div>
-</section>
+if ( '' !== get_post()->post_content ) :
+	?>
+	<section class="content">
+		<div class="container">
+			<?php the_content(); ?>
+		</div>
+	</section>
+	<?php
+endif;

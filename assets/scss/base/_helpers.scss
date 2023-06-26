@@ -248,7 +248,7 @@ html.disable-scrolling {
   Custom Spacings
 */
 
-@for $i from 1 through 10 {
+@for $i from 0 through 10 {
   .mt-#{$i} {
     margin-top: #{$i}rem;
   }
@@ -262,12 +262,10 @@ html.disable-scrolling {
     margin-right: #{$i}rem;
   }
   .mx-#{$i} {
-    margin-left: #{$i}rem;
-    margin-right: #{$i}rem;
+    margin-inline: #{$i}rem !important;
   }
   .my-#{$i} {
-    padding-top: #{$i}rem;
-    padding-bottom: #{$i}rem;
+    margin-block: #{$i}rem !important;
   }
   .pt-#{$i} {
     padding-top: #{$i}rem;
@@ -397,4 +395,12 @@ html.disable-scrolling {
 
 .clear-both {
   clear: both;
+}
+
+.bg-navy {
+  background-color: $clr-navy;
+  color: $clr-white;
+}
+.bg-white {
+  background-color: $clr-white;
 }
