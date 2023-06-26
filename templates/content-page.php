@@ -2411,7 +2411,7 @@ if ( have_rows( 'modules' ) ) :
 								$toc_title = get_sub_field( 'toc_title' );
 								if ( 'general_block' == get_row_layout() ) :
 									?>
-									<div class="general-block"<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>>
+									<div class="general-block" id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
 										<div class="general-block__inner">
 											<?php
 											get_template_part_args(
