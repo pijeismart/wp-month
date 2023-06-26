@@ -249,6 +249,11 @@
     @include mq(tablet, max) {
       margin-bottom: 2.4rem;
     }
+    @include when-inside('.contact-form--border') {
+      font: 700 1.5rem/1.5 $f-text;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+    }
   }
   &__heading {
     margin-bottom: 2.4rem;
