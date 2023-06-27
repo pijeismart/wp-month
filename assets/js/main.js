@@ -725,7 +725,7 @@
             ? $('.hc-videos__item')
             : $(`.hc-videos__item[data-year=${year}]`);
         paged += 1;
-        $loadmore.attr('data-paged', paged);
+        $loadmoreBtn.attr('data-paged', paged);
         $videos.each(function(index) {
           if (index < perPage * paged) {
             $(this).show();
