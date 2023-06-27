@@ -169,16 +169,27 @@
       margin-top: 6.4rem;
     }
     .testimonial-slider__item {
+      display: flex;
       padding: 3.2rem;
       background-color: $clr-navy;
+      flex-direction: column;
+      justify-content: space-between;
       &__content {
         opacity: 0.8;
       }
+    }
+    .slick-list {
+      display: flex;
+    }
+    .slick-slide {
+      height: inherit;
     }
     .slick-arrow {
       width: 2.4rem;
       height: 2.4rem;
       top: 50%;
+      border-radius: 50%;
+      z-index: 1;
       @include mq(desktop-wide) {
         width: 3.2rem;
         height: 3.2rem;
