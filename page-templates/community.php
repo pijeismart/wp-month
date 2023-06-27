@@ -11,11 +11,14 @@ $parents = get_post_parent( $post );
 ?>
 <!-- Banner -->
 <?php
-$type        = get_field( 'type' );
-$heading     = get_field( 'banner_heading' );
-$image       = get_field( 'banner_image' );
-$video       = get_field( 'banner_video' );
-$video_title = get_field( 'banner_video_title' );
+$type          = get_field( 'type' );
+$heading       = get_field( 'banner_heading' );
+$image         = get_field( 'banner_image' );
+$video         = get_field( 'banner_video' );
+$video_title   = get_field( 'banner_video_title' );
+$card_heading  = get_field( 'card_heading' );
+$card_cta_desc = get_field( 'card_cta_description' );
+$card_cta      = get_field( 'card_cta' );
 
 if ( $heading || $video || $image ) :
 	?>
@@ -48,7 +51,7 @@ if ( $heading || $video || $image ) :
 				);
 				?>
 				<?php
-				if ( 'content_only' == $type ) :
+				if ( 'content_media' != $type ) :
 					get_template_part_args(
 						'template-parts/content-modules-text',
 						array(
@@ -105,6 +108,46 @@ if ( $heading || $video || $image ) :
 					</div>
 				<?php endif; ?>
 			</div>
+			<?php endif; ?>
+			<?php if ( $card_heading || $card_cta || $card_cta_desc ) : ?>
+				<div class="community-banner__right a-op">
+					<div class="community-banner__card">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'card_heading',
+								't'  => 'h2',
+								'tc' => 'community-banner__card-heading a-up',
+								'o'  => 'f',
+							)
+						);
+						?>
+						<div class="community-banner__card-body">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'card_cta_description',
+									't'  => 'div',
+									'tc' => 'community-banner__card-desc a-up a-delay-1',
+									'o'  => 'f',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v' => 'card_cta',
+									'c' => 'community-banner__card-cta a-up a-delay-2',
+									'o'  => 'f',
+								)
+							);
+							?>
+						</div>
+					</div>
+				</div>
 			<?php endif; ?>
 		</div>
 	</section>
@@ -455,8 +498,9 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 							</div>
 							<?php
 						elseif ( 'accordions' == get_row_layout() ) :
+							$font_size = get_sub_field( 'font_size' ) ? get_sub_field( 'font_size' ) : 'normal';
 							?>
-							<div class="accordions-block"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+							<div class="accordions-block accordions-block--<?php echo esc_attr( $font_size ); ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
@@ -748,7 +792,7 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 									$years = array();
 									while ( have_rows( 'videos' ) ) :
 										the_row();
-										$date     = get_sub_field( 'date' );
+										$date = get_sub_field( 'date' );
 										if ( $date ) {
 											$date_arr = explode( ', ', $date );
 											$year     = $date_arr[1];
@@ -768,8 +812,8 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 										<?php
 										while ( have_rows( 'videos' ) ) :
 											the_row();
-											$video    = get_sub_field( 'video_url' );
-											$date     = get_sub_field( 'date' );
+											$video = get_sub_field( 'video_url' );
+											$date  = get_sub_field( 'date' );
 											if ( $date ) {
 												$date_arr = explode( ', ', $date );
 											}

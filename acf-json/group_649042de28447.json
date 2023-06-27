@@ -81,6 +81,13 @@
                         "operator": "==",
                         "value": "content_only"
                     }
+                ],
+                [
+                    {
+                        "field": "field_6494533b50322",
+                        "operator": "==",
+                        "value": "content_card"
+                    }
                 ]
             ],
             "wrapper": {
@@ -188,7 +195,15 @@
             "type": "image",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6494533b50322",
+                        "operator": "!=",
+                        "value": "content_card"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -204,6 +219,86 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_649ae85e2232f",
+            "label": "Card Heading",
+            "name": "card_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6494533b50322",
+                        "operator": "==",
+                        "value": "content_card"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_649ae88722331",
+            "label": "Card CTA Description",
+            "name": "card_cta_description",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6494533b50322",
+                        "operator": "==",
+                        "value": "content_card"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_649ae86d22330",
+            "label": "Card CTA",
+            "name": "card_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6494533b50322",
+                        "operator": "==",
+                        "value": "content_card"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_64904352073fb",
@@ -2048,6 +2143,32 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_649ae95a89d8b",
+                            "label": "Font Size",
+                            "name": "font_size",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "normal": "Normal",
+                                "small": "Small"
+                            },
+                            "default_value": "normal",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -2346,5 +2467,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687872708
+    "modified": 1687874032
 }

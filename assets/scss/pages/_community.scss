@@ -40,6 +40,9 @@
 
     h1 {
       text-transform: capitalize;
+      span {
+        color: $clr-green;
+      }
     }
 
     &__content {
@@ -56,6 +59,42 @@
         font: 600 1.4rem/1.6 $f-text;
         letter-spacing: 0.112rem;
         text-transform: uppercase;
+      }
+    }
+    &__card {
+      padding: 2rem;
+      border-radius: 1.6rem;
+      background-color: $clr-navy;
+      color: $clr-white;
+      @include mq(tablet) {
+        padding: 4rem;
+      }
+      &-heading {
+        margin-block: 3rem 6rem;
+        text-align: center;
+        @include mq(tablet) {
+          margin-block: 3rem;
+        }
+      }
+      &-body {
+        margin-top: auto;
+      }
+      &-desc {
+        margin-bottom: 0.8rem;
+        font: 400 1.4rem/1.55 $f-text;
+        letter-spacing: 0.14px;
+        color: rgba($clr-white, 0.4);
+      }
+      &-cta {
+        display: block;
+        appearance: none;
+        padding: 1rem;
+        border-radius: 0.8rem;
+        background-color: $clr-green;
+        color: $clr-navy;
+        text-align: center;
+        font: 700 1.6rem/1.7 $f-text;
+        cursor: pointer;
       }
     }
 
@@ -88,6 +127,11 @@
             margin-inline: auto;
           }
         }
+      }
+    }
+    &--content_card {
+      .community-banner__content {
+        margin-block: 3.2rem 0;
       }
     }
   }
@@ -312,13 +356,13 @@
     @include mq(tablet) {
       padding: 6.4rem;
     }
-
     .accordion {
       border-top: 1px solid $clr-border;
 
       &-header {
         position: relative;
         padding-block: 1.6rem;
+        padding-right: 2rem;
         font: 700 1.8rem/1.2 $f-text;
 
         @include mq(tablet) {
@@ -503,6 +547,19 @@
           img {
             border-radius: 1.2rem;
           }
+        }
+      }
+    }
+    
+    &--small {
+      color: $clr-black;
+      .accordion-header {
+        font-size: 1.6rem;
+        line-height: 1.7;
+      }
+      .accordion-copy {
+        p {
+          font-size: 1.6rem;
         }
       }
     }
