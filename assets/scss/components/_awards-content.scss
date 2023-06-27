@@ -17,28 +17,51 @@
       }
     }
     &__heading {
-      margin-bottom: 3.2rem;
-      padding-bottom: 3.2rem;
-      border-bottom: 1px solid $clr-border;
+      position: relative;
       h3 {
-        position: relative;
         padding-left: 4.4rem;
         font: 400 2.4rem/1.05 $f-heading;
-        &::before {
+      }
+      .accordion-header__icon {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 0rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        background: $clr-white-off;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        &:before,
+        &:after {
           position: absolute;
           content: '';
           top: 50%;
-          left: 0;
-          width: 2.8rem;
-          height: 2.8rem;
-          background-color: $clr-white-off;
-          border-radius: 50%;
-          transform: translateY(-50%);
-          @include svg-background('<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0.5V16.5M16 8.5L0 8.5" stroke="%2378BE38" stroke-width="2"/></svg>');
+          left: 50%;
+          width: 1.6rem;
+          height: 0;
+          border-bottom: 1px solid $clr-green;
+          transition: all .3s ease-in-out;
+        }
+  
+        &::before {
+          transform: translate(-50%, -50%);
+        }
+  
+        &::after {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+      &.active .accordion-header__icon {
+        &::after {
+          transform: translate(-50%, -50%);
         }
       }
     }
     &__content {
+      margin-top: 3.2rem;
+      padding-top: 3.2rem;
+      border-top: 1px solid $clr-border;
       @include base-typography;
       p {
         font: 400 1.6rem/1.55 $f-text;

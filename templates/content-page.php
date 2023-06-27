@@ -2229,54 +2229,53 @@ if ( have_rows( 'modules' ) ) :
 									)
 								);
 							elseif ( 'content' == get_row_layout() ) :
+								$heading    = get_sub_field( 'heading' );
 								$blockquote = get_sub_field( 'blockquote' );
 								$cite       = get_sub_field( 'cite' );
 								$toc_title  = get_sub_field( 'toc_title' );
 								$padding    = get_sub_field( 'padding' );
 								?>
-								<div class="awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?>" id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'heading',
-											't'  => 'h3',
-											'w'  => 'div',
-											'wc' => 'awards-content-block__heading',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											't'  => 'div',
-											'tc' => 'awards-content-block__content',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-cta',
-										array(
-											'v'  => 'link',
-											'c'  => 'underline-link',
-											'w'  => 'div',
-											'wc' => 'clear-both',
-										)
-									);
-									?>
-									<?php if ( $blockquote || $cite ) : ?>
-										<blockquote class="awards-content-block__blockquote">
-											<?php if ( $blockquote ) : ?>
-												<p><?php echo $blockquote; ?></p>
-											<?php endif; ?>
-											<?php if ( $cite ) : ?>
-												<cite><?php echo $cite; ?></cite>
-											<?php endif; ?>
-										</blockquote>
+								<div class="accordion awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?>" id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
+									<?php if ( $heading ) : ?>
+										<div class="awards-content-block__heading accordion-header">
+											<span class="accordion-header__icon">
+											</span>
+											<h3><?php echo esc_html( $heading ); ?></h3>
+										</div>
 									<?php endif; ?>
+									<div class="accordion-body">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'div',
+												'tc' => 'awards-content-block__content',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-cta',
+											array(
+												'v'  => 'link',
+												'c'  => 'underline-link',
+												'w'  => 'div',
+												'wc' => 'clear-both',
+											)
+										);
+										?>
+										<?php if ( $blockquote || $cite ) : ?>
+											<blockquote class="awards-content-block__blockquote">
+												<?php if ( $blockquote ) : ?>
+													<p><?php echo $blockquote; ?></p>
+												<?php endif; ?>
+												<?php if ( $cite ) : ?>
+													<cite><?php echo $cite; ?></cite>
+												<?php endif; ?>
+											</blockquote>
+										<?php endif; ?>
+									</div>
 								</div>
 							<?php endif; ?>
 						<?php endwhile; ?>

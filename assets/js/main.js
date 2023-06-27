@@ -206,6 +206,7 @@
           theme.initTimeSliderCarousel
         );
         helper.isElementExist('.hc-videos', theme.initHCVideos);
+        helper.isElementExist('.awards-content', theme.initAwardsContent);
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
           const $cards = $(this).closest('.cards-slider');
@@ -737,6 +738,14 @@
           $loadmore.hide();
         }
       });
+    },
+    /**
+     * init awards content
+     */
+    initAwardsContent() {
+      const $accordion = $('.awards-content')[0];
+      $('.accordion-header', $accordion).addClass('active');
+      $('.accordion-body', $accordion).show();
     }
   };
 

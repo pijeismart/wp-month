@@ -23,6 +23,7 @@
         }
     }
     &__video {
+        padding-top: 0;
         width: calc(60% - 4.3rem);
         height: inherit;
         @include mq(tablet, max) {
