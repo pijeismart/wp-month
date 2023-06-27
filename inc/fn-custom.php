@@ -431,3 +431,19 @@ function montlick_year( $atts ) {
 	$year = get_field( 'montlick_year', 'options' );
 	return $year;
 }
+
+/**
+ * Enable Shortcode excerpt
+ */
+add_filter( 'the_excerpt', 'do_shortcode' );
+remove_filter( 'get_the_excerpt', 'wp_trim_excerpt', 10 );
+add_filter( 'get_the_excerpt', 'my_custom_wp_trim_excerpt', 99, 1 );
+function my_custom_wp_trim_excerpt( $text ) {
+	if ( '' == $text ) {
+		$text = preg_replace( '/\s/', ' ', wp_strip_all_tags( get_the_content( '' ) ) );
+		$text = explode( ' ', $text, 56 );
+		array_pop( $text );
+		$text = implode( ' ', $text );
+	}
+	return $text;
+}
