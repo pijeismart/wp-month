@@ -36,37 +36,38 @@ if ( have_rows( 'modules' ) ) :
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
 			$has_decor          = ( 'home' == $type && get_sub_field( 'has_decoration' ) );
+			$disable_breadcrumb = get_sub_field( 'disable_breadcrumbs' );
 			?>
 			<!-- Banner -->
 			<section class="banner banner--<?php echo esc_attr( $type ); ?><?php echo $has_decor ? ' has-decor' : ''; ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
-					if ( 'home' != $type ) :
+					if ( 'home' != $type && !$disable_breadcrumb ) :
 						$parents = get_post_parent( $post );
 						?>
-					<ul class="breadcrumbs a-up d-md-only">
-						<li>
-							<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
-						</li>
-						<?php if ( 'city' == get_post_type() ) : ?>
-						<li>
-							<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
-								<?php echo esc_html( 'Areas We Serve' ); ?>
-							</a>
-						</li>
-						<?php endif; ?>
-						<?php if ( $parents ) : ?>
+						<ul class="breadcrumbs a-up d-md-only">
 							<li>
-								<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
-									<?php echo esc_html( get_the_title( $parents ) ); ?>
+								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
+							</li>
+							<?php if ( 'city' == get_post_type() ) : ?>
+							<li>
+								<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>">
+									<?php echo esc_html( 'Areas We Serve' ); ?>
 								</a>
 							</li>
-						<?php endif; ?>
-						<li>
-							<span><?php the_title(); ?></span>
-						</li>
-					</ul>
+							<?php endif; ?>
+							<?php if ( $parents ) : ?>
+								<li>
+									<a href="<?php echo esc_url( get_the_permalink( $parents ) ); ?>">
+										<?php echo esc_html( get_the_title( $parents ) ); ?>
+									</a>
+								</li>
+							<?php endif; ?>
+							<li>
+								<span><?php the_title(); ?></span>
+							</li>
+						</ul>
 					<?php endif; ?>
 					<div class="banner-inner">
 						<div class="banner-media a-op">

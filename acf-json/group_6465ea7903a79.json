@@ -533,7 +533,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
@@ -568,7 +568,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
@@ -596,7 +596,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
@@ -624,7 +624,35 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_649ae29593618",
+                            "label": "Disable Breadcrumbs",
+                            "name": "disable_breadcrumbs",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465f5dae5389",
+                                        "operator": "!=",
+                                        "value": "home"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
@@ -5896,5 +5924,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687742191
+    "modified": 1687872214
 }
