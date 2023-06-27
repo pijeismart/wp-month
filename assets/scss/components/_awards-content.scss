@@ -57,11 +57,13 @@
           transform: translate(-50%, -50%);
         }
       }
+      & + .accordion-body {
+        margin-top: 3.2rem;
+        padding-top: 3.2rem;
+        border-top: 1px solid $clr-border;
+      }
     }
     &__content {
-      margin-top: 3.2rem;
-      padding-top: 3.2rem;
-      border-top: 1px solid $clr-border;
       @include base-typography;
       p {
         font: 400 1.6rem/1.55 $f-text;
