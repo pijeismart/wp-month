@@ -228,7 +228,7 @@
           $parent.toggleClass('is-playing');
           $(this).hide();
         });
-
+        // init contact form reviews
         if ($('.contact-form .rplg-review').length > 1) {
           $('.contact-form .rplg-reviews').slick({
             arrows: false,
@@ -255,6 +255,15 @@
                 }
               }
             ]
+          });
+        }
+        // init contact page reviews
+        if ($('.contact-reviews .rplg-review').length > 1) {
+          $('.contact-reviews .rplg-review').slick({
+            arrows: true,
+            dots: false,
+            autoplay: true,
+            loop: true
           });
         }
 

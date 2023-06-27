@@ -2625,7 +2625,7 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'reviews',
 							't'  => 'div',
-							'tc' => 'contact-faq__reviews',
+							'tc' => 'contact-reviews',
 						)
 					);
 					?>
