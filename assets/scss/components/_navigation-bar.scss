@@ -99,6 +99,12 @@
   & + section {
     margin-top: 5rem !important;
   }
+  
+  & + .bg-navy {
+    @include mq(tablet) {
+      margin-top: -5rem !important;
+    }
+  }
 }
 
 .navigation-popup {

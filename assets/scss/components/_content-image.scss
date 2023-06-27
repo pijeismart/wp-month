@@ -410,8 +410,3 @@
     }
   }
 }
-.navigation-bar + .content-image {
-  @include mq(tablet) {
-    margin-top: -5rem;
-  }
-}

@@ -2185,7 +2185,7 @@ if ( have_rows( 'modules' ) ) :
 			$gallery = get_sub_field( 'awards' );
 			?>
 			<!-- Awards Grid -->
-			<section class="awards-grid"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+			<section class="awards-grid bg-navy"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
 					get_template_part_args(
