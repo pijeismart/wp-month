@@ -96,6 +96,9 @@
       color: $clr-green;
     }
   }
+  & + section {
+    margin-top: 5rem !important;
+  }
 }
 
 .navigation-popup {
@@ -164,8 +167,5 @@
     &:hover {
       color: $clr-green;
     }
-  }
-  & + section {
-    margin-top: 5rem !important;
   }
 }
