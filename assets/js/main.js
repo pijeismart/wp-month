@@ -259,7 +259,7 @@
         }
         // init contact page reviews
         if ($('.contact-reviews .rplg-review').length > 1) {
-          $('.contact-reviews .rplg-review').slick({
+          $('.contact-reviews .rplg-reviews').slick({
             arrows: true,
             dots: false,
             autoplay: true,
