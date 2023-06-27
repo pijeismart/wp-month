@@ -743,9 +743,11 @@
      * init awards content
      */
     initAwardsContent() {
-      const $accordion = $('.awards-content')[0];
-      $('.accordion-header', $accordion).addClass('active');
-      $('.accordion-body', $accordion).show();
+      if ($('.awards-content-block.accordion').length > 0) {
+        const $accordion = $('.awards-content-block')[0];
+        $('.accordion-header', $accordion).addClass('active');
+        $('.accordion-body', $accordion).show();
+      }
     }
   };
 

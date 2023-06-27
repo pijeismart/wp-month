@@ -2235,7 +2235,8 @@ if ( have_rows( 'modules' ) ) :
 								$toc_title  = get_sub_field( 'toc_title' );
 								$padding    = get_sub_field( 'padding' );
 								?>
-								<div class="accordion awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?>" id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
+								<div class="awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?><?php echo 'small' == $padding ? ' accordion' : ''; ?>"
+									id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
 									<?php if ( $heading ) : ?>
 										<div class="awards-content-block__heading accordion-header">
 											<span class="accordion-header__icon">

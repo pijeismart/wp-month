@@ -1,6 +1,6 @@
 .navigation-bar + .awards-grid {
   @include mq(tablet) {
-    margin-top: -5rem;
+    margin-top: -5rem !important;
   }
 }
 .awards-grid {
