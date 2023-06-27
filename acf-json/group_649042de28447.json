@@ -35,7 +35,8 @@
             },
             "choices": {
                 "content_media": "Content Media",
-                "content_only": "Content Only"
+                "content_only": "Content Only",
+                "content_card": "Content Card"
             },
             "default_value": "content_media",
             "return_format": "value",
@@ -2345,5 +2346,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687443306
+    "modified": 1687872708
 }

@@ -1,6 +1,6 @@
 .content-image {
   position: relative;
-  margin-block: 6rem;
+  margin-block: 5rem;
   &--full-ctas {
     &::before {
       @include mq(tablet) {

@@ -1,9 +1,5 @@
 .practice-faqs {
-  margin: 8rem 0;
-
-  @include mq(tablet) {
-    margin: 12rem 0 25rem;
-  }
+  margin-block: 5rem;
 
   .container {
     @include mq(tablet) {

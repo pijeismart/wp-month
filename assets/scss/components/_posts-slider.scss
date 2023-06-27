@@ -2,12 +2,6 @@
   padding-block: 5rem;
   background-color: $clr-white-off;
   overflow: hidden;
-  @include mq(tablet) {
-    padding-block: 10rem;
-  }
-  @include mq(desktop) {
-    padding-block: 16.5rem;
-  }
   .container {
     @include mq(tablet) {
       display: flex;
