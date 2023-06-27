@@ -164,12 +164,38 @@
     }
   }
   &-reviews {
+    margin-top: 3.2rem;
+    @include mq(desktop) {
+      margin-top: 6.4rem;
+    }
     .testimonial-slider__item {
       padding: 3.2rem;
       background-color: $clr-navy;
       &__content {
         opacity: 0.8;
       }
+    }
+    .slick-arrow {
+      width: 2.4rem;
+      height: 2.4rem;
+      top: 50%;
+      @include mq(desktop-wide) {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+      &::before {
+        content: none;
+      }
+    }
+    .slick-prev {
+      left: 0;
+      transform: translate(-50%, -50%);
+      @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%23AEDF82"/><path d="M17 12L13 16L17 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    }
+    .slick-next {
+      right: 0;
+      transform: translate(50%, -50%);
+      @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%23AEDF82"/><path d="M15 12L19 16L15 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     }
   }
 }
