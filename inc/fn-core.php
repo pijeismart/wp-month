@@ -345,6 +345,7 @@ function am_mime_types( $mimes ) {
 	$mimes['webp'] = 'image/webp';
 	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
+	$mimes['json'] = 'application/json';
 	return $mimes;
 }
 

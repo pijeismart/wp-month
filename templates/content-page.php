@@ -2444,6 +2444,280 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 				</div>
 			</section>
+			<?php
+		elseif ( 'contact' == get_row_layout() ) :
+			$phone  = get_sub_field( 'notice_phone' );
+			$lottie = get_sub_field( 'lottie' );
+			?>
+			<!-- Conctact -->
+			<section class="contact">
+				<div class="contact-left">
+					<ul class="breadcrumbs a-up d-md-only">
+						<li>
+							<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
+						</li>
+						<li>
+							<span><?php echo esc_html__( 'Contact Montlick & Associates' ); ?></span>
+						</li>
+					</ul>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'heading',
+							't'  => 'h1',
+							'tc' => 'contact-heading a-up a-delay-1',
+						)
+					);
+					?>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'content',
+							't'  => 'div',
+							'tc' => 'contact-content a-up a-delay-2',
+						)
+					);
+					?>
+					<?php if ( have_rows( 'cards' ) ) : ?>
+						<div class="contact-form__cards">
+							<?php
+							while ( have_rows( 'cards' ) ) :
+								the_row();
+								$type   = get_sub_field( 'type' );
+								$cta    = get_sub_field( 'cta' );
+								$rating = get_sub_field( 'rating' );
+								?>
+								<?php if ( $cta ) : ?>
+								<a href="<?php echo esc_url( $cta['url'] ); ?>" class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1" target="<?php echo esc_attr( $cta['target'] ? $cta['target'] : '_self' ); ?>">
+								<?php else : ?>
+								<div class="contact-form__cards__item <?php echo esc_attr( $type ); ?> a-up a-delay-1">
+								<?php endif; ?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'eyebrow',
+											't'  => 'h5',
+											'tc' => 'item-eyebrow',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'award',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'item-award__img',
+											'w'     => 'div',
+											'wc'    => 'item-award',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'content',
+											't'  => 'h5',
+											'tc' => 'item-content',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'sub_title',
+											't'  => 'h5',
+											'tc' => 'item-sub_title',
+										)
+									);
+									?>
+									<?php if ( $rating ) : ?>
+										<div class="contact-form__cards__item__rating d-md-only">
+											<?php for ( $i = 0; $i < $rating; $i ++ ) : ?>
+												<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path opacity="0.8" d="M9.8878 0.5625L11.919 4.71875L16.3878 5.375C16.7628 5.4375 17.0753 5.6875 17.2003 6.0625C17.3253 6.40625 17.2315 6.8125 16.9503 7.0625L13.7003 10.2812L14.4815 14.8438C14.544 15.2188 14.3878 15.5938 14.0753 15.8125C13.7628 16.0625 13.3565 16.0625 13.0128 15.9062L9.0128 13.75L4.98155 15.9062C4.66905 16.0625 4.2628 16.0625 3.9503 15.8125C3.6378 15.5938 3.48155 15.2188 3.54405 14.8438L4.29405 10.2812L1.04405 7.0625C0.794049 6.8125 0.700299 6.40625 0.794049 6.0625C0.919049 5.6875 1.23155 5.4375 1.60655 5.375L6.10655 4.71875L8.10655 0.5625C8.2628 0.21875 8.60655 0 9.0128 0C9.3878 0 9.73155 0.21875 9.8878 0.5625Z" fill="#FFA800"/>
+												</svg>
+											<?php endfor; ?>
+										</div>
+									<?php endif; ?>
+								<?php if ( $cta ) : ?>
+									</a>
+								<?php else : ?>
+									</div>
+								<?php endif; ?>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
+					<div class="contact-faqs a-up">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'faq_heading',
+								't'  => 'h3',
+								'tc' => 'contact-faqs__heading',
+							)
+						);
+						?>
+						<?php
+						if ( have_rows( 'faqs' ) ) :
+							while ( have_rows( 'faqs' ) ) :
+								the_row();
+								?>
+								<div class="contact-faq accordion">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'question',
+											't'  => 'div',
+											'tc' => 'contact-faq__question accordion-header',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'answer',
+											't'  => 'div',
+											'tc' => 'contact-faq__answer accordion-body',
+										)
+									);
+									?>
+								</div>
+								<?php
+							endwhile;
+						endif;
+						?>
+						<div class="contact-faqs__bottom">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'faq_description',
+									't'  => 'p',
+									'tc' => 'contact-faqs__desc',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v' => 'faq_cta',
+									'c' => 'underline-link contact-faqs__cta',
+								)
+							);
+							?>
+						</div>
+					</div>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-shortcode',
+						array(
+							'v'  => 'reviews',
+							't'  => 'div',
+							'tc' => 'contact-faq__reviews',
+						)
+					);
+					?>
+				</div>
+				<div class="contact-right">
+					<?php if ( $phone ) : ?>
+					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-cta">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'notice_heading',
+								't'  => 'h6',
+								'tc' => 'contact-cta__heading',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'number',
+								't'  => 'h3',
+								'tc' => 'contact-cta__number',
+							)
+						);
+						?>
+						<span class="contact-cta__phone"><?php echo esc_html( $phone ); ?></span>
+						<div class="contact-cta__bottom">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'notice_description',
+									't'  => 'p',
+									'tc' => 'contact-cta__desc',
+								)
+							);
+							?>
+							<?php if ( $lottie ) : ?>
+								<div class="contact-cta__lottie">
+									<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+									<lottie-player src="<?php echo esc_url( $lottie ); ?>" background="transparent" speed="1" style="width: 170px; height: 75px;" loop autoplay></lottie-player>
+								</div>
+							<?php endif; ?>
+						</div>
+					</a>
+					<?php endif; ?>
+					<div class="contact-form__form a-up a-delay-1">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_sub_heading',
+								't'  => 'h5',
+								'tc' => 'contact-form__form__sub_heading',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_heading',
+								't'  => 'h4',
+								'tc' => 'contact-form__form__heading',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'form_description',
+								't'  => 'p',
+								'tc' => 'contact-form__form__content',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-shortcode',
+							array(
+								'v'  => 'form',
+								't'  => 'div',
+								'tc' => 'contact-form__form__form',
+							)
+						);
+						?>
+					</div>
+				</div>
+			</section>
 		<?php endif; ?>
 		<?php
 	endwhile;

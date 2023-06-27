@@ -1,0 +1,166 @@
+.contact {
+  @include mq(tablet) {
+    display: flex;
+  }
+  &-left {
+    background-color: $clr-white-off;
+    @include mq(tablet) {
+      padding: 10.5rem var(--gutter) 6.5rem var(--gutter);
+      max-width: vw(900px);
+    }
+    @media only screen and (min-width: 1301px) {
+      padding-inline-start: calc(((100vw - 130rem) / 2 + var(--gutter)));
+      padding-inline-end: vw(110px);
+    }
+    @include mq(desktop) {
+      padding-inline-end: 11rem;
+    }
+  }
+  .breadcrumbs {
+    margin-bottom: 1.5rem;
+  }
+  &-heading {
+    margin-bottom: 3.2rem;
+    span {
+      color: $clr-green;
+    }
+  }
+  &-content {
+    margin-bottom: 6.4rem;
+    @include base-typography();
+    color: $clr-black;
+  }
+  &-faqs {
+    padding: 3rem;
+    background-color: $clr-white;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    @include mq(desktop) {
+      padding: 6.4rem;
+    }
+    &__heading {
+      margin-bottom: 3.2rem;
+    }
+    &__bottom {
+      display: flex;
+      margin-top: 3.2rem;
+      padding-top: 3.2rem;
+      border-top: 2px solid $clr-green;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__desc {
+      font: 600 1.4rem/1.7 $f-text;
+    }
+    &__cta {
+      margin-left: 2rem;
+      flex-shrink: 0;
+    }
+  }
+  &-faq {
+    border-top: 1px solid $clr-border;
+    &__question {
+      position: relative;
+      padding: 1.6rem 4rem 1.6rem 0;
+      font-weight: 700;
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        right: 0;
+        width: 1.6rem;
+        height: 0;
+        border: 1px solid $clr-green;
+        transform: translateY(-50%);
+        transition: transform .3s ease-in-out;
+        will-change: transform;
+      }
+      &::after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+      &.active::after {
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &-right {
+    @include mq(tablet) {
+      padding: 3.5rem var(--gutter) 3.5rem var(--gutter);
+      flex-grow: 1;
+    }
+    @media only screen and (min-width: 1301px) {
+      padding-inline-start: vw(110px);
+      padding-inline-end: calc(((100vw - 130rem) / 2 + var(--gutter)));
+    }
+    @include mq(desktop) {
+      padding-inline-start: 11rem;
+    }
+  }
+  &-cta {
+    display: block;
+    margin-bottom: 5rem;
+    padding: 3.2rem;
+    background-color: $clr-green-light;
+    border-radius: 1rem;
+    @include mq(desktop) {
+      padding: 6.4rem 3.2rem;
+    }
+    &__heading {
+      margin-bottom: 2.4rem;
+    }
+    &__number {
+      margin-bottom: 0.8rem;
+      font: 600 4rem/1 $f-text;
+      text-transform: uppercase;
+    }
+    &__bottom {
+      margin-top: 2.4rem;
+      display: flex;
+      align-items: center;
+    }
+    &__desc {
+      font: 400 1.2rem/1.55 $f-text;
+      letter-spacing: 0.12px;
+      opacity: 0.6;
+    }
+    &__lottie {
+      margin-left: 1.6rem;
+      flex-shrink: 0;
+    }
+  }
+  &-form {
+    &__cards__item {
+      padding: 2.4rem;
+      width: calc((100% - 4rem) / 3);
+      height: auto;
+      background-color: $clr-white;
+      .item-eyebrow {
+        margin-bottom: 2.4rem;
+      }
+      .item-content {
+        margin-bottom: 1.6rem;
+        font-size: 3.2rem;
+        line-height: 1;
+        @include mq(tablet) {
+          font-size: 4rem;
+        }
+      }
+      .item-sub_title {
+        opacity: 0.6;
+      }
+      &__rating {
+        margin-top: 0;
+      }
+    }
+    &__form {
+      max-width: 100%;
+      .gform_button {
+        padding: 1.6rem 3.2rem;
+        width: 100%;
+        background-image: none;
+        text-align: center;
+      }
+    }
+  }
+}
