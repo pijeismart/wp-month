@@ -871,9 +871,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'heading',
+								'v'  => 'map_heading',
 								't'  => 'h2',
 								'tc' => 'map-heading a-up',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -881,9 +882,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'content',
+								'v'  => 'map_content',
 								't'  => 'div',
 								'tc' => 'map-copy a-up a-delay-1',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -891,8 +893,9 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v' => 'cta',
+								'v' => 'map_cta',
 								'c' => 'link link-white a-up a-delay-2',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -901,8 +904,8 @@ if ( have_rows( 'modules' ) ) :
 						<div class="select-block d-sm-only">
 							<select class="map-state-selector" id="map-redirect">
 								<option><?php echo esc_html__( 'Select State', 'am' ); ?></option>
-								<?php if ( have_rows( 'locations' ) ) : ?>
-									<?php while ( have_rows( 'locations' ) ) : ?> 
+								<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
+									<?php while ( have_rows( 'map_locations', 'options' ) ) : ?> 
 										<?php the_row(); ?>
 										<?php if ( get_sub_field( 'active' ) ) : ?> 
 											<?php
@@ -926,8 +929,8 @@ if ( have_rows( 'modules' ) ) :
 						<script>
 							var location_arr = [];
 							<?php $location_array = array(); ?>
-							<?php if ( have_rows( 'locations' ) ) : ?>
-								<?php while ( have_rows( 'locations' ) ) : ?>
+							<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
+								<?php while ( have_rows( 'map_locations', 'options' ) ) : ?>
 									<?php the_row(); ?>
 									<?php if ( get_sub_field( 'active' ) ) : ?>
 										<?php
@@ -945,8 +948,8 @@ if ( have_rows( 'modules' ) ) :
 								// initialize Map
 								$('#map1').usmap({
 										'stateSpecificStyles': {
-										<?php if ( have_rows( 'locations' ) ) : ?>
-											<?php while ( have_rows( 'locations' ) ) : ?>
+										<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
+											<?php while ( have_rows( 'map_locations', 'options' ) ) : ?>
 												<?php the_row(); ?>
 												<?php if ( get_sub_field( 'active' ) ) : ?>
 												'<?php echo get_sub_field( 'state_code' ); ?>' : {fill: '#AEDF82'},
@@ -993,7 +996,7 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'posts_slider' == get_row_layout() ) :
 			?>
-			<?php get_template_part( 'template-parts/section', 'post-slider' ); ?>			
+			<?php get_template_part( 'template-parts/section', 'post-slider', array( 'option' => 's' ) ); ?>		
 			<?php
 		elseif ( 'masonry' == get_row_layout() ) :
 			$gallery = get_field( 'masonry_gallery', 'options' );
