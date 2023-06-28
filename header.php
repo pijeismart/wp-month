@@ -32,8 +32,8 @@
 	$enable_top_bar = get_field( 'enable_top_bar', 'options' );
 	$top_bar_text   = get_field( 'top_bar_text', 'options' );
 	$top_bar_link   = get_field( 'top_bar_link', 'options' );
-	$cta_text       = get_field( 'header_cta_text', 'options' );
-	$cta_url        = get_field( 'header_cta_url', 'options' );
+	$phone          = get_field( 'phone', 'options' );
+	$lottie         = get_field( 'header_lottie', 'options' );
 	?>
 	<header class="header">
 		<?php if ( $enable_top_bar ) : ?>
@@ -79,10 +79,11 @@
 					)
 				);
 				?>
-				<?php if ( $cta_url && $cta_text ) : ?>
+				<?php if ( $phone && $lottie ) : ?>
 					<div class="header-cta__wrapper">
-						<a href="<?php echo esc_url( $cta_url['url'] ); ?>" class="header-cta" target="<?php echo esc_attr( $cta_url['target'] ?: '_self' ); ?>">
-							<?php echo $cta_text; ?>
+						<a href="tel:<?php echo $phone; ?>" class="header-cta">
+							<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+							<lottie-player src="<?php echo esc_url( $lottie ); ?>" background="transparent" speed="1" loop autoplay></lottie-player>
 						</a>
 					</div>
 				<?php endif; ?>

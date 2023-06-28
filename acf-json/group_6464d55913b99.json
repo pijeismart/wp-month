@@ -134,11 +134,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6464d5e656ab6",
-            "label": "CTA Text",
-            "name": "header_cta_text",
+            "key": "field_649b911677dd0",
+            "label": "Phone",
+            "name": "phone",
             "aria-label": "",
-            "type": "textarea",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -149,16 +149,16 @@
             },
             "default_value": "",
             "maxlength": "",
-            "rows": 3,
             "placeholder": "",
-            "new_lines": "br"
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_6464d60e56ab7",
-            "label": "CTA URL",
-            "name": "header_cta_url",
+            "key": "field_649b90cc77dcf",
+            "label": "Lottie",
+            "name": "header_lottie",
             "aria-label": "",
-            "type": "link",
+            "type": "file",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -167,7 +167,11 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_6464d64056ab8",
@@ -564,5 +568,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687614817
+    "modified": 1687916896
 }
