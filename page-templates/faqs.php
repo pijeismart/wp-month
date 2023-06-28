@@ -102,10 +102,10 @@ if ( $query->have_posts() ) :
 			if ( $case_categories ) :
 				?>
 				<div class="accordion section-archive__sidebar__widget">
-					<div class="accordion-header">
+					<div class="accordion-header active">
 						<?php echo esc_html__( 'Jump to navigation' ); ?>
 					</div>
-					<div class="accordion-body">
+					<div class="accordion-body" style="display: block">
 						<?php foreach ( $case_categories as $category ) : ?>
 							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['case-category'] ) && $_GET['case-category'] == $category->slug ) ? ' is-active' : ''; ?>" 
 								data-target="data-case-cat"
