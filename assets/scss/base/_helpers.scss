@@ -383,6 +383,7 @@ html.disable-scrolling {
     transform: translate(-50%, -50%);
     transition: transform .3s ease-in-out;
     cursor: pointer;
+    z-index: 1;
     @include mq(tablet) {
       width: 9rem;
       height: 9rem;

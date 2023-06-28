@@ -1490,8 +1490,10 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'video_content' == get_row_layout() ) :
-			$image = get_sub_field( 'image' );
-			$video = get_sub_field( 'video' );
+			$image     = get_sub_field( 'image' );
+			$video     = get_sub_field( 'video' );
+			$video_url = get_sub_field( 'video_url' );
+			$video_src  = $video_url ? $video_url : $video;
 			?>
 			<!-- Section Video Content -->
 			<section class="video-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -1508,24 +1510,30 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 						<div class="video-content__main">
+							<?php if ( $video || $image || $video_url ) : ?>
 							<div class="video-content__video a-up a-delay-1 video-player">
-								<?php
-								get_template_part(
-									'template-parts/content-modules',
-									'media',
-									array(
-										'image'            => $image,
-										'video'            => $video,
-										'disable_autoplay' => true,
-									)
-								);
-								?>
-								<?php if ( $video ) : ?>
-									<a href="<?php echo esc_url( $video ); ?>" class="video-player__btn" data-fancybox>
+								<?php if ( $video_url ) : ?>
+									<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+								<?php else : ?>
+									<?php
+									get_template_part(
+										'template-parts/content-modules',
+										'media',
+										array(
+											'image'            => $image,
+											'video'            => $video,
+											'disable_autoplay' => true,
+										)
+									);
+									?>
+								<?php endif; ?>
+								<?php if ( $video_src ) : ?>
+									<a href="<?php echo esc_url( $video_src ); ?>" class="video-player__btn" data-fancybox>
 										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play-blue.svg' ); ?>" alt="Play">
 									</a>
 								<?php endif; ?>
 							</div>
+							<?php endif; ?>
 							<div class="video-content__content a-up a-delay-1">
 								<?php
 								get_template_part_args(
@@ -2736,7 +2744,7 @@ if ( have_rows( 'modules' ) ) :
 						array(
 							'v'  => 'reviews',
 							't'  => 'div',
-							'tc' => 'contact-reviews',
+							'tc' => 'contact-reviews d-md-only',
 						)
 					);
 					?>

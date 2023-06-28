@@ -36,8 +36,10 @@
         }
     }
     &__content {
-        width: 40%;
-        @include mq(tablet, max) {
+        @include mq(tablet) {
+            width: 40%;
+        }
+        &:only-child {
             width: 100%;
         }
         * {
