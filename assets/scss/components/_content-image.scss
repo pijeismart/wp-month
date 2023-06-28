@@ -204,6 +204,9 @@
         text-align: center;
       }
     }
+    .underline-link {
+      margin-top: 1.6rem;
+    }
   }
   &__content {
     @include when-inside('.content-image--cards') {

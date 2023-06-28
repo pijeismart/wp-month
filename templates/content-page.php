@@ -598,6 +598,9 @@ if ( have_rows( 'modules' ) ) :
 											endwhile;
 											?>
 										</ul>
+										<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>" class="underline-link">
+											<?php echo esc_html__( 'More Areas We Serve' ); ?>
+										</a>
 										<?php
 									endif;
 									wp_reset_postdata();
