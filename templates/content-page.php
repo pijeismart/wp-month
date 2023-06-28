@@ -1595,7 +1595,15 @@ if ( have_rows( 'modules' ) ) :
 						<?php endif; ?>
 					<?php else : ?>
 						<?php
-						$tax_query = array();
+						$tax_query = array(
+							'relation' => 'AND',
+							array(
+								'taxonomy' => 'faq_type',
+								'field'    => 'slug',
+								'terms'    => array( 'state-law-montlick-explains' ),
+								'operator' => 'NOT IN',
+							),
+						);
 						if ( $case_categories ) {
 							$tax_query[] = array(
 								'taxonomy' => 'case_category',
@@ -1607,9 +1615,6 @@ if ( have_rows( 'modules' ) ) :
 								'taxonomy' => 'claim_type',
 								'terms'    => $claim_types,
 							);
-						}
-						if ( $case_categories && $claim_types ) {
-							$tax_query['relation'] = 'AND';
 						}
 						$args  = array(
 							'post_type'      => 'faq',
