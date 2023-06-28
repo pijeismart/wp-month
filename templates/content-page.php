@@ -992,66 +992,8 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'posts_slider' == get_row_layout() ) :
-			$posts = get_field( 'c2_posts', 'options' );
 			?>
-			<!-- Posts -->
-			<section class="posts-slider"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
-				<div class="container">
-					<div class="posts-slider__content">
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'c2_heading',
-								't'  => 'h3',
-								'tc' => 'posts-slider__heading a-up',
-								'o'  => 'o',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'c2_content',
-								't'  => 'div',
-								'tc' => 'posts-slider__copy a-up a-delay-1',
-								'o'  => 'o',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v' => 'c2_cta',
-								'c' => 'link a-up a-delay-2',
-								'o' => 'o',
-							)
-						);
-						?>
-					</div>
-					<?php if ( $posts ) : ?>
-						<div class="posts-slider__right">
-							<div class="posts-slider__carousel">
-								<?php
-								foreach ( $posts as $post ) :
-									setup_postdata( $post );
-									get_template_part( 'template-parts/loop', 'post-card' );
-								endforeach;
-								?>
-							</div>
-							<div class="slider-controls d-md-only">
-								<div class="slider-pagination">1 / 2</div>
-								<button class="link slider-next" tabindex="0">Next</button>
-							</div>
-						</div>
-						<?php
-					endif;
-					wp_reset_postdata();
-					?>
-				</div>
-			</section>
+			<?php get_template_part( 'template-parts/section', 'post-slider' ); ?>			
 			<?php
 		elseif ( 'masonry' == get_row_layout() ) :
 			$gallery = get_field( 'masonry_gallery', 'options' );

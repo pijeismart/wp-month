@@ -2140,11 +2140,11 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_646ebe71d7b13",
-                            "label": "Message",
-                            "name": "",
+                            "key": "field_649c3ab4dfba6",
+                            "label": "Content Type",
+                            "name": "content_type",
                             "aria-label": "",
-                            "type": "message",
+                            "type": "select",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -2153,9 +2153,117 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "All fields are coming from Global Sections > Posts Slider.",
-                            "new_lines": "wpautop",
-                            "esc_html": 0
+                            "choices": {
+                                "latest": "Latest",
+                                "claim_type": "Latest by Claim Type",
+                                "case_category": "Latest by Case Category",
+                                "custom": "Custom"
+                            },
+                            "default_value": "latest",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_649c3f38dfba9",
+                            "label": "Claim Type",
+                            "name": "claim_type",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_649c3ab4dfba6",
+                                        "operator": "==",
+                                        "value": "claim_type"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "claim_type",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_649c3d50dfba8",
+                            "label": "Case Category",
+                            "name": "case_category",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_649c3ab4dfba6",
+                                        "operator": "==",
+                                        "value": "case_category"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "case_category",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_649c3c7edfba7",
+                            "label": "Custom Posts",
+                            "name": "custom_posts",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_649c3ab4dfba6",
+                                        "operator": "==",
+                                        "value": "custom"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "id",
+                            "min": "",
+                            "max": "",
+                            "elements": ""
                         },
                         {
                             "key": "field_64831fc6b2f16",
@@ -6902,5 +7010,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687955548
+    "modified": 1687964260
 }

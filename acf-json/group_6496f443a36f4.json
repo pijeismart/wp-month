@@ -182,34 +182,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_64906f0d43f25",
-            "label": "Posts",
-            "name": "c2_posts",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post"
-            ],
-            "post_status": "",
-            "taxonomy": "",
-            "filters": [
-                "search",
-                "taxonomy"
-            ],
-            "return_format": "object",
-            "min": "",
-            "max": "",
-            "elements": ""
-        },
-        {
             "key": "field_64906ef843f22",
             "label": "Heading",
             "name": "c2_heading",
@@ -1123,5 +1095,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687619119
+    "modified": 1687964172
 }
