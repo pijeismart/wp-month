@@ -34,7 +34,7 @@ $related_faqs_args = array(
 );
 
 $related_areas_args = array(
-	'post_type'      => 'practice',
+	'post_type'      => 'city',
 	'posts_status'   => 'published',
 	'posts_per_page' => 5,
 	'tax_query'      => $tax_query,
