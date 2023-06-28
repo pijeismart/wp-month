@@ -1818,8 +1818,13 @@ if ( have_rows( 'modules' ) ) :
 												<?php endif; ?>
 											</div>
 											<div class="case-results__item__val">
-												<h2 class="case-results__item__value"><?php echo esc_html( '$' . floatval( $price ) / 1000000 ); ?></h3>
-												<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Million' ); ?></p>
+												<?php if ( floatval( $price ) / 1000000 > 1 ) : ?>
+													<h2 class="case-results__item__value"><?php echo esc_html( '$' . floatval( $price ) / 1000000 ); ?></h3>
+													<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Million' ); ?></p>
+												<?php else : ?>
+													<h2 class="case-results__item__value"><?php echo esc_html( '$' . floatval( $price ) / 1000 ); ?></h3>
+													<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Thousand' ); ?></p>
+												<?php endif; ?>
 											</div>
 										</div>
 									</div>
