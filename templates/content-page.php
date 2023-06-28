@@ -946,7 +946,7 @@ if ( have_rows( 'modules' ) ) :
 											scale: [1, 1]
 										},
 										'stateHoverStyles': {
-											fill: "#aedf8233",
+											fill: "#78BE38",
 											stroke: "#000",
 										},
 										'click' : function(event, data) {
