@@ -679,6 +679,7 @@ if ( have_rows( 'modules' ) ) :
 							<?php
 							while ( have_rows( 'testimonials', 'options' ) ) :
 								the_row();
+								$cta = get_sub_field( 'cta' );
 								?>
 								<div class="testimonial-main__slide">
 									<div class="testimonial-main__slide__inner">
@@ -693,15 +694,11 @@ if ( have_rows( 'modules' ) ) :
 												)
 											);
 											?>
-											<?php
-											get_template_part_args(
-												'template-parts/content-modules-cta',
-												array(
-													'v' => 'cta',
-													'c' => 'link',
-												)
-											);
-											?>
+											<?php if ( $cta ) : ?>
+												<a href="<?php echo esc_url( $cta['url'] ); ?>" class="link" data-fancybox>
+													<?php echo esc_html( $cta['title'] ); ?>
+												</a>
+											<?php endif; ?>
 										</div>
 										<div class="testimonial-main__media">
 											<?php
@@ -803,6 +800,7 @@ if ( have_rows( 'modules' ) ) :
 						<?php
 						while ( have_rows( 'testimonials', 'options' ) ) :
 							the_row();
+							$cta = get_sub_field( 'cta' );
 							?>
 							<div class="testimonial-card">
 								<?php
@@ -827,15 +825,11 @@ if ( have_rows( 'modules' ) ) :
 									)
 								);
 								?>
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-cta',
-									array(
-										'v' => 'cta',
-										'c' => 'link',
-									)
-								);
-								?>
+								<?php if ( $cta ) : ?>
+									<a href="<?php echo esc_url( $cta['url'] ); ?>" class="link" data-fancybox>
+										<?php echo esc_html( $cta['title'] ); ?>
+									</a>
+								<?php endif; ?>
 							</div>
 						<?php endwhile; ?>
 					</div>
