@@ -2239,13 +2239,13 @@ if ( have_rows( 'modules' ) ) :
 								<div class="awards-content-block awards-content-block--<?php echo esc_attr( $padding ); ?><?php echo 'small' == $padding ? ' accordion' : ''; ?>"
 									id="<?php echo $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : ''; ?>">
 									<?php if ( $heading ) : ?>
-										<div class="awards-content-block__heading accordion-header">
+										<div class="awards-content-block__heading<?php echo 'small' == $padding ? ' accordion-header' : ''; ?>">
 											<span class="accordion-header__icon">
 											</span>
 											<h3><?php echo esc_html( $heading ); ?></h3>
 										</div>
 									<?php endif; ?>
-									<div class="accordion-body">
+									<div class="awards-content-block__body<?php echo 'small' == $padding ? ' accordion-body' : ''; ?>">
 										<?php
 										get_template_part_args(
 											'template-parts/content-modules-text',
