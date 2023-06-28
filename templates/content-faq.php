@@ -220,13 +220,13 @@ $args  = array(
 	'tax_query'      => $tax_query,
 );
 $query = new WP_Query( $args );
-?>
-<section class="posts-slider related-posts">
-	<div class="container">
-		<div class="posts-slider__content">
-			<h3 class="posts-slider__heading a-up"><?php echo esc_html( 'Blog and News Section' ); ?></h3>
-		</div>
-		<?php if ( $query->have_posts() ) : ?>
+if ( $query->have_posts() ) :
+	?>
+	<section class="posts-slider related-posts">
+		<div class="container">
+			<div class="posts-slider__content">
+				<h3 class="posts-slider__heading a-up"><?php echo esc_html( 'Blog and News Section' ); ?></h3>
+			</div>
 			<div class="posts-slider__right">
 				<div class="posts-slider__carousel">
 					<?php
@@ -237,9 +237,8 @@ $query = new WP_Query( $args );
 					?>
 				</div>
 			</div>
-			<?php
-		endif;
-		wp_reset_postdata();
-		?>
-	</div>
-</section>
+		</div>
+	</section>
+	<?php
+endif;
+wp_reset_postdata();
