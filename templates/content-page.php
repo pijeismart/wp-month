@@ -320,9 +320,27 @@ if ( have_rows( 'modules' ) ) :
 								<?php echo esc_html__( 'Leave Feedback' ); ?>
 							</h5>
 							<ul class="navigation-bar__social__items">
-								<li class="navigation-bar__social__item facebook"><a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" alt="twitter" class="navigation-bar__social__item__img"></a></li>
-								<li class="navigation-bar__social__item twitter"><a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( get_the_permalink() ); ?>&text=<?php echo esc_html( get_the_title() ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></a></li>
-								<li class="navigation-bar__social__item share" data-url=""><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/share.svg' ); ?>" alt="linkedin" class="navigation-bar__social__item__img"></li>
+								<li class="navigation-bar__social__item instagram">
+									<a href="">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/instagram.svg' ); ?>" 
+											alt="instagram" 
+											class="navigation-bar__social__item__img">
+									</a>
+								</li>
+								<li class="navigation-bar__social__item facebook">
+									<a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" 
+											alt="twitter" 
+											class="navigation-bar__social__item__img">
+									</a>
+								</li>
+								<li class="navigation-bar__social__item twitter">
+									<a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( get_the_permalink() ); ?>&text=<?php echo esc_html( get_the_title() ); ?>">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" 
+											alt="linkedin" 
+											class="navigation-bar__social__item__img">
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
