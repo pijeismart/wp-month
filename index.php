@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php breadcrumb_trail( 'echo=1&separator=/' ); ?>
+<?php // breadcrumb_trail( 'echo=1&separator=/' ); ?>
 
 <?php if ( have_posts() ) : ?>
 
