@@ -1,10 +1,5 @@
 .case-results {
-  margin: 8rem 0;
-
-  @include mq(tablet) {
-    margin: 12rem 0 20rem;
-  }
-
+  margin-block: 5rem;
   .container {
     @include mq(desktop-small) {
       display: flex;
