@@ -6593,6 +6593,180 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_649c10a10c77f",
+                            "label": "Mobile Banner",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_649c10ae0c780",
+                            "label": "Mobile Lottie",
+                            "name": "mobile_lottie",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_649c10d355e7e",
+                            "label": "Heading",
+                            "name": "mobile_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_649c10dc55e7f",
+                            "label": "Video",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_649c10f655e80",
+                            "label": "Copy",
+                            "name": "mobile_copy",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_649c110655e81",
+                            "label": "Mobile CTA",
+                            "name": "mobile_cta",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_649c111255e82",
+                            "label": "Mobile Button",
+                            "name": "mobile_button",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_649c1ccc32124",
+                            "label": "Case Results",
+                            "name": "case_results",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "case_result"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "elements": ""
+                        },
+                        {
+                            "key": "field_649c1cd932125",
+                            "label": "Case Results Description",
+                            "name": "case_results_description",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ],
                     "min": "",
@@ -6636,5 +6810,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687883720
+    "modified": 1687952622
 }

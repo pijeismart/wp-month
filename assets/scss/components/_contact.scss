@@ -1,10 +1,23 @@
+.contact + .awards {
+  margin-block: 5rem;
+  @include mq(tablet) {
+    margin-block: 10rem;
+  }
+  @include mq(desktop-wide) {
+    margin-block: 15rem;
+  }
+}
 .contact {
+  @include mq(tablet, max) {
+    padding: 4rem 2rem 0;
+    background-color: $clr-white-off;
+  }
   @include mq(tablet) {
     display: flex;
   }
   &-left {
-    background-color: $clr-white-off;
     @include mq(tablet) {
+      background-color: $clr-white-off;
       padding: 10.5rem var(--gutter) 6.5rem var(--gutter);
       max-width: vw(900px);
     }
@@ -26,9 +39,12 @@
     }
   }
   &-content {
-    margin-bottom: 6.4rem;
+    margin-bottom: 2.4rem;
     @include base-typography();
     color: $clr-black;
+    @include mq(tablet) {
+      margin-bottom: 6.4rem;
+    }
   }
   &-faqs {
     padding: 3rem;
@@ -130,24 +146,41 @@
     }
   }
   .contact-form {
-    &__cards__item {
-      padding: 2.4rem;
-      width: calc((100% - 4rem) / 3);
-      height: auto;
-      background-color: $clr-white;
-      .item-eyebrow {
+    &__cards {
+      @include mq(tablet, max) {
         margin-bottom: 2.4rem;
       }
+    }
+    &__cards__item {
+      padding: 1.6rem;
+      width: calc((100% - 1.6rem) / 3);
+      height: auto;
+      background-color: $clr-white;
+      @include mq(tablet) {
+        padding: 2.4rem;
+        width: calc((100% - 4rem) / 3);
+      }
+      .item-eyebrow {
+        margin-bottom: 2.4rem;
+        opacity: 0.6;
+      }
       .item-content {
-        margin-bottom: 1.6rem;
         font-size: 3.2rem;
         line-height: 1;
+        @include mq(tablet, max) {
+          margin-top: auto; 
+        }
         @include mq(tablet) {
+          margin-bottom: 1.6rem;
           font-size: 4rem;
         }
       }
       .item-sub_title {
         opacity: 0.6;
+        @include mq(tablet, max) {
+          font-size: 8px;
+          line-height: 1.5;
+        }
       }
       &__rating {
         margin-top: 0;
@@ -155,6 +188,9 @@
     }
     &__form {
       max-width: 100%;
+      @include mq(tablet, max) {
+        margin-top: 6.4rem;
+      }
       .gform_button {
         padding: 1.6rem 3.2rem;
         width: 100%;
@@ -207,6 +243,65 @@
       right: 0;
       transform: translate(50%, -50%);
       @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%23AEDF82"/><path d="M15 12L19 16L15 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    }
+  }
+  &-mobile {
+    margin-bottom: 2.4rem;
+    &__lottie {
+      @include mq(tablet, max) {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+      lottie-player {
+        margin-inline: auto;
+      }
+    }
+    &__heading {
+      margin-bottom: 2.4rem;
+      text-align: center;
+    }
+    .video-player {
+      margin-bottom: 2.4rem;
+    }
+    &__link {
+      display: block;
+      margin-bottom: 8px;
+      font: 700 1.3rem/1.55 $f-text;
+      letter-spacing: 0.13px;
+      text-decoration: underline;
+      text-decoration-line: 0.3px;
+      color: $clr-black;
+    }
+    &__copy {
+      margin-bottom: 3.2rem;
+      font: 400 1.3rem/1.55 $f-text;
+      letter-spacing: 0.13px;
+      color: $clr-black;
+    }
+    &__cta {
+      margin-bottom: 2.4rem;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .cards-slider {
+    margin-inline: calc(var(--gutter) * -1);
+    &__subheading {
+      margin-bottom: 1.6rem;
+    }
+    &__bottom {
+      padding-inline: 2rem;
+    }
+    .btn-arrow {
+      appearance: none;
+      background: transparent;
+      border: none;
+    }
+    .btn-prev {
+      margin-right: 2.4rem;
     }
   }
 }

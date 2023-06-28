@@ -349,6 +349,12 @@
         autoplaySpeed: 2000,
         speed: 1000
       });
+      $('.cards-slider--compact .btn-prev').on('click', function() {
+        $('.cards-slider--compact .cards-slider__carousel').slick('slickPrev');
+      });
+      $('.cards-slider--compact .btn-next').on('click', function() {
+        $('.cards-slider--compact .cards-slider__carousel').slick('slickNext');
+      });
     },
 
     /**

@@ -2446,8 +2446,11 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact' == get_row_layout() ) :
-			$phone  = get_sub_field( 'notice_phone' );
-			$lottie = get_sub_field( 'lottie' );
+			$phone         = get_sub_field( 'notice_phone' );
+			$lottie        = get_sub_field( 'lottie' );
+			$mobile_lottie = get_sub_field( 'mobile_lottie' );
+			$video_url     = get_sub_field( 'video' );
+			$case_results  = get_sub_field( 'case_results' );
 			?>
 			<!-- Conctact -->
 			<section class="contact">
@@ -2460,13 +2463,76 @@ if ( have_rows( 'modules' ) ) :
 							<span><?php echo esc_html__( 'Contact Montlick & Associates' ); ?></span>
 						</li>
 					</ul>
+					<div class="contact-mobile d-sm-only">
+						<?php if ( $mobile_lottie ) : ?>
+							<div class="contact-mobile__lottie">
+								<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+								<lottie-player src="<?php echo esc_url( $mobile_lottie ); ?>" background="transparent" speed="1" style="width: 280px;height:180px" loop autoplay></lottie-player>
+							</div>
+						<?php endif; ?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'mobile_heading',
+								't'  => 'h2',
+								'tc' => 'h1 contact-mobile__heading a-up a-delay-1',
+							)
+						);
+						?>
+						<?php if ( $video_url ) : ?>
+						<a href="<?php echo esc_url( $video_url ); ?>" class="video-player a-up a-delay-2" data-fancybox>
+							<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+							<span class="video-play">
+								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+							</span>
+						</a>
+						<?php endif; ?>
+						<?php if ( get_sub_field( 'faqs' ) ) : ?>
+							<a href="#contact-faq" class="contact-mobile__link a-up a-delay-2">
+								<?php echo esc_html__( 'Read Frequently ASked Questions (click here)' ); ?>
+							</a>
+						<?php endif; ?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'mobile_copy',
+								't'  => 'div',
+								'tc' => 'contact-mobile__copy a-up a-delay-3',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v'  => 'mobile_cta',
+								'c'  => 'underline-link a-up a-delay-3',
+								'w'  => 'div',
+								'wc' => 'contact-mobile__cta',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v' => 'mobile_button',
+								'c' => 'btn btn-primary a-up a-delay-3',
+								'w' => 'div',
+								'wc' => 'contact-mobile__btn',
+							)
+						);
+						?>
+					</div>
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-text',
 						array(
 							'v'  => 'heading',
 							't'  => 'h1',
-							'tc' => 'contact-heading a-up a-delay-1',
+							'tc' => 'contact-heading a-up a-delay-1 d-md-only',
 						)
 					);
 					?>
@@ -2571,7 +2637,7 @@ if ( have_rows( 'modules' ) ) :
 							while ( have_rows( 'faqs' ) ) :
 								the_row();
 								?>
-								<div class="contact-faq accordion">
+								<div class="contact-faq accordion" id="contact-faq">
 									<?php
 									get_template_part_args(
 										'template-parts/content-modules-text',
@@ -2619,6 +2685,51 @@ if ( have_rows( 'modules' ) ) :
 							?>
 						</div>
 					</div>
+					<div class="cards-slider cards-slider--compact d-sm-only">
+						<?php if ( $case_results ) : ?>
+							<div class="cards-slider__carousel">
+								<?php
+								foreach ( $case_results as $post ) :
+									setup_postdata( $post );
+									get_template_part(
+										'template-parts/loop',
+										'case_result',
+										array(
+											'theme' => 'compact',
+										)
+									);
+								endforeach;
+								?>
+							</div>
+							<?php
+							endif;
+						wp_reset_query();
+						?>
+						<div class="cards-slider__bottom">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'case_results_description',
+									't'  => 'p',
+									'tc' => 'cards-slider__subheading',
+								)
+							);
+							?>
+							<div class="cards-slider__btn">
+								<button class="btn-arrow btn-prev" aria-label="Prev">
+									<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.191061 8.44618L7.23911 15.7913C7.36648 15.9583 7.57877 16 7.7486 16C7.91844 16 8.08827 15.9583 8.21564 15.8331C8.51285 15.5827 8.51285 15.1653 8.2581 14.9149L2.31397 8.65485H18.3207C18.7028 8.65485 19 8.36271 19 8.02884C19 7.69497 18.7028 7.31937 18.3207 7.31937H2.31397L8.2581 1.10103C8.51285 0.850628 8.51285 0.43329 8.21564 0.182887C7.91844 -0.0675162 7.49385 -0.0675162 7.23911 0.22462L0.191061 7.56977C-0.0636871 7.82017 -0.0636871 8.19578 0.191061 8.44618Z" fill="#8DCB7E"/>
+									</svg>
+								</button>
+								<button class="btn-arrow btn-next" aria-label="Next">
+									<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M18.8089 8.44618L11.7609 15.7913C11.6335 15.9583 11.4212 16 11.2514 16C11.0816 16 10.9117 15.9583 10.7844 15.8331C10.4872 15.5827 10.4872 15.1653 10.7419 14.9149L16.686 8.65485H0.67933C0.297207 8.65485 0 8.36271 0 8.02884C0 7.69497 0.297207 7.31937 0.67933 7.31937H16.686L10.7419 1.10103C10.4872 0.850628 10.4872 0.43329 10.7844 0.182887C11.0816 -0.0675162 11.5061 -0.0675162 11.7609 0.22462L18.8089 7.56977C19.0637 7.82017 19.0637 8.19578 18.8089 8.44618Z" fill="#8DCB7E"/>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-shortcode',
@@ -2632,7 +2743,7 @@ if ( have_rows( 'modules' ) ) :
 				</div>
 				<div class="contact-right">
 					<?php if ( $phone ) : ?>
-					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-cta">
+					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-cta d-md-only">
 						<?php
 						get_template_part_args(
 							'template-parts/content-modules-text',
