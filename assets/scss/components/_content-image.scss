@@ -385,31 +385,25 @@
   }
   &__testimonial {
     position: relative;
-    padding: 7.7rem 3.2rem 4rem;
-    background-color: $clr-green;
+    padding: 2.4rem;
+    background-color: $clr-green-light;
     border-radius: 1rem;
     font: 400 2.4rem/2.7rem $f-heading;
     font-style: italic;
     @include mq(tablet) {
-      padding: 10.7rem 6rem 7rem;
-      max-width: 65rem;
+      max-width: 64rem;
       font-size: 3.6rem;
       line-height: 4.2rem;
+      letter-spacing: -0.36px;
     }
     &::before {
       position: absolute;
       content: '“';
-      top: 4rem;
-      left: 3.2rem;
-      font: 400 2.7rem/1 $f-heading;
+      top: -1.8rem;
+      left: 1.8rem;
+      font: 400 9rem/1 $f-heading;
       letter-spacing: 0.02em;
-      @include mq(tablet) {
-        top: 7rem;
-        left: 6rem;
-      }
-    }
-    &::after {
-      content: '”';
+      color: $clr-green;
     }
   }
 }
