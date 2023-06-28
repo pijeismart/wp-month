@@ -36,17 +36,14 @@
         }
     }
     &__content {
+        color: $clr-white-off;
         @include mq(tablet) {
             width: 40%;
         }
         &:only-child {
             width: 100%;
         }
-        * {
-            margin-bottom: 2rem;
-            color: $clr-white-off;
-            font-weight: 400;
-        }
+        @include base-typography;
         h3 {
             font-size: 4rem;
             line-height: 4.6rem;
@@ -59,5 +56,6 @@
     &__cta {
         font-size: 1.8rem;
         font-weight: 700;
+        color: $clr-white-off;
     }
 }
