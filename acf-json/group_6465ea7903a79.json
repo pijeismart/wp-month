@@ -1199,10 +1199,10 @@
                         },
                         {
                             "key": "field_646d29bcb6c61",
-                            "label": "Claim Type",
-                            "name": "claim_type",
+                            "label": "Experience Links Source",
+                            "name": "experience_links_source",
                             "aria-label": "",
-                            "type": "taxonomy",
+                            "type": "select",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -1219,7 +1219,82 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "choices": {
+                                "claim_type": "Claim Type",
+                                "case_category": "Case Category"
+                            },
+                            "default_value": "claim_type",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_649c27692ff68",
+                            "label": "Claim Type",
+                            "name": "claim_type",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "==",
+                                        "value": "experience-testimonial"
+                                    },
+                                    {
+                                        "field": "field_646d29bcb6c61",
+                                        "operator": "==",
+                                        "value": "claim_type"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "taxonomy": "claim_type",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "multi_select",
+                            "allow_null": 0,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_649c27af2ff6b",
+                            "label": "Case Category",
+                            "name": "case_category",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "==",
+                                        "value": "experience-testimonial"
+                                    },
+                                    {
+                                        "field": "field_646d29bcb6c61",
+                                        "operator": "==",
+                                        "value": "case_category"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "case_category",
                             "add_term": 1,
                             "save_terms": 0,
                             "load_terms": 0,
@@ -6827,5 +6902,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687954438
+    "modified": 1687955548
 }

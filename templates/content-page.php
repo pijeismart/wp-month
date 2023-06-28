@@ -546,7 +546,8 @@ if ( have_rows( 'modules' ) ) :
 								);
 								?>
 								<?php
-								$claim_types = get_sub_field( 'claim_type' );
+								$source_type = get_sub_field( 'experience_links_source' ) ? get_sub_field( 'experience_links_source' ) : 'claim_type';
+								$claim_types = get_sub_field( $source_type );
 								if ( $claim_types ) :
 									$args  = array(
 										'post_type'      => 'city',
@@ -555,7 +556,7 @@ if ( have_rows( 'modules' ) ) :
 										'posts_per_page' => 10,
 										'tax_query'      => array(
 											array(
-												'taxonomy' => 'claim_type',
+												'taxonomy' => $source_type,
 												'field'    => 'term_id',
 												'terms'    => $claim_types,
 											),
