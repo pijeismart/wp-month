@@ -3,12 +3,15 @@
  * Post Slider Section
  */
 
-$source        = get_sub_field( 'content_type' );
-$claim_type    = get_sub_field( 'claim_type' );
-$case_category = get_sub_field( 'case_category' );
-$custom_posts  = get_sub_field( 'custom_posts' );
-$toc_title     = get_sub_field( 'toc_title' );
-$anchor_id     = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : get_sub_field( 'anchor_id' );
+$o = $args['option'] ? $args['option'] : 's';
+
+$source        = 'f' == $o ? get_field( 'content_type' ) : get_sub_field( 'content_type' );
+$claim_type    = 'f' == $o ? get_field( 'claim_type' ) : get_sub_field( 'claim_type' );
+$case_category = 'f' == $o ? get_field( 'case_category' ) : get_sub_field( 'case_category' );
+$custom_posts  = 'f' == $o ? get_field( 'custom_posts' ) : get_sub_field( 'custom_posts' );
+
+$toc_title = get_sub_field( 'toc_title' );
+$anchor_id = $toc_title ? str_replace( ' ', '-', strtolower( $toc_title ) ) : get_sub_field( 'anchor_id' );
 
 if ( 'custom' != $source ) :
 	$args = array(

@@ -141,7 +141,7 @@ if ( $heading || $video || $image ) :
 								array(
 									'v' => 'card_cta',
 									'c' => 'community-banner__card-cta a-up a-delay-2',
-									'o'  => 'f',
+									'o' => 'f',
 								)
 							);
 							?>
@@ -957,66 +957,14 @@ if ( ! get_field( 'disable_content_video' ) ) :
 <?php endif; ?>
 
 <?php
-$posts = get_field( 'c2_posts', 'options' );
+get_template_part(
+	'template-parts/section',
+	'post-slider',
+	array(
+		'option' => 'f',
+	)
+);
 ?>
-<!-- Posts Slider -->
-<section class="posts-slider">
-	<div class="container">
-		<div class="posts-slider__content">
-			<?php
-			get_template_part_args(
-				'template-parts/content-modules-text',
-				array(
-					'v'  => 'c2_heading',
-					't'  => 'h3',
-					'tc' => 'posts-slider__heading a-up',
-					'o'  => 'o',
-				)
-			);
-			?>
-			<?php
-			get_template_part_args(
-				'template-parts/content-modules-text',
-				array(
-					'v'  => 'c2_content',
-					't'  => 'div',
-					'tc' => 'posts-slider__copy a-up a-delay-1',
-					'o'  => 'o',
-				)
-			);
-			?>
-			<?php
-			get_template_part_args(
-				'template-parts/content-modules-cta',
-				array(
-					'v' => 'c2_cta',
-					'c' => 'link a-up a-delay-2',
-					'o' => 'o',
-				)
-			);
-			?>
-		</div>
-		<?php if ( $posts ) : ?>
-			<div class="posts-slider__right">
-				<div class="posts-slider__carousel">
-					<?php
-					foreach ( $posts as $post ) :
-						setup_postdata( $post );
-						get_template_part( 'template-parts/loop', 'post-card' );
-					endforeach;
-					?>
-				</div>
-				<div class="slider-controls d-md-only">
-					<div class="slider-pagination">1 / 2</div>
-					<button class="link slider-next" tabindex="0">Next</button>
-				</div>
-			</div>
-			<?php
-		endif;
-		wp_reset_postdata();
-		?>
-	</div>
-</section>
 
 <?php
 if ( ! get_field( 'disable_footer_cta' ) ) :
