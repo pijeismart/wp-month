@@ -447,3 +447,38 @@ function my_custom_wp_trim_excerpt( $text ) {
 	}
 	return $text;
 }
+
+if ( ! function_exists( 'am_get_the_post_thumbnail' ) ) {
+	/***
+	 * Get post thumbnail, if not exist it grabs default image from case_category or claim_type gallery
+	 */
+	function am_get_the_post_thumbnail( $size = 'post-thumbnail' ) {
+		global $post;
+		if ( has_post_thumbnail() ) {
+			return get_the_post_thumbnail_url( $post, $size );
+		} else {
+			$case_categories = get_the_terms( $post, 'case_category' );
+			$claim_types     = get_the_terms( $post, 'claim_type' );
+			$date            = get_post_timestamp();
+			$timestamp       = substr( $date, -1 );
+			if ( $case_categories ) {
+				foreach ( $case_categories as $case_category ) {
+					$images = get_field( 'default_post_images', 'case_category_' . $case_category->term_id );
+					if ( $images ) {
+						$index = $timestamp % count( $images );
+						return $images[ $index ]['url'];
+					}
+				}
+			}
+			if ( $claim_types ) {
+				foreach ( $claim_types as $claim_type ) {
+					$images = get_field( 'default_post_images', 'claim_type_' . $claim_type->term_id );
+					if ( $images ) {
+						$index = $timestamp % count( $images );
+						return $images[ $index ]['url'];
+					}
+				}
+			}
+		}
+	}
+}

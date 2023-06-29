@@ -12,14 +12,8 @@ if ( $author_id ) {
 }
 
 // Get post fields
-$terms     = get_the_terms( get_the_ID(), 'case_category' );
-if ( $terms ) {
-	$term_list = wp_list_pluck( $terms, 'slug' );
-	$post_img  = get_field( 'default_post_image', 'case_category_' . $terms[0]->term_id );
-}
-if ( has_post_thumbnail() ) :
-	$post_img = get_the_post_thumbnail_url( $post, 'large' );
-endif;
+$terms    = get_the_terms( get_the_ID(), 'case_category' );
+$post_img = am_get_the_post_thumbnail();
 ?>
 <!-- Post banner -->
 <section class="post-banner">
@@ -127,7 +121,7 @@ endif;
 
 <!-- Related Posts -->
 <?php
-$args  = array(
+$args = array(
 	'post_type'      => 'post',
 	'post__not_in'   => array( get_the_ID() ),
 	'post_status'    => 'publish',
