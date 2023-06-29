@@ -207,6 +207,8 @@
         );
         helper.isElementExist('.hc-videos', theme.initHCVideos);
         helper.isElementExist('.awards-content', theme.initAwardsContent);
+        helper.isElementExist('.js-loadmore-wrapper', theme.initJSLoadmore);
+
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
           const $cards = $(this).closest('.cards-slider');
@@ -279,8 +281,8 @@
           e.preventDefault();
           e.stopPropagation();
           const $form = $(this).closest('form'),
-                $parent = $(this).closest('.gform_page'),
-                $next = $parent.next();
+            $parent = $(this).closest('.gform_page'),
+            $next = $parent.next();
           $next.show();
           // $form.trigger("submit",[true]);
           return false;
@@ -503,6 +505,7 @@
         const caseCat = $grid.attr('data-case-cat');
         const state = $grid.attr('data-state');
         const s = $grid.attr('data-s');
+        const type = $grid.attr('data-theme');
         $.ajax({
           url: ajaxurl,
           type: 'POST',
@@ -514,6 +517,7 @@
             post_type: postType,
             state,
             s,
+            type,
             posts_per_page: postsPerPage
           },
           beforeSend() {
@@ -763,6 +767,28 @@
         $('.accordion-header', $accordion).addClass('active');
         $('.accordion-body', $accordion).show();
       }
+    },
+    /**
+     * init js loadmore
+     */
+    initJSLoadmore() {
+      $('.js-loadmore-btn').on('click', function() {
+        const $wrapper = $(this).closest('.js-loadmore-wrapper');
+        const $grid = $('.js-loadmore-grid', $wrapper);
+        const $btnWrapper = $(this).closest('.js-loadmore-btn-wrapper');
+        let page = parseInt($(this).attr('data-page')),
+          postsPerPage = parseInt($(this).attr('data-posts-per-page')),
+          totalCount = $('.js-loadmore-child', $grid).length;
+        $btnWrapper.hide();
+        page += 1;
+        $(this).attr('data-page', page);
+        $('.js-loadmore-child', $grid).each(function(index) {
+          if (page * postsPerPage > index) $(this).show();
+        });
+        if (totalCount >= page * postsPerPage) {
+          $btnWrapper.show();
+        }
+      });
     }
   };
 

@@ -1,0 +1,42 @@
+.customer-quotes {
+  margin-block: 5rem;
+  @include mq(tablet) {
+    margin-block: 8rem;
+  }
+  &__heading {
+    margin-bottom: 3.2rem;
+    @include mq(tablet) {
+      margin-bottom: 6.4rem;
+    }
+  }
+  &__grid {
+    display: grid;
+    @include mq(tablet) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-gap: 2rem;
+    }
+  }
+  &__quote {
+    padding: 1.6rem;
+    background-color: $clr-white-off;
+    border-radius: 1.2rem;
+    font: 400 1.6rem/1.7 $f-text;
+    color: $clr-black;
+    font-style: italic;
+    @include mq(tablet) {
+      padding: 3.2rem;
+    }
+    &:nth-child(n+7) {
+      display: none;
+    }
+  }
+  &__loadmore {
+    &__wrapper {
+      margin-top: 3.2rem;
+      text-align: center;
+      @include mq(tablet) {
+        margin-top: 6.4rem;
+      }
+    }
+  }
+}

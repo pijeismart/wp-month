@@ -43,7 +43,7 @@ if ( have_rows( 'modules' ) ) :
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
-					if ( 'home' != $type && !$disable_breadcrumb ) :
+					if ( 'home' != $type && ! $disable_breadcrumb ) :
 						$parents = get_post_parent( $post );
 						?>
 						<ul class="breadcrumbs a-up d-md-only">
@@ -895,7 +895,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v' => 'map_cta',
 								'c' => 'link link-white a-up a-delay-2',
-								'o'  => 'o',
+								'o' => 'o',
 							)
 						);
 						?>
@@ -1059,11 +1059,14 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'contact_form' == get_row_layout() ) :
 			$form       = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
+			$form_only  = get_sub_field( 'form_only' );
 			$has_border = get_sub_field( 'content_has_border' );
 			?>
 			<!-- Contact Form -->
-			<section class="contact-form<?php echo $has_border ? ' contact-form--border' : ''; ?>"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+			<section class="contact-form<?php echo $has_border ? ' contact-form--border' : ''; ?><?php echo $form_only ? ' contact-form--only' : ''; ?>"
+				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
+					<?php if ( ! $form_only ) : ?>
 					<div class="contact-form__main">
 						<?php if ( have_rows( 'cards' ) ) : ?>
 							<div class="contact-form__cards">
@@ -1188,6 +1191,7 @@ if ( have_rows( 'modules' ) ) :
 							?>
 						</div>
 					</div>
+					<?php endif; ?>
 					<div class="contact-form__form a-up a-delay-1">
 						<?php
 						get_template_part_args(
@@ -1454,7 +1458,7 @@ if ( have_rows( 'modules' ) ) :
 			$image     = get_sub_field( 'image' );
 			$video     = get_sub_field( 'video' );
 			$video_url = get_sub_field( 'video_url' );
-			$video_src  = $video_url ? $video_url : $video;
+			$video_src = $video_url ? $video_url : $video;
 			?>
 			<!-- Section Video Content -->
 			<section class="video-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -1481,8 +1485,8 @@ if ( have_rows( 'modules' ) ) :
 										'template-parts/content-modules',
 										'media',
 										array(
-											'image'            => $image,
-											'video'            => $video,
+											'image' => $image,
+											'video' => $video,
 											'disable_autoplay' => true,
 										)
 									);
@@ -2497,9 +2501,9 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v' => 'mobile_button',
-								'c' => 'btn btn-primary a-up a-delay-3',
-								'w' => 'div',
+								'v'  => 'mobile_button',
+								'c'  => 'btn btn-primary a-up a-delay-3',
+								'w'  => 'div',
 								'wc' => 'contact-mobile__btn',
 							)
 						);
@@ -2806,6 +2810,176 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
+				</div>
+			</section>
+			<?php
+		elseif ( 'case_results_grid' == get_row_layout() ) :
+			$source = get_sub_field( 'content_source' );
+			$args   = array(
+				'post_type'      => 'case_result',
+				'posts_per_page' => 12,
+				'post_status'    => 'publish',
+			);
+			if ( 'custom' == $source ) :
+				$args['post__in'] = get_sub_field( 'case_results' );
+			endif;
+			$query = new WP_Query( $args );
+			?>
+			<!-- Case Results Grid -->
+			<section class="case-results-alt">
+				<div class="container">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'heading',
+							't'  => 'h2',
+							'tc' => 'case-results-alt__heading a-up',
+						)
+					);
+					?>
+					<?php if ( $query->have_posts() ) : ?>
+						<div class="section-archive__posts case-results-alt__grid"
+							data-post-type="case_result"
+							data-posts-per-page="12"
+							data-theme="alt"
+							data-paged="1">
+							<?php
+							while ( $query->have_posts() ) :
+								$query->the_post();
+								get_template_part(
+									'template-parts/loop',
+									'case_result-alt'
+								);
+							endwhile;
+							?>
+						</div>
+						<?php if ( $query->max_num_pages > 1 ) : ?>
+							<div class="cpt-load-more">
+								<button class="underline-link cpt-load-more-btn">
+									<?php echo esc_html__( 'Load More' ); ?>
+								</button>
+							</div>
+						<?php endif; ?>
+						<?php
+						endif;
+					wp_reset_postdata();
+					?>
+				</div>
+			</section>
+			<?php
+		elseif ( 'testimonial_videos' == get_row_layout() ) :
+			?>
+			<!-- Testimonial Videos -->
+			<section class="testimonial-videos">
+				<div class="container js-loadmore-wrapper">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'heading',
+							't'  => 'h2',
+							'tc' => 'testimonial-videos__heading a-up',
+						)
+					);
+					?>
+					<?php if ( have_rows( 'videos' ) ) : ?>
+						<div class="testimonial-videos__grid a-up a-delay-1 js-loadmore-grid">
+							<?php
+							while ( have_rows( 'videos' ) ) :
+								the_row();
+								$video_url = get_sub_field( 'video' );
+								?>
+								<?php if ( $video_url ) : ?>
+									<div class="testimonial-video js-loadmore-child">
+										<a href="<?php echo esc_url( $video_url ); ?>" class="video-player" data-fancybox>
+											<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+											<span class="video-play">
+												<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+											</span>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'video_title',
+													't'  => 'div',
+													'tc' => 'video-player__title',
+												)
+											);
+											?>
+										</a>
+										<div class="testimonial-video__cotnent">
+										<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'video_title',
+													't'  => 'p',
+													'tc' => 'testimonial-video__title',
+												)
+											);
+										?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'content',
+													't'  => 'p',
+													'tc' => 'testimonial-video__copy',
+												)
+											);
+											?>
+										</div>
+									</div>
+								<?php endif; ?>
+							<?php endwhile; ?>
+						</div>
+						<?php if ( count( get_sub_field( 'videos' ) ) > 4 ) : ?>
+							<div class="testimonial-videos__loadmore__wrapper js-loadmore-btn-wrapper a-up a-delay-2">
+								<button class="underline-link testimonial-videos__loadmore js-loadmore-btn" data-page="1" data-posts-per-page="4"><?php echo esc_html__( 'Load More' ); ?></button>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
+				</div>
+			</section>
+			<?php
+		elseif ( 'customer_quotes' == get_row_layout() ) :
+			?>
+			<!-- Customer Quotes -->
+			<section class="customer-quotes">
+				<div class="container js-loadmore-wrapper">
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'heading',
+							't'  => 'h2',
+							'tc' => 'customer-quotes__heading a-up',
+						)
+					);
+					?>
+					<?php if ( have_rows( 'quotes' ) ) : ?>
+						<div class="customer-quotes__grid js-loadmore-grid a-up a-delay-1">
+							<?php
+							while ( have_rows( 'quotes' ) ) :
+								the_row();
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'quote',
+										't'  => 'div',
+										'tc' => 'customer-quotes__quote js-loadmore-child',
+									)
+								);
+							endwhile;
+							?>
+						</div>
+						<?php if ( count( get_sub_field( 'quotes' ) ) > 1 ) : ?>
+							<div class="customer-quotes__loadmore__wrapper js-loadmore-btn-wrapper a-up a-delay-2">
+								<button class="underline-link js-loadmore-btn" data-page="1" data-posts-per-page="6"><?php echo esc_html__( 'Load More' ); ?></button>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div>
 			</section>
 		<?php endif; ?>

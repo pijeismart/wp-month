@@ -1,11 +1,12 @@
 <?php
 global $post;
 $categories = get_the_terms( $post, 'case_category' );
+$post_img   = am_get_the_post_thumbnail( 'post-card' );
 ?>
 <div class="loop-post-card">
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( isset( $post_img ) ) : ?>
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post-card__img">
-			<?php the_post_thumbnail( 'post-card' ); ?>
+			<img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 		</a>
 	<?php endif; ?>
 	<div class="loop-post-card__content">

@@ -327,6 +327,7 @@ function ajax_cpt() {
 	$case_cat       = $_POST['caseCat'];
 	$state          = $_POST['state'];
 	$s              = $_POST['s'];
+	$theme          = $_POST['type'] ? '-' . $_POST['type'] : '';
 	$args           = array(
 		'post_type'      => $type,
 		'posts_per_page' => $posts_per_page,
@@ -361,7 +362,7 @@ function ajax_cpt() {
 		ob_start();
 		while ( $query->have_posts() ) :
 			$query->the_post();
-			get_template_part( 'template-parts/loop', $type );
+			get_template_part( 'template-parts/loop', $type . $theme );
 		endwhile;
 	else :
 		echo '<h2 class="no-results">No results.</h2>';

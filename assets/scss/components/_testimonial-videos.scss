@@ -1,0 +1,40 @@
+.testimonial-videos {
+  margin-block: 5rem;
+  @include mq(tablet) {
+    margin-block: 8rem;
+  }
+  &__heading {
+    margin-bottom: 3.2rem;
+    text-transform: capitalize;
+    @include mq(tablet) {
+      margin-bottom: 6.4rem;
+    }
+  }
+  &__grid {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 4rem 2rem;
+    }
+  }
+  &__loadmore {
+    &__wrapper {
+      margin-top: 3.2rem;
+      text-align: center;
+      @include mq(tablet) {
+        margin-top: 6.4rem;
+      }
+    }
+  }
+  .testimonial-video {
+    .video-player {
+      margin-bottom: 2.4rem;
+    }
+    &__title {
+      font-weight: 700;
+    }
+    &:nth-child(n+5) {
+      display: none;
+    }
+  }
+}

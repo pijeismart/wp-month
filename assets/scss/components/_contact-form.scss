@@ -275,4 +275,29 @@
   .contact-form__content__content .rplg-stars svg {
     margin-bottom: 0;
   }
+  &--only {
+    padding-block: 3rem;
+    background-color: $clr-navy;
+    @include mq(tablet) {
+      padding-block: 6rem;
+    }
+    .contact-form__form {
+      margin-inline: auto;
+      padding: 0;
+      width: 100%;
+      @include mq(tablet) {
+        max-width: 64.5rem;
+        width: 100%;
+      }
+      &__form {
+        width: 100%;
+      }
+      .gform_button {
+        display: block;
+        width: 100%;
+        padding: 1.6rem 3.2rem;
+        background-image: none;
+      }
+    }
+  }
 }

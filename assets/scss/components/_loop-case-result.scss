@@ -1,0 +1,52 @@
+.loop-case-result {
+  display: flex;
+  padding: 2.4rem;
+  border: 1px solid $clr-border;
+  border-radius: 1rem;
+  flex-direction: column;
+  @include mq(tablet) {
+    padding: 4rem 2.4rem;
+  }
+  &__pricing {
+    margin-bottom: 8px;
+    font: 400 4rem/1 $f-text;
+    letter-spacing: -2.24px;
+    color: $clr-green;
+    text-align: center;
+    @include mq(tablet) {
+      font-size: 5.6rem;
+    }
+  }
+  &__unit {
+    margin-bottom: 2rem;
+    font: 700 1.4rem/1.5 $f-text;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: $clr-navy;
+    text-align: center;
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+    }
+  }
+  &__heading {
+    margin-bottom: 8px;
+    font: 700 1.6rem/1.55 $f-text;
+    color: $clr-black;
+    @include mq(tablet) {
+      min-height: 7.5rem;
+    }
+  }
+  &__content {
+    margin-bottom: 1.6rem;
+    font: 400 1.6rem/1.55 $f-text;
+    letter-spacing: 0.16px;
+    color: $clr-black;
+    @include max-line(5);
+    @include mq(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__cta {
+    margin-top: auto;
+  }
+}
