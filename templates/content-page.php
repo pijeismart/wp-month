@@ -2444,10 +2444,10 @@ if ( have_rows( 'modules' ) ) :
 					</ul>
 					<div class="contact-mobile d-sm-only">
 						<?php if ( $mobile_lottie ) : ?>
-							<div class="contact-mobile__lottie">
+							<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-mobile__lottie">
 								<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 								<lottie-player src="<?php echo esc_url( $mobile_lottie ); ?>" background="transparent" speed="1" style="width: 280px;height:180px" loop autoplay></lottie-player>
-							</div>
+							</a>
 						<?php endif; ?>
 						<?php
 						get_template_part_args(
@@ -2764,7 +2764,7 @@ if ( have_rows( 'modules' ) ) :
 						</div>
 					</a>
 					<?php endif; ?>
-					<div class="contact-form__form a-up a-delay-1">
+					<div class="contact-form__form a-up a-delay-1" id="contact-form">
 						<?php
 						get_template_part_args(
 							'template-parts/content-modules-text',
