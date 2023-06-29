@@ -208,6 +208,7 @@
         helper.isElementExist('.hc-videos', theme.initHCVideos);
         helper.isElementExist('.awards-content', theme.initAwardsContent);
         helper.isElementExist('.js-loadmore-wrapper', theme.initJSLoadmore);
+        helper.isElementExist('.athlete-winners__block__gallery', theme.initAthleteGallery);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -788,6 +789,31 @@
         if (totalCount >= page * postsPerPage) {
           $btnWrapper.show();
         }
+      });
+    },
+    /**
+     * init athlete gallery
+     */
+    initAthleteGallery() {
+      $('.athlete-winners__block__gallery').slick({
+        arrows: true,
+        dots: false,
+        autoplay: true,
+        slidesToShow: 4,
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
       });
     }
   };

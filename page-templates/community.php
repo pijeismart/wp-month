@@ -4,6 +4,8 @@
  * Template Post Type: page
  */
 
+use PgSql\Lob;
+
 get_header();
 
 global $post;
@@ -890,6 +892,310 @@ if ( get_field( 'gallery_heading' ) || $gallery ) :
 		</div>
 	</section>
 <?php endif; ?>
+
+<?php
+$enable_athletes = get_field( 'enable_section_athelets' );
+if ( $enable_athletes ) :
+	?>
+	<!-- Athletes -->
+	<section class="hc-videos hc-videos--athlete">
+		<div class="container">
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'athelets_heading',
+					't'  => 'h2',
+					'tc' => 'hc-videos__heading a-up',
+					'o'  => 'f',
+				)
+			);
+			?>
+			<?php if ( have_rows( 'athelets_videos' ) ) : ?>
+				<?php
+				$years = array();
+				while ( have_rows( 'athelets_videos' ) ) :
+					the_row();
+					$year = get_sub_field( 'year' );
+					if ( $year && ! in_array( $year, $years ) ) {
+						$years[] = $year;
+					}
+				endwhile;
+				?>
+				<div class="hc-videos__toolbar">
+					<div class="hc-videos__toolbar-label a-up"><?php echo esc_html__( 'Advance Filter' ); ?>:</div>
+					<div class="hc-videos__filter">
+						<select name="video_year" id="video_year" class="hc-videos__select a-up" jcf-select>
+							<option value="all"><?php echo esc_html__( 'All' ); ?></option>
+							<?php foreach ( $years as $year ) : ?>
+								<option value="<?php echo esc_attr( $year ); ?>"><?php echo esc_html( $year ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+					<div class="hc-videos__search-box a-up a-delay-1">
+						<input class="hc-videos__search" type="search" placeholder="Search for someone">
+					</div>
+				</div>
+				<div class="hc-videos__grid a-up">
+					<?php
+					while ( have_rows( 'athelets_videos' ) ) :
+						the_row();
+						$video = get_sub_field( 'video' );
+						$year  = get_sub_field( 'year' );
+						$week  = get_sub_field( 'week' );
+						if ( $video ) :
+							?>
+							<div class="hc-videos__item hc-videos__item-alt is-active" data-year="<?php echo esc_attr( $year ); ?>">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-image',
+									array(
+										'v'     => 'image',
+										'v2x'   => false,
+										'is'    => false,
+										'is_2x' => false,
+										'c'     => 'hc-videos__item-alt__img',
+									)
+								);
+								?>
+								<div class="hc-videos__item-alt__content">
+									<a href="<?php echo esc_url( $video ); ?>" class="hc-videos__item-alt__play" data-fancybox>
+										<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect x="0.5" y="0.5" width="32" height="32" rx="16" fill="#D8DCE2"/>
+											<path d="M24.5 16.5L12.5 23.4282L12.5 9.5718L24.5 16.5Z" fill="#0A1631"/>
+										</svg>
+									</a>
+									<div class="hc-videos__item-alt__info">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'name',
+												't'  => 'h6',
+												'tc' => 'hc-videos__item-alt__name',
+											)
+										);
+										?>
+										<?php if ( $week ) : ?>
+											<p class="hc-videos__item-alt__week">
+												<?php echo esc_html__( 'Week' ) . $week; ?>
+											</p>
+										<?php endif; ?>
+									</div>
+									<a href="<?php echo esc_url( $video ); ?>" class="underline-link" data-fancybox>
+										<?php echo esc_html__( 'Watch' ); ?>
+									</a>
+								</div>
+							</div>
+						<?php endif; ?>
+					<?php endwhile; ?>
+				</div>
+				<?php if ( count( get_field( 'athelets_videos' ) ) > 12 ) : ?>
+					<div class="hc-videos__loadmore a-up">
+						<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php
+$enable_winners = get_field( 'enable_section_winners' );
+if ( $enable_winners ) :
+	?>
+	<!-- Winners -->
+	<section class="athlete-winners">
+		<div class="container">
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'winners_heading',
+					't'  => 'h2',
+					'tc' => 'athlete-winners__heading a-up',
+					'o'  => 'f',
+				)
+			);
+			?>
+			<?php if ( have_rows( 'athelets_winners' ) ) : ?>
+				<div class="tab athlete-winners__inner">
+					<ul class="tab-links athlete-winners__links">
+						<?php
+						while ( have_rows( 'athelets_winners' ) ) :
+							the_row();
+							$year = get_sub_field( 'year' );
+							if ( $year ) :
+								?>
+								<li>
+									<button class="tab-link<?php echo 1 == get_row_index() ? ' is-active' : ''; ?>" data-target="#tab-<?php echo esc_attr( get_row_index() ); ?>">
+										<?php echo esc_html( $year ); ?>
+									</button>
+								</li>
+								<?php
+							endif;
+						endwhile;
+						?>
+					</ul>
+					<div class="tab-contents athlete-winners__contents">
+						<?php
+						while ( have_rows( 'athelets_winners' ) ) :
+							the_row();
+							$content = get_sub_field( 'content' );
+							$gallery = get_sub_field( 'gallery' );
+							?>
+							<div class="tab-content athlete-winners__content<?php echo 1 == get_row_index() ? ' is-active' : ''; ?>" id="tab-<?php echo esc_attr( get_row_index() ); ?>">
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'heading',
+										't'  => 'h3',
+										'tc' => 'winners-heading',
+									)
+								);
+								?>
+								<?php if ( have_rows( 'cards' ) ) : ?>
+								<div class="winners-cards">
+									<?php
+									while ( have_rows( 'cards' ) ) :
+										the_row();
+										?>
+										<div class="winners-card">
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'title',
+													't'  => 'p',
+													'tc' => 'winners-card__title',
+												)
+											);
+											?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-image',
+												array(
+													'v'     => 'image',
+													'v2x'   => false,
+													'is'    => false,
+													'is_2x' => false,
+													'c'     => 'winners-card__img',
+												)
+											);
+											?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'name',
+													't'  => 'p',
+													'tc' => 'winners-card__name',
+												)
+											);
+											?>
+											<?php
+											get_template_part_args(
+												'template-parts/content-modules-text',
+												array(
+													'v'  => 'description',
+													't'  => 'p',
+													'tc' => 'winners-card__desc',
+												)
+											);
+											?>
+											<a href="javascript:;" class="underline-link" data-fancybox data-src="#winners-card-<?php echo esc_attr( get_row_index() ); ?>">
+												<?php echo esc_html__( 'Watch Video' ); ?>
+											</a>
+											<div class="winners-card-popup" id="winners-card-<?php echo esc_attr( get_row_index() ); ?>">
+												<?php
+												get_template_part_args(
+													'template-parts/content-modules-text',
+													array(
+														'v'  => 'popup_title',
+														't'  => 'h3',
+														'tc' => 'winners-card-popup__title',
+													)
+												);
+												?>
+												<div class="winners-card-popup__content">
+													<?php
+													get_template_part_args(
+														'template-parts/content-modules-image',
+														array(
+															'v'     => 'image',
+															'v2x'   => false,
+															'is'    => false,
+															'is_2x' => false,
+															'c'     => 'winners-card-popup__img',
+														)
+													);
+													?>
+													<div class="winners-card-popup__right">
+														<?php
+														get_template_part_args(
+															'template-parts/content-modules-text',
+															array(
+																'v'  => 'content',
+																't'  => 'div',
+																'tc' => 'winners-card-popup__copy',
+															)
+														);
+														?>
+														<?php if ( have_rows( 'videos' ) ) : ?> 
+														<div class="winners-card-popup__videos">
+															<?php
+															while ( have_rows( 'videos' ) ) :
+																the_row();
+																$video = get_sub_field( 'video' );
+																if ( $video ) :
+																	?>
+																	<div class="embed-container">
+																		<?php echo $video; ?>
+																	</div>
+																	<?php
+																endif;
+															endwhile;
+															?>
+														</div>
+														<?php endif; ?>
+													</div>
+												</div>
+											</div>
+										</div>
+										<?php
+									endwhile;
+									?>
+								</div>
+								<?php endif; ?>
+
+								<?php if ( $content || $gallery ) : ?>
+									<div class="athlete-winners__block">
+										<?php if ( $content ) : ?>
+											<div class="athlete-winners__block__content">
+												<?php echo $content; ?>
+											</div>
+										<?php endif; ?>
+										<?php if ( $gallery ) : ?>
+											<div class="athlete-winners__block__gallery">
+												<?php foreach ( $gallery as $image ) : ?>
+													<a href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox>
+														<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+													</a>
+												<?php endforeach; ?>
+											</div>
+										<?php endif; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						<?php endwhile; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+<?php endif; ?>
+
 
 <?php
 if ( ! get_field( 'disable_content_video' ) ) :

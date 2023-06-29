@@ -843,6 +843,45 @@
         font-size: 1.4rem;
         line-height: 1.6;
       }
+
+      &-alt {
+        &__img {
+          margin-bottom: 1.6rem;
+          display: block;
+          width: 100%;
+          height: 40rem;
+          border-radius: 1.2rem;
+          object-fit: cover;
+          object-position: top;
+        }
+        &__content {
+          display: flex;
+          padding-inline: 1.6rem;
+          align-items: center;
+        }
+        &__play {
+          margin-right: 1.6rem;
+          flex-shrink: 0;
+          line-height: 0;
+        }
+        &__info {
+          flex-grow: 1;
+        }
+        &__name {
+          font: 700 1.8rem/1.55 $f-text;
+          letter-spacing: 0.18px;
+          text-transform: uppercase;
+        }
+        &__week {
+          font: 400 1.6rem/1.44 $f-text;
+          letter-spacing: 0.16px;
+          text-transform: capitalize;
+        }
+        .underline-link {
+          margin-left: 1.6rem;
+          flex-shrink: 0;
+        }
+      }
     }
 
     &__loadmore {
@@ -851,6 +890,62 @@
 
       @include mq(tablet) {
         margin-top: 6.4rem;
+      }
+    }
+
+    &--athlete {
+      .hc-videos__heading {
+        margin-bottom: 3.2rem;
+        text-align: center;
+        @include mq(tablet) {
+          margin-bottom: 6.4rem;
+        }
+      }
+    }
+    &__filter {
+      label {
+        display: block;
+        margin-bottom: 1.6rem;
+        font: 700 1.6rem/1.6 $f-text;
+        color: rgba($clr-navy, 0.7);
+      }
+      select {
+        margin-bottom: 0;
+      }
+    }
+    &__search {
+      display: block;
+      padding: 1.2rem 4rem 1.2rem 1.6rem;
+      border: 1px solid $clr-border;
+      border-radius: 0.4rem;
+      max-width: 32rem;
+      background: url('../img/icon-search.svg') no-repeat right 1.6rem center;
+      font: 400 1.6rem/1.55 $f-text;
+      letter-spacing: 0.16px;
+      &-box {
+        @include mq(tablet, max) {
+          margin-top: 1rem;
+        }
+        @include mq(tablet) {
+          margin-left: auto;
+        }
+      }
+    }
+    &__toolbar {
+      display: flex;
+      margin-bottom: 3.2rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      @include mq(tablet) {
+        margin-bottom: 6.4rem;
+      }
+      &-label {
+        margin-bottom: 1.6rem;
+        flex: 0 1 100%;
+        font: 700 1.6rem/1.6 $f-text;
+        color: $clr-navy;
+        text-transform: capitalize;
       }
     }
   }
@@ -1314,6 +1409,210 @@
         }
       }
     }
+  }
+}
+.athlete-winners {
+  &__heading {
+    margin-bottom: 3.2rem;
+    @include mq(tablet) {
+      margin-bottom: 6.4rem;
+      max-width: 80rem;
+    }
+  }
+  &__inner {
+    @include mq(tablet) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+  &__links {
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    list-style: none;
+    overflow: hidden;
+    @include mq(tablet, max) {
+      margin-bottom: 1.6rem;
+    }
+    @include mq(tablet) {
+      position: sticky;
+      margin-right: 2rem;
+      top: calc(var(--header-height) + 3rem);
+      flex: 0 0 32rem;
+    }
+    .tab-link {
+      display: block;
+      padding: 1.6rem;
+      width: 100%;
+      appearance: none;
+      border: none;
+      font: 400 1.5rem/1.6 $f-text;
+      text-transform: capitalize;
+      background-color: transparent;
+      color: $clr-navy;
+      transition: all .3s ease-in-out;
+      cursor: pointer;
+      &:hover,
+      &.is-active {
+        background: rgba(174, 223, 130, 0.40);
+        color: #081228;
+        font-weight: 700;
+      }
+    }
+  }
+  &__contents {
+    @include mq(tablet) {
+      max-width: calc(100% - 34rem);
+    }
+  }
+  &__content {
+    .winners-heading {
+      margin-bottom: 2rem;
+      @include mq(tablet) {
+        margin-bottom: 4rem;
+      }
+    }
+    .winners-cards {
+      @include mq(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-gap: 1.4rem;
+      }
+    }
+    .winners-card {
+      padding: 1.6rem;
+      border: 1px solid $clr-border;
+      border-radius: 1.2rem;
+      text-align: center;
+      @include mq(tablet, max) {
+        margin-bottom: 1.6rem;
+      }
+      &__title {
+        margin-bottom: 1.2rem;
+        font: 400 1.4rem/1.55 $f-text;
+        letter-spacing: 0.14px;
+        text-transform: capitalize;
+      }
+      &__img {
+        display: block;
+        margin-bottom: 1.6rem;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 1rem;
+        object-fit: cover;
+      }
+      &__name {
+        margin-bottom: 4px;
+        font: 600 1.6rem/1.7 $f-text;
+        text-transform: capitalize;
+      }
+      &__desc {
+        font: 400 1.2rem/1.55 $f-text;
+        letter-spacing: 0.12px;
+        text-transform: capitalize;
+      }
+    }
+  }
 
+  &__block {
+    margin-top: 2rem;
+    padding: 3.2rem;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    @include mq(tablet) {
+      margin-top: 4rem;
+      padding: 6.4rem;
+    }
+    &__content {
+      margin-bottom: 1.6rem;
+      @include base-typography;
+      @include mq(tablet) {
+        margin-bottom: 3.2rem;
+      }
+    }
+    &__gallery {
+      max-width: 100%;
+      img {
+        margin-inline: 4px;
+      }
+      .slick-track {
+        display: flex;
+      }
+      .slick-slide {
+        margin-inline: 4px;
+        height: inherit;
+        img {
+          @include cover-image;
+        }
+      }
+      .slick-arrow {
+        top: 50%;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        z-index: 1;
+        &::before {
+          content: none;
+        }
+      }
+      .slick-prev {
+        left: 0;
+        @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%230A1631"/><path d="M17 12L13 16L17 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        transform: translate(-50%, -50%);
+      }
+      .slick-next {
+        right: 0;
+        @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%230A1631"/><path d="M15 12L19 16L15 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        transform: translate(50%, -50%);
+      }
+    }
+  }
+}
+
+
+.winners-card-popup {
+  display: none;
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  @include mq(tablet) {
+    padding: 6.4rem;
+    max-width: 97.5rem;
+
+  }
+  &__title {
+    margin-bottom: 1.6rem;
+    @include mq(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__content {
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
+  &__img {
+    display: block;
+    border-radius: 1rem;
+    @include mq(tablet) {
+      margin-right: 3.2rem;
+      flex: 0 0 32rem;
+      max-width: 32rem;
+    }
+  }
+  &__copy {
+    margin-bottom: 1.6rem;
+    @include mq(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__videos {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 8px;
+    }
+    .embed-container {
+      border-radius: 6px;
+      overflow: hidden;
+    }
   }
 }
