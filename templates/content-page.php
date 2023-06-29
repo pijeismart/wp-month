@@ -2826,7 +2826,7 @@ if ( have_rows( 'modules' ) ) :
 			$query = new WP_Query( $args );
 			?>
 			<!-- Case Results Grid -->
-			<section class="case-results-alt">
+			<section class="case-results-alt"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
 					get_template_part_args(
@@ -2871,7 +2871,7 @@ if ( have_rows( 'modules' ) ) :
 		elseif ( 'testimonial_videos' == get_row_layout() ) :
 			?>
 			<!-- Testimonial Videos -->
-			<section class="testimonial-videos">
+			<section class="testimonial-videos"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container js-loadmore-wrapper">
 					<?php
 					get_template_part_args(
@@ -2946,7 +2946,7 @@ if ( have_rows( 'modules' ) ) :
 		elseif ( 'customer_quotes' == get_row_layout() ) :
 			?>
 			<!-- Customer Quotes -->
-			<section class="customer-quotes">
+			<section class="customer-quotes"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container js-loadmore-wrapper">
 					<?php
 					get_template_part_args(
