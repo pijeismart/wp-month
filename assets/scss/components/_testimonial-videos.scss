@@ -27,6 +27,11 @@
     }
   }
   .testimonial-video {
+    @include mq(tablet, max) {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
     .video-player {
       margin-bottom: 2.4rem;
     }

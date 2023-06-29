@@ -23,6 +23,11 @@
     font: 400 1.6rem/1.7 $f-text;
     color: $clr-black;
     font-style: italic;
+    @include mq(tablet, max) {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
     @include mq(tablet) {
       padding: 3.2rem;
     }
