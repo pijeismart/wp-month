@@ -433,7 +433,7 @@ function montlick_year( $atts ) {
 	return $year;
 }
 
-/**
+/** 
  * Enable Shortcode excerpt
  */
 add_filter( 'the_excerpt', 'do_shortcode' );
