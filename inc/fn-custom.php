@@ -388,7 +388,7 @@ function set_youtube_as_featured_image( $post_id, $post, $update ) {
 		if ( ! has_post_thumbnail( $post ) ) {
 			$youtube_video_id = get_field( 'youtube_video_id', $post_id );
 
-			$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_video_id . '/maxresdefault.jpg';
+			$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_video_id . '/hqdefault.jpg';
 			$get               = wp_remote_get( $youtube_thumb_url );
 			$mime_type         = wp_remote_retrieve_header( $get, 'content-type' );
 			if ( ! substr_count( $mime_type, 'image' ) ) {
@@ -422,7 +422,7 @@ add_action( 'save_post', 'set_youtube_as_featured_image', 10, 3 );
 function get_youtube_image_from_url( $url ) {
 	preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match );
 	$youtube_id        = $match[1];
-	$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_id . '/maxresdefault.jpg';
+	$youtube_thumb_url = 'https://img.youtube.com/vi/' . $youtube_id . '/hqdefault.jpg';
 	return $youtube_thumb_url;
 }
 
