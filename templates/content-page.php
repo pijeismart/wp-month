@@ -1803,7 +1803,7 @@ if ( have_rows( 'modules' ) ) :
 									$price      = get_field( 'price' );
 									$content    = get_field( 'content' );
 									?>
-									<div class="case-results__item">
+									<a href="<?php echo esc_url( home_url( '/our-results/' ) ); ?>" class="case-results__item">
 										<?php
 										if ( $categories ) :
 											$category = $categories[0];
@@ -1836,7 +1836,7 @@ if ( have_rows( 'modules' ) ) :
 												<?php endif; ?>
 											</div>
 										</div>
-									</div>
+									</a>
 								<?php endwhile; ?>
 							</div>
 							<?php
