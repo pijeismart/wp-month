@@ -102,8 +102,8 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 	<!-- Awards -->
 	<section class="attorney-awards">
 		<div class="container">
-			<h6 class="attorney-awards__heading"><?php echo esc_html__( 'Professional Affiliations & Awards' ); ?></h6>
-			<div class="attorney-awards__arrows">
+			<h6 class="attorney-awards__heading a-up"><?php echo esc_html__( 'Professional Affiliations & Awards' ); ?></h6>
+			<div class="attorney-awards__arrows a-up a-delay-1">
 				<button class="attorney-awards__arrow prev">
 					<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1.15625 7.34375L6.34375 12.8438C6.4375 12.9688 6.59375 13 6.71875 13C6.84375 13 6.96875 12.9688 7.0625 12.875C7.28125 12.6875 7.28125 12.375 7.09375 12.1875L2.71875 7.5H14.5C14.7812 7.5 15 7.28125 15 7.03125C15 6.78125 14.7812 6.5 14.5 6.5H2.71875L7.09375 1.84375C7.28125 1.65625 7.28125 1.34375 7.0625 1.15625C6.84375 0.96875 6.53125 0.96875 6.34375 1.1875L1.15625 6.6875C0.96875 6.875 0.96875 7.15625 1.15625 7.34375Z" fill="#8DCB7E"/>
@@ -115,7 +115,7 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 					</svg>
 				</button>
 			</div>
-			<div class="attorney-awards__carousel__wrapper">
+			<div class="attorney-awards__carousel__wrapper a-up a-delay-1">
 				<div class="attorney-awards__carousel d-sm-only">
 					<?php
 					while ( have_rows( 'awards' ) ) :
