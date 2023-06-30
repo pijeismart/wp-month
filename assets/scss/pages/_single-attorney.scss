@@ -123,6 +123,15 @@
       }
     }
   }
+  &__desc {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font: 400 1.4rem/1.6 $f-text;
+    @include mq(tablet) {
+      margin-top: 4.2rem;
+      margin-left: 3rem;
+    }
+  }
 }
 
 .attorney-details {

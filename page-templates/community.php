@@ -1104,6 +1104,7 @@ if ( $enable_winners ) :
 												)
 											);
 											?>
+											<img class="winners-card__sep" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-gradient-line.svg' ); ?>" alt="">
 											<a href="javascript:;" class="underline-link" data-fancybox data-src="#winners-card-<?php echo esc_attr( get_row_index() ); ?>">
 												<?php echo esc_html__( 'Watch Video' ); ?>
 											</a>
@@ -1190,6 +1191,93 @@ if ( $enable_winners ) :
 							</div>
 						<?php endwhile; ?>
 					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php
+$enable_athletes_slider = get_field( 'enable_athletes_slider' );
+if ( $enable_athletes_slider ) :
+	?>
+	<!-- Enable Slider -->
+	<section class="athlete-slider">
+		<div class="container">
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'athletes_slider_heading',
+					't'  => 'h2',
+					'tc' => 'athlete-slider__heading a-up',
+					'o'  => 'f',
+				)
+			);
+			?>
+			<?php if ( have_rows( 'athletes_slider' ) ) : ?>
+				<div class="athlete-carousel">
+					<?php
+					while ( have_rows( 'athletes_slider' ) ) :
+						the_row();
+						?>
+						<div class="winners-card">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'title',
+									't'  => 'p',
+									'tc' => 'winners-card__title',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-image',
+								array(
+									'v'     => 'image',
+									'v2x'   => false,
+									'is'    => false,
+									'is_2x' => false,
+									'c'     => 'winners-card__img',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'name',
+									't'  => 'p',
+									'tc' => 'winners-card__name',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'description',
+									't'  => 'p',
+									'tc' => 'winners-card__desc',
+								)
+							);
+							?>
+							<img class="winners-card__sep" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-gradient-line.svg' ); ?>" alt="">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v' => 'cta',
+									'c' => 'underline-link winners-card__cta',
+								)
+							);
+							?>
+						</div>
+						<?php
+					endwhile;
+					?>
 				</div>
 			<?php endif; ?>
 		</div>

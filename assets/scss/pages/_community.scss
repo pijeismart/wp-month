@@ -7,6 +7,15 @@
       padding-block: 9rem 10rem;
     }
 
+    &--content_media {
+      .community-banner__partner {
+        margin-top: 3rem;
+        @include mq(tablet) {
+          margin-top: 6.4rem;
+        }
+      }
+    }
+
     .container {
       @include mq(tablet) {
         display: flex;
@@ -1471,46 +1480,6 @@
         margin-bottom: 4rem;
       }
     }
-    .winners-cards {
-      @include mq(tablet) {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-gap: 1.4rem;
-      }
-    }
-    .winners-card {
-      padding: 1.6rem;
-      border: 1px solid $clr-border;
-      border-radius: 1.2rem;
-      text-align: center;
-      @include mq(tablet, max) {
-        margin-bottom: 1.6rem;
-      }
-      &__title {
-        margin-bottom: 1.2rem;
-        font: 400 1.4rem/1.55 $f-text;
-        letter-spacing: 0.14px;
-        text-transform: capitalize;
-      }
-      &__img {
-        display: block;
-        margin-bottom: 1.6rem;
-        width: 100%;
-        aspect-ratio: 1;
-        border-radius: 1rem;
-        object-fit: cover;
-      }
-      &__name {
-        margin-bottom: 4px;
-        font: 600 1.6rem/1.7 $f-text;
-        text-transform: capitalize;
-      }
-      &__desc {
-        font: 400 1.2rem/1.55 $f-text;
-        letter-spacing: 0.12px;
-        text-transform: capitalize;
-      }
-    }
   }
 
   &__block {
@@ -1568,6 +1537,49 @@
   }
 }
 
+.winners-cards {
+  @include mq(tablet) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 1.4rem;
+  }
+}
+.winners-card {
+  padding: 1.6rem;
+  border: 1px solid $clr-border;
+  border-radius: 1.2rem;
+  text-align: center;
+  @include mq(tablet, max) {
+    margin-bottom: 1.6rem;
+  }
+  &__title {
+    margin-bottom: 1.2rem;
+    font: 400 1.4rem/1.55 $f-text;
+    letter-spacing: 0.14px;
+    text-transform: capitalize;
+  }
+  &__img {
+    display: block;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  &__name {
+    margin-bottom: 4px;
+    font: 600 1.6rem/1.7 $f-text;
+    text-transform: capitalize;
+  }
+  &__sep {
+    margin-block: 8px 1.6rem;
+  }
+  &__desc {
+    font: 400 1.2rem/1.55 $f-text;
+    letter-spacing: 0.12px;
+    text-transform: capitalize;
+  }
+}
 
 .winners-card-popup {
   display: none;
@@ -1614,5 +1626,47 @@
       border-radius: 6px;
       overflow: hidden;
     }
+  }
+}
+
+.athlete-slider {
+  margin-block: 3.2rem;
+  @include mq(tablet) {
+    margin-block: 6.4rem;
+  }
+  &__heading {
+    margin-bottom: 1.8rem;
+    @include mq(tablet) {
+      margin-bottom: 3.6rem;
+    }
+  }
+  .winners-card {
+    margin-inline: 7px;
+  }
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    height: inherit;
+  }
+  .slick-arrow {
+    top: 50%;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    z-index: 1;
+    &::before {
+      content: none;
+    }
+  }
+  .slick-prev {
+    left: 0;
+    @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%230A1631"/><path d="M17 12L13 16L17 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    transform: translate(-50%, -50%);
+  }
+  .slick-next {
+    right: 0;
+    @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%230A1631"/><path d="M15 12L19 16L15 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    transform: translate(50%, -50%);
   }
 }

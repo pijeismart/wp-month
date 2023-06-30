@@ -83,6 +83,17 @@ $professional_affiliations_and_awards  = get_field( 'professional_affiliations_a
 					?>
 				</div>
 			<?php endif; ?>
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-text',
+				array(
+					'v'  => 'description',
+					't'  => 'p',
+					'tc' => 'attorney-banner__desc a-up a-delay-3',
+					'o'  => 'f',
+				)
+			);
+			?>
 		</div>
 	</div>
 </section>

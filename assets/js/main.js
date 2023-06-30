@@ -208,7 +208,12 @@
         helper.isElementExist('.hc-videos', theme.initHCVideos);
         helper.isElementExist('.awards-content', theme.initAwardsContent);
         helper.isElementExist('.js-loadmore-wrapper', theme.initJSLoadmore);
-        helper.isElementExist('.athlete-winners__block__gallery', theme.initAthleteGallery);
+        helper.isElementExist(
+          '.athlete-winners__block__gallery',
+          theme.initAthleteGallery
+        );
+        helper.isElementExist('.tab', theme.initTab);
+        helper.isElementExist('.athlete-carousel', theme.initAthleteCarousel);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -809,6 +814,47 @@
           },
           {
             breakpoint: 576,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    },
+    /**
+     * init tab
+     */
+    initTab() {
+      $('.tab-link').on('click', function() {
+        if ($(this).hasClass('is-active')) return;
+        const target = $(this).attr('data-target');
+        if ($(target).length) {
+          $('.tab-link.is-active').removeClass('is-active');
+          $('.tab-content.is-active').removeClass('is-active');
+          $(target).addClass('is-active');
+          $(this).addClass('is-active');
+        }
+        return false;
+      });
+    },
+    /**
+     * init athlete Carousel
+     */
+    initAthleteCarousel() {
+      $('.athlete-carousel').slick({
+        arrows: true,
+        dots: false,
+        slidesToShow: 4,
+        autoplay: true,
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 575,
             settings: {
               slidesToShow: 1
             }
