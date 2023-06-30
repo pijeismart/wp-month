@@ -234,43 +234,47 @@
           $(this).hide();
         });
         // init contact form reviews
-        if ($('.contact-form .rplg-review').length > 1) {
-          $('.contact-form .rplg-reviews').slick({
-            arrows: false,
-            dots: false,
-            slidesToShow: 2,
-            autoplay: true,
-            responsive: [
-              {
-                breakpoint: 991,
-                settings: {
-                  slidesToShow: 1
+        $('.contact-form .rplg-reviews').each(function() {
+          if ($('.contact-form .rplg-review', $(this)).length > 1) {
+            $(this).slick({
+              arrows: false,
+              dots: false,
+              slidesToShow: 2,
+              autoplay: true,
+              responsive: [
+                {
+                  breakpoint: 991,
+                  settings: {
+                    slidesToShow: 1
+                  }
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2
+                  }
+                },
+                {
+                  breakpoint: 576,
+                  settings: {
+                    slidesToShow: 1
+                  }
                 }
-              },
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 2
-                }
-              },
-              {
-                breakpoint: 576,
-                settings: {
-                  slidesToShow: 1
-                }
-              }
-            ]
-          });
-        }
+              ]
+            });
+          }
+        });
         // init contact page reviews
-        if ($('.contact-reviews .rplg-review').length > 1) {
-          $('.contact-reviews .rplg-reviews').slick({
-            arrows: true,
-            dots: false,
-            autoplay: true,
-            loop: true
-          });
-        }
+        $('.contact-reviews .rplg-reviews').each(function() {
+          if ($('.rplg-review', $(this)).length > 1) {
+            $(this).slick({
+              arrows: true,
+              dots: false,
+              autoplay: true,
+              loop: true
+            });
+          }
+        });
 
         // dropdown toggler
         $('.dropdown-toggler').on('click', function() {
