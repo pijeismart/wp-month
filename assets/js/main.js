@@ -235,7 +235,7 @@
         });
         // init contact form reviews
         $('.contact-form .rplg-reviews').each(function() {
-          if ($('.contact-form .rplg-review', $(this)).length > 1) {
+          if ($('.rplg-review', $(this)).length > 1) {
             $(this).slick({
               arrows: false,
               dots: false,
