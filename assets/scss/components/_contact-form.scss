@@ -233,14 +233,45 @@
       margin-bottom: 1.6rem;
     }
   }
-  .rplg-reviews {
-    .slick-track {
-      display: flex;
+  .rplg {
+    padding: 1.6rem;
+    border-radius: 1.2rem;
+    background-color: rgba(174, 223, 130, 0.40);
+    &-reviews {
+      .slick-track {
+        display: flex;
+      }
     }
-  }
-  .rplg-review {
-    margin: 0 1rem 0;
-    height: inherit;
+    &-review {
+      margin: 0 1rem 0;
+      height: inherit;
+    }
+    &-rating {
+      display: flex;
+      margin-bottom: 16px;
+      padding-inline: 24px;
+      align-items: center;
+      justify-content: space-between;
+      h6 {
+        font: 700 1.6rem/1.55 'Open Sans', sans-serif;
+        letter-spacing: 0.16px;
+      }
+      &__google {
+        width: 7.5rem;
+        height: 2.4rem;
+        background: url('../img/icon-google.png') no-repeat center; 
+        background-size: contain; 
+      }
+      &__stars {
+        font-size: 1.2rem;
+        line-height: 1.55;
+        font-family: 'Open Sans', sans-serif;
+        color: #2E2E2E;
+        span {
+          color: #698053;
+        }
+      }
+    }
   }
   .testimonial-slider__item {
     display: flex;
