@@ -1221,7 +1221,8 @@
                             },
                             "choices": {
                                 "claim_type": "Claim Type",
-                                "case_category": "Case Category"
+                                "case_category": "Case Category",
+                                "custom": "Custom"
                             },
                             "default_value": "claim_type",
                             "return_format": "value",
@@ -1302,6 +1303,53 @@
                             "field_type": "multi_select",
                             "allow_null": 0,
                             "multiple": 0
+                        },
+                        {
+                            "key": "field_649ee1c15e1c6",
+                            "label": "Custom Posts",
+                            "name": "custom_posts",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "==",
+                                        "value": "experience-testimonial"
+                                    },
+                                    {
+                                        "field": "field_646d29bcb6c61",
+                                        "operator": "==",
+                                        "value": "custom"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post",
+                                "page",
+                                "practice",
+                                "city",
+                                "attorney",
+                                "faq"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "post_type",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "elements": ""
                         },
                         {
                             "key": "field_6465ec0f90fd0",
@@ -7296,5 +7344,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688043714
+    "modified": 1688134137
 }

@@ -565,28 +565,14 @@ if ( have_rows( 'modules' ) ) :
 								?>
 								<?php
 								$source_type = get_sub_field( 'experience_links_source' ) ? get_sub_field( 'experience_links_source' ) : 'claim_type';
-								$claim_types = get_sub_field( $source_type );
-								if ( $claim_types ) :
-									$args  = array(
-										'post_type'      => 'city',
-										'post_status'    => 'publish',
-										'post__not_in'   => array( get_the_ID() ),
-										'posts_per_page' => 10,
-										'tax_query'      => array(
-											array(
-												'taxonomy' => $source_type,
-												'field'    => 'term_id',
-												'terms'    => $claim_types,
-											),
-										),
-									);
-									$query = new WP_Query( $args );
-									if ( $query->have_posts() ) :
+								if ( 'custom' == $source_type ) :
+									$custom_posts = get_sub_field( 'custom_posts' );
+									if ( $custom_posts ) :
 										?>
 										<ul class="content-image__experience__cities">
 											<?php
-											while ( $query->have_posts() ) :
-												$query->the_post();
+											foreach ( $custom_posts as $post ) :
+												setup_postdata( $post );
 												$state = get_the_terms( $post, 'state' );
 												?>
 												<li>
@@ -595,7 +581,7 @@ if ( have_rows( 'modules' ) ) :
 													</a>
 												</li>
 												<?php
-											endwhile;
+											endforeach;
 											?>
 										</ul>
 										<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>" class="underline-link">
@@ -604,6 +590,47 @@ if ( have_rows( 'modules' ) ) :
 										<?php
 									endif;
 									wp_reset_postdata();
+								else:
+									$claim_types = get_sub_field( $source_type );
+									if ( $claim_types ) :
+										$args  = array(
+											'post_type'      => 'city',
+											'post_status'    => 'publish',
+											'post__not_in'   => array( get_the_ID() ),
+											'posts_per_page' => 10,
+											'tax_query'      => array(
+												array(
+													'taxonomy' => $source_type,
+													'field'    => 'term_id',
+													'terms'    => $claim_types,
+												),
+											),
+										);
+										$query = new WP_Query( $args );
+										if ( $query->have_posts() ) :
+											?>
+											<ul class="content-image__experience__cities">
+												<?php
+												while ( $query->have_posts() ) :
+													$query->the_post();
+													$state = get_the_terms( $post, 'state' );
+													?>
+													<li>
+														<a href="<?php echo esc_url( get_the_permalink() ); ?>">
+															<?php the_title(); ?>
+														</a>
+													</li>
+													<?php
+												endwhile;
+												?>
+											</ul>
+											<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>" class="underline-link">
+												<?php echo esc_html__( 'More Areas We Serve' ); ?>
+											</a>
+											<?php
+										endif;
+										wp_reset_postdata();
+									endif;
 								endif;
 								?>
 							</div>
