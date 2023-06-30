@@ -253,10 +253,12 @@
       align-items: center;
       justify-content: space-between;
       h6 {
+        margin-bottom: 8px;
         font: 700 1.6rem/1.55 'Open Sans', sans-serif;
         letter-spacing: 0.16px;
       }
       &__google {
+        margin-bottom: 5px;
         width: 7.5rem;
         height: 2.4rem;
         background: url('../img/icon-google.png') no-repeat center; 
