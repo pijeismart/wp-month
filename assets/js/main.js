@@ -194,10 +194,6 @@
         );
         helper.isElementExist('.section-archive__posts', theme.initCPT);
         helper.isElementExist(
-          '.attorney-details__sidebar',
-          theme.initAttorneySidebar
-        );
-        helper.isElementExist(
           '.accordion-main__gallery',
           theme.initAccordionGallery
         );
@@ -214,6 +210,7 @@
         );
         helper.isElementExist('.tab', theme.initTab);
         helper.isElementExist('.athlete-carousel', theme.initAthleteCarousel);
+        helper.isElementExist('.attorney-awards__carousel', theme.initAwardsCarousel);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -666,22 +663,6 @@
       helper.windowResize(theme.initPodcasts);
     },
     /**
-     * init attorney sidebar
-     */
-    initAttorneySidebar() {
-      const $slider = $('.attorney-details__sidebar');
-      const option = {
-        arrows: false,
-        dots: false,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        variableWidth: true
-      };
-      helper.mobileSlider($slider, option);
-      helper.windowResize(theme.initAttorneySidebar);
-    },
-
-    /**
      * init accordion gallery on community page
      */
     initAccordionGallery() {
@@ -860,6 +841,29 @@
             }
           }
         ]
+      });
+    },
+    /**
+     * init awards carousel
+     */
+    initAwardsCarousel() {
+      $('.attorney-awards__carousel.d-sm-only').slick({
+        arrows: true,
+        dots: false,
+        mobileFirst: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        rows: 2,
+        slidesPerRow: 2,
+        prevArrow: $('.attorney-awards__arrow.prev'),
+        nextArrow: $('.attorney-awards__arrow.next')
+      });
+      $('.attorney-awards__carousel.d-md-only').slick({
+        arrows: true,
+        dots: false,
+        variableWidth: true,
+        prevArrow: $('.attorney-awards__arrow.prev'),
+        nextArrow: $('.attorney-awards__arrow.next')
       });
     }
   };

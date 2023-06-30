@@ -2,7 +2,7 @@
   --header-bg: #EFF2F6;
 }
 .attorney-banner {
-  padding-top: 2.4rem;
+  padding-block: 2.4rem 7.4rem;
   @include mq(tablet) {
     padding-block: 7.4rem 13.3rem;
   }
@@ -140,10 +140,8 @@
     padding-block: 10.5rem 13rem;
   }
   &__inner {
-    display: flex;
-    flex-direction: column-reverse;
     @include mq(tablet) {
-      flex-direction: row;
+      display: flex;
     }
   }
   &__sidebar {
@@ -155,20 +153,18 @@
       margin-right: 12rem;
     }
     .sidebar-widget {
-      padding: 4rem 3.2rem;
+      padding: 1.2rem 1.6rem;
       background-color: $clr-white;
       border: 1px solid $clr-white-off; 
       border-radius: 1rem;
       @include mq(tablet, max) {
-        width: 26rem;
-        margin-right: 8px;
+        margin-bottom: 8px;
       }
       @include mq(tablet) {
         margin-bottom: 1.6rem;
-        padding: 5rem;
+        padding: 2.4rem 3.2rem;
       }
       h6 {
-        margin-bottom: 3rem;
         @include mq(tablet) {
           margin-bottom: 2rem;
         }
@@ -178,19 +174,62 @@
         content: '';
         margin-bottom: 1rem;
       }
-      &__content {
-        margin-left: 0.7rem;
-        padding-left: 2.2rem;
-        border-left: 1px solid $clr-green;
-        font: 400 1.2rem/1.6 $f-text;
+      .accordion-header {
         @include mq(tablet) {
+          pointer-events: none;
+        }
+        @include mq(tablet, max) {
+          position: relative;
+          padding-right: 3rem;
+          &::after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 2rem;
+            height: 2rem;
+            content: '';
+            @include svg-background('<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.46094 6.03906L0.960938 1.53906C0.65625 1.25781 0.65625 0.765625 0.960938 0.484375C1.24219 0.179688 1.73438 0.179688 2.01562 0.484375L6 4.44531L9.96094 0.484375C10.2422 0.179688 10.7344 0.179688 11.0156 0.484375C11.3203 0.765625 11.3203 1.25781 11.0156 1.53906L6.51562 6.03906C6.23438 6.34375 5.74219 6.34375 5.46094 6.03906Z" fill="%230A1631"/></svg>');
+            transform: translateY(-50%);
+            transition: transform .3s ease-in-out;
+          }
+          &.active::after {
+            transform: translateY(-50%) rotate(180deg);
+          }
+        }
+      }
+      &__content {
+        font: 400 1.2rem/1.6 $f-text;
+        @include mq(tablet, max) {
+          margin-top: 3rem;
+        }
+        @include mq(tablet) {
+          display: block;
+          margin-right: -3.2rem;
           font-size: 1.4rem;
+        }
+        ul {
+          list-style: none;
+          li {
+            position: relative;
+            padding: 8px 1.6rem 8px 3rem;
+            &::before {
+              position: absolute;
+              content: '';
+              top: 14.5px;
+              left: 1.6rem;
+              width: 6px;
+              height: 6px;
+              background-color: $clr-green;
+              transform: rotate(45deg);
+            }
+          }
         }
       }
     }
   }
   &__content {
     @include mq(tablet, max) {
+      margin-top: 6.4rem;
       margin-bottom: 4rem;
     }
     @include mq(tablet) {
@@ -210,6 +249,121 @@
         max-width: 68.7rem;
         height: auto;
       }
+    }
+  }
+}
+
+.attorney-awards {
+  padding-block: 6.4rem;
+  background-color: $clr-navy;
+  color: $clr-white;
+  @include mq(tablet) {
+    padding-block: 4rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    @include mq(tablet) {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+  &__heading {
+    font: 700 1.5rem/1.5 $f-text;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    @include mq(tablet, max) {
+      margin-bottom: 3.2rem;
+    }
+    @include mq(tablet) {
+      flex: 0 0 21rem;
+    }
+  }
+  &__carousel__wrapper {
+    @include mq(tablet) {
+      margin-left: auto;
+      max-width: calc(100% - 30rem);
+    }
+    @include mq(desktop) {
+      max-width: 75rem;
+    }
+  }
+  .slick-track {
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
+  .slick-slide {
+    @include mq(tablet, max) {
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:first-child {
+          margin-bottom: 1.6rem;
+        }
+      }
+    }
+  }
+  &__slide {
+    margin-right: 4px;
+    @include mq(tablet) {
+      margin-right: 6.5rem;
+      height: inherit;
+    }
+    @include mq(desktop) {
+      margin-right: 6.5rem;
+    }
+    &--award {
+      text-align: center;
+      @include mq(tablet) {
+        width: 10rem;
+      }
+      img {
+        margin-inline: auto;
+        max-width: 10rem;
+      }
+    }
+    &--affiliation {
+      padding: 1.6rem 0.8rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      text-align: center;
+      @include mq(tablet) {
+        width: 17.6rem;
+      }
+      @include mq(desktop) {
+        width: 17.6rem;
+      }
+      img {
+        margin: 0 auto 8px;
+      }
+      p {
+        font: 600 1.2rem/1.6 $f-text;
+      }
+    }
+  }
+  &__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mq(tablet, max) {
+      margin-top: 3.2rem;
+      order: 1;
+    }
+    @include mq(tablet) {
+      margin-left: 2rem;
+    }
+  }
+  &__arrow {
+    padding: 0;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &.prev {
+      margin-right: 2.4rem;
     }
   }
 }
