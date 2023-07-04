@@ -527,38 +527,19 @@ if ( have_rows( 'modules' ) ) :
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<div class="content-image__media">
-						<?php if ( $video_url ) : ?>
-						<a href="<?php echo esc_url( $video_url ); ?>" class="video-player" data-fancybox>
-							<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
-							<span class="video-play">
-								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-							</span>
+						<?php if ( 'experience-testimonial' == $type ) : ?>
 							<?php
 							get_template_part_args(
-								'template-parts/content-modules-text',
+								'template-parts/content-modules-image',
 								array(
-									'v'  => 'banner_video_title',
-									't'  => 'div',
-									'tc' => 'video-player__title',
-									'o'  => 'f',
+									'v'     => 'practice_experience_image',
+									'v2x'   => false,
+									'is'    => 'content-image-experience-testimonial',
+									'is_2x' => 'content-image-experience-testimonial-2x',
+									'o'     => 'o',
 								)
 							);
 							?>
-						</a>	
-							<?php
-						else :
-							get_template_part(
-								'template-parts/content-modules',
-								'media',
-								array(
-									'image' => $image,
-									'video' => $video,
-									'size'  => 'content-image-' . $type,
-								)
-							);
-						endif;
-						?>
-						<?php if ( 'experience-testimonial' == $type ) : ?>
 							<div class="content-image__experience">
 								<?php
 								get_template_part_args(
@@ -641,6 +622,38 @@ if ( have_rows( 'modules' ) ) :
 								endif;
 								?>
 							</div>
+						<?php else : ?>
+							<?php if ( $video_url ) : ?>
+							<a href="<?php echo esc_url( $video_url ); ?>" class="video-player" data-fancybox>
+								<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+								<span class="video-play">
+									<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+								</span>
+								<?php
+								get_template_part_args(
+									'template-parts/content-modules-text',
+									array(
+										'v'  => 'banner_video_title',
+										't'  => 'div',
+										'tc' => 'video-player__title',
+										'o'  => 'f',
+									)
+								);
+								?>
+							</a>	
+								<?php
+							else :
+								get_template_part(
+									'template-parts/content-modules',
+									'media',
+									array(
+										'image' => $image,
+										'video' => $video,
+										'size'  => 'content-image-' . $type,
+									)
+								);
+							endif;
+							?>
 						<?php endif; ?>
 					</div>
 					<div class="content-image__content">
@@ -715,7 +728,9 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'testimonial',
 								't'  => 'div',
-								'tc' => 'content-image__testimonial a-up a-delay-1',
+								'tc' => 'content-image__testimonial-inner',
+								'w'  => 'div',
+								'wc' => 'content-image__testimonial a-up a-delay-1',
 							)
 						);
 						?>

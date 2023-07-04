@@ -513,6 +513,31 @@
             "append": ""
         },
         {
+            "key": "field_64a36cd2bc740",
+            "label": "Experience Image",
+            "name": "practice_experience_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_64950459a7a6a",
             "label": "FAQ Settings",
             "name": "",
@@ -568,5 +593,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687916896
+    "modified": 1688431858
 }

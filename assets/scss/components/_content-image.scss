@@ -1,63 +1,6 @@
 .content-image {
   position: relative;
   margin-block: 5rem;
-  &--full-ctas {
-    &::before {
-      @include mq(tablet) {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 50%;
-        width: vw(650px);
-        height: vw(520px);
-        max-width: 65rem;
-        max-height: 52rem;
-        background: url('../img/decor-m.svg') no-repeat center;
-        transform: translateX(-50%);
-        z-index: -1;
-      }
-    }
-    .container {
-      @include mq(tablet) {
-        padding-inline: 1rem;
-        max-width: 190rem;
-      }
-    }
-  }
-  &--contained-ctas {
-    @include mq(tablet) {
-      margin-block: 10rem;
-    }
-    @include mq(desktop-wide) {
-      margin-block: 15rem;
-    }
-    .container {
-      @include mq(tablet) {
-        align-items: center;
-      }
-    }
-  }
-  &--experience-testimonial {
-    @include mq(tablet, max) {
-      margin-top: 0;
-    }
-    .container {
-      @include mq(tablet) {
-        padding-inline: 1rem;
-        max-width: 192rem;
-      }
-      @include mq(tablet-wide, max) {
-        flex-direction: column;
-      }
-    }
-  }
-  &--left {
-    .container {
-      @include mq(tablet) {
-        flex-direction: row-reverse;
-      }
-    }
-  }
   &.bg-navy {
     padding-block: 4rem;
     @include mq(tablet) {
@@ -96,10 +39,11 @@
       }
     }
     @include when-inside('.content-image--experience-testimonial') {
-      @include mq(tablet, max) {
+      @include mq(desktop-small, max) {
         padding-top: 1.6rem;
+        padding-bottom: 2.4rem;
       }
-      @include mq(tablet) {
+      @include mq(desktop-small) {
         position: relative;
         flex-basis: 38rem;
         width: 100%;
@@ -109,7 +53,8 @@
         margin-bottom: 0;
       }
       img {
-        @include mq(tablet, max) {
+        border-radius: 1rem;
+        @include mq(desktop-small, max) {
           position: absolute;
           top: 0;
           left: calc(var(--gutter) * -1);
@@ -234,7 +179,7 @@
       }
     }
     @include when-inside('.content-image--experience-testimonial') {
-      @include mq(tablet, max) {
+      @include mq(desktop-small, max) {
         position: relative;
         padding-top: 4rem;
         background-color: $clr-white;
@@ -272,7 +217,7 @@
     }
     @include when-inside('.content-image--experience-testimonial') {
       @extend .h3;
-      @include mq(tablet) {
+      @include mq(desktop-small) {
         margin-bottom: 1.5rem;
         max-width: 65rem;
       }
@@ -385,25 +330,96 @@
   }
   &__testimonial {
     position: relative;
-    padding: 2.4rem;
-    background-color: $clr-green-light;
-    border-radius: 1rem;
-    font: 400 2.4rem/2.7rem $f-heading;
-    font-style: italic;
-    @include mq(tablet) {
-      max-width: 64rem;
-      font-size: 3.6rem;
-      line-height: 4.2rem;
-      letter-spacing: -0.36px;
+    &-inner {
+      position: relative;
+      padding: 2.4rem;
+      border-radius: 1rem;
+      font: 400 2.4rem/2.7rem $f-heading;
+      font-style: italic;
+      background-color: $clr-green-light;
+      z-index: 1;
+      @include mq(tablet) {
+        max-width: 64rem;
+        font-size: 3.6rem;
+        line-height: 4.2rem;
+        letter-spacing: -0.36px;
+      }
+      &::before {
+        position: absolute;
+        content: '“';
+        top: -1.8rem;
+        left: 1.8rem;
+        font: 400 9rem/1 $f-heading;
+        letter-spacing: 0.02em;
+        color: $clr-green;
+        z-index: 1;
+      }
     }
+    &::after {
+      @include mq(tablet) {
+        position: absolute;
+        content: '';
+        top: 2.4rem;
+        left: -1.8rem;
+        bottom: -1.8rem;
+        background: url('../img/experience-quote-bg.png') repeat center;
+        width: 100vw;
+        border-radius: 1rem;
+      }
+    }
+  }
+  &--full-ctas {
     &::before {
-      position: absolute;
-      content: '“';
-      top: -1.8rem;
-      left: 1.8rem;
-      font: 400 9rem/1 $f-heading;
-      letter-spacing: 0.02em;
-      color: $clr-green;
+      @include mq(tablet) {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 50%;
+        width: vw(650px);
+        height: vw(520px);
+        max-width: 65rem;
+        max-height: 52rem;
+        background: url('../img/decor-m.svg') no-repeat center;
+        transform: translateX(-50%);
+        z-index: -1;
+      }
+    }
+    .container {
+      @include mq(tablet) {
+        padding-inline: 1rem;
+        max-width: 190rem;
+      }
+    }
+  }
+  &--contained-ctas {
+    @include mq(tablet) {
+      margin-block: 10rem;
+    }
+    @include mq(desktop-wide) {
+      margin-block: 15rem;
+    }
+    .container {
+      @include mq(tablet) {
+        align-items: center;
+      }
+    }
+  }
+  &--experience-testimonial {
+    @include mq(desktop-small, max) {
+      margin-top: 0;
+    }
+    .container {
+      @include mq(desktop-small, max) {
+        align-items: initial;
+        flex-direction: column;
+      }
+    }
+  }
+  &--left {
+    .container {
+      @include mq(tablet) {
+        flex-direction: row-reverse;
+      }
     }
   }
 }

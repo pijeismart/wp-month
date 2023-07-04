@@ -1091,6 +1091,157 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_6465ec7190fd9",
+                            "label": "Settings",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "left",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_64831f70b2f12",
+                            "label": "TOC Title",
+                            "name": "toc_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_646ebe14d7b0a",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6465ec7d90fda",
+                            "label": "Options",
+                            "name": "options",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cards": "Cards",
+                                "full-ctas": "Full CTAs",
+                                "contained-ctas": "Contained CTAs",
+                                "experience-testimonial": "Related Practice Areas"
+                            },
+                            "default_value": "cards",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_6480adb28ed29",
+                            "label": "Content Direction",
+                            "name": "content_direction",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right"
+                            },
+                            "default_value": "right",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_649708ea03c96",
+                            "label": "Theme",
+                            "name": "theme",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "bg-white": "Light",
+                                "bg-navy": "Dark"
+                            },
+                            "default_value": "bg-white",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_6498df091111f",
+                            "label": "Remove Margins",
+                            "name": "remove_margins",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        },
+                        {
                             "key": "field_6465ec0390fce",
                             "label": "Media",
                             "name": "",
@@ -1115,7 +1266,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "!=",
+                                        "value": "experience-testimonial"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "33",
                                 "class": "",
@@ -1140,7 +1299,15 @@
                             "type": "file",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "!=",
+                                        "value": "experience-testimonial"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "33",
                                 "class": "",
@@ -1160,7 +1327,15 @@
                             "type": "url",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465ec7d90fda",
+                                        "operator": "!=",
+                                        "value": "experience-testimonial"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "33",
                                 "class": "",
@@ -1593,157 +1768,6 @@
                             "rows": "",
                             "placeholder": "",
                             "new_lines": ""
-                        },
-                        {
-                            "key": "field_6465ec7190fd9",
-                            "label": "Settings",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "tab",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "placement": "left",
-                            "endpoint": 0
-                        },
-                        {
-                            "key": "field_64831f70b2f12",
-                            "label": "TOC Title",
-                            "name": "toc_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_646ebe14d7b0a",
-                            "label": "Anchor ID",
-                            "name": "anchor_id",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_6465ec7d90fda",
-                            "label": "Options",
-                            "name": "options",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "cards": "Cards",
-                                "full-ctas": "Full CTAs",
-                                "contained-ctas": "Contained CTAs",
-                                "experience-testimonial": "Related Practice Areas"
-                            },
-                            "default_value": "cards",
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_6480adb28ed29",
-                            "label": "Content Direction",
-                            "name": "content_direction",
-                            "aria-label": "",
-                            "type": "button_group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "left": "Left",
-                                "right": "Right"
-                            },
-                            "default_value": "right",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "layout": "horizontal"
-                        },
-                        {
-                            "key": "field_649708ea03c96",
-                            "label": "Theme",
-                            "name": "theme",
-                            "aria-label": "",
-                            "type": "button_group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "bg-white": "Light",
-                                "bg-navy": "Dark"
-                            },
-                            "default_value": "bg-white",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "layout": "horizontal"
-                        },
-                        {
-                            "key": "field_6498df091111f",
-                            "label": "Remove Margins",
-                            "name": "remove_margins",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
-                            "ui": 1
                         }
                     ],
                     "min": "",
@@ -7344,5 +7368,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688134137
+    "modified": 1688432234
 }
