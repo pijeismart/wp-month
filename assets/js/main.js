@@ -748,6 +748,29 @@
           $loadmore.hide();
         }
       });
+      // search
+      $('.hc-videos__search').on('keyup', function() {
+        let name = $(this).val().toLowerCase();
+        $('.hc-videos__item').hide();
+        $('.hc-videos__item').removeClass('is-active');
+        $('.hc-videos__item').each(function() {
+          if ($(this).attr('data-name').includes(name)) {
+            $(this).addClass('is-active');
+          }
+        });
+        $('.hc-videos__item.is-active').show();
+        $('.hc-videos__item.is-active').each(function(index) {
+          if (index > perPage - 1) {
+            $(this).hide();
+          }
+        });
+        if ($('.hc-videos__item.is-active').length > perPage) {
+          $loadmore.show();
+        } else {
+          $loadmore.hide();
+        }
+        $loadmoreBtn.attr('data-paged', 1);
+      });
     },
     /**
      * init awards content

@@ -943,9 +943,12 @@ if ( $enable_athletes ) :
 						$video = get_sub_field( 'video' );
 						$year  = get_sub_field( 'year' );
 						$week  = get_sub_field( 'week' );
+						$name  = get_sub_field( 'name' );
 						if ( $video ) :
 							?>
-							<div class="hc-videos__item hc-videos__item-alt is-active" data-year="<?php echo esc_attr( $year ); ?>">
+							<div class="hc-videos__item hc-videos__item-alt is-active" 
+								data-year="<?php echo esc_attr( $year ); ?>"
+								data-name="<?php echo esc_attr( strtolower( $name ) ); ?>">
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-image',
