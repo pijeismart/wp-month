@@ -813,6 +813,12 @@
      * init athlete gallery
      */
     initAthleteGallery() {
+      $('.athlete-winners__links .tab-link').on('click', function() {
+        const target = $(this).attr('data-target');
+        if ($(target).length) {
+          $('.athlete-winners__block__gallery', $(target)).slick('refresh');
+        }
+      });
       $('.athlete-winners__block__gallery').slick({
         arrows: true,
         dots: false,
