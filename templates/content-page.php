@@ -321,9 +321,9 @@ if ( have_rows( 'modules' ) ) :
 							</h5>
 							<ul class="navigation-bar__social__items">
 								<li class="navigation-bar__social__item instagram">
-									<a href="">
-										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/instagram.svg' ); ?>" 
-											alt="instagram" 
+									<a href="mailto:?subject=<?php echo get_the_title(); ?>&amp;body=Check out this page <?php echo esc_url( get_the_permalink() ); ?>">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-envelope.svg' ); ?>" 
+											alt="email" 
 											class="navigation-bar__social__item__img">
 									</a>
 								</li>
