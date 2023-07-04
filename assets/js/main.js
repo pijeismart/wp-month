@@ -210,7 +210,10 @@
         );
         helper.isElementExist('.tab', theme.initTab);
         helper.isElementExist('.athlete-carousel', theme.initAthleteCarousel);
-        helper.isElementExist('.attorney-awards__carousel', theme.initAwardsCarousel);
+        helper.isElementExist(
+          '.attorney-awards__carousel',
+          theme.initAwardsCarousel
+        );
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -287,9 +290,9 @@
         $(document).on('click', '.gform_next_button', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          const $form = $(this).closest('form'),
-            $parent = $(this).closest('.gform_page'),
-            $next = $parent.next();
+          const $form = $(this).closest('form');
+          const $parent = $(this).closest('.gform_page');
+          const $next = $parent.next();
           $next.show();
           // $form.trigger("submit",[true]);
           return false;
@@ -598,7 +601,6 @@
 
       // filter btns
       $('.search-filter__btn').on('click', function() {
-        const $buttons = $(this).closest('.search-filter__btns');
         const target = $(this).attr('data-target');
         const value = $(this).attr(target);
         if ($(this).hasClass('is-active')) return;
@@ -702,17 +704,30 @@
       const $loadmore = $('.hc-videos__loadmore');
       const $loadmoreBtn = $('.btn-loadmore-videos');
       const perPage = 12;
-      // change year select
-      $select.on('change', function() {
-        let year = $(this).val();
+      const $search = $('.hc-videos__search');
+      function updateHCVideos() {
+        let year = $select.val();
+        const name = $search.val();
         if (year == 'all') year = '';
         $('.hc-videos__item').hide();
         $('.hc-videos__item').removeClass('is-active');
-        const $videos =
+        let $videos =
           year == ''
             ? $('.hc-videos__item')
             : $(`.hc-videos__item[data-year=${year}]`);
         $videos.addClass('is-active');
+        if (name) {
+          $videos.each(function() {
+            if (
+              !$(this)
+                .attr('data-name')
+                .includes(name)
+            ) {
+              $(this).removeClass('is-active');
+            }
+          });
+        }
+        $videos = $('.hc-videos__item.is-active');
         $videos.show();
         $videos.each(function(index) {
           if (index > perPage - 1) {
@@ -725,6 +740,15 @@
           $loadmore.hide();
         }
         $loadmoreBtn.attr('data-paged', 1);
+        if ($videos.length == 0) {
+          $('.hc-videos__no-results').show();
+        } else {
+          $('.hc-videos__no-results').hide();
+        }
+      }
+      // change year select
+      $select.on('change', function() {
+        updateHCVideos();
       });
       // show load more
       $loadmoreBtn.on('click', function() {
@@ -749,27 +773,8 @@
         }
       });
       // search
-      $('.hc-videos__search').on('keyup', function() {
-        let name = $(this).val().toLowerCase();
-        $('.hc-videos__item').hide();
-        $('.hc-videos__item').removeClass('is-active');
-        $('.hc-videos__item').each(function() {
-          if ($(this).attr('data-name').includes(name)) {
-            $(this).addClass('is-active');
-          }
-        });
-        $('.hc-videos__item.is-active').show();
-        $('.hc-videos__item.is-active').each(function(index) {
-          if (index > perPage - 1) {
-            $(this).hide();
-          }
-        });
-        if ($('.hc-videos__item.is-active').length > perPage) {
-          $loadmore.show();
-        } else {
-          $loadmore.hide();
-        }
-        $loadmoreBtn.attr('data-paged', 1);
+      $search.on('keyup', function() {
+        updateHCVideos();
       });
     },
     /**
@@ -790,9 +795,9 @@
         const $wrapper = $(this).closest('.js-loadmore-wrapper');
         const $grid = $('.js-loadmore-grid', $wrapper);
         const $btnWrapper = $(this).closest('.js-loadmore-btn-wrapper');
-        let page = parseInt($(this).attr('data-page')),
-          postsPerPage = parseInt($(this).attr('data-posts-per-page')),
-          totalCount = $('.js-loadmore-child', $grid).length;
+        let page = parseInt($(this).attr('data-page'));
+        const postsPerPage = parseInt($(this).attr('data-posts-per-page'));
+        const totalCount = $('.js-loadmore-child', $grid).length;
         $btnWrapper.hide();
         page += 1;
         $(this).attr('data-page', page);

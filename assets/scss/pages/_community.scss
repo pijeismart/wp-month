@@ -957,6 +957,10 @@
         text-transform: capitalize;
       }
     }
+    &__no-results {
+      display: none;
+      text-align: center;
+    }
   }
   
   .c-footer-cta {
