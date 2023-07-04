@@ -316,9 +316,9 @@ if ( have_rows( 'modules' ) ) :
 							</div>
 						</div>
 						<div class="navigation-bar__social">
-							<h5 class="navigation-bar__social__heading">
+							<a href="javascript:;" class="btn-popup h5 navigation-bar__social__heading" data-fancybox data-src="#popup-feedback">
 								<?php echo esc_html__( 'Leave Feedback' ); ?>
-							</h5>
+							</a>
 							<ul class="navigation-bar__social__items">
 								<li class="navigation-bar__social__item facebook">
 									<a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>">

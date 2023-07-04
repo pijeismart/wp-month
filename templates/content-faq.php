@@ -142,10 +142,10 @@ $phone = get_field( 'header_cta_url', 'options' );
 				<div class="faq-detail__bottom__left">
 					<h6><?php echo esc_html__( 'How useful is this for you?' ); ?></h6>
 					<div class="rating-buttons">
-						<button class="rating-btn rating-btn--dislike" aria-label="Dislike">
+						<button class="rating-btn rating-btn--dislike" aria-label="Dislike" data-fancybox data-src="#popup-feedback">
 							<span class="hide-text">Dislike</span>
 						</button>
-						<button class="rating-btn rating-btn--like" aria-label="Like">
+						<button class="rating-btn rating-btn--like" aria-label="Like" data-fancybox data-src="#popup-feedback">
 							<span class="hide-text">Like</span>
 						</button>
 					</div>

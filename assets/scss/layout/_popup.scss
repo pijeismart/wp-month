@@ -1,0 +1,107 @@
+.popup {
+  display: none;
+  padding: 0;
+  background-color: transparent;
+  max-width: 34rem;
+  &-heading {
+    padding: 1rem;
+    background-color: $clr-green;
+    color: $clr-white;
+    font: 700 1.6rem/1.6 $f-text;
+    letter-spacing: -0.16px;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 1.2rem 1.2rem 0 0;
+  }
+  &-content {
+    padding: 3.2rem 1.6rem;
+    border-radius: 0 0 1.2rem 1.2rem;
+    background-color: $clr-white;
+    color: $text-color;
+    .gfield {
+      &--type-choice {
+        .gform-field-label {
+          display: block;
+        }
+        legend {
+          font: 400 1.4rem/1.6 $f-text;
+          color: $text-color;
+          text-align: center;
+        }
+        .gfield_radio {
+          display: flex;
+          margin-top: 1.6rem;
+          align-items: center;
+          justify-content: center;
+        }
+        input {
+          display: none;
+        }
+        label.gform-field-label {
+          margin-inline: 0.8rem;
+          @extend .hide-text;
+          width: 4rem;
+          height: 4rem;
+          @include svg-background('<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.9834 30.8152V13.8819C13.9834 13.2152 14.1834 12.5652 14.5501 12.0152L19.1001 5.24858C19.8167 4.16524 21.6001 3.39858 23.1167 3.96524C24.7501 4.51524 25.8334 6.34857 25.4834 7.98191L24.6167 13.4319C24.5501 13.9319 24.6834 14.3819 24.9667 14.7319C25.2501 15.0486 25.6667 15.2486 26.1167 15.2486H32.9667C34.2834 15.2486 35.4167 15.7819 36.0834 16.7152C36.7167 17.6152 36.8334 18.7819 36.4167 19.9652L32.3167 32.4486C31.8001 34.5152 29.5501 36.1986 27.3167 36.1986H20.8167C19.7001 36.1986 18.1334 35.8152 17.4167 35.0986L15.2834 33.4486C14.4667 32.8319 13.9834 31.8486 13.9834 30.8152Z" fill="%23D8DCE2"/><path d="M8.6835 10.6328H6.96683C4.3835 10.6328 3.3335 11.6328 3.3335 14.0995V30.8661C3.3335 33.3328 4.3835 34.3328 6.96683 34.3328H8.6835C11.2668 34.3328 12.3168 33.3328 12.3168 30.8661V14.0995C12.3168 11.6328 11.2668 10.6328 8.6835 10.6328Z" fill="%23D8DCE2"/></svg>');
+          background-size: contain;
+          transition: all .3s ease-in-out;
+          cursor: pointer;
+        }
+        input:checked + label {
+          @include svg-background('<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.9834 30.8152V13.8819C13.9834 13.2152 14.1834 12.5652 14.5501 12.0152L19.1001 5.24858C19.8167 4.16524 21.6001 3.39858 23.1167 3.96524C24.7501 4.51524 25.8334 6.34857 25.4834 7.98191L24.6167 13.4319C24.5501 13.9319 24.6834 14.3819 24.9667 14.7319C25.2501 15.0486 25.6667 15.2486 26.1167 15.2486H32.9667C34.2834 15.2486 35.4167 15.7819 36.0834 16.7152C36.7167 17.6152 36.8334 18.7819 36.4167 19.9652L32.3167 32.4486C31.8001 34.5152 29.5501 36.1986 27.3167 36.1986H20.8167C19.7001 36.1986 18.1334 35.8152 17.4167 35.0986L15.2834 33.4486C14.4667 32.8319 13.9834 31.8486 13.9834 30.8152Z" fill="%2378be38"/><path d="M8.6835 10.6328H6.96683C4.3835 10.6328 3.3335 11.6328 3.3335 14.0995V30.8661C3.3335 33.3328 4.3835 34.3328 6.96683 34.3328H8.6835C11.2668 34.3328 12.3168 33.3328 12.3168 30.8661V14.0995C12.3168 11.6328 11.2668 10.6328 8.6835 10.6328Z" fill="%2378be38"/></svg>');
+        }
+        #label_3_1_1 {
+          transform: rotate(180deg);
+        }
+      }
+      &--type-html {
+        display: inline-block;
+        margin-bottom: 0 !important;
+        width: 50%;
+        font: 400 1.2rem/1.6 $f-text;
+        color: $text-color;
+        font-style: italic;
+        text-decoration: underline;
+      }
+      &--type-submit {
+        display: inline-block;
+        margin-bottom: 0 !important;
+        width: 50%;
+        text-align: right;
+      }
+      input[type=text],
+      textarea {
+        padding: 1.6rem;
+        background-color: $clr-white-off;
+        font: 400 1.4rem/1.6 $f-text;
+        &::placeholder {
+          color: $text-color;
+        }
+      }
+      textarea {
+        height: calc(5em + 3.2rem);
+      }
+    }
+    .gform_submission_error,
+    .gform_confirmation_message {
+      color: $text-color;
+    }
+    .validation_message {
+      display: block;
+      color: $text-color;
+    }
+    #field_submit .gform-button {
+      padding: 8px 0;
+      width: auto;
+      font: 700 1.4rem/1.3 $f-text;
+      letter-spacing: 0.14px;
+      border-bottom: 2px solid $clr-green;
+      background: transparent;
+      border-radius: 0;
+      text-transform: capitalize;
+    }
+  }
+  .fancybox-close-small {
+    display: none !important;
+  }
+}

@@ -262,6 +262,33 @@
 		</div>
 	</footer>
 	<!-- End Footer -->
+
+	<!-- Feedback Popup -->
+	<div class="popup" id="popup-feedback">
+		<?php
+		get_template_part_args(
+			'template-parts/content-modules-text',
+			array(
+				'v'  => 'feedback_heading',
+				't'  => 'div',
+				'tc' => 'popup-heading',
+				'o'  => 'o',
+			)
+		);
+		?>
+		<?php
+		get_template_part_args(
+			'template-parts/content-modules-shortcode',
+			array(
+				'v'  => 'feedback_form',
+				't'  => 'div',
+				'tc' => 'popup-content',
+				'o'  => 'o',
+			)
+		);
+		?>
+	</div>
+	<!-- End Feedback Popup -->
 	<?php wp_footer(); ?>
 </body>
 </html>
