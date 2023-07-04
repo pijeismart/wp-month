@@ -128,11 +128,12 @@ $args = array(
 	'posts_per_page' => 5,
 );
 if ( $terms ) :
+	$terms_list = wp_list_pluck( $terms, 'term_id' );
 	$args['tax_query'] = array(
 		array(
-			'taxonomy' => 'category',
-			'field'    => 'slug',
-			'terms'    => $term_list,
+			'taxonomy' => 'case_category',
+			'field'    => 'term_id',
+			'terms'    => $terms_list,
 		),
 	);
 endif;

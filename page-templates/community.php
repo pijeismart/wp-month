@@ -998,7 +998,7 @@ if ( $enable_athletes ) :
 						<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
 					</div>
 				<?php endif; ?>
-				<h3 class="hc-videos__no-results"><?php echo esc_html__( 'No athletes found.' ); ?></h3>
+				<h3 class="hc-videos__no-results"><?php echo esc_html__( 'No results found.' ); ?></h3>
 			<?php endif; ?>
 		</div>
 	</section>

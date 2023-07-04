@@ -459,21 +459,11 @@ if ( ! function_exists( 'am_get_the_post_thumbnail' ) ) {
 			return get_the_post_thumbnail_url( $post, $size );
 		} else {
 			$case_categories = get_the_terms( $post, 'case_category' );
-			$claim_types     = get_the_terms( $post, 'claim_type' );
-			$date            = get_post_timestamp();
-			$timestamp       = substr( $date, -1 );
+			$date            = get_post_timestamp( $post );
+			$timestamp       = intval( substr( $date, 3, 3 ) );
 			if ( $case_categories ) {
 				foreach ( $case_categories as $case_category ) {
 					$images = get_field( 'default_post_images', 'case_category_' . $case_category->term_id );
-					if ( $images ) {
-						$index = $timestamp % count( $images );
-						return $images[ $index ]['url'];
-					}
-				}
-			}
-			if ( $claim_types ) {
-				foreach ( $claim_types as $claim_type ) {
-					$images = get_field( 'default_post_images', 'claim_type_' . $claim_type->term_id );
 					if ( $images ) {
 						$index = $timestamp % count( $images );
 						return $images[ $index ]['url'];
