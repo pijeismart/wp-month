@@ -969,12 +969,6 @@ if ( $enable_athletes ) :
 								endif;
 								?>
 								<div class="hc-videos__item-alt__content">
-									<a href="<?php echo esc_url( $video ); ?>" class="hc-videos__item-alt__play" data-fancybox>
-										<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<rect x="0.5" y="0.5" width="32" height="32" rx="16" fill="#D8DCE2"/>
-											<path d="M24.5 16.5L12.5 23.4282L12.5 9.5718L24.5 16.5Z" fill="#0A1631"/>
-										</svg>
-									</a>
 									<div class="hc-videos__item-alt__info">
 										<?php
 										get_template_part_args(
@@ -988,12 +982,16 @@ if ( $enable_athletes ) :
 										?>
 										<?php if ( $week ) : ?>
 											<p class="hc-videos__item-alt__week">
-												<?php echo esc_html__( 'Week' ) . $week; ?>
+												<?php echo esc_html__( 'Week' ) . ' ' . $week; ?>
 											</p>
 										<?php endif; ?>
 									</div>
-									<a href="<?php echo esc_url( $video ); ?>" class="underline-link" data-fancybox>
-										<?php echo esc_html__( 'Watch' ); ?>
+									<a href="<?php echo esc_url( $video ); ?>" class="hc-videos__item-alt__play" data-fancybox>
+										<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect x="0.5" y="0.5" width="32" height="32" rx="16" fill="#D8DCE2"/>
+											<path d="M24.5 16.5L12.5 23.4282L12.5 9.5718L24.5 16.5Z" fill="#0A1631"/>
+										</svg>
+										<span class="underline-link"><?php echo esc_html__( 'Watch' ); ?></span>
 									</a>
 								</div>
 							</div>

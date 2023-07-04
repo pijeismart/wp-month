@@ -882,9 +882,13 @@
           align-items: center;
         }
         &__play {
-          margin-right: 1.6rem;
+          display: flex;
           flex-shrink: 0;
           line-height: 0;
+          align-items: center;
+          &:hover .underline-link::after {
+            transform: scaleX(0);
+          }
         }
         &__info {
           flex-grow: 1;
@@ -900,7 +904,7 @@
           text-transform: capitalize;
         }
         .underline-link {
-          margin-left: 1.6rem;
+          margin-left: 1rem;
           flex-shrink: 0;
         }
       }
