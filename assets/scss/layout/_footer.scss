@@ -48,6 +48,7 @@
       display: inline-block;
       padding: 2.2rem 3rem;
       font-size: 2.6rem;
+      max-width: 27rem;
     }
     small {
       display: inline-block;
@@ -100,11 +101,15 @@
         margin-bottom: 4rem;
       }
       a {
-        font: 700 1.2rem/1.8rem $f-text;
+        font: 400 1.2rem/1.8rem $f-text;
         color: $clr-white;
+        opacity: 0.6;
         @include mq(tablet) {
           font-size: 1.3rem;
           line-height: 1.5;
+        }
+        &:hover {
+          opacity: 1;
         }
       }
     }
@@ -126,9 +131,13 @@
         a {
           font-size: 1.6rem;
           line-height: 1.5;
+          opacity: 0.6;
           @include mq(tablet) {
             margin-inline: 1rem;
             font-size: 2rem;
+          }
+          &:hover {
+            opacity: 1;
           }
         }
       }
@@ -170,6 +179,24 @@
       text-decoration: underline;
       &:hover {
         color: $clr-green;
+      }
+    }
+  }
+  &-socials {
+    margin-block: 3.6rem;
+    padding-inline: 1.5rem;
+    li {
+      &:not(:last-child) {
+        margin-bottom: 1.3rem;
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 1rem;
+        font: 600 1.2rem/1.5 $f-text;
+        color: $clr-white;
       }
     }
   }

@@ -1,4 +1,4 @@
-<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php') || is_page_template( 'page-templates/blog.php') || is_page_template( 'page-templates/areas-we-serve.php' ) ) : ?>
+<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php' ) || is_page_template( 'page-templates/blog.php' ) || is_page_template( 'page-templates/areas-we-serve.php' ) ) : ?>
 			<section class="results">
 				<div class="container">
 					<div class="results-content">
@@ -214,6 +214,36 @@
 					<a href="<?php echo esc_url( $cta_url['url'] ); ?>" class="footer-cta" target="<?php echo esc_attr( $cta_url['target'] ? $cta_url['target'] : '_self' ); ?>">
 						<?php echo $cta_text; ?>
 					</a>
+				<?php endif; ?>
+				<?php if ( have_rows( 'social_links', 'options' ) ) : ?>
+					<ul class="footer-socials">
+						<?php
+						while ( have_rows( 'social_links', 'options' ) ) :
+							the_row();
+							$link = get_sub_field( 'link' );
+							if ( $link ) :
+								?>
+								<li>
+									<a href="<?php echo esc_url( $link['url'] ); ?>" target="_blank">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-image',
+											array(
+												'v'     => 'icon',
+												'v2x'   => false,
+												'is'    => false,
+												'is_2x' => false,
+											)
+										);
+										?>
+										<span><?php echo esc_html( $link['title'] ); ?></span>
+									</a>
+								</li>
+								<?php
+							endif;
+						endwhile;
+						?>
+					</ul>
 				<?php endif; ?>
 				<div class="footer-left__bottom d-md-only">
 					<?php
