@@ -28,6 +28,8 @@
   }
   .lds-wrapper {
     grid-column: span 2;
+    text-align: center;
+    width: 100%;
     @include mq(tablet) {
       grid-column: span 4;
     }

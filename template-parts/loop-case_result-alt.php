@@ -4,7 +4,9 @@ $type       = get_the_terms( $post, 'claim_type' );
 $categories = get_the_terms( $post, 'case_category' );
 $price      = get_field( 'price' );
 $content    = get_field( 'content' );
-$url        = get_field( 'url' ) ? get_field( 'url' ) : get_term_link( $categories[0] );
+if ( $categories ) :
+	$url = get_field( 'default_page_url', 'case_category_' . $categories[0]->term_id );
+endif;
 ?>
 <div class="loop-case-result">
 	<?php if ( $price ) : ?>
@@ -20,7 +22,9 @@ $url        = get_field( 'url' ) ? get_field( 'url' ) : get_term_link( $categori
 	<?php if ( $content ) : ?>
 		<p class="loop-case-result__content"><?php echo wp_trim_words( $content, 30, '...' ); ?></p>
 	<?php endif; ?>
+	<?php if ( $url ) : ?>
     <div class="loop-case-result__cta">
         <a href="<?php echo esc_url( $url ); ?>" class="underline-link"><?php echo esc_html__( 'Learn More' ); ?></a>
     </div>
+	<?php endif; ?>
 </div>

@@ -54,6 +54,23 @@
             "mime_types": "",
             "insert": "append",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_64a37d0074a0f",
+            "label": "Default Page URL",
+            "name": "default_page_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -81,5 +98,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688005316
+    "modified": 1688435977
 }
