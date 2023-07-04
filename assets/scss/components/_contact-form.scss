@@ -352,6 +352,7 @@
         justify-content: space-between;
       }
       .underline-link {
+        text-transform: capitalize;
         @include mq(tablet) {
           margin-left: 2rem;
           flex-shrink: 0;

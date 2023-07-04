@@ -1242,7 +1242,7 @@ if ( have_rows( 'modules' ) ) :
 							?>
 						</div>
 						<?php if ( $enable_links ) : ?>
-							<div class="contact-form__links">
+							<div class="contact-form__links a-up">
 								<div class="contact-form__links-top">
 									<?php
 									get_template_part_args(
