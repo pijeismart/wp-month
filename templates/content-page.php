@@ -320,13 +320,6 @@ if ( have_rows( 'modules' ) ) :
 								<?php echo esc_html__( 'Leave Feedback' ); ?>
 							</h5>
 							<ul class="navigation-bar__social__items">
-								<li class="navigation-bar__social__item instagram">
-									<a href="mailto:?subject=<?php echo get_the_title(); ?>&amp;body=Check out this page <?php echo esc_url( get_the_permalink() ); ?>">
-										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-envelope.svg' ); ?>" 
-											alt="email" 
-											class="navigation-bar__social__item__img">
-									</a>
-								</li>
 								<li class="navigation-bar__social__item facebook">
 									<a href="http://facebook.com/sharer.php?u=<?php echo esc_url( get_the_permalink() ); ?>">
 										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/facebook.svg' ); ?>" 
@@ -338,6 +331,20 @@ if ( have_rows( 'modules' ) ) :
 									<a href="https://twitter.com/intent/tweet?url=<?php echo esc_url( get_the_permalink() ); ?>&text=<?php echo esc_html( get_the_title() ); ?>">
 										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/twitter.svg' ); ?>" 
 											alt="linkedin" 
+											class="navigation-bar__social__item__img">
+									</a>
+								</li>
+								<li class="navigation-bar__social__item d-sm-only">
+									<a href="sms:?&body=<?php echo esc_url( get_the_permalink() ); ?>">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/sms.svg' ); ?>" 
+											alt="email" 
+											class="navigation-bar__social__item__img">
+									</a>
+								</li>
+								<li class="navigation-bar__social__item d-md-only">
+									<a href="mailto:?subject=<?php echo get_the_title(); ?>&amp;body=Check out this page <?php echo esc_url( get_the_permalink() ); ?>">
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/email.svg' ); ?>" 
+											alt="email" 
 											class="navigation-bar__social__item__img">
 									</a>
 								</li>
