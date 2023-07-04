@@ -24,13 +24,14 @@
   }
   &__unit {
     margin-bottom: 2rem;
-    font: 700 1.4rem/1.5 $f-text;
+    font: 700 2rem/1.5 $f-text;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     color: $clr-navy;
     text-align: center;
     @include mq(tablet) {
       margin-bottom: 4rem;
+      font-size: 2.8rem;
     }
   }
   &__heading {
