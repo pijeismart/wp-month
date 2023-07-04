@@ -944,22 +944,29 @@ if ( $enable_athletes ) :
 						$year  = get_sub_field( 'year' );
 						$week  = get_sub_field( 'week' );
 						$name  = get_sub_field( 'name' );
+						$image = get_sub_field( 'image' );
 						if ( $video ) :
 							?>
 							<div class="hc-videos__item hc-videos__item-alt is-active" 
 								data-year="<?php echo esc_attr( $year ); ?>"
 								data-name="<?php echo esc_attr( strtolower( $name ) ); ?>">
 								<?php
-								get_template_part_args(
-									'template-parts/content-modules-image',
-									array(
-										'v'     => 'image',
-										'v2x'   => false,
-										'is'    => false,
-										'is_2x' => false,
-										'c'     => 'hc-videos__item-alt__img',
-									)
-								);
+								if ( $image ) :
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'image',
+											'v2x'   => false,
+											'is'    => false,
+											'is_2x' => false,
+											'c'     => 'hc-videos__item-alt__img',
+										)
+									);
+								else:
+									?>
+									<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="" class="hc-videos__item-alt__img">
+									<?php
+								endif;
 								?>
 								<div class="hc-videos__item-alt__content">
 									<a href="<?php echo esc_url( $video ); ?>" class="hc-videos__item-alt__play" data-fancybox>

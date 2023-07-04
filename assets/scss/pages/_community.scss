@@ -820,6 +820,19 @@
     }
 
     &__grid {
+      // @include mq(phablet) {
+      //   display: grid;
+      //   grid-template-columns: repeat(2, minmax(0, 1fr));
+      //   grid-gap: 4rem 2rem;
+      // }
+
+      // @include mq(tablet) {
+      //   grid-template-columns: repeat(3, minmax(0, 1fr));
+      // }
+
+      // @include mq(desktop) {
+      //   grid-template-columns: repeat(4, minmax(0, 1fr));
+      // }
       @include mq(tablet) {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
