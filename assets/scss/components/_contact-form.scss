@@ -334,4 +334,47 @@
       }
     }
   }
+
+  &__links {
+    margin-top: 3rem;
+    padding: 1.6rem 1.6rem 4.4rem;
+    border-radius: 12px;
+    background: rgba(174, 223, 130, 0.40);
+    @include mq(tablet) {
+      margin-top: 4.4rem;
+    }
+    &-top {
+      margin-bottom: 2rem;
+      @include mq(tablet) {
+        display: flex;
+        margin-bottom: 2.2rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .underline-link {
+        @include mq(tablet) {
+          margin-left: 2rem;
+          flex-shrink: 0;
+        }
+      }
+    }
+    &-heading {
+      font: 700 1.6rem/1.55 $f-text;
+      letter-spacing: 0.16px;
+    }
+    ul {
+      padding-left: 2rem;
+      @include mq(tablet) {
+        column-count: 2;
+        column-gap: 3rem;
+      }
+      a {
+        font: 700 1.4rem/2 $f-text;
+        color: $clr-navy;
+        &:hover {
+          color: $clr-green;
+        }
+      }
+    }
+  }
 }

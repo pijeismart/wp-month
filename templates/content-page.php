@@ -578,15 +578,15 @@ if ( have_rows( 'modules' ) ) :
 										<?php
 									endif;
 									wp_reset_postdata();
-								else:
+								else :
 									$claim_types = get_sub_field( $source_type );
 									if ( $claim_types ) :
 										$args  = array(
-											'post_type'      => 'city',
-											'post_status'    => 'publish',
-											'post__not_in'   => array( get_the_ID() ),
+											'post_type'    => 'city',
+											'post_status'  => 'publish',
+											'post__not_in' => array( get_the_ID() ),
 											'posts_per_page' => 10,
-											'tax_query'      => array(
+											'tax_query'    => array(
 												array(
 													'taxonomy' => $source_type,
 													'field'    => 'term_id',
@@ -1107,9 +1107,11 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact_form' == get_row_layout() ) :
-			$form       = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
-			$form_only  = get_sub_field( 'form_only' );
-			$has_border = get_sub_field( 'content_has_border' );
+			$form         = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
+			$form_only    = get_sub_field( 'form_only' );
+			$has_border   = get_sub_field( 'content_has_border' );
+			$enable_links = get_sub_field( 'enable_links_block' );
+			$links_type   = get_sub_field( 'links_type' );
 			?>
 			<!-- Contact Form -->
 			<section class="contact-form<?php echo $has_border ? ' contact-form--border' : ''; ?><?php echo $form_only ? ' contact-form--only' : ''; ?>"
@@ -1239,6 +1241,80 @@ if ( have_rows( 'modules' ) ) :
 							);
 							?>
 						</div>
+						<?php if ( $enable_links ) : ?>
+							<div class="contact-form__links">
+								<div class="contact-form__links-top">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-text',
+										array(
+											'v'  => 'links_heading',
+											't'  => 'h6',
+											'tc' => 'contact-form__links-heading',
+										)
+									);
+									?>
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-cta',
+										array(
+											'v' => 'links_cta',
+											'c' => 'underline-link',
+										)
+									);
+									?>
+								</div>
+								<?php if ( 'custom' == $links_type ) : ?>
+									<?php if ( have_rows( 'links' ) ) : ?>
+										<ul>
+											<?php
+											while ( have_rows( 'links' ) ) :
+												the_row();
+												get_template_part_args(
+													'template-parts/content-modules-cta',
+													array(
+														'v' => 'link',
+														'w' => 'li',
+													)
+												);
+											endwhile;
+											?>
+										</ul>
+									<?php endif; ?>
+								<?php else : ?>
+									<?php
+									$parent_page = get_sub_field( 'parent_page' );
+									if ( $parent_page ) :
+										$parent_page_id = $parent_page[0];
+										$args           = array(
+											'posts_per_page' => -11,
+											'post_parent' => $parent_page_id,
+											'post_type'   => get_post_type( $parent_page_id ),
+											'post_status' => 'publish',
+										);
+										$children       = get_children( $args );
+										if ( $children ) :
+											?>
+											<ul>
+												<?php
+												foreach ( $children as $post ) :
+													setup_postdata( $post );
+													?>
+													<li>
+														<a href="<?php echo esc_url( get_the_permalink() ); ?>">
+															<?php echo esc_html( get_the_title() ); ?>
+														</a>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+											<?php
+										endif;
+										wp_reset_postdata();
+									endif;
+									?>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
 					</div>
 					<?php endif; ?>
 					<div class="contact-form__form a-up a-delay-1">
