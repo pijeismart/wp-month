@@ -31,6 +31,7 @@
       margin-bottom: 1.6rem;
       padding-bottom: 1.6rem;
       border-bottom: 1px solid $clr-light-gray;
+      justify-content: space-between;
     }
 
     &__heading {
@@ -50,7 +51,9 @@
       align-items: center;
       flex-wrap: wrap;
 
-      @include mq(tablet) {}
+      @include mq(tablet, max) {
+        justify-content: flex-end;
+      }
 
       &__item {
         margin: 0.4rem 0;
@@ -58,11 +61,18 @@
         @include mq(tablet) {
           margin: 0 3.8rem 0 0;
         }
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+          @include mq(tablet, max) {
+            display: none;
+          }
+        }
 
         a {
-          display: inline-block;
           font-size: 1.2rem;
           line-height: 1.9rem;
+          display: inline-block;
         }
       }
     }
