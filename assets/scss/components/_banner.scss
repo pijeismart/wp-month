@@ -261,4 +261,21 @@
       }
     }
   }
+  &--practice,
+  &--practice-cards {
+    .container {
+      @include mq(tablet, max) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+    .breadcrumbs {
+      margin-top: 2.4rem;
+      margin-bottom: 0;
+      a,
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
 }

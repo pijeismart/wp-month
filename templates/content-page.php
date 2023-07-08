@@ -46,7 +46,7 @@ if ( have_rows( 'modules' ) ) :
 					if ( 'home' != $type && ! $disable_breadcrumb ) :
 						$parents = get_post_parent( $post );
 						?>
-						<ul class="breadcrumbs a-up d-md-only">
+						<ul class="breadcrumbs a-up">
 							<li>
 								<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 							</li>
