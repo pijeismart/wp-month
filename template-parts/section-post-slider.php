@@ -21,14 +21,18 @@ if ( 'custom' != $source ) :
 	);
 	if ( 'case_category' == $source && $case_category ) :
 		$args['tax_query'] = array(
-			'taxonomy' => 'case_category',
-			'terms'    => $case_category,
+			array(
+				'taxonomy' => 'case_category',
+				'terms'    => $case_category,
+			)
 		);
 	endif;
 	if ( 'claim_type' == $source && $claim_type ) :
 		$args['tax_query'] = array(
-			'taxonomy' => 'claim_type',
-			'terms'    => $claim_type,
+			array(
+				'taxonomy' => 'claim_type',
+				'terms'    => $claim_type,
+			)
 		);
 	endif;
 else :
