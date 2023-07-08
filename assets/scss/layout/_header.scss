@@ -328,4 +328,13 @@
       }
     }
   }
+  &-phone {
+    position: absolute;
+    top: 50%;
+    right: var(--gutter);
+    transform: translateY(-50%);
+    @include mq(desktop-small) {
+      display: none;
+    }
+  }
 }

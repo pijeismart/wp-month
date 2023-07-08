@@ -87,6 +87,11 @@
 						</a>
 					</div>
 				<?php endif; ?>
+				<?php if ( $phone ) : ?>
+					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="header-phone">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-call.svg' ); ?>" alt="">
+					</a>
+				<?php endif; ?>
 			</div>
 		</nav>
 	</header>
