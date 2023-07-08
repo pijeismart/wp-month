@@ -16,7 +16,11 @@
             font-size: 1.5rem;
         }
         &__content {
+            p {
+                margin-bottom: 1em;
+            }
             ul {
+                margin-bottom: 1em;
                 list-style: none;
             }
             li {
@@ -71,6 +75,9 @@
                 margin-bottom: 1rem;
                 letter-spacing: 0;
                 font-size: 1.6rem;
+            }
+            &__content {
+                @include base-typography;
             }
         }
     }
