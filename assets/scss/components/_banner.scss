@@ -270,11 +270,13 @@
       }
     }
     .breadcrumbs {
-      margin-top: 2.4rem;
-      margin-bottom: 0;
-      a,
-      span {
-        font-size: 1rem;
+      @include mq(tablet, max) {
+        margin-top: 2.4rem;
+        margin-bottom: 0;
+        a,
+        span {
+          font-size: 1rem;
+        }
       }
     }
   }
