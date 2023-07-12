@@ -558,6 +558,9 @@
             }
             if (data.show_loadmore) {
               $loadmore.show();
+              if ($('.posts-pagination').length) {
+                $('.posts-pagination').html(data.pagination);
+              }
             }
           },
           complete() {}
@@ -624,7 +627,7 @@
         ajaxCPT();
       });
       // next post pagination
-      $('.next-posts').on('click', function() {
+      $(document).on('click', '.next-posts', function() {
         let paged = parseInt($grid.attr('data-paged'));
         const nextPaged = parseInt($('.max-page-num'));
         paged += 1;
@@ -636,7 +639,7 @@
         ajaxCPT();
       });
       // prev post pagination
-      $('.prev-posts').on('click', function() {
+      $(document).on('click', '.prev-posts', function() {
         let paged = parseInt($grid.attr('data-paged'));
         paged -= 1;
         $grid.attr('data-paged', paged);

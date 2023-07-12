@@ -372,6 +372,17 @@ function ajax_cpt() {
 	if ( $query->max_num_pages > $paged ) :
 		$res->show_loadmore = true;
 	endif;
+	if ( $query->max_num_pages > 1 ) :
+		ob_start();
+		?>
+		<button class="link prev-posts"<?php echo $paged == 1 ? ' disabled' : ''; ?>><?php echo esc_html__( 'Previous' ); ?></button>
+		<div class="slider-pagination">
+			<span class="current-page-num"><?php echo esc_html( $paged ); ?></span> / <span class="max-page-num"><?php echo esc_html( $query->max_num_pages ); ?></span>
+		</div>
+		<button class="link next-posts"<?php echo $paged == $query->max_num_pages ? ' disabled' : ''; ?>><?php echo esc_html__( 'Next' ); ?></button>
+		<?php
+		$res->pagination = ob_get_clean();
+	endif;
 	wp_reset_postdata();
 	echo wp_json_encode( $res );
 	wp_die();
