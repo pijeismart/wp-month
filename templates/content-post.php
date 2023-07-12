@@ -46,6 +46,20 @@ $post_img = am_get_the_post_thumbnail();
 				<p><?php echo esc_html( 'Related Pages' ); ?></p>
 				<ul>
 					<?php
+					if ( $terms ) :
+						$default_url = get_field( 'default_page_url', 'case_category_' . $terms[0]->term_id );
+						if ( $default_url ) :
+							?>
+							<li>
+								<a href="<?php echo esc_url( $default_url ); ?>" class="link post-banner__link">
+									<?php echo esc_html__( 'Our National Practice Areas' ); ?>
+								</a>
+							</li>
+							<?php
+						endif;
+					endif;
+					?>
+					<?php
 					while ( have_rows( 'post_related_pages', 'options' ) ) :
 						the_row();
 						?>
