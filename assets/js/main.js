@@ -505,6 +505,7 @@
       const $grid = $('.section-archive__posts');
       const $loadmore = $('.cpt-load-more');
       const $loadmoreBtn = $('.cpt-load-more-btn');
+      const $pagination = $('.posts-pagination');
 
       // ajax cpt function
       function ajaxCPT(loadmore = false) {
@@ -533,6 +534,7 @@
           beforeSend() {
             if (loadmore) {
               $loadmore.hide();
+              $pagination.hide();
               $grid.append(
                 '<div class="lds-wrapper"><div class="lds-dual-ring"></div></div>'
               );
@@ -558,8 +560,9 @@
             }
             if (data.show_loadmore) {
               $loadmore.show();
-              if ($('.posts-pagination').length) {
-                $('.posts-pagination').html(data.pagination);
+              if ($($pagination).length) {
+                $($pagination).html(data.pagination);
+                $pagination.show();
               }
             }
           },
