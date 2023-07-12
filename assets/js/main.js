@@ -534,11 +534,11 @@
           beforeSend() {
             if (loadmore) {
               $loadmore.hide();
-              $pagination.hide();
               $grid.append(
                 '<div class="lds-wrapper"><div class="lds-dual-ring"></div></div>'
               );
             } else {
+              $pagination.hide();
               $('html, body').animate(
                 {
                   scrollTop: $grid.offset().top - $('header').outerHeight() - 50
