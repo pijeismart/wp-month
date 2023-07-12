@@ -121,7 +121,7 @@ if ( $query->have_posts() ) :
 					<div class="accordion-body">
 						<?php foreach ( $case_categories as $category ) : ?>
 							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['case-category'] ) && $_GET['case-category'] == $category->slug ) ? ' is-active' : ''; ?>" 
-								data-target="data-cat"
+								data-target="data-case-cat"
 								data-cat="<?php echo esc_attr( $category->slug ); ?>">
 								<?php echo esc_html( $category->name ); ?>
 							</button>
