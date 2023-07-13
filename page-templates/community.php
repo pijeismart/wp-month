@@ -28,7 +28,7 @@ if ( $heading || $video || $image ) :
 	<section class="community-banner has-decor community-banner--<?php echo esc_attr( $type ); ?>">
 		<div class="container">
 			<div class="community-banner__left">
-				<ul class="breadcrumbs a-up d-md-only">
+				<ul class="breadcrumbs a-up">
 					<li>
 						<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 					</li>
