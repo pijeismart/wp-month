@@ -495,6 +495,11 @@
       }
 
       &-video {
+        @include mq(tablet, max) {
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        }
         &__content {
           margin-top: 8px;
           font: 400 1.6rem/1.2 $f-text;
