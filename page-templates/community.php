@@ -1050,10 +1050,11 @@ if ( $enable_winners ) :
 						<?php
 						while ( have_rows( 'athelets_winners' ) ) :
 							the_row();
-							$content = get_sub_field( 'content' );
-							$gallery = get_sub_field( 'gallery' );
+							$tab_index = get_row_index();
+							$content   = get_sub_field( 'content' );
+							$gallery   = get_sub_field( 'gallery' );
 							?>
-							<div class="tab-content athlete-winners__content<?php echo 1 == get_row_index() ? ' is-active' : ''; ?>" id="tab-<?php echo esc_attr( get_row_index() ); ?>">
+							<div class="tab-content athlete-winners__content<?php echo 1 == $tab_index ? ' is-active' : ''; ?>" id="tab-<?php echo esc_attr( get_row_index() ); ?>">
 								<?php
 								get_template_part_args(
 									'template-parts/content-modules-text',
@@ -1114,10 +1115,10 @@ if ( $enable_winners ) :
 											);
 											?>
 											<img class="winners-card__sep" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-gradient-line.svg' ); ?>" alt="">
-											<a href="javascript:;" class="underline-link" data-fancybox data-src="#winners-card-<?php echo esc_attr( get_row_index() ); ?>">
+											<a href="javascript:;" class="underline-link" data-fancybox data-src="#winners-card-<?php echo esc_attr( $tab_index ); ?>-<?php echo esc_attr( get_row_index() ); ?>">
 												<?php echo esc_html__( 'Watch Video' ); ?>
 											</a>
-											<div class="winners-card-popup" id="winners-card-<?php echo esc_attr( get_row_index() ); ?>">
+											<div class="winners-card-popup" id="winners-card-<?php echo esc_attr( $tab_index ); ?>-<?php echo esc_attr( get_row_index() ); ?>">
 												<?php
 												get_template_part_args(
 													'template-parts/content-modules-text',
