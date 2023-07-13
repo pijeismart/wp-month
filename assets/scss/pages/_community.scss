@@ -15,6 +15,16 @@
         }
       }
     }
+    &--content_only {
+      @include mq(tablet) {
+        padding-block: 6.4rem;
+      }
+      .community-banner__content {
+        @include mq(tablet) {
+          margin-bottom: 3.2rem;
+        }
+      }
+    }
 
     .container {
       @include mq(tablet) {
