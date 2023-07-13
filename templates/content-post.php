@@ -43,7 +43,7 @@ $post_img = am_get_the_post_thumbnail();
 		</div>
 		<?php if ( have_rows( 'post_related_pages', 'options' ) ) : ?>
 			<div class="post-banner__links a-up">
-				<p><?php echo esc_html( 'Related Pages' ); ?></p>
+				<p><?php echo esc_html( 'See Our Experience' ); ?></p>
 				<ul>
 					<?php
 					if ( $terms ) :
