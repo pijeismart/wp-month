@@ -4,7 +4,7 @@ $categories = get_the_terms( $post, 'case_category' );
 $post_img   = am_get_the_post_thumbnail( 'post-card' );
 ?>
 <div class="loop-post-card">
-	<?php if ( isset( $post_img ) ) : ?>
+	<?php if ( isset( $post_img ) && !get_field( 'disable_thumbnail_images', 'options' ) ) : ?>
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="loop-post-card__img">
 			<img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 		</a>

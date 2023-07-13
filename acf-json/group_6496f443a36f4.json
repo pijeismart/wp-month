@@ -238,6 +238,26 @@
             "return_format": "array"
         },
         {
+            "key": "field_64af40d8f1c2f",
+            "label": "Disable Thumbnail Images",
+            "name": "disable_thumbnail_images",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_6479e87e29498",
             "label": "Results",
             "name": "",
@@ -1308,5 +1328,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687966445
+    "modified": 1689207051
 }
