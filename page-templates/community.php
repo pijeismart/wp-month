@@ -530,11 +530,11 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 													array(
 														'v'  => 'heading',
 														't'  => 'h3',
-														'tc' => 'accordion-header',
+														'tc' => 'accordion-header' . ( 1 == get_row_index() ? ' active' : '' ),
 													)
 												);
 												?>
-												<div class="accordion-body">
+												<div class="accordion-body"<?php echo ( 1 == get_row_index() ) ? ' style="display: block;"' : ''; ?>>
 													<?php
 													get_template_part_args(
 														'template-parts/content-modules-text',
