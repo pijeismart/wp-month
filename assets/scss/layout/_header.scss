@@ -216,6 +216,9 @@
           text-transform: capitalize;
           color: $clr-navy;
           min-width: 32.5rem;
+          @include mq(desktop-small) {
+            white-space: nowrap;
+          }
           &:hover {
             background: rgba(120, 190, 56, 0.2);
           }
@@ -248,12 +251,14 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        // width: 100%;
         background-color: $clr-white-off;
         z-index: 1;
         @include element-hidden;
         @include mq(desktop-small) {
           padding-block: 2rem;
+          border: 1px solid $clr-border;
+          border-radius: 8px;
         }
         &.is-active {
           @include element-show;
@@ -265,6 +270,9 @@
           text-transform: capitalize;
           color: $clr-navy;
           min-width: 32.5rem;
+          @include mq(desktop-small) {
+            white-space: nowrap;
+          } 
           &:hover {
             background: rgba(120, 190, 56, 0.2);
           }
