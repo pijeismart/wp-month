@@ -265,6 +265,11 @@
         @include mq(desktop-small) {
           padding-block: 2rem;
         }
+        &.is-active {
+          @include mq(desktop-small, max) {
+            @include element-show;
+          }
+        }
         a {
           display: block;
           padding: 2rem;
