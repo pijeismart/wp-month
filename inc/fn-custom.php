@@ -216,7 +216,7 @@ if ( !function_exists( 'custom_mega_menu' ) ) {
 					}
 
 					if ( $is_cpt_menu ) {
-						$menu_list .= '<ul class="sub-menu">' . "\n";
+						$menu_list .= '<ul class="sub-menu sub-menu-cpt">' . "\n";
 						$menu_list .= '<li class="menu-item sub-menu-top sub-menu-top-v2">';
 						$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
 						$menu_list .= '<span class="parent-menu-text">' . $menu_item->title . '</span></li>';
