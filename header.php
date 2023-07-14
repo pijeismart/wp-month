@@ -70,15 +70,9 @@
 					);
 					?>
 				</a>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'mainmenu',
-						'menu_class'     => 'header-menu',
-						'container'      => false,
-					)
-				);
-				?>
+				<ul class="header-menu">
+					<?php custom_mega_menu( 'mainmenu' ); ?>
+				</ul>
 				<?php if ( $phone && $lottie ) : ?>
 					<div class="header-cta__wrapper">
 						<a href="tel:<?php echo $phone; ?>" class="header-cta">

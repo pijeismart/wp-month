@@ -149,7 +149,7 @@ function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true 
 	return $nav_menu_item_list;
 }
 
-if ( function_exists( 'custom_mega_menu' ) ) {
+if ( !function_exists( 'custom_mega_menu' ) ) {
 	/**
 	 * Create custom mega menu
 	 *
@@ -168,24 +168,25 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 			foreach ( $menu_items as $menu_item ) {
 				$id = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
 
-				$cols      = get_field( 'cols', $menu_item );
-				$css_class = get_field( 'cssclass', $menu_item );
+				$is_cpt_menu = get_field( 'is_cpt_menu', $menu_item );
 
 				if ( ! $menu_item->menu_item_parent ) {
 					$curr_id     = $menu_item->ID;
 					$menu_items2 = get_nav_menu_item_children( $curr_id, $menu_items );
 
-					if ( $menu_items2 ) {
-						$menu_list .= '<li class="menu-item-has-children ' . $css_class . '">' . "\n";
+					if ( $menu_items2 || $is_cpt_menu ) {
+						$menu_list .= '<li class="menu-item menu-item-has-children">' . "\n";
 					} else {
-						$menu_list .= '<li class="' . ( ( $id == $post_id ) ? 'current-item ' : '' ) . $css_class . '">' . "\n";
+						$menu_list .= '<li class="menu-item' . ( ( $id == $post_id ) ? ' current-menu-item' : '' ) . '">' . "\n";
 					}
 
 					$menu_list .= '<a href="' . $menu_item->url . '">' . $menu_item->title . '</a>' . "\n";
 
 					if ( $menu_items2 ) {
-						$menu_list .= '<div class="drop ' . ( ( $cols == 2 ) ? 'drop-v2' : 'drop-v3' ) . '"><div class="drop-box"><ul class="drop-nav">' . "\n";
-
+						$menu_list .= '<ul class="sub-menu">' . "\n";
+						$menu_list .= '<li class="menu-item sub-menu-top sub-menu-top-v2">';
+						$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
+						$menu_list .= '<span class="parent-menu-text">' . $menu_item->title . '</span></li>';
 						foreach ( $menu_items2 as $menu_item2 ) {
 							if ( $menu_item2->menu_item_parent == $curr_id ) {
 								$curr_id2 = $menu_item2->ID;
@@ -201,12 +202,6 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 									foreach ( $menu_items3 as $menu_item3 ) {
 										$menu_list .= '<li>';
 										$menu_list .= '<a href="' . $menu_item3->url . '">' . $menu_item3->title . '</a>';
-
-										$subheading = get_field( 'subheading', $menu_item3 );
-										if ( $subheading ) {
-											$menu_list .= '<span>' . $subheading . '</span>';
-										}
-
 										$menu_list .= '</li>';
 									}
 
@@ -218,30 +213,56 @@ if ( function_exists( 'custom_mega_menu' ) ) {
 						}
 
 						$menu_list .= '</ul>';
+					}
 
-						$image       = get_field( 'image', $menu_item );
-						$heading     = get_field( 'heading', $menu_item );
-						$content     = get_field( 'content', $menu_item );
-						$link_text   = get_field( 'link_text', $menu_item );
-						$link_url    = get_field( 'link_url', $menu_item );
-						$link_target = get_field( 'open_new_window', $menu_item ) ? '_blank' : '';
+					if ( $is_cpt_menu ) {
+						$menu_list .= '<ul class="sub-menu">' . "\n";
+						$menu_list .= '<li class="menu-item sub-menu-top sub-menu-top-v2">';
+						$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
+						$menu_list .= '<span class="parent-menu-text">' . $menu_item->title . '</span></li>';
+						$source = get_field( 'source', $menu_item );
+						$args = array(
+							'post_type'      => $source,
+							'post_status'    => 'publish',
+							'posts_per_page' => -1,
+							'post_parent'    => 0,
+							'order'          => 'ASC',
+							'orderby'        => 'title',
+						);
+						$parent_query = new WP_Query( $args );
+						if ( $parent_query->have_posts() ) {
+							while ( $parent_query->have_posts() ) {
+								$parent_query->the_post();
+								$child_query = new WP_Query(
+									array (
+										'post_type'      => $source,
+										'post_status'    => 'publish',
+										'posts_per_page' => -1,
+										'post_parent'    => get_the_ID(),
+										'order'          => 'ASC',
+										'orderby'        => 'title',
+									)
+								);
+								if ( $child_query->have_posts() ) {
+									$menu_list .= '<li class="menu-item menu-item-has-children"><a href="' . get_the_permalink( ) . '">' . get_the_title() . '</a>';
+									$menu_list .= '<ul class="sub-menu">';
+									$menu_list .= '<li class="menu-item sub-menu-top">';
+									$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
+									$menu_list .= '<span class="parent-menu-text">' . get_the_title() . '</span></li>';
+									while ( $child_query->have_posts() ) {
+										$child_query->the_post();
+										$menu_list .= '<li class="menu-item"><a href="' . get_the_permalink( ) . '">' . get_the_title() . '</a></li>';
+									}
+									$menu_list .= '</ul></li>';
+								} else {
+									$menu_list .= '<li class="menu-item"><a href="' . get_the_permalink( ) . '">' . get_the_title() . '</a></li>';
+								}
+								wp_reset_postdata();
+							}
+						}
+						wp_reset_postdata();
 
-						$menu_list .= '<div class="drop-card">';
-						if ( $image ) {
-							$menu_list .= '<div class="drop-card-image"><a href="' . $link_url . '" target="' . $link_target . '"><img src="' . $image['url'] . '" alt="' . $image['alt'] . '" /></a></div>';
-						}
-						if ( $heading ) {
-							$menu_list .= '<h4 class="drop-card-heading">' . $heading . '</h4>';
-						}
-						if ( $content ) {
-							$menu_list .= '<div class="drop-card-content">' . $content . '</div>';
-						}
-						if ( $link_text && $link_url ) {
-							$menu_list .= '<div class="drop-card-link"><a href="' . $link_url . '" target="' . $link_target . '">' . $link_text . '<span class="link-accent-arrow"></span></a></div>';
-						}
-						$menu_list .= '</div>';
-
-						$menu_list .= '</div></div>' . "\n";
+						$menu_list .= '</ul>';
 					}
 
 					$menu_list .= '</li>' . "\n";

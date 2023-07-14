@@ -129,15 +129,32 @@
       $('.hamburger').on('click', function() {
         $('.header').toggleClass('is-opened');
       });
+      // 2nd menu item
       $('.menu-item-has-children > a').on('touchstart click', function() {
         if (window.matchMedia('(max-width: 1023px)').matches) {
-          $(this).toggleClass('is-opened');
           $(this)
             .next()
             .toggleClass('is-active');
           return false;
         }
       });
+      // 3rd menu item
+      $(
+        '.header-menu > .menu-item-has-children > .sub-menu > .menu-item-has-children > a'
+      ).on('touchstart click', function() {
+        $(this)
+          .next('.sub-menu')
+          .addClass('is-active');
+        return false;
+      });
+      // 3rd menu item back
+      $('.header-menu .sub-menu-back').on('touchstart click', function() {
+        $(this)
+          .closest('.sub-menu')
+          .removeClass('is-active');
+        return false;
+      });
+
       // add header height value
       $(window).on('load resize', function() {
         const headerHeight = $('header').outerHeight();
