@@ -43,7 +43,7 @@ $post_img = am_get_the_post_thumbnail();
 		</div>
 		<?php if ( have_rows( 'post_related_pages', 'options' ) ) : ?>
 			<div class="post-banner__links a-up">
-				<p><?php echo esc_html( 'See Our Experience' ); ?></p>
+				<p><?php echo esc_html( 'Related Pages' ); ?></p>
 				<ul>
 					<?php
 					if ( $terms ) :
@@ -52,7 +52,7 @@ $post_img = am_get_the_post_thumbnail();
 							?>
 							<li>
 								<a href="<?php echo esc_url( $default_url ); ?>" class="link post-banner__link">
-									<?php echo esc_html__( 'Our National Practice Areas' ); ?>
+									<?php echo esc_html__( 'See Our Experience' ); ?>
 								</a>
 							</li>
 							<?php
