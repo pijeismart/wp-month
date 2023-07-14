@@ -273,7 +273,7 @@
           color: $clr-navy;
           min-width: 32.5rem;
           @include mq(desktop-small) {
-            white-space: nowrap;
+            white-space: initial;
           } 
           &:hover {
             background: rgba(120, 190, 56, 0.2);
