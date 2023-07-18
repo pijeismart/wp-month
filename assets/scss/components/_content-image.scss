@@ -126,6 +126,11 @@
       padding-left: 2.4rem;
       border-left: 1px solid $clr-green;
       list-style: none;
+      @include mq(tablet) {
+        max-height: 45rem;
+        overflow: auto;
+        @include custom-scrollbar(5px, $clr-green);
+      }
       li:not(:last-child) {
         margin-bottom: 1rem;
       }
