@@ -219,7 +219,7 @@ if ( !function_exists( 'custom_mega_menu' ) ) {
 						$menu_list .= '<ul class="sub-menu sub-menu-cpt">' . "\n";
 						$menu_list .= '<li class="menu-item sub-menu-top sub-menu-top-v2">';
 						$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
-						$menu_list .= '<span class="parent-menu-text">' . $menu_item->title . '</span></li>';
+						$menu_list .= '<a href="' . $menu_item->url . '" class="parent-menu-text">' . $menu_item->title . '</a></li>';
 						$source = get_field( 'source', $menu_item );
 						$args = array(
 							'post_type'      => $source,
