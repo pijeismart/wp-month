@@ -2568,7 +2568,7 @@ if ( have_rows( 'modules' ) ) :
 							<a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_html( 'Home' ); ?></a>
 						</li>
 						<li>
-							<span><?php echo esc_html__( 'Contact Montlick & Associates' ); ?></span>
+							<span><?php echo esc_html__( 'Contact Montlick' ); ?></span>
 						</li>
 					</ul>
 					<div class="contact-mobile d-sm-only">
