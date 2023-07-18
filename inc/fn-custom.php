@@ -248,7 +248,7 @@ if ( !function_exists( 'custom_mega_menu' ) ) {
 									$menu_list .= '<ul class="sub-menu">';
 									$menu_list .= '<li class="menu-item sub-menu-top">';
 									$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
-									$menu_list .= '<span class="parent-menu-text">' . get_the_title() . '</span></li>';
+									$menu_list .= '<a href="' . get_the_permalink() . '" class="parent-menu-text">' . get_the_title() . '</a></li>';
 									while ( $child_query->have_posts() ) {
 										$child_query->the_post();
 										$menu_list .= '<li class="menu-item"><a href="' . get_the_permalink( ) . '">' . get_the_title() . '</a></li>';
