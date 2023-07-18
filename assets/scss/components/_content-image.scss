@@ -127,6 +127,7 @@
       border-left: 1px solid $clr-green;
       list-style: none;
       @include mq(tablet) {
+        padding-right: 5px;
         max-height: 45rem;
         overflow: auto;
         @include custom-scrollbar(5px, $clr-green);
