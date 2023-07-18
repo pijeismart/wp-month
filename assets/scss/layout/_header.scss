@@ -290,6 +290,9 @@
         padding: 2rem;
         align-items: center;
         border-bottom: 1px solid $clr-border;
+        @include mq(desktop-small, max) {
+          padding-block: 0;
+        }
         &-v2 {
           @include mq(desktop-small) {
             display: none;
