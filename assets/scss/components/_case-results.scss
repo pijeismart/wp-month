@@ -90,12 +90,11 @@
     }
 
     &__value_caption {
-      font-size: 1rem;
+      font-size: 1.4rem;
       text-transform: uppercase;
-      opacity: 0.6;
 
       @include mq(tablet) {
-        font-size: 1.2rem;
+        font-size: 2rem;
       }
     }
     
