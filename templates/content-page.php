@@ -266,13 +266,24 @@ if ( have_rows( 'modules' ) ) :
 							</div>
 							<?php endif; ?>
 							<?php
-							get_template_part_args(
-								'template-parts/content-modules-cta',
-								array(
-									'v' => 'cta',
-									'c' => 'btn btn-primary a-up a-delay-2',
-								)
-							);
+							if ( 'home' == $type ) :
+								get_template_part_args(
+									'template-parts/content-modules-cta',
+									array(
+										'v' => 'cta',
+										'c' => 'btn btn-primary a-up a-delay-2',
+									)
+								);
+							else:
+								get_template_part_args(
+									'template-parts/content-modules-cta',
+									array(
+										'v' => 'practice_banner_cta',
+										'c' => 'btn btn-primary a-up a-delay-2',
+										'o' => 'o',
+									)
+								);
+							endif;
 							?>
 							<?php
 							get_template_part_args(
