@@ -32,6 +32,14 @@
   &-media {
     width: 100%;
     margin-bottom: 2.4rem;
+    @include mq(tablet, max) {
+      .banner--practice &,
+      .banner--practice-cards & {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 1.6rem;
+      }
+    }
     @include mq(tablet) {
       max-width: 74rem;
       margin-bottom: 0;
@@ -50,10 +58,14 @@
       // padding-top: hp(343, 273);
       padding-top: 56.25%;
       border-radius: 1rem;
+
       @include mq(tablet) {
         padding-top: 100%;
-        .banner--practice &,
-        .banner--practice-cards & {
+      }
+      .banner--practice &,
+      .banner--practice-cards & {
+        padding-top: hp(165px, 230px);
+        @include mq(tablet) {
           padding-top: 0%;
           min-height: 55rem;
           height: 100%;
@@ -77,6 +89,32 @@
         display: none;
       }
     }
+    &__mobile {
+      .mobile-image {
+        margin-bottom: 1.6rem;
+        position: relative;
+        padding-top: hp(165px, 150px);
+        width: 100%;
+        height: 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+  &-phone {
+    display: inline-flex;
+    width: 100%;
+    padding: 2rem;
+    background-color: #172F66;
+    color: $clr-white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font: 700 1.4rem/1.3 $f-text;
+    border-radius: 1rem;
+    letter-spacing: 0.14px;
+    svg {
+      margin-right: 5px;
+    }
   }
   &-content {
     @include mq(tablet) {
@@ -96,7 +134,8 @@
   }
   &-heading {
     margin-bottom: 3.5rem;
-    @include when-inside(".banner--practice") {
+    .banner--practice &,
+    .banner--practice-cards & {
       font-size: 7rem;
       line-height: 7rem;
       @include mq(tablet, max) {
@@ -213,6 +252,7 @@
       margin-right: 0;
     }
     .contact-form__cards {
+      margin-bottom: 2rem;
       @include mq(tablet) {
         margin-bottom: 4rem;
       }
@@ -257,6 +297,11 @@
             font-size: 1.2rem;
             line-height: 1.8rem;
           }
+        }
+        &__rating {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }
