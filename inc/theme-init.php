@@ -103,7 +103,7 @@ add_image_size( 'content-image-full-ctas-2x', 1560, 920, true );
 add_image_size( 'content-image-contained-ctas', 707, 480, true );
 add_image_size( 'content-image-contained-ctas-2x', 1414, 960, true );
 add_image_size( 'content-image-experience-testimonial', 390, 820, true );
-add_image_size( 'content-image-experience-testimonial-2x', 375, 320, true );
+add_image_size( 'content-image-experience-testimonial-2x', 780, 1640, true );
 add_image_size( 'testimonial-large', 310, 420, true );
 add_image_size( 'testimonial-large-2x', 620, 840, true );
 add_image_size( 'post-card', 420, 290, true );
