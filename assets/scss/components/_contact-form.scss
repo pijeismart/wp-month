@@ -243,15 +243,19 @@
       }
     }
     &-review {
-      margin: 0 1rem 0;
       height: inherit;
+      @include mq(phablet) {
+        margin-inline: 1rem;
+      }
     }
     &-rating {
       display: flex;
       margin-bottom: 16px;
-      padding-inline: 24px;
       align-items: center;
       justify-content: space-between;
+      @include mq(phablet) {
+        padding-inline: 24px;
+      }
       h6 {
         margin-bottom: 8px;
         font: 700 1.6rem/1.55 'Open Sans', sans-serif;
@@ -277,11 +281,14 @@
   }
   .testimonial-slider__item {
     display: flex;
-    padding: 3.2rem;
+    padding: 1.6rem;
     background-color: #17233D;
     border: 1px solid #050D1F; 
     flex-direction: column;
     justify-content: space-between;
+    @include mq(tablet) {
+      padding: 3.2rem;
+    }
     &__content {
       margin-bottom: 2rem;
       font: 400 16px/1.6 'Open Sans', sans-serif;
