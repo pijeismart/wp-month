@@ -244,6 +244,39 @@
       transform: translate(50%, -50%);
       @include svg-background('<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="%23AEDF82"/><path d="M15 12L19 16L15 20" stroke="%230A1631" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     }
+    .rplg {
+      &-rating {
+        display: none !important;
+        // display: flex;
+        margin-bottom: 16px;
+        align-items: center;
+        justify-content: space-between;
+        @include mq(phablet) {
+          padding-inline: 24px;
+        }
+        h6 {
+          margin-bottom: 8px;
+          font: 700 1.6rem/1.55 'Open Sans', sans-serif;
+          letter-spacing: 0.16px;
+        }
+        &__google {
+          margin-bottom: 5px;
+          width: 7.5rem;
+          height: 2.4rem;
+          background: url('../img/icon-google.png') no-repeat center; 
+          background-size: contain; 
+        }
+        &__stars {
+          font-size: 1.2rem;
+          line-height: 1.55;
+          font-family: 'Open Sans', sans-serif;
+          color: #2E2E2E;
+          span {
+            color: #698053;
+          }
+        }
+      }
+    }
   }
   &-mobile {
     margin-bottom: 2.4rem;

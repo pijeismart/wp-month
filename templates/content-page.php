@@ -499,7 +499,6 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
-			
 			<?php
 		elseif ( 'card_slider' == get_row_layout() ) :
 			$case_results = get_sub_field( 'case_results' );
