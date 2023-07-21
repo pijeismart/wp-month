@@ -34,6 +34,7 @@ if ( have_rows( 'modules' ) ) :
 			$video              = get_sub_field( 'video' );
 			$mobile_video       = get_sub_field( 'mobile_video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
+			$claim_types         = get_the_terms( $post, 'claim_type' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
 			$has_decor          = ( 'home' == $type && get_sub_field( 'has_decoration' ) );
 			$disable_breadcrumb = get_sub_field( 'disable_breadcrumbs' );
@@ -127,8 +128,10 @@ if ( have_rows( 'modules' ) ) :
 						<div class="banner-content">
 							<?php
 							if ( 'home' != $type ) :
-								if ( $case_categories ) :
-									$img = get_field( 'icon', 'claim_type_' . $case_categories[0]->term_id );
+								if ( $claim_types ) :
+									$img = get_field( 'icon', 'claim_type_' . $claim_types[0]->term_id );
+								elseif ( $case_categories ) :
+									$img = get_field( 'icon', 'case_category_' . $case_categories[0]->term_id );
 								endif;
 								?>
 								<div class="banner-categories a-up">
