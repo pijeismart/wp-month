@@ -1908,8 +1908,8 @@ if ( have_rows( 'modules' ) ) :
 											'template-parts/content-modules-text',
 											array(
 												'v'  => 'value',
-												't'  => 'h2',
-												'tc' => 'case-results__item__value',
+												't'  => 'h5',
+												'tc' => 'case-results__item__value_caption',
 											)
 										);
 										?>
@@ -1918,8 +1918,8 @@ if ( have_rows( 'modules' ) ) :
 											'template-parts/content-modules-text',
 											array(
 												'v'  => 'value_caption',
-												't'  => 'h5',
-												'tc' => 'case-results__item__value_caption',
+												't'  => 'h2',
+												'tc' => 'case-results__item__value',
 											)
 										);
 										?>
@@ -1989,11 +1989,11 @@ if ( have_rows( 'modules' ) ) :
 											</div>
 											<div class="case-results__item__val">
 												<?php if ( floatval( $price ) / 1000000 > 1 ) : ?>
-													<h2 class="case-results__item__value"><?php echo esc_html( '$' . number_format( floatval( $price ) / 1000000 ), 1 ); ?></h3>
-													<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Million' ); ?></p>
+													<h5 class="case-results__item__value_caption"><?php echo esc_html( '$' . number_format( floatval( $price ) / 1000000 ), 1 ); ?></h3>
+													<h2 class="case-results__item__value"><?php echo esc_html__( 'Million' ); ?></p>
 												<?php else : ?>
-													<h2 class="case-results__item__value"><?php echo esc_html( '$' . number_format( floatval( $price ) / 1000 ), 1 ); ?></h3>
-													<h5 class="case-results__item__value_caption"><?php echo esc_html__( 'Thousand' ); ?></p>
+													<h5 class="case-results__item__value_caption"><?php echo esc_html( '$' . number_format( floatval( $price ) / 1000 ), 1 ); ?></h3>
+													<h2 class="case-results__item__value"><?php echo esc_html__( 'Thousand' ); ?></p>
 												<?php endif; ?>
 											</div>
 										</div>

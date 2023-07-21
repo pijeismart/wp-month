@@ -81,20 +81,19 @@
 
     &__value {
       margin-bottom: 0.8rem;
-      color: $clr-green;
       font-size: 3.2rem;
 
       @include mq(tablet) {
-        font-size: 6.9rem;
+        font-size: 4.2rem;
       }
     }
 
     &__value_caption {
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       text-transform: uppercase;
-
+      color: $clr-green;
       @include mq(tablet) {
-        font-size: 2rem;
+        font-size: 3.2rem;
       }
     }
     
@@ -103,7 +102,7 @@
       border-color: $clr-navy;
       .case-results__item__content,
       .case-results__item__heading,
-      .case-results__item__value_caption {
+      .case-results__item__value {
         color: $clr-white;
       }
     }
