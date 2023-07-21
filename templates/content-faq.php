@@ -45,7 +45,7 @@ $video = get_field( 'youtube_video' );
 
 $title = get_the_title();
 $url   = get_the_permalink();
-$phone = get_field( 'header_cta_url', 'options' );
+$phone = get_field( 'phone', 'options' );
 ?>
 <section class="faq-detail faq-detail--<?php echo esc_attr( $faq_type->slug ); ?>">
 	<div class="container">
@@ -153,7 +153,7 @@ $phone = get_field( 'header_cta_url', 'options' );
 				<?php if ( $phone ) : ?>
 				<div class="faq-detail__bottom__right">
 					<h6><?php echo esc_html__( 'Would you like to speak with an attorney?' ); ?></h6>
-					<a href="tel:<?php echo esc_attr( $phone['url'] ); ?>" class="underline-link faq-link">
+					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="underline-link faq-link">
 						<?php echo esc_html__( 'Call Now' ); ?>
 					</a>
 				</div>
