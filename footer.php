@@ -184,7 +184,9 @@
 	<footer class="footer">
 		<div class="container">
 			<div class="footer-left">
-				<a href="<?php echo esc_url( home_url() ); ?>" class="footer-logo">
+				<a href="<?php echo esc_url( home_url() ); ?>" 
+					class="footer-logo" 
+					aria-label="<?php echo esc_html__( 'Montlick Footer Logo', 'am' ); ?>">
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-image',
