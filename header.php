@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
 	<meta name="format-detection" content="telephone=no">
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -21,12 +21,31 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<?php wp_head(); ?>
 
+	<?php
+	get_template_part_args(
+		'template-parts/content-modules-text',
+		array(
+			'v' => 'tracking_header',
+			'o' => 'o',
+		)
+	);
+	?>
+
 	<!-- Begin JSON-LD -->
 	<?php get_template_part( 'template-parts/content', 'json-ld' ); ?>
 	<!-- End JSON-LD -->
 </head>
 
 <body <?php body_class(); ?>>
+	<?php
+	get_template_part_args(
+		'template-parts/content-modules-text',
+		array(
+			'v' => 'tracking_begin_body',
+			'o' => 'o',
+		)
+	);
+	?>
 	<!-- Begin Header -->
 	<?php
 	$enable_top_bar = get_field( 'enable_top_bar', 'options' );
@@ -52,10 +71,10 @@
 		<?php endif; ?>
 		<nav class="header-main">
 			<div class="container">
-				<button class="hamburger">
+				<button class="hamburger" aria-label="<?php echo esc_html__( 'Toggle Menu', 'am' ); ?>" aria-expanded="false">
 					<span></span>
 				</button>
-				<a href="<?php echo esc_url( home_url() ); ?>" class="header-logo">
+				<a href="<?php echo esc_url( home_url() ); ?>" class="header-logo" aria-label="<?php echo esc_html__( 'Montlick Logo', 'am' ); ?>">
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-image',
@@ -75,7 +94,7 @@
 				</ul>
 				<?php if ( $phone && $lottie ) : ?>
 					<div class="header-cta__wrapper">
-						<a href="tel:<?php echo $phone; ?>" class="header-cta">
+						<a href="tel:<?php echo $phone; ?>" class="header-cta" aria-label="<?php echo esc_html__( 'Call Now', 'am' ); ?>">
 							<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 							<lottie-player src="<?php echo esc_url( $lottie ); ?>" background="transparent" speed="1" loop autoplay></lottie-player>
 						</a>
@@ -83,7 +102,7 @@
 				<?php endif; ?>
 				<?php if ( $phone ) : ?>
 					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="header-phone">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-call.svg' ); ?>" alt="">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-call.svg' ); ?>" alt="<?php echo esc_html__( 'Call Now', 'am' ); ?>">
 					</a>
 				<?php endif; ?>
 			</div>
