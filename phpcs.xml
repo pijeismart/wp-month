@@ -26,6 +26,7 @@
 		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
 		-->
 		<exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
 		<exclude name="Squiz.Commenting.FileComment.Missing"/>
 		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>

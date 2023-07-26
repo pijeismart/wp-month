@@ -280,6 +280,13 @@
       flex-wrap: wrap;
     }
   }
+  a.content-image__card {
+    @include mq(tablet) {
+      &:hover {
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
   &__card {
     display: inline-flex;
     flex: 0 0 19rem;

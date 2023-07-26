@@ -34,7 +34,7 @@ if ( have_rows( 'modules' ) ) :
 			$video              = get_sub_field( 'video' );
 			$mobile_video       = get_sub_field( 'mobile_video' );
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
-			$claim_types         = get_the_terms( $post, 'claim_type' );
+			$claim_types        = get_the_terms( $post, 'claim_type' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
 			$has_decor          = ( 'home' == $type && get_sub_field( 'has_decoration' ) );
 			$disable_breadcrumb = get_sub_field( 'disable_breadcrumbs' );
@@ -110,8 +110,8 @@ if ( have_rows( 'modules' ) ) :
 									$index = get_the_ID() % count( $gallery );
 									?>
 									<div class="mobile-image">
-										<img src="<?php echo esc_url( $gallery[$index]['url'] ); ?>" 
-											alt="<?php echo esc_attr( $gallery[$index]['alt'] ); ?>">
+										<img src="<?php echo esc_url( $gallery[ $index ]['url'] ); ?>" 
+											alt="<?php echo esc_attr( $gallery[ $index ]['alt'] ); ?>">
 									</div>
 								<?php endif; ?>
 								<?php if ( $phone ) : ?>
@@ -277,7 +277,7 @@ if ( have_rows( 'modules' ) ) :
 										'c' => 'btn btn-primary a-up a-delay-2',
 									)
 								);
-							else:
+							else :
 								get_template_part_args(
 									'template-parts/content-modules-cta',
 									array(
@@ -2255,14 +2255,20 @@ if ( have_rows( 'modules' ) ) :
 								<?php
 								while ( have_rows( 'support_cards', 'options' ) ) :
 									the_row();
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'text',
-											't'  => 'div',
-											'tc' => 'content-image__card',
-										)
-									);
+									$text = get_sub_field( 'text' );
+									$url  = get_sub_field( 'url' );
+									if ( $url ) :
+										?>
+										<a href="<?php echo esc_url( $url ); ?>"
+											class="content-image__card">
+											<?php echo $text; ?>
+										</a>
+									<?php else : ?>
+										<div class="content-image__card">
+											<?php echo $text; ?>
+										</div>
+										<?php
+									endif;
 								endwhile;
 								?>
 							</div>

@@ -946,6 +946,24 @@
                     "placeholder": "",
                     "new_lines": "br",
                     "parent_repeater": "field_6488bbb159fc9"
+                },
+                {
+                    "key": "field_64c06aafa0010",
+                    "label": "URL",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_6488bbb159fc9"
                 }
             ]
         },
@@ -1328,5 +1346,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1689207051
+    "modified": 1690331832
 }
