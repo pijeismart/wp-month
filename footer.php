@@ -106,7 +106,7 @@
 					<?php endif; ?>
 				</div>
 			</section>
-			<section class="subscribe-form">
+			<section class="subscribe-form" id="subscribe-form">
 				<div class="subscribe-form__img d-md-only">
 					<?php
 					get_template_part_args(

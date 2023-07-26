@@ -39,6 +39,9 @@ $post_img = am_get_the_post_thumbnail();
 					<img src="<?php echo esc_url( $author_img ); ?>" alt="" class="post-banner__author__img">
 				<?php endif; ?>
 				<span class="post-banner__author__name">By <b><?php echo get_the_author_meta( 'display_name' ); ?></b></span>
+                <div class="post-banner__contact">
+                    <a href="#subscribe-form" class="link"><?php echo esc_html__( 'Do I Have a Case?', 'am' ); ?></a>
+                </div>
 			</div>
 		</div>
 		<?php if ( have_rows( 'post_related_pages', 'options' ) ) : ?>

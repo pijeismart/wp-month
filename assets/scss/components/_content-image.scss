@@ -383,7 +383,7 @@
         position: absolute;
         content: '';
         top: 0;
-        left: 50%;
+        left: 60%;
         width: vw(650px);
         height: vw(520px);
         max-width: 65rem;
@@ -398,6 +398,9 @@
         padding-inline: 1rem;
         max-width: 190rem;
       }
+    }
+    .btn {
+      font-size: 1.6rem;
     }
   }
   &--contained-ctas {

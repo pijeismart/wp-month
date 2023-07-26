@@ -14,12 +14,14 @@
       align-items: center;
     }
     img {
+      max-height: 8rem;
       @include mq(tablet, max) {
         margin: 1rem;
         display: inline-block;
       }
       @include mq(tablet) {
         margin: 2rem 2rem 2rem 0;
+        max-height: 10rem;
       }
       @include mq(desktop-wide) {
         margin-right: 4rem;

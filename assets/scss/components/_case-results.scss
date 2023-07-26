@@ -71,7 +71,12 @@
 
     &__val {
       text-align: right;
-
+      @include mq(tablet, max) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
       @include mq(tablet) {
         flex-shrink: 0;
         text-align: center;
@@ -80,16 +85,15 @@
     }
 
     &__value {
-      margin-bottom: 0.8rem;
-      font-size: 3.2rem;
-
+      font-size: 2.4rem;
       @include mq(tablet) {
+        margin-bottom: 0.8rem;
         font-size: 4.2rem;
       }
     }
 
     &__value_caption {
-      font-size: 2.4rem;
+      font-size: 2rem;
       text-transform: uppercase;
       color: $clr-green;
       @include mq(tablet) {

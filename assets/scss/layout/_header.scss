@@ -11,7 +11,16 @@
   top: 0;
   width: 100%;
   z-index: 100;
+  @include adminbar-offset;
+  &--sticky {
+    @include when-inside('.admin-bar') {
+      @media screen and (max-width: 782px) {
+        top: 0;
+      }
+    }
+  }
   &-top {
+    display: none;
     padding-block: 1.4rem;
     background-color: $clr-navy;
     color: $clr-white;
@@ -20,24 +29,40 @@
     @include mq(desktop-small) {
       padding-block: 0.7rem;
     }
-    &__link {
+    .container {
+      position: relative;
+    }
+    &__content {
       display: inline-flex;
+      padding-inline: 2rem;
+      width: 100%;
       align-items: center;
+      justify-content: center;
       font: 600 1.2rem/1 $f-text;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: $clr-white;
-      white-space: nowrap;
       @include mq(desktop-small) {
         font-size: 1.4rem;
       }
-      img {
-        margin-right: 2rem;
-        @include mq(desktop-small) {
-          margin-right: 4.2rem;
-        }
+      a {
+        color: $clr-green;
       }
-      b {
+    }
+    &__close {
+      position: absolute;
+      top: 50%;
+      right: var(--gutter);
+      flex-shrink: 0;
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      font: 600 3rem/1 $f-text;
+      color: $clr-white;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: all .3s ease-in-out;
+      &:hover {
         color: $clr-green;
       }
     }

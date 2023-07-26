@@ -48,24 +48,19 @@
 	?>
 	<!-- Begin Header -->
 	<?php
-	$enable_top_bar = get_field( 'enable_top_bar', 'options' );
-	$top_bar_text   = get_field( 'top_bar_text', 'options' );
-	$top_bar_link   = get_field( 'top_bar_link', 'options' );
-	$phone          = get_field( 'phone', 'options' );
-	$lottie         = get_field( 'header_lottie', 'options' );
+	$enable_top_bar  = get_field( 'enable_top_bar', 'options' );
+	$top_bar_content = get_field( 'top_bar_content', 'options' );
+	$phone           = get_field( 'phone', 'options' );
+	$lottie          = get_field( 'header_lottie', 'options' );
 	?>
 	<header class="header">
-		<?php if ( $enable_top_bar ) : ?>
+		<?php if ( $enable_top_bar && $top_bar_content ) : ?>
 		<div class="header-top">
 			<div class="container">
-				<?php if ( $top_bar_link && $top_bar_text ) : ?>
-					<a href="<?php echo esc_url( $top_bar_link['url'] ); ?>" 
-						target="<?php echo esc_attr( $top_bar_link['target'] ? $top_bar_link['target'] : '_self' ); ?>" 
-						class="header-top__link">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-headphones.svg' ); ?>" alt="">
-						<span><?php echo $top_bar_text; ?></span>
-					</a>
-				<?php endif; ?>
+                <div class="header-top__content">
+                    <?php echo $top_bar_content; ?>
+                </div>
+                <button class="header-top__close">&times;</button>
 			</div>
 		</div>
 		<?php endif; ?>

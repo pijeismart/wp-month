@@ -55,6 +55,7 @@
   &__author {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     &__img {
       margin-right: 1.2rem;
       flex: 0 0 4rem;
@@ -84,6 +85,7 @@
   &__content {
     @include mq(tablet) {
       max-width: 80rem;
+      width: 100%;
     }
   }
   &__links {
@@ -112,6 +114,15 @@
       @include mq(tablet) {
         font-size: 1.4rem;
       }
+    }
+  }
+  &__contact {
+    @include mq(tablet, max) {
+      margin-top: 2rem;
+      flex-basis: 100%;
+    }
+    @include mq(tablet) {
+      margin-left: auto;
     }
   }
 }
