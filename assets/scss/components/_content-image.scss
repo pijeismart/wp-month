@@ -292,10 +292,6 @@
     border-radius: 1rem;
     text-align: center;
     overflow: hidden;
-    @include mq(tablet, max) {
-      background: linear-gradient(90deg, #78BE38 43.75%, #CBF279 100%);
-      color: $clr-white;
-    }
     @include mq(tablet) {
       margin: 0.5rem 2rem 0.5rem 0;
       flex-basis: calc((100% - 4rem) / 3);
