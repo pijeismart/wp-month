@@ -48,12 +48,13 @@
 	?>
 	<!-- Begin Header -->
 	<?php
-	$enable_top_bar  = get_field( 'enable_top_bar', 'options' );
-	$top_bar_content = get_field( 'top_bar_content', 'options' );
-	$phone           = get_field( 'phone', 'options' );
-	$lottie          = get_field( 'header_lottie', 'options' );
+	$enable_top_bar      = get_field( 'enable_top_bar', 'options' );
+	$top_bar_content     = get_field( 'top_bar_content', 'options' );
+	$phone               = get_field( 'phone', 'options' );
+	$lottie              = get_field( 'header_lottie', 'options' );
+	$disable_parent_menu = get_field( 'disable_locations_menu_on_child_page', 'options' );
 	?>
-	<header class="header">
+	<header class="header<?php echo $disable_parent_menu ? ' header--disable-parent' : ''; ?>">
 		<?php if ( $enable_top_bar && $top_bar_content ) : ?>
 		<div class="header-top">
 			<div class="container">
@@ -90,8 +91,14 @@
 				<?php if ( $phone && $lottie ) : ?>
 					<div class="header-cta__wrapper">
 						<a href="tel:<?php echo $phone; ?>" class="header-cta" aria-label="<?php echo esc_html__( 'Call Now', 'am' ); ?>">
-							<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-							<lottie-player src="<?php echo esc_url( $lottie ); ?>" background="transparent" speed="1" loop autoplay></lottie-player>
+							<div class="header-cta__inner">
+								<span><?php echo esc_html__( 'Dial', 'am' ); ?></span>
+								<div class="header-cta__animations">
+									<div class="header-cta__animation"><?php echo esc_html__( '1-800-LAW-NEED', 'am' ); ?></div>
+									<div class="header-cta__animation"># Win<sup>TM</sup></div>
+								</div>
+								<span><?php echo $phone; ?></span>
+							</div>
 						</a>
 					</div>
 				<?php endif; ?>

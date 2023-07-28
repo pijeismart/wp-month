@@ -41,6 +41,9 @@
     @include mq(tablet) {
       min-height: 7.5rem;
     }
+    @include when-inside('.case-results-alt__grid') {
+      text-align: center;
+    }
   }
   &__content {
     margin-bottom: 1.6rem;
@@ -54,5 +57,8 @@
   }
   &__cta {
     margin-top: auto;
+    @include when-inside('.case-results-alt__grid') {
+      text-align: center;
+    }
   }
 }

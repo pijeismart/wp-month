@@ -18,6 +18,7 @@
       @include mq(tablet, max) {
         margin: 1rem;
         display: inline-block;
+        width: auto;
       }
       @include mq(tablet) {
         margin: 2rem 2rem 2rem 0;

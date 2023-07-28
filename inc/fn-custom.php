@@ -175,7 +175,7 @@ if ( !function_exists( 'custom_mega_menu' ) ) {
 					$menu_items2 = get_nav_menu_item_children( $curr_id, $menu_items );
 
 					if ( $menu_items2 || $is_cpt_menu ) {
-						$menu_list .= '<li class="menu-item menu-item-has-children">' . "\n";
+						$menu_list .= '<li class="menu-item menu-item-has-children' . ( $is_cpt_menu ? ' menu-item--' . get_field( 'source', $menu_item ) : '' ) . '">' . "\n";
 					} else {
 						$menu_list .= '<li class="menu-item' . ( ( $id == $post_id ) ? ' current-menu-item' : '' ) . '">' . "\n";
 					}
@@ -183,22 +183,27 @@ if ( !function_exists( 'custom_mega_menu' ) ) {
 					$menu_list .= '<a href="' . $menu_item->url . '">' . $menu_item->title . '</a>' . "\n";
 
 					if ( $menu_items2 ) {
-						$menu_list .= '<ul class="sub-menu">' . "\n";
+						$menu_list .= '<ul class="sub-menu sub-menu-cpt">' . "\n";
 						$menu_list .= '<li class="menu-item sub-menu-top sub-menu-top-v2">';
 						$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
-						$menu_list .= '<span class="parent-menu-text">' . $menu_item->title . '</span></li>';
+						$menu_list .= '<a href="' . $menu_item->url . '" class="parent-menu-text">' . $menu_item->title . '</a></li>';
 						foreach ( $menu_items2 as $menu_item2 ) {
 							if ( $menu_item2->menu_item_parent == $curr_id ) {
 								$curr_id2 = $menu_item2->ID;
-
-								$menu_list .= '<li>';
-								$menu_list .= '<a href="' . $menu_item2->url . '">' . $menu_item2->title . '</a>';
-
 								$menu_items3 = get_nav_menu_item_children( $curr_id2, $menu_items );
 
 								if ( $menu_items3 ) {
-									$menu_list .= '<ul>';
+									$menu_list .= '<li class="menu-item menu-item-has-children">';
+								} else {
+									$menu_list .= '<li class="menu-item">';
+								}
+								$menu_list .= '<a href="' . $menu_item2->url . '">' . $menu_item2->title . '</a>';
 
+								if ( $menu_items3 ) {
+									$menu_list .= '<ul class="sub-menu">';
+									$menu_list .= '<li class="menu-item sub-menu-top">';
+									$menu_list .= '<button class="sub-menu-back">' . esc_html__( 'Back' ) . '</button>';
+									$menu_list .= '<a href="' . $menu_item2->url . '" class="parent-menu-text">' . $menu_item2->title . '</a></li>';
 									foreach ( $menu_items3 as $menu_item3 ) {
 										$menu_list .= '<li>';
 										$menu_list .= '<a href="' . $menu_item3->url . '">' . $menu_item3->title . '</a>';

@@ -80,7 +80,7 @@
   }
   &__bottom {
     margin-top: 2.4rem;
-    padding-block: 6.4rem 4rem;
+    padding-block: 4rem;
     background-color: $clr-navy;
     color: $clr-white;
     text-align: center;
@@ -94,9 +94,13 @@
       font: 400 1.4rem/2.1rem $f-text;
       letter-spacing: 0.01em;
     }
-    .btn {
+    &-cta {
       display: block;
+      padding-inline: 2rem;
       text-transform: uppercase;
+      &::after {
+        content: none;
+      }
     }
   }
 }

@@ -126,7 +126,9 @@ if ( $query->have_posts() ) :
 						if ( $community ) :
 							?>
 							<?php if ( $community['link'] ) : ?>
-								<a href="<?php echo esc_url( $community['link'] ); ?>" class="loop-attorney-card loop-attorney-card--community">
+								<a href="<?php echo esc_url( $community['link'] ); ?>" 
+									class="loop-attorney-card loop-attorney-card--community"
+									target="<?php echo esc_attr( $community['target'] ? $community['target'] : '_self' ); ?>">
 							<?php else : ?>
 								<div class="loop-attorney-card loop-attorney-card--community">
 							<?php endif; ?>
@@ -147,28 +149,46 @@ if ( $query->have_posts() ) :
 					if ( 5 == $i ) :
 						?>
 						<?php if ( $history ) : ?>
-							<div class="loop-attorney-card loop-attorney-card--firm">
+							<?php if ( $history['link'] ) : ?>
+								<a href="<?php echo esc_url( $history['link'] ); ?>" class="loop-attorney-card loop-attorney-card--firm">
+							<?php else: ?>
+								<div class="loop-attorney-card loop-attorney-card--firm">
+							<?php endif; ?>
 								<?php if ( $history['heading'] ) : ?>
 									<h2 class="loop-attorney-card__title"><?php echo esc_html( $history['heading'] ); ?></h2>
 								<?php endif; ?>
 								<?php if ( $history['content'] ) : ?>
 									<p class="loop-attorney-card__content"><?php echo $history['content']; ?></p>
 								<?php endif; ?>
-							</div>
+							<?php if ( $history['link'] ) : ?>
+								</a>
+							<?php else: ?>
+								</div>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php
 					endif;
 					if ( 13 == $i ) :
 						?>
 						<?php if ( $results ) : ?>
-							<div class="loop-attorney-card loop-attorney-card--results">
+							<?php if ( $results['link'] ) : ?>
+								<a href="<?php echo esc_url( $results['link'] ); ?>" 
+									class="loop-attorney-card loop-attorney-card--results"
+									target="<?php echo esc_attr( $results['link'] ? $results['link'] : '_self' ); ?>">
+							<?php else: ?>
+								<div class="loop-attorney-card loop-attorney-card--results">
+							<?php endif; ?>
 								<?php if ( $results['heading'] ) : ?>
 									<h2 class="loop-attorney-card__title"><?php echo esc_html( $results['heading'] ); ?></h2>
 								<?php endif; ?>
 								<?php if ( $results['content'] ) : ?>
 									<p class="loop-attorney-card__content"><?php echo $results['content']; ?></p>
 								<?php endif; ?>
-							</div>
+							<?php if ( $results['link'] ) : ?>
+								</a>
+							<?php else: ?>
+								</div>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php
 					endif;
@@ -202,7 +222,7 @@ if ( $query->have_posts() ) :
 					$i ++;
 				endwhile;
 				?>
-			</div>
+			</a>
 		</div>
 	</section>
 <?php

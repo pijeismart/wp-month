@@ -43,7 +43,7 @@
         &:only-child {
             width: 100%;
         }
-        @include base-typography;
+        @include basic-wysiwig;
         h3 {
             font-size: 4rem;
             line-height: 4.6rem;

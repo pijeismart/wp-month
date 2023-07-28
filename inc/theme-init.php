@@ -98,8 +98,8 @@ add_filter( 'widget_text', 'do_shortcode' );
 // Image Sizes
 add_image_size( 'content-image-cards', 530, 560, true );
 add_image_size( 'content-image-cards-2x', 1060, 1120, true );
-add_image_size( 'content-image-full-ctas', 780, 460, true );
-add_image_size( 'content-image-full-ctas-2x', 1560, 920, true );
+add_image_size( 'content-image-full-ctas', 0, 555, true );
+add_image_size( 'content-image-full-ctas-2x', 0, 1110, true );
 add_image_size( 'content-image-contained-ctas', 707, 480, true );
 add_image_size( 'content-image-contained-ctas-2x', 1414, 960, true );
 add_image_size( 'content-image-experience-testimonial', 390, 820, true );

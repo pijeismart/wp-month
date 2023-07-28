@@ -26,69 +26,73 @@
       height: vw(826px);
       max-height: 82.6rem;
     }
+  }
+  &-img {
+    position: absolute;
+    border-radius: 1rem;
+    overflow: hidden;
+    &:first-child {
+      top: 0;
+      left: svw(-35px);
+      width: svw(110px);
+      height: svw(140px);
+      @include mq(tablet) {
+        left: vw(35px);
+        width: vw(200px);
+        height: vw(260px);
+        max-width: 20rem;
+        max-height: 26rem;
+      }
+    }
+    &:nth-child(2) {
+      top: 0;
+      left: svw(80px);
+      width: svw(350px);
+      height: svw(240px);
+      @include mq(tablet) {
+        left: auto;
+        right: 0;
+        width: vw(640px);
+        height: vw(435px);
+        max-width: 64rem;
+        max-height: 43.5rem;
+      }
+    }
+    &:nth-child(3) {
+      left: svw(-57px);
+      top: svw(245px);
+      width: svw(310px);
+      height: svw(210px);
+      @include mq(tablet) {
+        top: auto;
+        bottom: 0;
+        left: 1.5rem;
+        width: vw(570px);
+        height: vw(380px);
+        max-width: 57rem;
+        max-height: 38rem;
+      }
+    }
+    &:nth-child(4) {
+      top: svw(245px);
+      right: svw(-37px);
+      width: svw(110px);
+      height: svw(140px);
+      @include mq(tablet) {
+        top: auto;
+        bottom: vw(120px);
+        right: 0;
+        width: vw(200px);
+        height: vw(260px);
+        max-width: 20rem;
+        max-height: 26rem;
+      }
+      @include mq(desktop-ultra) {
+        bottom: 12rem;
+      }
+    }
     img {
-      position: absolute;
-      border-radius: 1rem;
-      &:first-child {
-        top: 0;
-        left: svw(-35px);
-        width: svw(110px);
-        height: svw(140px);
-        @include mq(tablet) {
-          left: vw(35px);
-          width: vw(200px);
-          height: vw(260px);
-          max-width: 20rem;
-          max-height: 26rem;
-        }
-      }
-      &:nth-child(2) {
-        top: 0;
-        left: svw(80px);
-        width: svw(350px);
-        height: svw(240px);
-        @include mq(tablet) {
-          left: auto;
-          right: 0;
-          width: vw(640px);
-          height: vw(435px);
-          max-width: 64rem;
-          max-height: 43.5rem;
-        }
-      }
-      &:nth-child(3) {
-        left: svw(-57px);
-        top: svw(245px);
-        width: svw(310px);
-        height: svw(210px);
-        @include mq(tablet) {
-          top: auto;
-          bottom: 0;
-          left: 1.5rem;
-          width: vw(570px);
-          height: vw(380px);
-          max-width: 57rem;
-          max-height: 38rem;
-        }
-      }
-      &:nth-child(4) {
-        top: svw(245px);
-        right: svw(-37px);
-        width: svw(110px);
-        height: svw(140px);
-        @include mq(tablet) {
-          top: auto;
-          bottom: vw(120px);
-          right: 0;
-          width: vw(200px);
-          height: vw(260px);
-          max-width: 20rem;
-          max-height: 26rem;
-        }
-        @include mq(desktop-ultra) {
-          bottom: 12rem;
-        }
-      }
+      @include cover-image;
     }
   }
   &-content {

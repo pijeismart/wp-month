@@ -289,3 +289,21 @@
   0%{background-position:0% 0%}
   100%{background-position:0% -200%}
 }
+
+@keyframes move {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -60px;
+  }
+  50% {
+    top: -60px;
+  }
+  75% {
+    top: 0;
+  }
+  100% {
+    top: 0;
+  }
+}

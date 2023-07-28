@@ -273,7 +273,7 @@
   -webkit-box-orient: vertical;
 }
 
-@mixin base-typography() {
+@mixin basic-wysiwig() {
   h1, h2, h3, h4, h5, h6, ul, ol {
     margin-bottom: 2rem;
   }
@@ -281,6 +281,7 @@
     margin-bottom: 1em;
   }
   ul, ol {
+    margin-bottom: 1em;
     padding-left: 2rem;
   }
   a:not([class]) {

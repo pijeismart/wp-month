@@ -64,7 +64,7 @@
       }
     }
     &__content {
-      @include base-typography;
+      @include basic-wysiwig;
       p {
         font: 400 1.6rem/1.55 $f-text;
         letter-spacing: 0.016rem;

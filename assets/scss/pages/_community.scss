@@ -416,7 +416,7 @@
       }
 
       &-copy {
-        @include base-typography;
+        @include basic-wysiwig;
       }
 
       &-people {
@@ -1132,7 +1132,7 @@
 
     &__content {
       margin-bottom: 3.2rem;
-      @include base-typography;
+      @include basic-wysiwig;
     }
 
     &__image-links {
@@ -1515,7 +1515,7 @@
     }
     &__content {
       margin-bottom: 1.6rem;
-      @include base-typography;
+      @include basic-wysiwig;
       @include mq(tablet) {
         margin-bottom: 3.2rem;
       }

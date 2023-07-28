@@ -14,8 +14,6 @@
 				'template-parts/content-modules-text',
 				array(
 					'v'  => 'direct_answer',
-					't'  => 'p',
-					'tc' => 'faq-detail__answer',
 					'o'  => 'f',
 				)
 			);

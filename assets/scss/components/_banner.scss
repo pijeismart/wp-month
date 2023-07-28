@@ -32,21 +32,26 @@
   &-media {
     width: 100%;
     margin-bottom: 2.4rem;
-    @include mq(tablet, max) {
-      .banner--practice &,
-      .banner--practice-cards & {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-gap: 1.6rem;
-      }
-    }
     @include mq(tablet) {
       max-width: 74rem;
       margin-bottom: 0;
       margin-right: -7.5rem;
       flex-grow: 1;
-      .banner--practice &,
-      .banner--practice-cards & {
+    }
+    .banner--practice &,
+    .banner--practice-cards & {
+      @include mq(tablet) {
+        margin-bottom: 2.4rem;
+        max-width: 100%;
+        margin-right: 0;
+      }
+      @include mq(desktop-small, max) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 1.6rem;
+      }
+      @include mq(desktop-small) {
+        margin-bottom: 0;
         margin-right: 6rem;
         max-width: 42rem;
       }
@@ -90,6 +95,9 @@
       }
     }
     &__mobile {
+      @include mq(desktop-small) {
+        display: none;
+      }
       .mobile-image {
         margin-bottom: 1.6rem;
         position: relative;
@@ -143,7 +151,7 @@
         line-height: 3.6rem;
       }
       @include mq(tablet) {
-        margin-bottom: 9rem;
+        margin-bottom: 4rem;
       }
     }
     span {
@@ -245,11 +253,15 @@
     }
     .banner-inner {
       @include mq(tablet) {
+        flex-direction: column;
+      }
+      @include mq(desktop-small) {
         flex-direction: row;
       }
     }
     .banner-content {
       margin-right: 0;
+      width: 100%;
     }
     .contact-form__cards {
       margin-bottom: 2rem;
@@ -302,6 +314,21 @@
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        &.money {
+          .item-sub_title {
+            text-align: center;
+          }
+          .item-content {
+            font: 700 2rem/1 $f-text;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            color: $clr-green;
+            text-align: center;
+            @include mq(tablet) {
+              font-size: 3rem;
+            }
+          }
         }
       }
     }

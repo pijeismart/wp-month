@@ -65,9 +65,6 @@ if ( have_rows( 'modules' ) ) :
 									</a>
 								</li>
 							<?php endif; ?>
-							<li>
-								<span><?php the_title(); ?></span>
-							</li>
 						</ul>
 					<?php endif; ?>
 					<div class="banner-inner">
@@ -102,7 +99,7 @@ if ( have_rows( 'modules' ) ) :
 							</div>
 							<?php endif; ?>
 							<?php if ( 'home' != $type ) : ?>
-							<div class="banner-media__mobile d-sm-only">
+							<div class="banner-media__mobile">
 								<?php
 								$gallery = get_field( 'practice_mobile_banner_gallery', 'options' );
 								$phone   = get_field( 'phone', 'options' );
@@ -193,10 +190,10 @@ if ( have_rows( 'modules' ) ) :
 								);
 							endif;
 							?>
-							<?php if ( have_rows( 'cards' ) ) : ?>
+							<?php if ( 'home' != $type && have_rows( 'three_cards', 'options' ) ) : ?>
 							<div class="contact-form__cards">
 								<?php
-								while ( have_rows( 'cards' ) ) :
+								while ( have_rows( 'three_cards', 'options' ) ) :
 									the_row();
 									$type   = get_sub_field( 'type' );
 									$cta    = get_sub_field( 'cta' );
@@ -439,33 +436,42 @@ if ( have_rows( 'modules' ) ) :
 							<?php
 							while ( have_rows( 'cards' ) ) :
 								the_row();
+								$url = get_sub_field( 'url' );
 								?>
-								<div class="hp-mobile-banner__card">
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-image',
-										array(
-											'v'     => 'icon',
-											'v2x'   => false,
-											'is'    => false,
-											'is_2x' => false,
-											'c'     => 'hp-mobile-banner__card__img',
-										)
-									);
-									?>
-									<?php
-									get_template_part_args(
-										'template-parts/content-modules-text',
-										array(
-											'v'  => 'content',
-											't'  => 'p',
-											'tc' => 'hp-mobile-banner__card__text',
-										)
-									);
-									?>
-								</div>
+								<?php if ( $url ) : ?>
+									<a href="<?php echo esc_url( $url ); ?>" class="hp-mobile-banner__card">
+								<?php else : ?>
+									<div class="hp-mobile-banner__card">
+								<?php endif; ?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-image',
+											array(
+												'v'     => 'icon',
+												'v2x'   => false,
+												'is'    => false,
+												'is_2x' => false,
+												'c'     => 'hp-mobile-banner__card__img',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'p',
+												'tc' => 'hp-mobile-banner__card__text',
+											)
+										);
+										?>
+								<?php if ( $url ) : ?>
+									</a>
+								<?php else : ?>
+									</div>
+								<?php endif; ?>
 							<?php endwhile; ?>
-						</div>
+						</a>
 					<?php endif; ?>
 				</div>
 				<div class="hp-mobile-banner__bottom">
@@ -485,7 +491,7 @@ if ( have_rows( 'modules' ) ) :
 							'template-parts/content-modules-text',
 							array(
 								'v'  => 'bottom_content',
-								't'  => 'p',
+								't'  => 'div',
 								'tc' => 'hp-mobile-banner__bottom-content a-up a-delay-1',
 							)
 						);
@@ -495,7 +501,7 @@ if ( have_rows( 'modules' ) ) :
 							'template-parts/content-modules-cta',
 							array(
 								'v' => 'bottom_cta',
-								'c' => 'btn btn-primary',
+								'c' => 'btn btn-primary hp-mobile-banner__bottom-cta',
 							)
 						);
 						?>
@@ -577,16 +583,7 @@ if ( have_rows( 'modules' ) ) :
 							);
 							?>
 							<div class="content-image__experience">
-								<?php
-								get_template_part_args(
-									'template-parts/content-modules-text',
-									array(
-										'v'  => 'experience_heading',
-										't'  => 'h5',
-										'tc' => 'content-image__experience__heading',
-									)
-								);
-								?>
+								<h5 class="content-image__experience__heading"><?php echo esc_html__( 'Related Pages', 'am' ); ?></h5>
 								<?php
 								$source_type = get_sub_field( 'experience_links_source' ) ? get_sub_field( 'experience_links_source' ) : 'claim_type';
 								if ( 'custom' == $source_type ) :
@@ -609,7 +606,7 @@ if ( have_rows( 'modules' ) ) :
 											?>
 										</ul>
 										<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>" class="underline-link">
-											<?php echo esc_html__( 'More Areas We Serve' ); ?>
+											<?php echo esc_html__( 'More' ); ?>
 										</a>
 										<?php
 									endif;
@@ -649,7 +646,7 @@ if ( have_rows( 'modules' ) ) :
 												?>
 											</ul>
 											<a href="<?php echo esc_url( home_url( '/areas-we-serve/' ) ); ?>" class="underline-link">
-												<?php echo esc_html__( 'More Areas We Serve' ); ?>
+												<?php echo esc_html__( 'More' ); ?>
 											</a>
 											<?php
 										endif;
@@ -1028,6 +1025,7 @@ if ( have_rows( 'modules' ) ) :
 									<?php endif ?>
 								<?php endwhile; ?>
 							<?php endif; ?>
+							default_url  = '<?php the_field( 'default_state_url', 'options' ); ?>';
 							location_arr = <?php echo ! empty( $location_array ) ? json_encode( $location_array ) : ''; ?>;
 							jQuery(document).ready(function($) {
 								// initialize Map
@@ -1054,13 +1052,20 @@ if ( have_rows( 'modules' ) ) :
 											stroke: "#000",
 										},
 										'click' : function(event, data) {
-											if (location_arr.length > 0){
-											$.each(location_arr, function(index, obj) {
-											if (data.name == obj.state_code){
-											window.location = obj.state_url;
-											return;
+											let flag = false;
+											if (location_arr.length > 0) {
+												$.each(location_arr, function(index, obj) {
+													if (data.name == obj.state_code) {
+														console.log(data.name);
+														window.location = obj.state_url;
+														flag = true;
+														return;
+													}
+												}
+											);
+											if ( !flag ) {
+												window.location = default_url;
 											}
-										});
 										}
 										/* $( '#alert' )
 										.text( 'Click '+data.name+' on map 1' )
@@ -1098,10 +1103,12 @@ if ( have_rows( 'modules' ) ) :
 								$size = 'masonry-1';
 							endif;
 							?>
-							<img class="a-up a-delay-<?php echo esc_attr( $index ); ?>"
-								src="<?php echo esc_url( $image['sizes'][ $size ] ); ?>"
-								srcset="<?php echo esc_url( $image['sizes'][ $size . '-2x' ] ); ?> 2x"
-								alt="<?php echo esc_attr( $image['alt'] ); ?>">
+							<div class="masonry-img">
+								<img class="a-up a-delay-<?php echo esc_attr( $index ); ?>"
+									src="<?php echo esc_url( $image['sizes'][ $size ] ); ?>"
+									srcset="<?php echo esc_url( $image['sizes'][ $size . '-2x' ] ); ?> 2x"
+									alt="<?php echo esc_attr( $image['alt'] ); ?>">
+							</div>
 						<?php endforeach; ?>
 					</div>
 					<?php endif; ?>
@@ -1143,7 +1150,7 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact_form' == get_row_layout() ) :
-			$form         = get_sub_field( 'form' ) ? get_field( 'practice_form', 'options' ) : get_field( 'practice_form', 'options' );
+			$form         = get_field( 'practice_form', 'options' );
 			$form_only    = get_sub_field( 'form_only' );
 			$has_border   = get_sub_field( 'content_has_border' );
 			$enable_links = get_sub_field( 'enable_links_block' );
@@ -1358,9 +1365,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'form_sub_heading',
+								'v'  => 'practice_form_eyebrow',
 								't'  => 'h5',
 								'tc' => 'contact-form__form__sub_heading',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -1368,9 +1376,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'form_heading',
+								'v'  => 'practice_form_heading',
 								't'  => 'h4',
 								'tc' => 'contact-form__form__heading',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -1393,13 +1402,14 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-image',
 							array(
-								'v'     => 'logo',
+								'v'     => 'practice_form_image',
 								'v2x'   => false,
 								'is'    => false,
 								'is_2x' => false,
 								'c'     => 'logo',
 								'w'     => 'div',
 								'wc'    => 'contact-form__form__logo',
+								'o'     => 'o',
 							)
 						);
 						?>
@@ -1850,9 +1860,10 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-text',
 							array(
-								'v'  => 'heading',
+								'v'  => 'practice_results_heading',
 								't'  => 'h3',
 								'tc' => 'case-results__heading',
+								'o'  => 'o',
 							)
 						);
 						?>
@@ -2597,7 +2608,6 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'contact' == get_row_layout() ) :
 			$phone         = get_sub_field( 'notice_phone' );
-			$lottie        = get_sub_field( 'lottie' );
 			$mobile_lottie = get_sub_field( 'mobile_lottie' );
 			$video_url     = get_sub_field( 'video' );
 			$case_results  = get_sub_field( 'case_results' );
@@ -2638,11 +2648,15 @@ if ( have_rows( 'modules' ) ) :
 							</span>
 						</a>
 						<?php endif; ?>
-						<?php if ( get_sub_field( 'faqs' ) ) : ?>
-							<a href="#contact-faq" class="contact-mobile__link a-up a-delay-2">
-								<?php echo esc_html__( 'Read Frequently ASked Questions (click here)' ); ?>
-							</a>
-						<?php endif; ?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v'  => 'faq_mobile_cta',
+								'c'  => 'contact-mobile__link a-up a-delay-2',
+							)
+						);
+						?>
 						<?php
 						get_template_part_args(
 							'template-parts/content-modules-text',
@@ -2696,10 +2710,10 @@ if ( have_rows( 'modules' ) ) :
 						)
 					);
 					?>
-					<?php if ( have_rows( 'cards' ) ) : ?>
+					<?php if ( have_rows( 'three_cards', 'options' ) ) : ?>
 						<div class="contact-form__cards">
 							<?php
-							while ( have_rows( 'cards' ) ) :
+							while ( have_rows( 'three_cards', 'options' ) ) :
 								the_row();
 								$type   = get_sub_field( 'type' );
 								$cta    = get_sub_field( 'cta' );
@@ -2926,12 +2940,6 @@ if ( have_rows( 'modules' ) ) :
 								)
 							);
 							?>
-							<?php if ( $lottie ) : ?>
-								<div class="contact-cta__lottie">
-									<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-									<lottie-player src="<?php echo esc_url( $lottie ); ?>" background="transparent" speed="1" style="width: 170px; height: 75px;" loop autoplay></lottie-player>
-								</div>
-							<?php endif; ?>
 						</div>
 					</a>
 					<?php endif; ?>
