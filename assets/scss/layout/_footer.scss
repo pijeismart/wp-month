@@ -55,6 +55,7 @@
       font: 700 1.1rem/1.5 $f-text;
       color: $clr-white;
       @include mq(tablet, max) {
+        display: block;
         &:first-child {
           margin-bottom: 0.5rem;
         }

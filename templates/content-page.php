@@ -1028,52 +1028,54 @@ if ( have_rows( 'modules' ) ) :
 							default_url  = '<?php the_field( 'default_state_url', 'options' ); ?>';
 							location_arr = <?php echo ! empty( $location_array ) ? json_encode( $location_array ) : ''; ?>;
 							jQuery(document).ready(function($) {
-								// initialize Map
-								$('#map1').usmap({
-										'stateSpecificStyles': {
-										<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
-											<?php while ( have_rows( 'map_locations', 'options' ) ) : ?>
-												<?php the_row(); ?>
-												<?php if ( get_sub_field( 'active' ) ) : ?>
-												'<?php echo get_sub_field( 'state_code' ); ?>' : {fill: '#AEDF82'},
-												<?php endif ?>
-											<?php endwhile; ?>
-										<?php endif; ?>
-										},
-										'stateStyles': {
-											fill: "#fff",
-											stroke: "#0A1631",
-											"stroke-width": 1,
-											"stroke-linejoin": "round",
-											scale: [1, 1]
-										},
-										'stateHoverStyles': {
-											fill: "#78BE38",
-											stroke: "#000",
-										},
-										'click' : function(event, data) {
-											let flag = false;
-											if (location_arr.length > 0) {
-												$.each(location_arr, function(index, obj) {
-													if (data.name == obj.state_code) {
-														console.log(data.name);
-														window.location = obj.state_url;
-														flag = true;
-														return;
+								if (window.matchMedia("(min-width: 769px)").matches) {
+									// initialize Map
+									$('#map1').usmap({
+											'stateSpecificStyles': {
+											<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
+												<?php while ( have_rows( 'map_locations', 'options' ) ) : ?>
+													<?php the_row(); ?>
+													<?php if ( get_sub_field( 'active' ) ) : ?>
+													'<?php echo get_sub_field( 'state_code' ); ?>' : {fill: '#AEDF82'},
+													<?php endif ?>
+												<?php endwhile; ?>
+											<?php endif; ?>
+											},
+											'stateStyles': {
+												fill: "#fff",
+												stroke: "#0A1631",
+												"stroke-width": 1,
+												"stroke-linejoin": "round",
+												scale: [1, 1]
+											},
+											'stateHoverStyles': {
+												fill: "#78BE38",
+												stroke: "#000",
+											},
+											'click' : function(event, data) {
+												let flag = false;
+												if (location_arr.length > 0) {
+													$.each(location_arr, function(index, obj) {
+														if (data.name == obj.state_code) {
+															console.log(data.name);
+															window.location = obj.state_url;
+															flag = true;
+															return;
+														}
 													}
+												);
+												if ( !flag ) {
+													window.location = default_url;
 												}
-											);
-											if ( !flag ) {
-												window.location = default_url;
 											}
-										}
-										/* $( '#alert' )
-										.text( 'Click '+data.name+' on map 1' )
-										.stop()
-										.css( 'backgroundColor', '#ff0' )
-										.animate({backgroundColor: '#ddd'}, 1000);*/
-										}
-								});
+											/* $( '#alert' )
+											.text( 'Click '+data.name+' on map 1' )
+											.stop()
+											.css( 'backgroundColor', '#ff0' )
+											.animate({backgroundColor: '#ddd'}, 1000);*/
+											}
+									});
+								}
 								// redirect to url when updating state selector
 								$('#map-redirect').on('change', function() {
 									window.location.href = $(this).val();

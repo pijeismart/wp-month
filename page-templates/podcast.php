@@ -9,39 +9,57 @@ get_header();
 <!-- Podcast Banner -->
 <section class="podcast-banner">
 	<div class="container">
-		<?php
-		get_template_part_args(
-			'template-parts/content-modules-text',
-			array(
-				'v'  => 'sub_heading',
-				't'  => 'h6',
-				'tc' => 'h7 podcast-banner__subheading a-up',
-				'o'  => 'f',
-			)
-		);
-		?>
-		<?php
-		get_template_part_args(
-			'template-parts/content-modules-text',
-			array(
-				'v'  => 'heading',
-				't'  => 'h1',
-				'tc' => 'podcast-banner__heading a-up a-delay-1',
-				'o'  => 'f',
-			)
-		);
-		?>
-		<?php
-		get_template_part_args(
-			'template-parts/content-modules-text',
-			array(
-				'v'  => 'content',
-				't'  => 'div',
-				'tc' => 'podcast-banner__content a-up a-delay-2',
-				'o'  => 'f',
-			)
-		);
-		?>
+		<div class="podcast-banner__inner">
+			<div class="podcast-banner__left">
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-text',
+					array(
+						'v'  => 'sub_heading',
+						't'  => 'h6',
+						'tc' => 'h7 podcast-banner__subheading a-up',
+						'o'  => 'f',
+					)
+				);
+				?>
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-text',
+					array(
+						'v'  => 'heading',
+						't'  => 'h1',
+						'tc' => 'podcast-banner__heading a-up a-delay-1',
+						'o'  => 'f',
+					)
+				);
+				?>
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-text',
+					array(
+						'v'  => 'content',
+						't'  => 'div',
+						'tc' => 'podcast-banner__content a-up a-delay-2',
+						'o'  => 'f',
+					)
+				);
+				?>
+			</div>
+			<?php
+			get_template_part_args(
+				'template-parts/content-modules-image',
+				array(
+					'v'     => 'image',
+					'v2x'   => false,
+					'is'    => false,
+					'is_2x' => false,
+					'w'     => 'div',
+					'wc'    => 'podcast-banner__img d-md-only',
+					'o'     => 'f',
+				)
+			);
+			?>
+		</div>
 	</div>
 </section>
 

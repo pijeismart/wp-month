@@ -7,6 +7,12 @@
   @include mq(tablet) {
     padding-block: 10rem 16.5rem;
   }
+  &__inner {
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
   &__subheading {
     margin-bottom: 2.4rem;
     color: $clr-green;
@@ -27,6 +33,22 @@
   &__content {
     @include mq(tablet) {
       max-width: 75rem;
+    }
+  }
+  &__left {
+    @include mq(tablet) {
+      margin-right: 5rem;
+      flex: 0 0 50%;
+    }
+  }
+  &__img {
+    @include mq(tablet) {
+      max-width: 74rem;
+      flex-grow: 1;
+    }
+    img {
+      @include cover-image;
+      border-radius: 1rem;
     }
   }
 }

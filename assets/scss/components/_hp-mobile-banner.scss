@@ -80,6 +80,7 @@
   }
   &__bottom {
     margin-top: 2.4rem;
+    margin-inline: calc(var(--gutter) * -1);
     padding-block: 4rem;
     background-color: $clr-navy;
     color: $clr-white;

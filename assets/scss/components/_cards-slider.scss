@@ -160,7 +160,6 @@
       @include when-inside('.cards-slider--compact') {
         font-size: 3.2rem;
         line-height: 1.2;
-        font-family: $f-heading;
         text-transform: uppercase;
         @include mq(tablet) {
           font-size: 4rem;

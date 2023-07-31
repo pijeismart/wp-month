@@ -7,15 +7,6 @@
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
-	<script>
-		window.Userback = window.Userback || {};
-		Userback.access_token = '29868|81311|0xVhNnhTfMJ6P0ePlM4raqpZa';
-		(function(d) {
-			var s = d.createElement('script');s.async = true;
-			s.src = 'https://static.userback.io/widget/v1.js';
-			(d.head || d.body).appendChild(s);
-		})(document);
-	</script>
 	<!-- Preload Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -319,6 +319,26 @@
             ]
         },
         {
+            "key": "field_64c718dc146d6",
+            "label": "Footer CTA Text",
+            "name": "footer_cta_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
             "key": "field_6479e98d765ee",
             "label": "Subscribe Form",
             "name": "",
@@ -1287,5 +1307,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1690532523
+    "modified": 1690769717
 }

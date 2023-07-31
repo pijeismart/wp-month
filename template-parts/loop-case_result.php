@@ -5,7 +5,10 @@ $categories = get_the_terms( $post, 'case_category' );
 $price      = get_field( 'price' );
 $content    = get_field( 'content' );
 $url        = get_field( 'url' ) ? get_field( 'url' ) : get_term_link( $categories[0] );
-$theme      = $args['theme'];
+if ( $categories ) :
+	$url = get_field( 'default_page_url', 'case_category_' . $categories[0]->term_id );
+endif;
+$theme = $args['theme'];
 ?>
 <a href="<?php echo esc_url( $url ); ?>" class="cards-slider__slide">
 	<?php

@@ -275,9 +275,6 @@
   &__cards {
     display: flex;
     @include mq(tablet, max) {
-      margin-right: calc(var(--gutter) * -1);
-      overflow: auto;
-      scroll-snap-type: x mandatory;
     }
     @include mq(tablet) {
       flex-wrap: wrap;
@@ -292,8 +289,8 @@
   }
   &__card {
     display: inline-flex;
-    flex: 0 0 19rem;
     margin-right: 1.2rem;
+    flex: 0 0 calc((100% - 2.4rem) / 3);
     padding: 1.9rem;
     align-items: center;
     justify-content: center;
@@ -304,14 +301,14 @@
     overflow: hidden;
     @include mq(tablet) {
       margin: 0.5rem 2rem 0.5rem 0;
-      flex-basis: calc((100% - 4rem) / 3);
       padding: 3rem;
       border: 1px solid $clr-border;
       color: $clr-navy;
       font-size: 2rem;
-      &:last-child {
-        margin-right: 0;
-      }
+      flex-basis: calc((100% - 4rem) / 3);
+    }
+    &:last-child {
+      margin-right: 0;
     }
     @include mq(desktop-wide) {
       padding: 6rem 3rem;

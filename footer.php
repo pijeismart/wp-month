@@ -177,7 +177,7 @@
 	<!-- Begin Footer -->
 	<?php
 	$cta_text       = get_field( 'header_cta_text', 'options' );
-	$cta_url        = get_field( 'header_cta_url', 'options' );
+	$phone        = get_field( 'phone', 'options' );
 	$footer_content = get_field( 'footer_bottom_content', 'options' );
 	$copyright      = get_field( 'copyright', 'options' );
 	?>
@@ -212,8 +212,8 @@
 					)
 				);
 				?>
-				<?php if ( $cta_url && $cta_text ) : ?>
-					<a href="<?php echo esc_url( $cta_url['url'] ); ?>" class="footer-cta" target="<?php echo esc_attr( $cta_url['target'] ? $cta_url['target'] : '_self' ); ?>">
+				<?php if ( $phone && $cta_text ) : ?>
+					<a href="tel:<?php echo $phone; ?>" class="footer-cta">
 						<?php echo $cta_text; ?>
 					</a>
 				<?php endif; ?>
