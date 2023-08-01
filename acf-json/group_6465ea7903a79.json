@@ -838,6 +838,34 @@
                             "endpoint": 0
                         },
                         {
+                            "key": "field_64c858f63defb",
+                            "label": "Heading",
+                            "name": "heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6478a7f593e8e",
+                                        "operator": "==",
+                                        "value": "compact"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_6478a6ef5502c",
                             "label": "Case Results",
                             "name": "case_results",
@@ -7056,5 +7084,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1690519542
+    "modified": 1690851715
 }

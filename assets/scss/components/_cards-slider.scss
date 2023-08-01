@@ -4,6 +4,14 @@
   @include mq(tablet) {
     margin-bottom: 15rem;
   }
+  &__heading {
+    margin-bottom: 1.6rem;
+    font: 600 1rem/1.6 $f-text;
+    @include mq(tablet) {
+      margin-bottom: 2rem;
+      font-size: 1.6rem;
+    }
+  }
   &__carousel {
     position: relative;
     @include mq(tablet, max) {

@@ -15,11 +15,12 @@ $theme = $args['theme'];
 	if ( $categories ) :
 		$category = $categories[0];
 		$image    = get_field( 'icon', 'case_category' . '_' . $category->term_id );
+		$sub_heading = 'Auto Accidents' == $category->name ? esc_html__( 'Auto Accident', 'am' ) : $category->name;
 		if ( $image ) :
 			?>
-		<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $category->name ); ?>" class="cards-slider__slide__icon">
+		<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $sub_heading ); ?>" class="cards-slider__slide__icon">
 		<?php endif; ?>
-		<p class="cards-slider__slide__subheading"><?php echo esc_html( $category->name ); ?></p>
+		<p class="cards-slider__slide__subheading"><?php echo esc_html( $sub_heading ); ?></p>
 	<?php endif; ?>
 	<?php if ( 'compact' == $theme ) : ?>
 		<?php if ( $price ) : ?>
@@ -31,7 +32,9 @@ $theme = $args['theme'];
 			<?php endif; ?>
 		<?php endif; ?>
 	<?php else : ?>
-		<h3 class="cards-slider__slide__heading"><?php the_title(); ?></h3>
+		<h3 class="cards-slider__slide__heading">
+			<?php the_title(); ?>
+		</h3>
 	<?php endif; ?>
 	<?php if ( 'full' == $theme ) : ?>
 		<?php if ( $content ) : ?>

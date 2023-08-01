@@ -517,6 +517,18 @@ if ( have_rows( 'modules' ) ) :
 			<!-- Cards Slider -->
 			<section class="cards-slider cards-slider--<?php echo esc_attr( $theme ); ?>"
 				<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-text',
+					array(
+						'v'  => 'heading',
+						't'  => 'p',
+						'tc' => 'cards-slider__heading',
+						'w'  => 'div',
+						'wc' => 'container',
+					)
+				);
+				?>
 				<?php if ( $case_results ) : ?>
 					<div class="cards-slider__carousel">
 						<?php
@@ -944,6 +956,10 @@ if ( have_rows( 'modules' ) ) :
 			?>
 			<?php
 		elseif ( 'map' == get_row_layout() ) :
+			$map_locations = get_field( 'map_locations', 'options' );
+			if ( $map_locations ) :
+				$map_locations_states = array_column( $map_locations, 'state_code' );
+			endif;
 			?>
 			<!-- Map -->
 			<section class="map"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -984,27 +1000,90 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 					<div class="map-image a-up">
 						<div class="select-block d-sm-only">
+							<?php
+							$states      = array(
+								'AL' => 'Alabama',
+								'AK' => 'Alaska',
+								'AS' => 'American Samoa',
+								'AZ' => 'Arizona',
+								'AR' => 'Arkansas',
+								'AE' => 'Armed Forces - Europe',
+								'AP' => 'Armed Forces - Pacific',
+								'AA' => 'Armed Forces - USA/Canada',
+								'CA' => 'California',
+								'CO' => 'Colorado',
+								'CT' => 'Connecticut',
+								'DE' => 'Delaware',
+								'DC' => 'District of Columbia',
+								'FM' => 'Federated States of Micronesia',
+								'FL' => 'Florida',
+								'GA' => 'Georgia',
+								'GU' => 'Guam',
+								'HI' => 'Hawaii',
+								'ID' => 'Idaho',
+								'IL' => 'Illinois',
+								'IN' => 'Indiana',
+								'IA' => 'Iowa',
+								'KS' => 'Kansas',
+								'KY' => 'Kentucky',
+								'LA' => 'Louisiana',
+								'ME' => 'Maine',
+								'MH' => 'Marshall Islands',
+								'MD' => 'Maryland',
+								'MA' => 'Massachusetts',
+								'MI' => 'Michigan',
+								'MN' => 'Minnesota',
+								'MS' => 'Mississippi',
+								'MO' => 'Missouri',
+								'MT' => 'Montana',
+								'NE' => 'Nebraska',
+								'NV' => 'Nevada',
+								'NH' => 'New Hampshire',
+								'NJ' => 'New Jersey',
+								'NM' => 'New Mexico',
+								'NY' => 'New York',
+								'NC' => 'North Carolina',
+								'ND' => 'North Dakota',
+								'OH' => 'Ohio',
+								'OK' => 'Oklahoma',
+								'OR' => 'Oregon',
+								'PA' => 'Pennsylvania',
+								'PR' => 'Puerto Rico',
+								'RI' => 'Rhode Island',
+								'SC' => 'South Carolina',
+								'SD' => 'South Dakota',
+								'TN' => 'Tennessee',
+								'TX' => 'Texas',
+								'UT' => 'Utah',
+								'VT' => 'Vermont',
+								'VI' => 'Virgin Islands',
+								'VA' => 'Virginia',
+								'WA' => 'Washington',
+								'WV' => 'West Virginia',
+								'WI' => 'Wisconsin',
+								'WY' => 'Wyoming',
+							);
+							$state_codes = array_keys( $states );
+							?>
 							<select class="map-state-selector" id="map-redirect">
 								<option><?php echo esc_html__( 'Select State', 'am' ); ?></option>
-								<?php if ( have_rows( 'map_locations', 'options' ) ) : ?>
-									<?php while ( have_rows( 'map_locations', 'options' ) ) : ?> 
-										<?php the_row(); ?>
-										<?php if ( get_sub_field( 'active' ) ) : ?> 
-											<?php
-											$location = array(
-												'state_code' => get_sub_field( 'state_code' ),
-												'state_url' => get_sub_field( 'state_url' ),
-											);
-											$field    = get_sub_field_object( 'state_code' );
-											$value    = get_sub_field( 'state_code' );
-											$state    = $field['choices'][ $value ];
-											?>
-											<option value="<?php echo $location['state_url']; ?>">
-												<?php echo $state; ?>
-											</option>
-										<?php endif; ?>
-									<?php endwhile; ?>
-								<?php endif; ?>
+								<?php foreach ( $state_codes as $state_code ) : ?>
+									<?php
+									$url = get_field( 'default_state_url', 'options' );
+									foreach ( $map_locations as $map_location ) {
+										if ( $map_locations_states
+											&& in_array( $state_code, $map_locations_states )
+											&& $map_location['active']
+											&& $map_location['state_code'] == $state_code ) {
+											$url = $map_location['state_url'];
+											break;
+										}
+									}
+									?>
+									<option value="<?php echo esc_url( $url ); ?>" data-code="<?php echo esc_attr( $state_code ); ?>">
+										<?php echo esc_html( $states[ $state_code ] ); ?>
+									</option>
+								<?php endforeach; ?>
 							</select>
 						</div>
 						<div class="map-area d-md-only" id="map1"></div>
@@ -2654,8 +2733,8 @@ if ( have_rows( 'modules' ) ) :
 						get_template_part_args(
 							'template-parts/content-modules-cta',
 							array(
-								'v'  => 'faq_mobile_cta',
-								'c'  => 'contact-mobile__link a-up a-delay-2',
+								'v' => 'faq_mobile_cta',
+								'c' => 'contact-mobile__link a-up a-delay-2',
 							)
 						);
 						?>

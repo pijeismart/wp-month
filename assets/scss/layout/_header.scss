@@ -99,7 +99,7 @@
     width: 100%;
     @include mq(desktop-small) {
       flex-shrink: 0;
-      max-width: 15rem;
+      max-width: 18rem;
     }
     @include mq(desktop-wide) {
       max-width: 22.2rem;
