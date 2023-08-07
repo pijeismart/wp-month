@@ -20,26 +20,31 @@
     }
   }
   &-top {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     display: none;
-    padding-block: 1.4rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
     background-color: $clr-navy;
     color: $clr-white;
     text-align: center;
     overflow: hidden;
     z-index: 100;
+    @include mq(tablet) {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+    }
     @include mq(desktop-small) {
-      padding-block: 0.7rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
     }
     .container {
       position: relative;
     }
     &__content {
       display: inline-flex;
-      padding-inline: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
       width: 100%;
       align-items: center;
       justify-content: center;
@@ -74,10 +79,12 @@
   }
   &-main {
     position: relative;
-    padding-block: 1.4rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
     background-color: var(--header-bg);
     @include mq(desktop-small) {
-      padding-block: 0;
+      padding-top: 0;
+      padding-bottom: 0;
       // padding-block: 2.5rem 1.4rem;
     }
     .container {
@@ -97,9 +104,11 @@
     display: inline-block;
     max-width: 10rem;
     width: 100%;
+    @include mq(tablet) {
+      max-width: 18rem;
+    }
     @include mq(desktop-small) {
       flex-shrink: 0;
-      max-width: 18rem;
     }
     @include mq(desktop-wide) {
       max-width: 22.2rem;
@@ -141,7 +150,8 @@
     }
     > .menu-item {
       @include mq(desktop-small) {
-        padding-block: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         margin-right: 2rem;
         &:hover {
           > a {
@@ -215,7 +225,8 @@
         color: $clr-navy;
         @include mq(desktop-small, max) {
           display: block;
-          padding-block: 2rem;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
           border-bottom: 1px solid $clr-border;
         }
       }
@@ -235,7 +246,8 @@
         }
         @include mq(desktop-small) {
           position: absolute;
-          padding-block: 2rem;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
           top: 100%;
           left: 50%;
           transform: translateX(-50%);
@@ -305,7 +317,8 @@
         @include element-hidden;
         overflow: auto;
         @include mq(desktop-small) {
-          padding-block: 2rem;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
           background-color: $clr-navy;
           color: $clr-white;
           border-radius: 8px;
@@ -352,6 +365,7 @@
         align-items: center;
         border: none;
         background-color: transparent;
+        color: $clr-navy;
         font: 600 1.4rem/1 $f-text;
         cursor: pointer;
         @include mq(desktop-small) {
@@ -436,7 +450,8 @@
     }
     &__animations {
       position: relative;
-      margin-inline: auto;
+      margin-left: auto;
+      margin-right: auto;
       border: 2px solid rgb(16, 65, 123);
       width: 15rem;
       height: 6rem;

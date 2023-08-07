@@ -1,10 +1,13 @@
 .contact + .awards {
-  margin-block: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   @include mq(tablet) {
-    margin-block: 10rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
   }
   @include mq(desktop-wide) {
-    margin-block: 15rem;
+    margin-top: 15rem;
+    margin-bottom: 15rem;
   }
 }
 .contact {
@@ -22,11 +25,11 @@
       max-width: vw(900px);
     }
     @media only screen and (min-width: 1301px) {
-      padding-inline-start: calc(((100vw - 130rem) / 2 + var(--gutter)));
-      padding-inline-end: vw(110px);
+      padding-left: calc(((100vw - 130rem) / 2 + var(--gutter)));
+      padding-right: vw(110px);
     }
     @include mq(desktop) {
-      padding-inline-end: 11rem;
+      padding-right: 11rem;
     }
   }
   .breadcrumbs {
@@ -106,11 +109,11 @@
       flex-grow: 1;
     }
     @media only screen and (min-width: 1301px) {
-      padding-inline-start: vw(110px);
-      padding-inline-end: calc(((100vw - 130rem) / 2 + var(--gutter)));
+      padding-left: vw(110px);
+      padding-right: calc(((100vw - 130rem) / 2 + var(--gutter)));
     }
     @include mq(desktop) {
-      padding-inline-start: 11rem;
+      padding-left: 11rem;
     }
   }
   &-cta {
@@ -264,7 +267,8 @@
         align-items: center;
         justify-content: space-between;
         @include mq(phablet) {
-          padding-inline: 24px;
+          padding-left: 24px;
+          padding-right: 24px;
         }
         h6 {
           margin-bottom: 8px;
@@ -299,7 +303,8 @@
         text-align: center;
       }
       lottie-player {
-        margin-inline: auto;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     &__heading {
@@ -334,12 +339,14 @@
     }
   }
   .cards-slider {
-    margin-inline: calc(var(--gutter) * -1);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
     &__subheading {
       margin-bottom: 1.6rem;
     }
     &__bottom {
-      padding-inline: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
     .btn-arrow {
       appearance: none;

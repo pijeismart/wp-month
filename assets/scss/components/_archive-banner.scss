@@ -1,7 +1,9 @@
 .archive-banner {
-  padding-block: 2.4rem;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
   @include mq(tablet) {
-    padding-block: 8rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
   .container {
     @include mq(tablet) {

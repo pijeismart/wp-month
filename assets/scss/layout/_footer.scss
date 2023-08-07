@@ -2,12 +2,14 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 .footer {
-  padding-block: 4.4rem;
+  padding-top: 4.4rem;
+  padding-bottom: 4.4rem;
   background-color: $clr-navy;
   color: $clr-white;
   text-align: center;
   @include mq(tablet) {
-    padding-block: 10.2rem 9rem;
+    padding-top: 10.2rem;
+    padding-botom: 9rem;
     text-align: left;
     border-top: 3px solid $clr-green;
   }
@@ -70,13 +72,9 @@
   }
   &-menu {
     text-align: left;
-    @include mq(tablet, max) {
-      column-count: 2;
-      column-gap: 2rem;
-    }
-    @include mq(tablet) {
-      // display: flex;
-      // flex-wrap: wrap;
+    column-count: 2;
+    column-gap: 2rem;
+    @include mq(desktop) {
       column-count: 3;
       column-gap: 2.4rem;
     }
@@ -121,8 +119,9 @@
       .sub-menu {
         @include mq(tablet) {
           display: flex;
-          margin-inline: -1rem;
+          margin-left: -1rem;
           align-items: center;
+          flex-wrap: wrap;
         }
         li:not(:last-child) {
           @include mq(tablet, max) {
@@ -134,7 +133,8 @@
           line-height: 1.5;
           opacity: 0.6;
           @include mq(tablet) {
-            margin-inline: 1rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
             font-size: 2rem;
           }
           &:hover {
@@ -184,8 +184,10 @@
     }
   }
   &-socials {
-    margin-block: 3.6rem;
-    padding-inline: 1.5rem;
+    margin-top: 3.6rem;
+    margin-bottom: 3.6rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     li {
       &:not(:last-child) {
         margin-bottom: 1.3rem;

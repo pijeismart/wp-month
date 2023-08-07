@@ -1,8 +1,10 @@
 .results {
-  padding-block: 8rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
   background-color: $clr-white-off;
   @include mq(tablet) {
-    padding-block: 9rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
   }
   .container {
     @include mq(tablet) {

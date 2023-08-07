@@ -1,8 +1,10 @@
 .error-page {
-  padding-block: 6rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   text-align: center;
   @include mq(tablet) {
-    padding-block: 12rem;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
   }
   &__img {
     margin: 0 auto 3.2rem;

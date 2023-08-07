@@ -1,13 +1,17 @@
 .content-image {
   position: relative;
-  margin-block: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   &.bg-navy {
-    padding-block: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     @include mq(tablet) {
-      padding-block: 6.4rem;
+      padding-top: 6.4rem;
+      padding-bottom: 6.4rem;
     }
     @include mq(desktop-wide) {
-      padding-block: 10.9rem 6.4rem;
+      padding-top: 10.9rem;
+      padding-bottom: 6.4rem;
     }
   }
   .container {
@@ -193,13 +197,16 @@
         position: relative;
         padding-top: 4rem;
         background-color: $clr-white;
-        margin-inline: calc(var(--gutter) * -1);
-        padding-inline: var(--gutter);
+        margin-left: calc(var(--gutter) * -1);
+        margin-right: calc(var(--gutter) * -1);
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
         z-index: 1;
       }
       @include mq(desktop-small) {
         display: flex;
-        padding-block: 3rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
         width: calc(100% - 55rem);
         flex-direction: column;
         justify-content: center;
@@ -395,7 +402,8 @@
     }
     .container {
       @include mq(tablet) {
-        padding-inline: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         max-width: 190rem;
       }
     }
@@ -405,10 +413,12 @@
   }
   &--contained-ctas {
     @include mq(tablet) {
-      margin-block: 10rem;
+      margin-top: 10rem;
+      margin-bottom: 10rem;
     }
     @include mq(desktop-wide) {
-      margin-block: 15rem;
+      margin-top: 15rem;
+      margin-bottom: 15rem;
     }
     .container {
       @include mq(tablet) {

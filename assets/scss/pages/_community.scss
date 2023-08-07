@@ -1,10 +1,12 @@
 .page-template-community {
   .community-banner {
-    padding-block: 2.4rem 4rem;
+    padding-top: 2.4rem;
+    padding-bottom: 4rem;
     background-color: $clr-white-off;
 
     @include mq(tablet) {
-      padding-block: 9rem 10rem;
+      padding-top: 9rem;
+      padding-bottom: 10rem;
     }
 
     &--content_media {
@@ -17,7 +19,8 @@
     }
     &--content_only {
       @include mq(tablet) {
-        padding-block: 6.4rem;
+        padding-top: 6.4rem;
+        padding-bottom: 6.4rem;
       }
       .community-banner__content {
         @include mq(tablet) {
@@ -89,10 +92,12 @@
         padding: 4rem;
       }
       &-heading {
-        margin-block: 3rem 6rem;
+        margin-top: 3rem;
+        margin-bottom: 6rem;
         text-align: center;
         @include mq(tablet) {
-          margin-block: 3rem;
+          margin-top: 3rem;
+          margin-bottom: 3rem;
         }
       }
       &-body {
@@ -120,7 +125,8 @@
     &--content_only {
       .community-banner__left {
         @include mq(tablet) {
-          margin-inline: auto;
+          margin-left: auto;
+          margin-right: auto;
           max-width: 66.5rem;
           text-align: center;
         }
@@ -143,25 +149,29 @@
           text-align: center;
 
           &-img {
-            margin-inline: auto;
+            margin-left: auto;
+            margin-right: auto;
           }
         }
       }
     }
     &--content_card {
       .community-banner__content {
-        margin-block: 3.2rem 0;
+        margin-top: 3.2rem;
+        margin-bottom: 0;
       }
     }
   }
 
   .c-content-image {
-    padding-block: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     background-color: $clr-navy;
     color: $clr-white;
 
     @include mq(tablet) {
-      padding-block: 6.4rem;
+      padding-top: 6.4rem;
+      padding-bottom: 6.4rem;
     }
 
     .container {
@@ -205,7 +215,8 @@
         text-align: center;
 
         @include mq(tablet) {
-          margin-inline: auto;
+          margin-left: auto;
+          margin-right: auto;
           flex-basis: 100%;
           max-width: 99rem;
         }
@@ -214,11 +225,13 @@
   }
 
   .videos-block {
-    margin-block: 3.2rem;
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
 
     @include mq(tablet) {
       display: grid;
-      margin-block: 6.4rem;
+      margin-top: 6.4rem;
+      margin-bottom: 6.4rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-gap: 1rem;
     }
@@ -324,11 +337,13 @@
 
 
   .gallery-block {
-    margin-block: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     text-align: center;
 
     @include mq(tablet) {
-      margin-block: 10rem;
+      margin-top: 10rem;
+      margin-bottom: 10rem;
     }
 
     &__heading {
@@ -380,7 +395,8 @@
 
       &-header {
         position: relative;
-        padding-block: 2.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
         padding-right: 2rem;
         font: 700 1.8rem/1.2 $f-text;
 
@@ -590,17 +606,20 @@
   }
 
   .timeslider {
-    padding-block: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     background-color: $clr-navy;
     color: $clr-white;
     overflow: hidden;
 
     @include mq(tablet) {
-      padding-block: 10rem;
+      padding-top: 10rem;
+      padding-bottom: 10rem;
     }
 
     @include mq(desktop) {
-      padding-block: 16rem;
+      padding-top: 16rem;
+      padding-bottom: 16rem;
     }
 
     &-heading {
@@ -621,7 +640,8 @@
       text-align: center;
 
       @include mq(tablet) {
-        margin-inline: auto;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 108.6rem;
       }
 
@@ -636,7 +656,8 @@
     }
 
     &-slide {
-      margin-inline: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
       border-radius: 12px;
       border: 1px solid rgba(216, 220, 226, 0.20);
       text-align: left;
@@ -710,10 +731,12 @@
     .slick-dots {
       position: static;
       margin-top: 2rem;
-      margin-inline: auto;
+      margin-left: auto;
+      margin-right: auto;
       display: inline-flex;
       width: auto;
-      margin-inline: auto;
+      margin-left: auto;
+      margin-right: auto;
       align-items: flex-end;
       justify-content: center;
       border-bottom: 1px solid rgba($clr-white, 0.4);
@@ -727,11 +750,13 @@
         height: auto;
 
         @include mq(tablet) {
-          margin-inline: 2rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
         }
 
         @include mq(desktop-wide) {
-          margin-inline: 4rem;
+          margin-left: 4rem;
+          margin-right: 4rem;
         }
 
         &:first-child {
@@ -808,10 +833,12 @@
   }
 
   .hc-videos {
-    padding-block: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
     @include mq(tablet) {
-      padding-block: 6.4rem;
+      padding-top: 6.4rem;
+      padding-bottom: 6.4rem;
     }
 
     &__select {
@@ -893,7 +920,8 @@
         }
         &__content {
           display: flex;
-          padding-inline: 1.6rem;
+          padding-left: 1.6rem;
+          padding-right: 1.6rem;
           align-items: center;
         }
         &__play {
@@ -997,19 +1025,23 @@
   
   .c-footer-cta {
     position: relative;
-    padding-block: 10rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 
     @include mq(tablet) {
-      padding-block: 15rem;
+      padding-top: 15rem;
+      padding-bottom: 15rem;
     }
 
     @include mq(desktop) {
-      padding-block: 23rem;
+      padding-top: 23rem;
+      padding-bottom: 23rem;
     }
 
     &__bg {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       @include cover-image;
     }
 
@@ -1040,10 +1072,12 @@
 }
 
 .community-modules {
-  padding-block: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
   @include mq(tablet) {
-    padding-block: 6.4rem;
+    padding-top: 6.4rem;
+    padding-bottom: 6.4rem;
   }
 
   .block-heading {
@@ -1063,14 +1097,19 @@
   }
 
   &__sidebar {
-    position: sticky;
-    margin-right: 2rem;
-    top: var(--header-height);
-    left: 0;
     padding: 2.4rem 0 2.4rem 3.2rem;
-    flex: 0 0 31.2rem;
     border: 1px solid $clr-border;
     border-radius: 1.2rem;
+    @include mq(tablet, max) {
+      margin-bottom: 3rem;
+    }
+    @include mq(tablet) {
+      position: sticky;
+      top: var(--header-height);
+      left: 0;
+      margin-right: 2rem;
+      flex: 0 0 31.2rem;
+    }
 
     h6 {
       margin-bottom: 2.4rem;
@@ -1120,7 +1159,8 @@
       }
 
       .general-block__inner {
-        padding-inline: 2.4rem;
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
       }
     }
 
@@ -1136,7 +1176,8 @@
     }
 
     &__image-links {
-      padding-inline: 1.6rem;
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
 
       @include mq(tablet) {
         display: grid;
@@ -1172,7 +1213,8 @@
 
       .link-title {
         position: absolute;
-        inset-inline: 2.4rem;
+        left: 2.4rem;
+        right: 2.4rem;
         bottom: 2.4rem;
         display: flex;
         align-items: center;
@@ -1181,7 +1223,8 @@
         color: $clr-white;
 
         @include mq(tablet) {
-          inset-inline: 3.2rem;
+          left: 3.2rem;
+          right: 3.2rem;
           bottom: 3.2rem;
         }
 
@@ -1208,7 +1251,8 @@
 
     &__external {
       display: block;
-      padding-inline: 1.6rem;
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
       cursor: pointer;
 
       &:hover {
@@ -1523,13 +1567,15 @@
     &__gallery {
       max-width: 100%;
       img {
-        margin-inline: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
       }
       .slick-track {
         display: flex;
       }
       .slick-slide {
-        margin-inline: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
         height: inherit;
         img {
           @include cover-image;
@@ -1594,7 +1640,8 @@
     text-transform: capitalize;
   }
   &__sep {
-    margin-block: 8px 1.6rem;
+    margin-top: 8px;
+    margin-bottom: 1.6rem;
   }
   &__desc {
     font: 400 1.2rem/1.55 $f-text;
@@ -1652,9 +1699,11 @@
 }
 
 .athlete-slider {
-  margin-block: 3.2rem;
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
   @include mq(tablet) {
-    margin-block: 6.4rem;
+    margin-top: 6.4rem;
+    margin-bottom: 6.4rem;
   }
   &__heading {
     margin-bottom: 1.8rem;
@@ -1663,7 +1712,8 @@
     }
   }
   .winners-card {
-    margin-inline: 7px;
+    margin-left: 7px;
+    margin-right: 7px;
   }
   .slick-track {
     display: flex;

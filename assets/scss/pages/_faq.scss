@@ -2,10 +2,12 @@
   --header-background: #EFF2F6;
 
   .section-archive {
-    padding-block: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
     @include mq(tablet) {
-      padding-block: 8rem;
+      padding-top: 8rem;
+      padding-bottom: 8rem;
     }
   }
 }
@@ -40,7 +42,8 @@
     }
   }
   &__categories {
-    margin-inline: -2px;
+    margin-left: -2px;
+    margin-right: -2px;
     @include mq(tablet) {
       display: flex;
       align-items: center;
@@ -50,7 +53,8 @@
 
   &__cat {
     display: inline-block;
-    margin-inline: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
     padding: 4px 1.2rem;
     border: 1px solid $clr-border;
     border-radius: 4px;

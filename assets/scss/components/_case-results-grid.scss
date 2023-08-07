@@ -1,7 +1,9 @@
 .case-results-alt {
-  padding-block: 3.2rem;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
   @include mq(tablet) {
-    padding-block: 6.4rem;
+    padding-top: 6.4rem;
+    padding-bottom: 6.4rem;
   }
   &__heading {
     margin-bottom: 2rem;

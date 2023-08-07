@@ -1,5 +1,6 @@
 .contact-form {
-  margin-block: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 
   &--border {
     .container {
@@ -120,7 +121,8 @@
         }
 
         &-content {
-          margin-block: auto;
+          margin-top: auto;
+          margin-bottom: auto;
           line-height: 8rem;
           font-family: $f-heading;
           font-weight: 400;
@@ -176,7 +178,8 @@
         }
       }
       hr {
-        margin-block: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
       }
     }
   }
@@ -249,7 +252,8 @@
     &-review {
       height: inherit;
       @include mq(phablet) {
-        margin-inline: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
     }
     &-rating {
@@ -258,7 +262,8 @@
       align-items: center;
       justify-content: space-between;
       @include mq(phablet) {
-        padding-inline: 24px;
+        padding-left: 24px;
+        padding-right: 24px;
       }
       h6 {
         margin-bottom: 8px;
@@ -321,13 +326,16 @@
     margin-bottom: 0;
   }
   &--only {
-    padding-block: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     background-color: $clr-navy;
     @include mq(tablet) {
-      padding-block: 6rem;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
     }
     .contact-form__form {
-      margin-inline: auto;
+      margin-left: auto;
+      margin-right: auto;
       padding: 0;
       width: 100%;
       @include mq(tablet) {

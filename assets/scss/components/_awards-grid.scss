@@ -4,12 +4,14 @@
   }
 }
 .awards-grid {
-  padding-block: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   background: $clr-navy;
   color: $clr-white;
   text-align: center;
   @include mq(tablet) {
-    padding-block: 16.6rem 12.6rem;
+    padding-top: 16.6rem;
+    padding-bottom: 12.6rem;
   }
   &__content {
     margin-bottom: 3.2rem;
@@ -19,7 +21,8 @@
   }
   &__images {
     display: inline-block;
-    margin-inline: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: fit-content;
     max-width: 90rem;
     @include mq(tablet) {

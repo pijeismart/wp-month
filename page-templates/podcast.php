@@ -16,7 +16,7 @@ get_header();
 					'template-parts/content-modules-text',
 					array(
 						'v'  => 'sub_heading',
-						't'  => 'h6',
+						't'  => 'h1',
 						'tc' => 'h7 podcast-banner__subheading a-up',
 						'o'  => 'f',
 					)
@@ -27,8 +27,8 @@ get_header();
 					'template-parts/content-modules-text',
 					array(
 						'v'  => 'heading',
-						't'  => 'h1',
-						'tc' => 'podcast-banner__heading a-up a-delay-1',
+						't'  => 'p',
+						'tc' => 'h1 podcast-banner__heading a-up a-delay-1',
 						'o'  => 'f',
 					)
 				);

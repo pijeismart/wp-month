@@ -1,4 +1,4 @@
-<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php' ) || is_page_template( 'page-templates/blog.php' ) || is_page_template( 'page-templates/areas-we-serve.php' ) ) : ?>
+		<?php if ( is_page_template( 'page-templates/faqs.php' ) && is_page_template( 'page-templates/areas-we-serve.php' ) ) : ?>
 			<section class="results">
 				<div class="container">
 					<div class="results-content">
@@ -106,6 +106,8 @@
 					<?php endif; ?>
 				</div>
 			</section>
+		<?php endif; ?>
+		<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php' ) || is_page_template( 'page-templates/areas-we-serve.php' ) || is_page_template( 'page-templates/blog.php' ) ) : ?>
 			<section class="subscribe-form" id="subscribe-form">
 				<div class="subscribe-form__img d-md-only">
 					<?php

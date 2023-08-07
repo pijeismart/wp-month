@@ -38,7 +38,8 @@
           display: none;
         }
         label.gform-field-label {
-          margin-inline: 0.8rem;
+          margin-left: 0.8rem;
+          margin-right: 0.8rem;
           @extend .hide-text;
           width: 4rem;
           height: 4rem;

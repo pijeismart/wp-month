@@ -1,9 +1,11 @@
 .single-faq {
   --header-bg: #EFF2F6;
   .awards {
-    margin-block: 8rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
     @include mq(tablet) {
-      margin-block: 16rem;
+      margin-top: 16rem;
+      margin-bottom: 16rem;
     }
   }
 }
@@ -77,7 +79,8 @@
         padding-left: 8px;
         list-style: none;
         li {
-          padding-block: 8px;
+          padding-top: 8px;
+          padding-bottom: 8px;
         }
       }
       .link {
@@ -94,7 +97,8 @@
     }
     .social-share {
       display: flex;
-      margin-inline: -4px;
+      margin-left: -4px;
+      margin-right: -4px;
       align-items: center;
       list-style: none;
       @include mq(tablet, max) {

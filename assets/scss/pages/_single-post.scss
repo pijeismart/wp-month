@@ -3,10 +3,12 @@
 }
 .post-banner {
   position: relative;
-  padding-block: 2.4rem 7rem;
+  padding-top: 2.4rem;
+  padding-bottom: 7rem;
   background: $clr-white-off;
   @include mq(tablet) {
-    padding-block: 6rem 20rem;
+    padding-top: 6rem;
+    padding-bottom: 20rem;
   }
   &::after {
     position: absolute;
@@ -134,7 +136,8 @@
   }
   .container {
     @include mq(tablet, max) {
-      padding-inline: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   img {
@@ -144,9 +147,11 @@
   }
 }
 .post-detail {
-  padding-block: 4rem 8rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
   @include mq(tablet) {
-    padding-block: 6rem 8rem;
+    padding-top: 6rem;
+    padding-bottom: 8rem;
   }
   .container {
     @include mq(tablet) {
@@ -188,8 +193,10 @@
   }
 }
 .related-posts {
-  padding-block: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   @include mq(tablet) {
-    padding-block: 9rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
   }
 }

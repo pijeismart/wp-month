@@ -3,7 +3,8 @@
   .archive-banner {
     padding-bottom: 18rem;
     @include mq(tablet) {
-      padding-block: 10rem 16rem;
+      padding-top: 10rem;
+      padding-bottom: 16rem;
     }
   }
   .section-archive {
@@ -34,7 +35,8 @@
       max-width: 40rem;
     }
     .slider-pagination {
-      padding-inline: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
     .prev-posts {
       padding-left: 3rem;
@@ -96,7 +98,8 @@
     flex-grow: 1;
     @include mq(tablet, max) {
       margin-left: 1.6rem;
-      padding-block: 2.4rem;
+      padding-top: 2.4rem;
+      padding-bottom: 2.4rem;
       border-bottom: 0.5px solid $clr-border;
     }
     @include mq(tablet) {

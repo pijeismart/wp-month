@@ -7,6 +7,12 @@
   --header-height: 105px;
   --header-bg: #fff;
 }
+@media only screen and (min-width: 576px) {
+  :root {
+    --gutter: 3rem;
+    --max-width: 1330px;
+  }
+}
 /**
  * Set up a decent box model on the root element
  */
@@ -70,9 +76,11 @@ h5 {
 }
 
 .content {
-  padding-block: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   @include mq(tablet) {
-    padding-block: 8rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
   h1, h2, h3 ,h4, h5, h6, p {
     margin-bottom: 1em;
@@ -105,7 +113,8 @@ h5 {
   iframe,
   > img {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     @include cover-image;
   }
   &__title {

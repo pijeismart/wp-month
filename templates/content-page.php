@@ -3070,10 +3070,14 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'case_results_grid' == get_row_layout() ) :
-			$source = get_sub_field( 'content_source' );
+			$source         = get_sub_field( 'content_source' );
+			$posts_per_page = 12;
+			if ( wp_is_mobile() ) {
+				$posts_per_page = 3;
+			}
 			$args   = array(
 				'post_type'      => 'case_result',
-				'posts_per_page' => 12,
+				'posts_per_page' => $posts_per_page,
 				'post_status'    => 'publish',
 			);
 			if ( 'custom' == $source ) :
@@ -3097,7 +3101,7 @@ if ( have_rows( 'modules' ) ) :
 					<?php if ( $query->have_posts() ) : ?>
 						<div class="section-archive__posts case-results-alt__grid"
 							data-post-type="case_result"
-							data-posts-per-page="12"
+							data-posts-per-page="<?php echo esc_attr( $posts_per_page ); ?>"
 							data-theme="alt"
 							data-paged="1">
 							<?php

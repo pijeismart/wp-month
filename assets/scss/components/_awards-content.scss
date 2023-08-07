@@ -87,7 +87,8 @@
     }
   }
   &-heading {
-    margin-block: 2.4rem;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
     @include mq(tablet) {
       margin-top: 6.4rem;
     }

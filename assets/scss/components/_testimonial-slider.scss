@@ -39,10 +39,12 @@
         }
     }
     .rplg-review {
-        margin-inline: 0.8rem;
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
         width: 100%;
         @include mq(tablet) {
-            margin-inline: 1rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
             max-width: 42.5rem;
         }
     }

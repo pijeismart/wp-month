@@ -399,7 +399,10 @@
       $('a[href^="#"').on('click touchstart', function() {
         const target = $(this).attr('href');
         if (target !== '#' && $(target).length > 0) {
-          const offset = $(target).offset().top - $('header').outerHeight();
+          let offset = $(target).offset().top - $('header').outerHeight();
+          if ($('.navigation-bar').length > 0) {
+            offset -= $('.navigation-bar').outerHeight() + 50;
+          }
           $('html, body').animate(
             {
               scrollTop: offset

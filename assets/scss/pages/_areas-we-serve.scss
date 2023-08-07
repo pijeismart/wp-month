@@ -1,9 +1,11 @@
 .page-template-areas-we-serve {
   --header-bg: #EFF2F6;
   .archive-banner {
-    padding-block: 2.6rem 20.6rem;
+    padding-top: 2.6rem;
+    padding-bottom: 20.6rem;
     @include mq(tablet) {
-      padding-block: 8rem 18rem;
+      padding-top: 8rem;
+      padding-bottom: 18rem;
     }
     &__subheading {
       margin-bottom: 2.4rem;
@@ -59,7 +61,8 @@
 
 .loop-state {
   margin-bottom: 8rem;
-  padding-block: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   background-color: $clr-white;
   @include mq(tablet) {
     margin-bottom: 2rem;

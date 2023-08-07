@@ -245,7 +245,7 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 	<section class="community-modules">
 		<div class="container">
 			<?php if ( have_rows( 'sidebar_links' ) ) : ?>
-			<div class="community-modules__sidebar d-md-only">
+			<div class="community-modules__sidebar">
 				<h6><?php echo esc_html__( 'Related Pages' ); ?></h6>
 				<ul>
 					<?php

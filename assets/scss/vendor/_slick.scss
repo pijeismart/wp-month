@@ -115,7 +115,8 @@
     justify-content: space-between;
   }
   &-pagination {
-    padding-inline: 2.2rem 4.3rem;
+    padding-left: 2.2rem;
+    padding-right: 4.3rem;
     font: 700 2.8rem/1 $f-text;
     letter-spacing: 0.39em;
     color: $clr-green;
