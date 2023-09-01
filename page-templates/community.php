@@ -780,8 +780,9 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 							</section>
 							<?php
 						elseif ( 'hero_central_videos' == get_row_layout() ) :
-							?>
-							<?php if ( have_rows( 'videos' ) ) : ?>
+							$videos = get_sub_field( 'videos' );
+							if ( have_rows( 'videos' ) ) :
+								?>
 							</div></div></section>
 							<style>
 								.community-modules {
@@ -791,18 +792,23 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 							<section class="hc-videos">
 								<div class="container">
 									<?php
+									$dates = array();
 									$years = array();
-									while ( have_rows( 'videos' ) ) :
-										the_row();
-										$date = get_sub_field( 'date' );
-										if ( $date ) {
-											$date_arr = explode( ', ', $date );
-											$year     = $date_arr[1];
-											if ( ! in_array( $year, $years ) ) {
-												$years[] = $year;
-											}
+									foreach ( $videos as $i => $video ) :
+										$dates[ $i ] = strtotime( $video['date'] );
+										$year        = date( 'Y', $dates[ $i ] );
+										if ( ! in_array( $year, $years ) ) {
+											$years[ $i ] = $year;
 										}
-									endwhile;
+									endforeach;
+									array_multisort( $dates, SORT_DESC, $videos );
+									function cmp( $a, $b ) {
+										if ( $a == $b ) {
+											return 0;
+										}
+										return ( $a > $b ) ? -1 : 1;
+									}
+									usort( $years, 'cmp' );
 									?>
 									<select name="video_year" id="video_year" class="hc-videos__select a-up" jcf-select>
 										<option value="all"><?php echo esc_html__( 'All' ); ?></option>
@@ -812,18 +818,15 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 									</select>
 									<div class="hc-videos__grid a-up">
 										<?php
-										while ( have_rows( 'videos' ) ) :
-											the_row();
-											$video = get_sub_field( 'video_url' );
-											$date  = get_sub_field( 'date' );
-											if ( $date ) {
-												$date_arr = explode( ', ', $date );
-											}
+										foreach ( $videos as $video ) :
+											$video_url = $video['video_url'];
+											$date      = $video['date'];
+											$year      = date( 'Y', strtotime( $date ) );
 											if ( $video ) :
 												?>
-												<div class="hc-videos__item is-active" data-year="<?php echo $date_arr[1]; ?>">
-													<a href="<?php echo esc_url( $video ); ?>" class="video-player" data-fancybox>
-														<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="">
+												<div class="hc-videos__item is-active" data-year="<?php echo esc_attr( $year ); ?>">
+													<a href="<?php echo esc_url( $video_url ); ?>" class="video-player" data-fancybox>
+														<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
 														<span class="video-play">
 															<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
 														</span>
@@ -843,9 +846,9 @@ if ( have_rows( 'content_modules' ) || have_rows( 'sidebar_links' ) ) :
 													<?php endif; ?>
 												</div>
 											<?php endif; ?>
-										<?php endwhile; ?>
+										<?php endforeach; ?>
 									</div>
-									<?php if ( count( get_sub_field( 'videos' ) ) > 12 ) : ?>
+									<?php if ( count( $videos ) > 12 ) : ?>
 										<div class="hc-videos__loadmore a-up">
 											<button class="underline-link btn-loadmore-videos" data-paged="1"><?php echo esc_html( 'Load More' ); ?></button>
 										</div>
@@ -962,7 +965,7 @@ if ( $enable_athletes ) :
 											'c'     => 'hc-videos__item-alt__img',
 										)
 									);
-								else:
+								else :
 									?>
 									<img src="<?php echo esc_url( get_youtube_image_from_url( $video ) ); ?>" alt="" class="hc-videos__item-alt__img">
 									<?php
@@ -1086,11 +1089,11 @@ if ( $enable_winners ) :
 											get_template_part_args(
 												'template-parts/content-modules-image',
 												array(
-													'v'     => 'image',
-													'v2x'   => false,
-													'is'    => false,
+													'v'   => 'image',
+													'v2x' => false,
+													'is'  => false,
 													'is_2x' => false,
-													'c'     => 'winners-card__img',
+													'c'   => 'winners-card__img',
 												)
 											);
 											?>

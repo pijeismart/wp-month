@@ -102,16 +102,19 @@
   }
   &-logo {
     display: inline-block;
-    max-width: 10rem;
-    width: 100%;
-    @include mq(tablet) {
-      max-width: 18rem;
-    }
     @include mq(desktop-small) {
       flex-shrink: 0;
     }
-    @include mq(desktop-wide) {
-      max-width: 22.2rem;
+    &__img {
+      display: block;
+      width: 10rem !important;
+      @include mq(tablet) {
+        width: 18rem !important;
+        height: auto !important;
+      }
+      @include mq(desktop-wide) {
+        width: 22.2rem !important;
+      }
     }
   }
   &-menu {
@@ -472,7 +475,7 @@
         font-size: 3.2rem;
       }
       sup {
-        font-size: 40%;
+        font-size: 12px;
       }
     }
   }

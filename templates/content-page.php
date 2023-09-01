@@ -71,6 +71,7 @@ if ( have_rows( 'modules' ) ) :
 						<div class="banner-media a-op">
 							<div class="banner-media__large">
 								<?php
+								$size = 'practice-cards' == $type ? 'banner-media-large' : false;
 								get_template_part(
 									'template-parts/content-modules',
 									'media',
@@ -78,6 +79,7 @@ if ( have_rows( 'modules' ) ) :
 										'image'        => $image,
 										'video'        => $video,
 										'mobile_video' => $mobile_video,
+										'size'         => $size,
 									)
 								);
 								?>
@@ -90,8 +92,8 @@ if ( have_rows( 'modules' ) ) :
 									array(
 										'v'     => 'small_image',
 										'v2x'   => false,
-										'is'    => false,
-										'is_2x' => false,
+										'is'    => 'banner-media-mobile',
+										'is_2x' => 'banner-media-mobile',
 										'c'     => 'small-image',
 									)
 								);
@@ -107,8 +109,9 @@ if ( have_rows( 'modules' ) ) :
 									$index = get_the_ID() % count( $gallery );
 									?>
 									<div class="mobile-image">
-										<img src="<?php echo esc_url( $gallery[ $index ]['url'] ); ?>" 
-											alt="<?php echo esc_attr( $gallery[ $index ]['alt'] ); ?>">
+											<img src="<?php echo esc_url( $gallery[ $index ]['sizes']['banner-media-mobile'] ); ?>"
+												srcset="<?php echo esc_url( $gallery[ $index ]['sizes']['banner-media-mobile-2x'] ); ?> 2x" 
+												alt="<?php echo esc_attr( $gallery[ $index ]['alt'] ); ?>">
 									</div>
 								<?php endif; ?>
 								<?php if ( $phone ) : ?>
@@ -437,24 +440,16 @@ if ( have_rows( 'modules' ) ) :
 							while ( have_rows( 'cards' ) ) :
 								the_row();
 								$url = get_sub_field( 'url' );
+								$icon = get_sub_field( 'icon' );
 								?>
 								<?php if ( $url ) : ?>
 									<a href="<?php echo esc_url( $url ); ?>" class="hp-mobile-banner__card">
 								<?php else : ?>
 									<div class="hp-mobile-banner__card">
 								<?php endif; ?>
-										<?php
-										get_template_part_args(
-											'template-parts/content-modules-image',
-											array(
-												'v'     => 'icon',
-												'v2x'   => false,
-												'is'    => false,
-												'is_2x' => false,
-												'c'     => 'hp-mobile-banner__card__img',
-											)
-										);
-										?>
+										<?php if ( $icon ) : ?>
+											<img width="24px" height="24px" src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" class="hp-mobile-banner__card__img">
+										<?php endif; ?>
 										<?php
 										get_template_part_args(
 											'template-parts/content-modules-text',

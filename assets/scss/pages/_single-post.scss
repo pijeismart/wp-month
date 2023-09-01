@@ -168,6 +168,9 @@
   ul, ol {
     padding-left: 2rem;
   }
+  @include mq(tablet) {
+    max-width: calc(100% - 37rem);
+  }
 }
 .post-sidebar {
   position: sticky;

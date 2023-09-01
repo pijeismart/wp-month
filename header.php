@@ -44,6 +44,7 @@
 	$phone               = get_field( 'phone', 'options' );
 	$lottie              = get_field( 'header_lottie', 'options' );
 	$disable_parent_menu = get_field( 'disable_locations_menu_on_child_page', 'options' );
+	$logo                = get_field( 'logo', 'options' );
 	?>
 	<header class="header<?php echo $disable_parent_menu ? ' header--disable-parent' : ''; ?>">
 		<?php if ( $enable_top_bar && $top_bar_content ) : ?>
@@ -62,19 +63,7 @@
 					<span></span>
 				</button>
 				<a href="<?php echo esc_url( home_url() ); ?>" class="header-logo" aria-label="<?php echo esc_html__( 'Montlick Logo', 'am' ); ?>">
-					<?php
-					get_template_part_args(
-						'template-parts/content-modules-image',
-						array(
-							'v'     => 'logo',
-							'v2x'   => false,
-							'is'    => false,
-							'is_2x' => false,
-							'c'     => 'header-logo__img',
-							'o'     => 'o',
-						)
-					);
-					?>
+					<img src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $logo['alt'] ); ?>" class="header-logo__img" width="100px" height="26px">
 				</a>
 				<ul class="header-menu">
 					<?php custom_mega_menu( 'mainmenu' ); ?>
@@ -95,7 +84,7 @@
 				<?php endif; ?>
 				<?php if ( $phone ) : ?>
 					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="header-phone">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-call.svg' ); ?>" alt="<?php echo esc_html__( 'Call Now', 'am' ); ?>">
+						<img width="24px" height="24px" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-call.svg' ); ?>" alt="<?php echo esc_html__( 'Call Now', 'am' ); ?>">
 					</a>
 				<?php endif; ?>
 			</div>

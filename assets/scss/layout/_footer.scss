@@ -46,11 +46,11 @@
     color: $clr-green;
     font: 700 2rem/1 $f-text;
     text-align: center;
+    white-space: nowrap;
     @include mq(tablet) {
       display: inline-block;
       padding: 2.2rem 3rem;
       font-size: 2.6rem;
-      max-width: 27rem;
     }
     small {
       display: inline-block;

@@ -33,12 +33,7 @@ if ( 'o' == $option ) {
 		$link_target = $link['target'] ? $link['target'] : '_self';
 	?>
 		<a class="<?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
-			<?php echo esc_html( $link_title ); ?>
-			<?php if ( $icon && 'dark' === $icon ) : ?>
-				<img class="lazyload" data-src="<?php echo esc_url( get_template_directory_uri() . '/images/ico/ico-arrow-dark-right.svg' ); ?>" alt="">
-			<?php elseif ( $icon ) : ?>
-				<img class="lazyload" data-src="<?php echo esc_url( get_template_directory_uri() . '/images/ico/ico-arrow-right.svg' ); ?>" alt="">
-			<?php endif ?>
+			<?php echo html_entity_decode( $link_title ); ?>
 		</a>
 	<?php if ( $ww ) : ?>
 		</<?php echo esc_attr( $ww ); ?>>

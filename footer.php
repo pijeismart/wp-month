@@ -178,8 +178,8 @@
 
 	<!-- Begin Footer -->
 	<?php
-	$cta_text       = get_field( 'header_cta_text', 'options' );
-	$phone        = get_field( 'phone', 'options' );
+	$cta_text       = get_field( 'footer_cta_text', 'options' );
+	$phone          = get_field( 'phone', 'options' );
 	$footer_content = get_field( 'footer_bottom_content', 'options' );
 	$copyright      = get_field( 'copyright', 'options' );
 	?>

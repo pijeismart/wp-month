@@ -114,6 +114,10 @@ add_image_size( 'masonry-2', 640, 436, true );
 add_image_size( 'masonry-2-2x', 1280, 872, true );
 add_image_size( 'masonry-3', 570, 380, true );
 add_image_size( 'masonry-3-2x', 1140, 760, true );
+add_image_size( 'banner-media-large', 420, 585, true );
+add_image_size( 'banner-media-large-2x', 840, 1170, true );
+add_image_size( 'banner-media-mobile', 475, 430, true );
+add_image_size( 'banner-media-mobile-2x', 950, 860, true );
 
 // show_admin_bar(false);
 // define( 'WPCF7_AUTOP', false );

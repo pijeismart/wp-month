@@ -299,7 +299,7 @@
             .hide();
         });
 
-        $('.navigation-popup__link').on('click', function() {
+        $('.navigation-popup__link').on('click touchstart', function() {
           $.fancybox.close();
         });
 
