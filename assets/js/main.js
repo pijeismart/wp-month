@@ -289,6 +289,7 @@
           '.attorney-awards__carousel',
           theme.initAwardsCarousel
         );
+        helper.isElementExist('.pa-grid', theme.initPracticeAreas);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -986,6 +987,61 @@
         variableWidth: true,
         prevArrow: $('.attorney-awards__arrow.prev'),
         nextArrow: $('.attorney-awards__arrow.next')
+      });
+    },
+
+    /**
+     * init practice areas
+     */
+    initPracticeAreas() {
+      // search practice areas
+      $('.pa-grid__search').on('input', function() {
+        let search = $('.pa-grid__search').val();
+        if (search) {
+          // get first string of search and make it uppercase
+          const firstletter = search.charAt(0).toUpperCase();
+          // show only practice areas that have first letter of search
+          $('.pa-grid__group').hide();
+          $(`.pa-grid__group[id=${firstletter}]`).show();
+          $(`.pa-grid__group[id=${firstletter}] .pa-grid__item`).each(
+            function() {
+              const title = $(this).text().trim();
+              if (title.toLowerCase().includes(search.toLowerCase())) {
+                $(this).addClass('is-visible');
+              } else {
+                $(this).removeClass('is-visible');
+              }
+            }
+          );
+          if ($(`.pa-grid__group[id=${firstletter}] .pa-grid__item.is-visible`).length == 0) {
+            $('.pa-grid__group').hide();
+            $('.pa-grid__no-results').show();
+          } else {
+            $('.pa-grid__no-results').hide();
+          }
+        } else {
+          $('.pa-grid__group').show();
+          $('.pa-grid__item').removeClass('is-visible');
+          $('.pa-grid__no-results').hide();
+        }
+      });
+      // filter practice areas
+      $('.pa-grid__filter').on('click', function() {
+        if ($(this).hasClass('is-active')) {
+          $(this).removeClass('is-active');
+        } else {
+          $('.pa-grid__filter.is-active').removeClass('is-active');
+          $(this).addClass('is-active');
+        }
+        const target = $(this).attr('data-target');
+        if ($('.pa-grid__filter.is-active').length == 0) {
+          $('.pa-grid__group').show();
+        } else {
+          if ($(target).length) {
+            $('.pa-grid__group').hide();
+            $(target).show();
+          }
+        }
       });
     }
   };

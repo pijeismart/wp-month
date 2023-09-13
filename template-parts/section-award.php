@@ -15,7 +15,7 @@ $awards = get_field( 'awards', 'options' );
 		get_template_part_args(
 			'template-parts/content-modules-cta',
 			array(
-				'v'  => 'awards_download_cta',
+				'v'  => 'awards_cta',
 				'c'  => 'link',
 				'w'  => 'div',
 				'wc' => 'awards-cta',

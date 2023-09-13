@@ -1,0 +1,303 @@
+.page-template-practice-areas {
+  .awards {
+    margin-bottom: 5rem;
+    @include mq(tablet) {
+      margin-bottom: 11rem;
+    }
+  }
+}
+.pa-banner {
+  position: relative;
+  background-color: transparent;
+  padding-top: 5rem;
+  @include mq(tablet) {
+    padding-top: 10rem;
+  }
+  &__bg {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $clr-white-off;
+    z-index: -2;
+    overflow: hidden;
+    @include mq(tablet) {
+      height: 61.1rem;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      width: 30rem;
+      height: 30rem;
+      bottom: 0;
+      right: 0;
+      background: url('../img/decor-m-search.svg') no-repeat center;
+      z-index: -1;
+      @include mq(tablet) {
+        top: 19.6rem;
+        right: -12.5rem;
+        width: 61.6rem;
+        height: 49.4rem;
+      }
+    }
+  }
+  &__info {
+    text-align: center;
+  }
+  .breadcrumbs {
+    justify-content: center;
+    a,
+    span {
+      letter-spacing: 0.2em;
+    }
+  }
+  &__heading {
+    margin-bottom: 3.2rem;
+    text-transform: capitalize;
+    @include mq(desktop-wide) {
+      font-size: 6.5rem;
+    }
+    span {
+      color: $clr-green;
+    }
+  }
+  &__content {
+    margin: 0 auto 3rem;
+    @include mq(tablet) {
+      margin-bottom: 7.2rem;
+      max-width: 94rem;
+    }
+  }
+  &__inner {
+    @include mq(desktop) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
+  &__areas {
+    @include mq(desktop, max) {
+      margin-bottom: 3rem;
+    }
+    @include mq(tablet) {
+      flex: 0 0 vw(795px);
+    }
+    @include mq(desktop-wide) {
+      flex-basis: 79.5rem;
+    }
+    &-heading {
+      font-size: 2.4rem;
+      @include mq(tablet) {
+        font-size: 3.6rem;
+      }
+    }
+  }
+  &__faqs {
+    @include mq(desktop, max) {
+      padding: 2.4rem;
+    }
+    @include mq(desktop) {
+      margin-left: 4.5rem;
+      flex-grow: 1;
+    }
+    @include mq(desktop-wide) {
+      flex-basis: 46rem;
+    }
+    &-heading {
+      font-size: 2.4rem;
+      @include mq(tablet) {
+        font-size: 3.6rem;
+      }
+    }
+  }
+  &__areas {
+    padding: 2.4rem;
+    background-color: $clr-navy;
+    border: 1px solid $clr-navy;
+    color: $clr-white;
+    border-radius: 1.2rem;
+    @include mq(tablet) {
+      padding: 2.4rem 4.8rem;
+    }
+    &-heading {
+      margin-bottom: 1.6rem;
+      @include mq(tablet) {
+        margin-bottom: 3.2rem;
+      }
+    }
+    &-item {
+      border-top: 1px solid $clr-white;
+      padding: 1.6rem 0;
+      &__heading {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font: 700 1.6rem/2.7rem $f-text;
+        img {
+          margin-right: 1rem;
+          max-width: 1.8rem;
+          flex-shrink: 0;
+        }
+      }
+      &__content {
+        margin-top: 1.6rem;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+    &-footer {
+      display: flex;
+      margin-top: 1.6rem;
+      padding-top: 1.6rem;
+      align-items: center;
+      border-top: 2px solid $clr-green;
+      justify-content: space-between;
+      @include mq(tablet) {
+        padding-top: 3.2rem;
+      }
+      p {
+        margin: 0;
+        font: 600 1.4rem/2.4rem $f-text;
+      }
+      .underline-link {
+        margin-left: 1.6rem;
+      }
+    }
+  }
+  &__faqs {
+    background-color: $clr-white;
+    border: 1px solid $clr-border;
+    border-radius: 1.2rem;
+    @include mq(tablet) {
+      padding: 4rem;
+    }
+    &-heading {
+      margin-bottom: 1.6rem;
+      @include mq(tablet) {
+        margin-bottom: 3.2rem;
+      }
+    }
+    &-item {
+      padding: 1.6rem 0;
+      border-top: 1px solid $clr-border;
+      .accordion-header {
+        font: 700 1.6rem/2.7rem $f-text;
+        color: $clr-black;
+      }
+      .accordion-body {
+        margin-top: 1.6rem;
+      }
+    }
+  }
+  .accordion {
+    &-header {
+      position: relative;
+      padding-right: 4rem;
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        right: 0;
+        width: 1.6rem;
+        height: 0;
+        border: 1px solid $clr-green;
+        transform: translateY(-50%);
+        transition: transform .3s ease-in-out;
+        will-change: transition;
+      }
+      &::after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+      &.active::after {
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.pa-grid {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  @include mq(tablet) {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+  }
+  &__heading {
+    @include mq(tablet) {
+      font-size: 3.6rem;
+    }
+  }
+  &__search {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  &__alphabet {
+    display: flex;
+    margin: 0 -6px 5rem;
+    flex-wrap: wrap;
+  }
+  &__filter {
+    margin-left: 6px;
+    margin-right: 6px;
+    appearance: none;
+    background: transparent;
+    border: none;
+    font: 400 2rem/1.2 $f-text;
+    color: $clr-light-gray;
+    cursor: pointer;
+    pointer-events: none;
+    &.is-enabled {
+      color: $clr-navy;
+      pointer-events: all;
+    }
+    &:hover,
+    &.is-active {
+      color: $clr-green;
+    }
+  }
+  &__items {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-gap: vw(108px);
+    }
+    @include mq(desktop-wide) {
+      grid-gap: 10.8rem;
+    }
+  }
+  &__group {
+    margin-bottom: 2rem;
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+    }
+    &-letter {
+      display: inline-flex;
+      margin-bottom: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 2px;
+      background-color: $clr-navy;
+      color: $clr-white;
+    }
+  }
+  &__item {
+    font: 400 1.6rem/1.8rem $f-text;
+    color: $clr-navy;
+    text-decoration: underline;
+    &:hover {
+      color: $clr-green;
+    }
+    &-wrapper {
+      margin-bottom: 8px;
+    }
+  }
+  &__no-results {
+    display: none;
+  }
+}

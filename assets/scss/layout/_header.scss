@@ -21,10 +21,9 @@
   }
   &-top {
     display: none;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
-    background-color: $clr-navy;
-    color: $clr-white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #E5E7EC;
     text-align: center;
     overflow: hidden;
     z-index: 100;
@@ -33,6 +32,8 @@
       left: 0;
       width: 100%;
       bottom: 0;
+      background-color: $clr-navy;
+      color: $clr-white;
     }
     @include mq(desktop-small) {
       padding-top: 0.7rem;
@@ -48,15 +49,19 @@
       width: 100%;
       align-items: center;
       justify-content: center;
-      font: 600 1.2rem/1 $f-text;
-      letter-spacing: 0.2em;
+      font: 600 1rem/1.5 $f-text;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: $clr-white;
+      color: #1F1F1F;
+      @include mq(tablet) {
+        color: $clr-white;
+      }
       @include mq(desktop-small) {
         font-size: 1.4rem;
       }
       a {
         color: $clr-green;
+        text-decoration: underline;
       }
     }
     &__close {
@@ -67,11 +72,15 @@
       appearance: none;
       background-color: transparent;
       border: none;
-      font: 600 3rem/1 $f-text;
-      color: $clr-white;
+      font: 400 3rem/1 $f-text;
+      color: $clr-navy;
       cursor: pointer;
       transform: translateY(-50%);
       transition: all .3s ease-in-out;
+      @include mq(tablet) {
+        font-weight: 600;
+        color: $clr-white;
+      }
       &:hover {
         color: $clr-green;
       }

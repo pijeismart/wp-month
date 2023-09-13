@@ -295,6 +295,31 @@
                             "mime_types": ""
                         },
                         {
+                            "key": "field_6501a56e5c6d1",
+                            "label": "Modal Video URL",
+                            "name": "modal_video_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6465f5dae5389",
+                                        "operator": "==",
+                                        "value": "home"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_6465ead490fbf",
                             "label": "Content",
                             "name": "",
@@ -502,7 +527,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -511,6 +536,23 @@
                             "min_size": "",
                             "max_size": "",
                             "mime_types": ""
+                        },
+                        {
+                            "key": "field_6501a5455c6d0",
+                            "label": "Modal Video URL",
+                            "name": "modal_video_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
                         },
                         {
                             "key": "field_648bc42d92a6f",
@@ -7084,5 +7126,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1690851715
+    "modified": 1694607071
 }

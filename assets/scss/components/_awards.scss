@@ -3,6 +3,7 @@
     @include mq(tablet) {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
     }
   }
   &-gallery {

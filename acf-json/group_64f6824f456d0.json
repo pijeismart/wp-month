@@ -1,0 +1,45 @@
+{
+    "key": "group_64f6824f456d0",
+    "title": "[CPT] - Practice Areas",
+    "fields": [
+        {
+            "key": "field_64f6824f3181c",
+            "label": "Brief",
+            "name": "brief",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "This field is used for \"Practice Areas\" page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "practice"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1693876857
+}

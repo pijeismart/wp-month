@@ -171,6 +171,9 @@
   @include mq(tablet) {
     max-width: calc(100% - 37rem);
   }
+  a {
+    word-break: break-all;
+  }
 }
 .post-sidebar {
   position: sticky;

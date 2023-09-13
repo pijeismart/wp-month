@@ -510,3 +510,12 @@ if ( ! function_exists( 'am_get_the_post_thumbnail' ) ) {
 		}
 	}
 }
+
+// ignore custom post type order plugin
+add_filter('pto/posts_orderby/ignore', 'theme_pto_posts_orderby', 10, 3);
+function theme_pto_posts_orderby($ignore, $orderBy, $query) {
+	if( (! is_array($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'practice') || 
+			(is_array($query->query_vars)   &&  in_array('practice', $query->query_vars)))
+			$ignore = TRUE;
+	return $ignore;
+}

@@ -107,7 +107,7 @@
 				</div>
 			</section>
 		<?php endif; ?>
-		<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php' ) || is_page_template( 'page-templates/areas-we-serve.php' ) || is_page_template( 'page-templates/blog.php' ) ) : ?>
+		<?php if ( is_singular( 'post' ) || is_page_template( 'page-templates/faqs.php' ) || is_page_template( 'page-templates/areas-we-serve.php' ) || is_page_template( 'page-templates/blog.php' ) || is_page_template( 'page-templates/practice-areas.php') ) : ?>
 			<section class="subscribe-form" id="subscribe-form">
 				<div class="subscribe-form__img d-md-only">
 					<?php

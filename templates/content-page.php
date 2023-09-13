@@ -33,6 +33,7 @@ if ( have_rows( 'modules' ) ) :
 			$image              = get_sub_field( 'image' );
 			$video              = get_sub_field( 'video' );
 			$mobile_video       = get_sub_field( 'mobile_video' );
+			$modal_video        = get_sub_field( 'modal_video_url' ) ? get_sub_field( 'modal_video_url' ) : $video;
 			$disable_navigation = get_sub_field( 'disable_navigation_bar' );
 			$claim_types        = get_the_terms( $post, 'claim_type' );
 			$case_categories    = get_the_terms( $post, 'case_category' );
@@ -69,7 +70,11 @@ if ( have_rows( 'modules' ) ) :
 					<?php endif; ?>
 					<div class="banner-inner">
 						<div class="banner-media a-op">
-							<div class="banner-media__large">
+							<?php if ( 'home' == $type ) : ?>
+								<a href="<?php echo esc_url( $modal_video ); ?>" class="banner-media__large" data-fancybox>
+							<?php else : ?>
+								<div class="banner-media__large">
+							<?php endif; ?>
 								<?php
 								$size = 'practice-cards' == $type ? 'banner-media-large' : false;
 								get_template_part(
@@ -83,7 +88,11 @@ if ( have_rows( 'modules' ) ) :
 									)
 								);
 								?>
-							</div>
+							<?php if ( 'home' == $type ) : ?>
+								</a>
+							<?php else : ?>
+								</div>
+							<?php endif; ?>
 							<?php if ( 'practice' == $type ) : ?>
 							<div class="banner-media__small">
 								<?php
@@ -394,6 +403,7 @@ if ( have_rows( 'modules' ) ) :
 			<?php
 		elseif ( 'homepage_mobile_banner' == get_row_layout() ) :
 			$video = get_sub_field( 'video' );
+			$modal_video = get_sub_field( 'modal_video_url' ) ? get_sub_field( 'modal_video_url' ) : $video;
 			?>
 			<!-- Homepage Mobile Banner -->
 			<section class="hp-mobile-banner d-sm-only">
@@ -408,11 +418,11 @@ if ( have_rows( 'modules' ) ) :
 					);
 					?>
 					<?php if ( $video ) : ?>
-						<div class="hp-mobile-banner__video a-up a-delay-1">
+						<a href="<?php echo esc_url( $modal_video ); ?>" class="hp-mobile-banner__video a-up a-delay-1" data-fancybox>
 							<video src="<?php echo esc_url( $video ); ?>" loop muted playsinline autoplay preload="metadata">
 								<source src="<?php echo esc_url( $video ); ?>" type="video/mp4">
 							</video>
-						</div>
+						</a>
 					<?php endif; ?>
 					<?php
 					get_template_part_args(
