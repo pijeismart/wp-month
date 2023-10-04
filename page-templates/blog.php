@@ -115,16 +115,16 @@ if ( $query->have_posts() ) :
 			if ( $case_categories ) :
 				?>
 				<div class="accordion section-archive__sidebar__widget">
-					<div class="accordion-header">
-						<?php echo esc_html__( 'By Case Type' ); ?>
+					<div class="accordion-header active">
+						<?php echo esc_html__( 'Popular Categories' ); ?>
 					</div>
-					<div class="accordion-body">
+					<div class="accordion-body" style="display: block">
 						<?php foreach ( $case_categories as $category ) : ?>
-							<button class="section-archive__filter__btn<?php echo ( isset( $_GET['case-category'] ) && $_GET['case-category'] == $category->slug ) ? ' is-active' : ''; ?>" 
+							<a href="<?php echo esc_url( get_term_link( $category, 'case_category' ) ); ?>" class="section-archive__filter__btn<?php echo ( isset( $_GET['case-category'] ) && $_GET['case-category'] == $category->slug ) ? ' is-active' : ''; ?>" 
 								data-target="data-case-cat"
 								data-case-cat="<?php echo esc_attr( $category->slug ); ?>">
 								<?php echo esc_html( $category->name ); ?>
-							</button>
+							</a>
 						<?php endforeach; ?>
 					</div>
 				</div>

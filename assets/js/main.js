@@ -290,6 +290,11 @@
           theme.initAwardsCarousel
         );
         helper.isElementExist('.pa-grid', theme.initPracticeAreas);
+        helper.isElementExist('.home-banner__cases', theme.initHomeBannerCases);
+
+        helper.isElementExist('.quiz', theme.initQuiz);
+
+        helper.isElementExist('.contact-form-alt', theme.initContactFormAlt);
 
         // Show all cards on click
         $('.btn-show-more').on('click', function() {
@@ -372,6 +377,15 @@
           $next.show();
           // $form.trigger("submit",[true]);
           return false;
+        });
+
+        // show sections on click btn-site-more
+        $('.btn-site-more').on('click', function() {
+          $('.cards-content ~ section').show();
+          $('.footer').show();
+          $('.btn-site-more__wrapper').hide();
+          // reset all slick sliders
+          $('.slick-slider').slick('refresh');
         });
       });
       /** * Run on Window Load ** */
@@ -1042,6 +1056,51 @@
             $(target).show();
           }
         }
+      });
+    },
+
+    /**
+     * home banner cases slider
+     */
+    initHomeBannerCases() {
+      $('.home-banner__cases').slick({
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 0,
+        speed: 8000,
+        cssEase: 'linear',
+        draggable: false,
+        variableWidth: true
+      });
+    },
+    /**
+     * init quiz
+     */
+    initQuiz() {
+      // go to next page on change radio in Gravity Form
+      $('.quiz input[name="input_5"]').on('change', function() {
+        $('#gform_next_button_4_1').trigger('click');
+        $('#gform_page_4_1').hide();
+      });
+    },
+    /**
+     * init contact form alt for practice Area A/B Testing
+     */
+    initContactFormAlt() {
+      // enable radio when name is not empty
+      $('.practice-form-name input').on('input', function() {
+        if ($(this).val()) {
+          $('.practice-form-radio').removeClass('disabled');
+        } else {
+          $('.practice-form-radio').addClass('disabled');
+        }
+      });
+      // if contact type is selected, hide name, radio, and image
+      $('.practice-form-radio input').on('change', function() {
+        $('.practice-form-name').hide();
+        $('.practice-form-radio').hide();
+        $('.contact-form-alt .practice-form-name').hide();
       });
     }
   };

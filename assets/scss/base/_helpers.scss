@@ -346,6 +346,8 @@ html.disable-scrolling {
   border: 1px solid $clr-border;
   border-radius: 1rem;
   background-color: $clr-white;
+  width: 100%;
+  max-width: 35rem;
   @include mq(tablet, max) {
     margin-top: 4rem;
   }

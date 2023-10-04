@@ -75,7 +75,7 @@
 								<span><?php echo esc_html__( 'Dial', 'am' ); ?></span>
 								<div class="header-cta__animations">
 									<div class="header-cta__animation"><?php echo esc_html__( '1-800-LAW-NEED', 'am' ); ?></div>
-									<div class="header-cta__animation"># Win<sup>TM</sup></div>
+									<div class="header-cta__animation"># Win<sup>®</sup></div>
 								</div>
 								<span><?php echo $phone; ?></span>
 							</div>

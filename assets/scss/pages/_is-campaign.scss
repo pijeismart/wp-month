@@ -1,0 +1,72 @@
+.contact-form-alt {
+  display: none;
+  margin-top: 3rem;
+  .contact-form__form {
+    margin-top: 0;
+  }
+  .gfield_visibility_hidden {
+    display: none;
+  }
+  .gfield textarea {
+    max-height: 11rem;
+  }
+}
+.btn-site-more {
+  &__wrapper {
+    margin-bottom: 1.6rem;
+    display: none;
+  }
+}
+.is-campaign {
+  @include mq(tablet, max) {
+    .main {
+      display: flex;
+      flex-direction: column;
+    }
+    .banner-phone,
+    .banner-cta,
+    .banner-desc,
+    .breadcrumbs,
+    .navigation-bar,
+    .contact-form .contact-form__cards,
+    .contact-form .contact-form__form,
+    .cards-content__cards {
+      display: none;
+    }
+    .banner--practice-cards {
+      padding-bottom: 3.3rem;
+      order: -2;
+    }
+    .cards-content {
+      margin-bottom: 3rem;
+      order: -1;
+    }
+    .banner-media__mobile .mobile-image {
+      margin-bottom: 0;
+      padding-top: hp(165px, 230px);
+    }
+    .contact-form-alt {
+      display: block;
+      order: -1;
+    }
+    .btn-site-more__wrapper {
+      display: block;
+    }
+    .btn-site-more {
+      display: block;
+      padding-right: 3rem;
+      width: 100%;
+      border: none;
+      &::after {
+        content: none;
+      }
+    }
+    .cards-content ~ section,
+    .footer {
+      display: none;
+    }
+    .navigation-bar+section {
+      margin: 0 !important;
+    }
+  }
+}

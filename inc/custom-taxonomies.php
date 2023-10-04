@@ -30,12 +30,12 @@ function custom_taxonomies() {
 		'case_category',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
 		array( 'practice', 'post', 'page', 'city', 'faq', 'case_result', 'attorney' ),             // post type name
 		array(
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'hierarchical'       => true,
 			'label'              => 'Case Category', // display name
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug'       => 'case-category',    // This controls the base slug that will display before each term
+				'slug'       => 'blog',    // This controls the base slug that will display before each term
 				'with_front' => false,  // Don't display the category base before
 			),
 			'show_in_rest'       => true,

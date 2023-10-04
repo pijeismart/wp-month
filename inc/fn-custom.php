@@ -519,3 +519,35 @@ function theme_pto_posts_orderby($ignore, $orderBy, $query) {
 			$ignore = TRUE;
 	return $ignore;
 }
+
+// add custom body class from ACF
+add_filter( 'body_class', 'am_body_class' );
+function am_body_class( $classes ) {
+	$classes[] = get_field( 'body_class' );
+	if ( ( is_singular( 'practice' ) || is_singular( 'city' ) ) &&  ( isset( $_GET['trac'] ) && 'campaign' == $_GET['trac'] ) ) {
+		$classes[] = 'is-campaign';
+	}
+	
+	// Get query param injury_claim on contact page
+	$injury_claim = isset( $_GET['injury_claim'] ) ? $_GET['injury_claim'] : false;
+	if ( $injury_claim ) {
+		$params = array();
+		if ( have_rows( 'modules' ) ) :
+			while ( have_rows( 'modules' ) ) :
+				the_row();
+				if ( 'contact' == get_row_layout() ) {
+					if ( have_rows( 'dynamic_banners' ) ) :
+						while ( have_rows( 'dynamic_banners' ) ) :
+							the_row();
+							$params[] = get_sub_field( 'parameter' );
+						endwhile;
+					endif;
+				}
+			endwhile;
+		endif;
+		if ( in_array( $injury_claim, $params ) ) {
+			$classes[] = 'injury-claim';
+		}
+	}
+	return $classes;
+}

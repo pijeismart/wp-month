@@ -1,0 +1,82 @@
+.injury-claim {
+  .contact {
+    @include mq(tablet, max) {
+      .contact-mobile--origin {
+        display: none !important;
+      }
+      .contact-mobile__lottie {
+        display: none !important;
+      }
+      &-form__form {
+        margin-top: 0 !important;
+        margin-bottom: 4rem !important;
+      }
+    }
+    @include mq(tablet) {
+      .breadcrumbs {
+        display: none !important;
+      }
+      .contact-heading,
+      .contact-content {
+        display: none;
+      }
+      .contact-mobile {
+        margin: 0 0 6.4rem;
+        padding: 0;
+        min-height: auto;
+        &::before {
+          content: none;
+        }
+        &__inner {
+          text-align: left;
+        }
+        &__bg {
+          position: static;
+          margin-bottom: 4.5rem;
+          height: 265px;
+          border-radius: 1.1rem;
+        }
+        &__subheading {
+          margin: 0 0 1.5rem;
+          color: $clr-navy;
+          font-size: 1.8rem;
+          line-height: 2.7rem;
+        }
+        &__heading {
+          margin: 0 auto 2.2rem;
+          max-width: none;
+          color: $clr-navy;
+          font-size: 4.5rem;
+          line-height: 5rem;
+          text-align: left;
+        }
+        &__copy {
+          max-width: none;
+          color: $clr-navy;
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+        }
+        &__lottie {
+          display: none !important;
+        }
+      }
+    }
+    &-dynamic-content {
+      display: block;
+      @include mq(tablet, max) {
+        padding-bottom: 4rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .d-dynamic-none,
+  .awards,
+  .map,
+  .footer,
+  .header-menu,
+  .header-phone,
+  .header-cta,
+  .hamburger {
+    display: none !important;
+  }
+}

@@ -1,5 +1,18 @@
 <?php
 global $post;
+
+
+$injury_claim = isset( $_GET['injury_claim'] ) ? $_GET['injury_claim'] : false;
+if ( $injury_claim ) {
+	?>
+	<style>
+      .contact-mobile[data-param="<?php echo esc_attr( $injury_claim ); ?>"] {
+        display: block !important;
+      }
+	</style>
+	<?php
+}
+
 $toc_links = array();
 if ( have_rows( 'modules' ) ) :
 	while ( have_rows( 'modules' ) ) :
@@ -283,7 +296,7 @@ if ( have_rows( 'modules' ) ) :
 									'template-parts/content-modules-cta',
 									array(
 										'v' => 'cta',
-										'c' => 'btn btn-primary a-up a-delay-2',
+										'c' => 'btn btn-primary banner-cta a-up a-delay-2',
 									)
 								);
 							else :
@@ -291,7 +304,7 @@ if ( have_rows( 'modules' ) ) :
 									'template-parts/content-modules-cta',
 									array(
 										'v' => 'practice_banner_cta',
-										'c' => 'btn btn-primary a-up a-delay-2',
+										'c' => 'btn btn-primary banner-cta a-up a-delay-2',
 										'o' => 'o',
 									)
 								);
@@ -399,6 +412,138 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
+			<?php endif; ?>
+
+			<?php
+		elseif ( 'homepage_banner' == get_row_layout() ) :
+			$image          = get_sub_field( 'image' );
+			$type           = get_sub_field( 'case_results_type' ) ? get_sub_field( 'case_results_type' ) : 'relationship';
+			$case_results   = get_sub_field( 'case_results' );
+			$awards         = get_sub_field( 'awards' );
+			$awards_heading = get_sub_field( 'award_heading' );
+			?>
+			<!-- Homepage Banner Alt -->
+			<section class="home-banner">
+				<?php if ( $image ) : ?>
+					<picture>
+						<source media="(min-width: 768px)" srcset="<?php echo esc_url( $image['sizes']['banner-home-alt'] ); ?>">
+						<img class="home-banner__bg" src="<?php echo esc_url( $image['sizes']['banner-home-alt-mobile'] ); ?>" alt="" loading="lazy">
+					</picture>
+				<?php endif; ?>
+				<div class="container">
+					<div class="home-banner__content">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v' => 'heading',
+								't' => 'h1',
+								'tc' => 'home-banner__heading a-up',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'content',
+								't'  => 'div',
+								'tc' => 'home-banner__copy a-up a-delay-1',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-cta',
+							array(
+								'v' => 'cta',
+								'c' => 'btn btn-primary home-banner__cta a-up a-delay-2',
+							)
+						);
+						?>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-text',
+							array(
+								'v'  => 'description',
+								't'  => 'p',
+								'tc' => 'home-banner__desc a-up a-delay-3',
+							)
+						);
+						?>
+					</div>
+					<?php if ( 'relationship' == $type ) : ?>
+						<?php if ( $case_results ) : ?>
+							<div class="home-banner__cases">
+								<?php
+								foreach ( $case_results as $post ) :
+									setup_postdata( $post );
+									$price = get_field( 'price' );
+									?>
+									<div class="home-banner__case">
+										<?php if ( floatval( $price ) / 1000000 >= 1 ) : ?>
+											<div class="home-banner__case-price"><?php echo esc_html( '$' . floatval( $price ) / 1000000 . ' Million' ); ?></div>
+										<?php else : ?>
+											<div class="home-banner__case-price"><?php echo esc_html( '$' . number_format( intval( $price ) ) ); ?></div>
+										<?php endif; ?>
+										<p class="home-banner__case-title"><?php the_title(); ?></p>
+									</div>
+								<?php endforeach; ?>
+							</div>
+							<?php
+						endif;
+						wp_reset_postdata();
+						?>
+					<?php else : ?>
+						<?php if ( have_rows( 'cases' ) ) : ?>
+							<div class="home-banner__cases">
+								<?php
+								while ( have_rows( 'cases' ) ) :
+									the_row();
+									?>
+									<div class="home-banner__case">
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'heading',
+												't'  => 'div',
+												'tc' => 'home-banner__case-price',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'p',
+												'tc' => 'home-banner__case-title',
+											)
+										);
+										?>
+									</div>
+								<?php endwhile; ?>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
+				</div>
+			</section>
+			<?php if ( $awards || $awards_heading ) : ?>
+				<section class="awards-alt">
+					<div class="container">
+						<?php if ( $awards_heading ) : ?>
+							<h2 class="awards-alt__heading a-up"><?php echo $awards_heading; ?></h2>
+						<?php endif; ?>
+						<?php if ( $awards ) : ?>
+							<div class="awards-gallery a-up a-delay-1">
+								<?php foreach ( $awards as $image ) : ?>
+									<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</section>
 			<?php endif; ?>
 			<?php
 		elseif ( 'homepage_mobile_banner' == get_row_layout() ) :
@@ -1502,6 +1647,58 @@ if ( have_rows( 'modules' ) ) :
 					</div>
 				</div>
 			</section>
+			<?php
+			if ( is_singular( 'practice' ) || is_singular( 'city' ) ) :
+				$form_alt = get_field( 'practice_campaign_form', 'options' );
+				?>
+				<section class="contact-form-alt">
+					<div class="container">
+						<div class="contact-form__form a-up a-delay-1">
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'practice_form_eyebrow',
+									't'  => 'h5',
+									'tc' => 'contact-form__form__sub_heading',
+									'o'  => 'o',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'practice_form_heading',
+									't'  => 'h4',
+									'tc' => 'contact-form__form__heading',
+									'o'  => 'o',
+								)
+							);
+							?>
+							<?php if ( $form_alt ) : ?>
+								<div class="contact-form__form__form">
+									<?php echo do_shortcode( $form_alt ); ?>
+								</div>
+							<?php endif; ?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-image',
+								array(
+									'v'     => 'practice_form_image',
+									'v2x'   => false,
+									'is'    => false,
+									'is_2x' => false,
+									'c'     => 'contact-form__form__logo',
+									'o'     => 'o',
+								)
+							);
+							?>
+						</div>
+					</div>
+				</section>
+			<?php endif; ?>
+			
 		<?php elseif ( 'cards_content' == get_row_layout() ) : ?>
 			<!-- Two Cards and Content -->
 			<section class="cards-content"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
@@ -1646,7 +1843,7 @@ if ( have_rows( 'modules' ) ) :
 		elseif ( 'podcasts' == get_row_layout() ) :
 			$podcasts = get_sub_field( 'podcasts' );
 			?>
-		<!-- Podcasts -->
+			<!-- Podcasts -->
 			<section class="podcasts"<?php echo $anchor_id ? ' id="' . esc_attr( $anchor_id ) . '"' : ''; ?>>
 				<div class="container">
 					<?php
@@ -2693,10 +2890,12 @@ if ( have_rows( 'modules' ) ) :
 			</section>
 			<?php
 		elseif ( 'contact' == get_row_layout() ) :
-			$phone         = get_sub_field( 'notice_phone' );
-			$mobile_lottie = get_sub_field( 'mobile_lottie' );
-			$video_url     = get_sub_field( 'video' );
-			$case_results  = get_sub_field( 'case_results' );
+			$phone                 = get_sub_field( 'notice_phone' );
+			$mobile_lottie         = get_sub_field( 'mobile_lottie' );
+			$mobile_lottie_dynamic = get_sub_field( 'mobile_lottie_dynamic' );
+			$video_url             = get_sub_field( 'video' );
+			$case_results          = get_sub_field( 'case_results' );
+			$dynamic_call          = get_sub_field( 'dynamic_call_image' );
 			?>
 			<!-- Conctact -->
 			<section class="contact">
@@ -2709,73 +2908,168 @@ if ( have_rows( 'modules' ) ) :
 							<span><?php echo esc_html__( 'Contact Montlick' ); ?></span>
 						</li>
 					</ul>
-					<div class="contact-mobile d-sm-only">
-						<?php if ( $mobile_lottie ) : ?>
-							<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-mobile__lottie">
-								<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-								<lottie-player src="<?php echo esc_url( $mobile_lottie ); ?>" background="transparent" speed="1" style="width: 280px;height:180px" loop autoplay></lottie-player>
+					<div class="contact-mobile contact-mobile--origin d-sm-only">
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-image',
+							array(
+								'v'     => 'banner_image',
+								'v2x'   => false,
+								'is'    => 'content-image-full-ctas',
+								'is_2x' => 'content-image-full-ctas-2x',
+								'c'     => 'contact-mobile__bg',
+							)
+						);
+						?>
+						<div class="contact-mobile__inner">
+							<?php if ( $mobile_lottie ) : ?>
+								<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-mobile-img a-up a-delay-3 d-sm-only">
+									<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+									<lottie-player src="<?php echo esc_url( $mobile_lottie ); ?>" background="transparent" speed="1" style="width: 280px;height:180px" loop autoplay></lottie-player>
+								</a>
+							<?php endif; ?>
+							<?php if ( $mobile_lottie_dynamic || $dynamic_call ) : ?>
+							<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-mobile__dynamic-img a-up a-delay-3 d-sm-only">
+								<?php if ( $mobile_lottie_dynamic ) : ?>
+									<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+									<lottie-player src="<?php echo esc_url( $mobile_lottie_dynamic ); ?>" background="transparent" speed="1" style="width: 280px;height:180px" loop autoplay></lottie-player>
+								<?php else : ?>
+									<img src="<?php echo esc_url( $dynamic_call['url'] ); ?>" alt="<?php echo esc_attr( $dynamic_call['alt'] ); ?>">
+								<?php endif; ?>
 							</a>
-						<?php endif; ?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'mobile_heading',
-								't'  => 'h2',
-								'tc' => 'h1 contact-mobile__heading a-up a-delay-1',
-							)
-						);
-						?>
-						<?php if ( $video_url ) : ?>
-						<a href="<?php echo esc_url( $video_url ); ?>" class="video-player a-up a-delay-2" data-fancybox>
-							<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
-							<span class="video-play">
-								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
-							</span>
-						</a>
-						<?php endif; ?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v' => 'faq_mobile_cta',
-								'c' => 'contact-mobile__link a-up a-delay-2',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-text',
-							array(
-								'v'  => 'mobile_copy',
-								't'  => 'div',
-								'tc' => 'contact-mobile__copy a-up a-delay-3',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v'  => 'mobile_cta',
-								'c'  => 'underline-link a-up a-delay-3',
-								'w'  => 'div',
-								'wc' => 'contact-mobile__cta',
-							)
-						);
-						?>
-						<?php
-						get_template_part_args(
-							'template-parts/content-modules-cta',
-							array(
-								'v'  => 'mobile_button',
-								'c'  => 'btn btn-primary a-up a-delay-3',
-								'w'  => 'div',
-								'wc' => 'contact-mobile__btn',
-							)
-						);
-						?>
+							<?php endif; ?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'mobile_sub_heading',
+									't'  => 'h6',
+									'tc' => 'contact-mobile__subheading a-up a-delay-2',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'mobile_heading',
+									't'  => 'h2',
+									'tc' => 'h1 contact-mobile__heading a-up a-delay-1',
+								)
+							);
+							?>
+							<?php if ( $video_url ) : ?>
+							<a href="<?php echo esc_url( $video_url ); ?>" class="video-player a-up a-delay-2" data-fancybox>
+								<img src="<?php echo esc_url( get_youtube_image_from_url( $video_url ) ); ?>" alt="">
+								<span class="video-play">
+									<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/icon-play.svg' ); ?>" alt="Play Video">
+								</span>
+							</a>
+							<?php endif; ?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v' => 'faq_mobile_cta',
+									'c' => 'contact-mobile__link a-up a-delay-2',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'mobile_copy',
+									't'  => 'div',
+									'tc' => 'contact-mobile__copy a-up a-delay-3',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v'  => 'mobile_cta',
+									'c'  => 'underline-link a-up a-delay-3',
+									'w'  => 'div',
+									'wc' => 'contact-mobile__cta',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-cta',
+								array(
+									'v'  => 'mobile_button',
+									'c'  => 'btn btn-primary a-up a-delay-3',
+									'w'  => 'div',
+									'wc' => 'contact-mobile__btn',
+								)
+							);
+							?>
+						</div>
 					</div>
+					<?php if ( have_rows( 'dynamic_banners' ) ) : ?>
+						<div class="contact-dynamic-banners">
+							<?php
+							while ( have_rows( 'dynamic_banners' ) ) :
+								the_row();
+								$param = get_sub_field( 'parameter' );
+								?>
+								<div class="contact-mobile" data-param="<?php echo esc_attr( $param ); ?>">
+									<?php
+									get_template_part_args(
+										'template-parts/content-modules-image',
+										array(
+											'v'     => 'image',
+											'v2x'   => false,
+											'is'    => 'content-image-full-ctas',
+											'is_2x' => 'content-image-full-ctas-2x',
+											'c'     => 'contact-mobile__bg',
+										)
+									);
+									?>
+									<div class="contact-mobile__inner">
+										<?php if ( $dynamic_call ) : ?>
+											<a href="tel:<?php echo esc_attr( $phone ); ?>" class="contact-mobile__dynamic-img a-up a-delay-3 d-sm-only">
+												<img src="<?php echo esc_url( $dynamic_call['url'] ); ?>" alt="<?php echo esc_attr( $dynamic_call['alt'] ); ?>">
+											</a>
+										<?php endif; ?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'sub_heading',
+												't'  => 'h6',
+												'tc' => 'contact-mobile__subheading a-up a-delay-2',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'heading',
+												't'  => 'h2',
+												'tc' => 'h1 contact-mobile__heading a-up a-delay-1',
+											)
+										);
+										?>
+										<?php
+										get_template_part_args(
+											'template-parts/content-modules-text',
+											array(
+												'v'  => 'content',
+												't'  => 'div',
+												'tc' => 'contact-mobile__copy a-up a-delay-3',
+											)
+										);
+										?>
+									</div>
+								</div>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-text',
@@ -3071,6 +3365,16 @@ if ( have_rows( 'modules' ) ) :
 						);
 						?>
 					</div>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'dynamic_note',
+							't'  => 'div',
+							'tc' => 'contact-dynamic-content a-up a-delay-2',
+						)
+					);
+					?>
 				</div>
 			</section>
 			<?php

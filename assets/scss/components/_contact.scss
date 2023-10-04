@@ -31,6 +31,9 @@
     @include mq(desktop) {
       padding-right: 11rem;
     }
+    .contact-form__form {
+      display: none;
+    }
   }
   .breadcrumbs {
     margin-bottom: 1.5rem;
@@ -355,6 +358,205 @@
     }
     .btn-prev {
       margin-right: 2.4rem;
+    }
+  }
+}
+
+// Custom style for A/B Testing
+.page-contact:not(.injury-claim) {
+  .contact {
+    &-mobile {
+      &__bg,
+      &__subheading {
+        display: none;
+      }
+      &-img {
+        display: block;
+        margin-bottom: 3rem;
+        text-align: center;
+        lottie-player {
+          margin: 0 auto;
+        }
+      }
+      &__dynamic-img {
+        display: none;
+      }
+    }
+    .contact-dynamic-banners {
+      display: none;
+    }
+    .contact-dynamic-content {
+      display: none;
+    }
+  }
+}
+.injury-claim {
+  @include mq(tablet, max) {
+    .header:not(.is-opened):not(.header--sticky) {
+      position: fixed;
+      .header-main {
+        background-color: transparent;
+      }
+      .hamburger,
+      .header-phone {
+        display: none;
+      }
+      .header-logo img {
+        filter: brightness(0) invert(1);
+        width: 16rem !important;
+      }
+    }
+    .awards,
+    .map {
+      display: none;
+    }
+  }
+  .contact {
+    @include mq(tablet, max) {
+      padding-top: 0;
+      &-left {
+        display: flex;
+        flex-direction: column;
+        .contact-form__form {
+          display: block;
+          order: 2;
+          margin: 4rem 0 10rem;
+          &__sub_heading {
+            text-align: center;
+          }
+        }
+      }
+      &-content {
+        order: 1;
+      }
+      &-faqs {
+        margin-bottom: 2.4rem;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        order: 2;
+        &__heading {
+          margin-bottom: 2.4rem;
+          font: 700 1.2rem/1.5 $f-text;
+          letter-spacing: 2.4px;
+          text-transform: uppercase;
+          text-transform: uppercase;
+        }
+        &__bottom {
+          display: none;
+        }
+      }
+      &-faq {
+        margin-bottom: 1rem;
+        border: 1px solid $clr-border;
+        border-radius: 1rem;
+        &__question {
+          padding: 2.4rem 2.4rem 2.4rem 6.4rem;
+          font: 700 1.4rem/1.2 $f-text;
+          &::before,
+          &::after {
+            left: 2.4rem;
+            right: auto;
+          }
+        }
+        &__answer {
+          padding: 0 2.4rem 2.4rem;
+        }
+      }
+      .cards-slider {
+        display: none;
+      }
+    }
+    &-mobile {
+      position: relative;
+      margin: 0 -2rem 2rem;
+      padding: 11rem 2rem 1.5rem;
+      min-height: 53.5rem;
+      color: $clr-white;
+      &::before {
+        @include pseudo-elements;
+        background: linear-gradient(0deg, rgba(10, 22, 49, 0.70) 0%, rgba(10, 22, 49, 0.70) 100%);
+        z-index: 1;
+      }
+      &__bg {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        @include cover-image;
+      }
+      &__inner {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+      &__subheading {
+        display: block;
+        margin: 1.5rem;
+        font: 700 1.2rem/1.5 $f-text;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+      }
+      &__heading {
+        margin-bottom: 2rem;
+        font: 400 3rem/1.15 $f-heading;
+        letter-spacing: -0.9px;
+        span {
+          color: $clr-green;
+        }
+      }
+      &__copy {
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 1.55;
+        letter-spacing: -0.15px;
+        color: $clr-white;
+      }
+      &__lottie {
+        order: 1;
+        margin-bottom: 0;
+      }
+      .video-player,
+      .contact-mobile__link,
+      .contact-mobile__cta,
+      .contact-mobile__btn {
+        display: none;
+      }
+    }
+    .contact-dynamic-banners {
+      display: block;
+      .contact-mobile {
+        display: none;
+      }
+    }
+    &-dynamic-content {
+      display: none;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+      @include basic-wysiwig;
+      font-size: 12px;
+      line-height: 1.1;
+      @include mq(tablet) {
+        margin-top: 5rem;
+        margin-bottom: 0;
+        max-width: 38rem;
+      }
+      a:not([class]) {
+        font-weight: 400 !important;
+        color: inherit !important;
+        text-decoration: underline;
+      }
+    }
+    &-mobile__dynamic-img {
+      display: block;
+      text-align: center;
+      order: 1;
+      img,
+      lottie-player {
+        margin: auto;
+      }
     }
   }
 }

@@ -333,6 +333,14 @@
 		)
 	);
 	?>
+
+	<?php if ( ( is_singular( 'practice' ) || is_singular( 'city' ) ) &&  ( isset( $_GET['trac'] ) && 'campaign' == $_GET['trac'] ) ) : ?>
+		<div class="btn-site-more__wrapper">
+			<div class="container">
+				<button class="btn btn-primary btn-site-more"><?php echo esc_html__( 'See More', 'am' ); ?></button>
+			</div>
+		</div>
+	<?php endif; ?>
 </body>
 </html>
 

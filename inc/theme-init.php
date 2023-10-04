@@ -118,6 +118,8 @@ add_image_size( 'banner-media-large', 420, 585, true );
 add_image_size( 'banner-media-large-2x', 840, 1170, true );
 add_image_size( 'banner-media-mobile', 475, 430, true );
 add_image_size( 'banner-media-mobile-2x', 950, 860, true );
+add_image_size( 'banner-home-alt', 0, 940, true);
+add_image_size( 'banner-home-alt-mobile', 0, 800, true);
 
 // show_admin_bar(false);
 // define( 'WPCF7_AUTOP', false );
